@@ -8,6 +8,7 @@
     <div class="card" style="box-shadow: none !important; background-color: transparent !important;">
       <div class="card-body ribbon-box">
         <div class="ribbon-content">
+          <h4 class="text-center"> Hi <%= nameCase(user.firstname) %>, </h4>
           <p class="text-warning text-center text-uppercase"><i class="mdi mdi-alert"></i> Upload a photo to proceed</p>
           <form action="/myaccount/edit/<%= user._id %>/avatar" method="POST" enctype="multipart/form-data">
             <div class="row mb-3 pb-3">

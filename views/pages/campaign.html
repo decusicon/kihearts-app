@@ -1,0 +1,524 @@
+<%- include('../partials/header.html'); %>
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="wrapper">
+  <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+      <div class="col-12 mb-2">
+        <div class="page-title-box">
+          <div class="page-title-right">
+            <button class="btn btn-outline-primary waves-effect waves-light createCampaignBtn" data-toggle="modal"
+              data-target="#createCampaign">
+              Create a campaign
+            </button>
+          </div>
+          <h4 class="page-title"><%= title %></h4>
+        </div>
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <!-- start Modals container -->
+    <div class="all_modals_container">
+      <!-- Create Campaign Modal -->
+      <div class="modal fade createCampaign" id="createCampaign" tabindex="-1" role="dialog"
+        aria-labelledby="createCampaign" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title text-dark" id="createCampaignTitle">Create Campaign</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="modalAlert" class="text-center alert alert-warning">
+                You're about to create a crowdfunding fund campaign,
+                remember you are to grow the campaign to 20,000 GC before it can be
+                <span class="text-success">published</span>.
+              </p>
+              <form action="/dashboard" id="createCampaignForm">
+                <div class="container">
+
+                  <!-- Campaign Title -->
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <label class="text-dark" for="campaignTitle">
+                        Campaign Title
+                        <b class="text-danger">*</b>
+                      </label>
+                      <input type="text" class="form-control" name="campaignTitle" id="campaignTitle" required>
+                    </div>
+                  </div>
+
+                  <!-- Campaign Category -->
+                  <div class="form-group row">
+
+                    <!-- Main Category -->
+                    <div class="col-lg-6">
+                      <label class="text-dark" for="campaignCategory">
+                        Main Campaign Category
+                        <b class="text-danger">*</b>
+                      </label>
+                      <select class="form-control" name="campaignCategory" id="campaignCategory" required>
+                        <option value="">Select a Category</option>
+                        <option value="BUSINESS">BUSINESS</option>
+                        <option value="CHARITY">CHARITY</option>
+                        <option value="DISASTER">DISASTER</option>
+                        <option value="EDUCATION">EDUCATION</option>
+                        <option value="EMERGENCY">EMERGENCY</option>
+                        <option value="ENTERTAINMENT">ENTERTAINMENT</option>
+                        <option value="HEALTH">HEALTH</option>
+                        <option value="PROJECT">PROJECT</option>
+                        <option value="PROPERTY">PROPERTY</option>
+                        <option value="RENT">RENT</option>
+                        <option value="REPAIR">REPAIR</option>
+                        <option value="SPORTS">SPORTS</option>
+                        <option value="TRAVEL">TRAVEL</option>
+                        <option value="OTHERS">OTHERS</option>
+                      </select>
+                    </div>
+
+                    <!-- Sub Category -->
+                    <div class="col-lg-6">
+                      <label class="text-dark" for="subCampaignCategory">
+                        Sub Campaign Category
+                        <b class="text-danger">*</b>
+                      </label>
+                      <select class="form-control" name="subCampaignCategory" id="subCampaignCategory" required>
+                        <option value="">Select a Sub Category</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Reason for Campaign -->
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <label class="text-dark" for="campaignReason">
+                        Reason for Campaign
+                        <b class="text-danger">*</b>
+                      </label>
+                      <textarea class="form-control" name="campaignReason" id="campaignReason" rows="6"
+                        placeholder="Tell us why you need this fund." required></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Amount Needed -->
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <label class="text-dark" for="campaignAmount">
+                        Amount Needed
+                        <b class="text-danger">*</b>
+                      </label>
+                      <input type="number" class="form-control" name="campaignAmount" id="campaignAmount" step="500"
+                        min="500" max="20000" placeholder="Min: 500 --- Max: 20000" required>
+                    </div>
+                  </div>
+
+                  <!-- Bank details header -->
+                  <div class="text-center mt-4">
+                    <h5 class="text-dark">Your Bank Details</h5>
+                    <p>
+                      <small>
+                        Entering you bank details here is 99.9% secured,
+                        beside it must be a valid account details.
+                      </small>
+                    </p>
+                  </div>
+
+                  <!-- Account Name -->
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <label class="text-dark" for="campaignAccName">
+                        Account Name
+                        <b class="text-danger">*</b>
+                      </label>
+                      <input type="text" class="form-control" name="campaignAccName" id="campaignAccName"
+                        placeholder="A valid account name" required>
+                    </div>
+                  </div>
+
+                  <!-- Account Number -->
+                  <div class="form-group row">
+                    <div class="col-lg-6">
+                      <label class="text-dark" for="campaignAccNo">
+                        Account number
+                        <b class="text-danger">*</b>
+                      </label>
+                      <input type="number" class="form-control" name="campaignAccNo" id="campaignAccNo"
+                        placeholder="A valid account number" required>
+                    </div>
+
+                    <!-- Bank -->
+                    <div class="col-lg-6">
+                      <label class="text-dark" for="campaignBank">
+                        Bank
+                        <b class="text-danger">*</b>
+                      </label>
+                      <select class="form-control" name="campaignBank" id="campaignBank" required>
+                        <option value="">Select your Bank</option>
+                        <option value="Access Bank">Access Bank Plc</option>
+                        <option value="Fidelity Bank">Fidelity Bank Plc</option>
+                        <option value="First City Monument Bank">First City Monument Bank Limited</option>
+                        <option value="First Bank of Nigeria">First Bank of Nigeria Limited</option>
+                        <option value="Guaranty Trust Bank">Guaranty Trust Bank Plc</option>
+                        <option value="Union Bank of Nigeria">Union Bank of Nigeria Plc</option>
+                        <option value="United Bank for Africa">United Bank for Africa Plc</option>
+                        <option value="Zenith Bank">Zenith Bank Plc</option>
+                        <option value="Citibank Nigeria">Citibank Nigeria Limited</option>
+                        <option value="Ecobank Nigeria">Ecobank Nigeria Plc</option>
+                        <option value="Heritage Banking Company">Heritage Banking Company Limited</option>
+                        <option value="Keystone Bank">Keystone Bank Limited</option>
+                        <option value="Polaris Bank">Polaris Bank Limited</option>
+                        <option value="Stanbic IBTC Bank">Stanbic IBTC Bank Plc</option>
+                        <option value="Standard">Standard Chartered</option>
+                        <option value="Sterling Bank">Sterling Bank Plc</option>
+                        <option value="Titan Trust Bank">Titan Trust Bank Limited</option>
+                        <option value="Unity Bank">Unity Bank Plc</option>
+                        <option value="Wema Bank">Wema Bank Plc</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <!-- start Campaign Photos -->
+              <div class="container">
+                <label class="text-dark" for="campaignPhotos">
+                  Campaign Photos
+                  <b class="text-danger">*</b>
+                </label>
+                <form action="/dashboard" method="post" enctype="multipart/form-data" class="dropzone p-1"
+                  id="campaignPhotosForm">
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <div class="fallback">
+                        <input type="file" name="file" id="campaignPhotos" accept="image/*" multiple required>
+                      </div>
+
+                      <div class="dz-message needsclick">
+                        <i class="h1 text-muted dripicons-cloud-upload"></i>
+                        <h5>Drop files here or click to upload.</h5>
+                        <span class="text-muted font-10">(5 - 10 photos only). Must upload
+                          all photos at once.</span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="text-center mt-2 mb-2">
+                  <button type="button" form="campaignPhotosForm" class="btn btn-warning waves-effect waves-light">
+                    Save Photos
+                  </button>
+                </div>
+              </div>
+              <!-- end Campaign Photos -->
+
+              <!-- Last info text -->
+              <div class="text-center mt-2 ">
+                <small class="text-muted">
+                  Your Campaign will be at
+                  "<span class="text-info">active stage</span>"
+                </small>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light waves-effect waves-light" data-dismiss="modal">Close</button>
+              <button type="submit" id="createCampaignSumbitBtn" form="createCampaignForm"
+                class="btn btn-primary waves-effect waves-light">
+                Create
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end Modals container -->
+
+    <!-- start noCampaigns -->
+    <div class="noCampaigns hide">
+      <div class="row">
+        <div class="col-lg-12 col-xl-12">
+          <div class="text-center p-2 mt-5">
+            <div style="font-size: 50px; filter: grayscale(1);">📦</div>
+            <h4 class="text-muted m-0 mb-1" style="font-weight: 300;">No campaign found...</h4>
+            <button class="btn btn-sm btn-link waves-effect waves-light createCampaignBtn" data-toggle="modal"
+              data-target="#createCampaign">
+              Create a campaign
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end noCampaigns -->
+
+    <!-- start Campaign Card -->
+    <div class="campaigns">
+      <!-- start row -->
+      <div class="row">
+
+        <!-- start col-->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="card">
+            <div class="card-body ribbon-box">
+              <div class="ribbon ribbon-info float-right">₦20,000 (active) </div>
+              <button class="btn btn-sm btn-link editCampaignBtn" data-toggle="modal" data-target="#createCampaign">
+                <span class="fe-edit-1 pr-1"></span>
+                Edit
+              </button>
+              <div class="ribbon-content">
+                <h4 class="text-dark" id="campaign_title">Campaign Title</h4>
+                <div class="mb-2 text-dark text-right">
+                  <small id="campaign_category">
+                    <b>Category</b>: BUSINESS/Business Capital
+                  </small>
+                </div>
+                <p class="mb-0" id="campaign_reason">
+                  Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit.Fuga, molestias quia nulla
+                  voluptas illum eveniet facilis, blanditiis
+                  reiciendis vitae consequuntur neque. Provident
+                  magnam quia dolore illo architecto, eius nesciunt
+                  distinctio!
+                </p>
+                <div class="row mt-3 mb-1 text-right">
+                  <div class="col-xl-12 col-lg-12">
+                    <small class="text-dark">
+                      3 photos
+                    </small>
+                  </div>
+                </div>
+                <div id="campaign_images">
+                  <ul>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-xl-6 col-lg-6">
+                    <span class="text-muted">Target: 20,000</span><br>
+                    <small class="text-dark">Total: 400 GC</small>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 text-right">
+                    <button class="btn btn-sm btn-outline-info waves-effect waves-light">
+                      Add Daily 100GC
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+        <!-- end col-->
+
+        <!-- start col-->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="card">
+            <div class="card-body ribbon-box">
+              <div class="ribbon ribbon-success float-right">₦20,000 (published) </div>
+              <button class="btn btn-sm btn-link editCampaignBtn hide" data-toggle="modal" data-target="#createCampaign"
+                disabled>
+                <span class="fe-edit-1 pr-1"></span>
+                Edit
+              </button>
+              <div class="ribbon-content">
+                <h4 class="text-dark" id="campaign_title">Campaign Title</h4>
+                <div class="mb-2 text-dark text-right">
+                  <small id="campaign_category">
+                    <b>Category</b>: DISASTER/Earthquake
+                  </small>
+                </div>
+                <p class="mb-0" id="campaign_reason" style="max-height: 150px !important;">
+                  Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit.Fuga, molestias quia nulla
+                  voluptas illum eveniet facilis, blanditiis
+                  reiciendis vitae consequuntur neque. Provident
+                  magnam quia dolore illo architecto, eius nesciunt
+                  distinctio!
+                </p>
+                <div class="row mt-3 mb-1 text-right">
+                  <div class="col-xl-12 col-lg-12">
+                    <small class="text-dark">
+                      3 photos
+                    </small>
+                  </div>
+                </div>
+                <div id="campaign_images">
+                  <ul>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-xl-6 col-lg-6">
+                    <span class="text-muted">Target: 20,000</span><br>
+                    <small class="text-dark">Total: 20,000 GC</small>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 text-right">
+                    <button class="btn btn-sm btn-outline-success" disabled>
+                      Published
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+        <!-- end col-->
+
+        <!-- start col-->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="card">
+            <div class="card-body ribbon-box">
+              <div class="ribbon ribbon-warning float-right">₦15,000 (selected & paid) </div>
+              <button class="btn btn-sm btn-link editCampaignBtn hide" data-toggle="modal" data-target="#createCampaign"
+                disabled>
+                <span class="fe-edit-1 pr-1"></span>
+                Edit
+              </button>
+              <div class="ribbon-content">
+                <h4 class="text-dark" id="campaign_title">Campaign Title</h4>
+                <div class="mb-2 text-dark text-right">
+                  <small id="campaign_category">
+                    <b>Category</b>: HEALTH/Hospital Bill
+                  </small>
+                </div>
+                <p class="mb-0" id="campaign_reason" style="max-height: 150px !important;">
+                  Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit.Fuga, molestias quia nulla
+                  voluptas illum eveniet facilis, blanditiis
+                  reiciendis vitae consequuntur neque. Provident
+                  magnam quia dolore illo architecto, eius nesciunt
+                  distinctio!
+                </p>
+                <div class="row mt-3 mb-1 text-right">
+                  <div class="col-xl-12 col-lg-12">
+                    <small class="text-dark">
+                      3 photos
+                    </small>
+                  </div>
+                </div>
+                <div id="campaign_images">
+                  <ul>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-xl-6 col-lg-6">
+                    <span class="text-muted">Target: 20,000</span><br>
+                    <small class="text-dark">Total: 20,000 GC</small>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 text-right">
+                    <button class="btn btn-sm btn-outline-warning" disabled>
+                      Paid
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+        <!-- end col-->
+
+        <!-- start col-->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="card">
+            <div class="card-body ribbon-box">
+              <div class="ribbon ribbon-success float-right">₦20,000 (published) </div>
+              <button class="btn btn-sm btn-link editCampaignBtn hide" data-toggle="modal" data-target="#createCampaign"
+                disabled>
+                <span class="fe-edit-1 pr-1"></span>
+                Edit
+              </button>
+              <div class="ribbon-content">
+                <h4 class="text-dark" id="campaign_title">Campaign Title</h4>
+                <div class="mb-2 text-dark text-right">
+                  <small id="campaign_category">
+                    <b>Category</b>: DISASTER/Earthquake
+                  </small>
+                </div>
+                <p class="mb-0" id="campaign_reason" style="max-height: 150px !important;">
+                  Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit.Fuga, molestias quia nulla
+                  voluptas illum eveniet facilis, blanditiis
+                  reiciendis vitae consequuntur neque. Provident
+                  magnam quia dolore illo architecto, eius nesciunt
+                  distinctio!
+                </p>
+                <div class="row mt-3 mb-1 text-right">
+                  <div class="col-xl-12 col-lg-12">
+                    <small class="text-dark">
+                      3 photos
+                    </small>
+                  </div>
+                </div>
+                <div id="campaign_images">
+                  <ul>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                    <li>
+                      <div class="image" style="background-image: url('/images/users/user.jpg');"></div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-xl-6 col-lg-6">
+                    <span class="text-muted">Target: 20,000</span><br>
+                    <small class="text-dark">Total: 20,000 GC</small>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 text-right">
+                    <button class="btn btn-sm btn-outline-success" disabled>
+                      Published
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+        <!-- end col-->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end Campaign Card -->
+
+  </div> <!-- end container-fluid -->
+</div>
+<!-- end wrapper -->
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+<%- include('../partials/footer.html'); %>

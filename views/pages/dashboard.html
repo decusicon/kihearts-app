@@ -1,0 +1,122 @@
+<%- include('../partials/header.html') %>
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="wrapper">
+  <div class="container-fluid">
+    <!-- start page title -->
+    <!-- <div class="col-xl-12 col-lg-12 col-md-12 p-5 adsCon bg-primary">a</div> -->
+    <div class="row">
+      <div class="col-12 mb-2">
+        <div class="page-title-box">
+          <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+              <li class="breadcrumb-item"><a href="javascript: void(0);">KiHearts</a></li>
+              <li class="breadcrumb-item active"><%= title %></li>
+            </ol>
+          </div>
+          <h4 class="page-title"><%= title %></h4>
+        </div>
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+      <!-- <div class="col-xl-2 col-lg-2 col-md-2 d-sm-block adsCon bg-primary">a</div> -->
+      <div class="col-xl-12 col-lg-12 col-md-12 contentCon">
+        <!-- start Dashboard -->
+        <div class="dashboard">
+          <!-- start row -->
+          <div class="row">
+            <div class="col-xl-6 col-lg-6">
+              <div class="card widget-flat" style="border-left: 3px solid #f1556c; border-right: 3px solid #f1556c;">
+                <div class="card-body p-0">
+                  <div class="p-4 pt-5 pb-5">
+                    <div class="float-right">
+                      <!-- <i class="mdi mdi-cart text-primary widget-icon"></i> -->
+                      <span style="font-size: 65px;">
+                        📦
+                      </span>
+                    </div>
+                    <h5 class="text-muted font-weight-normal mt-0">Total Campaigns</h5>
+                    <h3 class="mt-2 text-dark">302</h3>
+                  </div>
+                  <div id="sparkline1"></div>
+                </div> <!-- end card-body-->
+              </div> <!-- end card-->
+            </div> <!-- end col-->
+
+            <div class="col-xl-6 col-lg-6">
+              <div class="card widget-flat" style="border-left: 3px solid #f7b84b; border-right: 3px solid #f7b84b;">
+                <div class="card-body p-0">
+                  <div class="p-4 pt-5 pb-5">
+                    <div class="float-right">
+                      <!-- <i class="mdi mdi-currency-usd text-danger widget-icon"></i> -->
+                      <span style="font-size: 65px;">
+                        💰
+                      </span>
+                    </div>
+                    <h5 class="text-muted font-weight-normal mt-0">Total Income</h5>
+                    <h3 class="mt-2 text-dark">2,187</h3>
+                  </div>
+                  <div id="sparkline2"></div>
+                </div> <!-- end card-body-->
+              </div> <!-- end card-->
+            </div> <!-- end col-->
+
+            <div class="col-xl-6 col-lg-6">
+              <div class="card widget-flat" style="border-left: 3px solid #25b343; border-right: 3px solid #25b343;">
+                <div class="card-body p-0">
+                  <div class="p-4 pt-5 pb-5">
+                    <div class="float-right">
+                      <!-- <i class="mdi mdi-account-multiple text-primary widget-icon"></i> -->
+                      <span style="font-size: 65px;">
+                        👥
+                      </span>
+                    </div>
+                    <h5 class="text-muted font-weight-normal mt-0">Total Pledges</h5>
+                    <h3 class="mt-2 text-dark">57</h3>
+                  </div>
+                  <div id="sparkline3"></div>
+                </div> <!-- end card-body-->
+              </div> <!-- end card-->
+            </div> <!-- end col-->
+
+            <div class="col-xl-6 col-lg-6">
+              <div class="card widget-flat" style="border-left: 3px solid #4b88e4; border-right: 3px solid #4b88e4;">
+                <div class="card-body p-0">
+                  <div class="p-4 pt-5 pb-5">
+                    <div class="float-right">
+                      <!-- <i class="mdi mdi-eye-outline text-danger widget-icon"></i> -->
+                      <span style="font-size: 65px;">
+                        🔊
+                      </span>
+                    </div>
+                    <h5 class="text-muted font-weight-normal mt-0">Total Ads</h5>
+                    <h3 class="mt-2 text-dark">431</h3>
+                  </div>
+                  <div id="sparkline4"></div>
+                </div> <!-- end card-body-->
+              </div> <!-- end card-->
+            </div> <!-- end col-->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end Dashboard -->
+
+      </div>
+      <!-- <div class="col-xl-2 col-lg-2 col-md-2 d-sm-block adsCon bg-primary">c</div> -->
+    </div>
+
+  </div>
+  <!-- end container-fluid -->
+</div>
+<!-- end wrapper -->
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+<%- include('../partials/footer.html') %>

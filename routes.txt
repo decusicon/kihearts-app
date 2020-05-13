@@ -1,0 +1,18 @@
+PRIMARY
+========
+/ --GET
+/dashboard --GET
+/campaigns --GET
+/donations --GET
+/advertise --GET
+/account --GET
+/wallet --GET
+
+SECONDARY
+==========
+/auth/login --GET
+/auth/login --POST
+/auth/register --GET
+/auth/register --POST
+/auth/forgot-password --GET
+/auth/forgot-password --POST

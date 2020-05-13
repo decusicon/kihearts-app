@@ -1,0 +1,803 @@
+<link href="/css/responsive.css" rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+
+<!-- contact begin -->
+<div class="investo-forms" id="register">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-6 col-lg-6 col-md-8">
+        <div class="section-title">
+          <a href="/dashboard">
+            <img src="/images/logo-dark.png" width="250" style="margin-bottom: 20px;" alt="kihearts">
+          </a>
+          <h6>Create your account.</h6>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-8">
+        <div class="form-area">
+          <form method="POST" action="/auth/register">
+            <div class="row">
+              <!-- firstname -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="text" class="mb-0" id="firstname" name="firstname" placeholder="First Name" autofocus
+                  autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "firstname"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- lastname -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="text" class="mb-0" id="lastname" name="lastname" placeholder="Last Name" autocomplete="on"
+                  required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "lastname"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- nickname -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="text" class="mb-0" id="nickname" name="nickname" placeholder="Nickname" autocomplete="on"
+                  required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "nickname"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- email -->
+              <div class="col-xl-7 col-lg-7 m-0">
+
+                <input type="email" class="mb-0" id="email" name="email" placeholder="Email" autocomplete="on"
+                  required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "email"){  %>
+                  <strong>Required, must be an email address!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- phone number -->
+              <div class="col-xl-5 col-lg-5 m-0">
+
+                <input type="number" class="mb-0" id="phoneNumber" name="phoneNumber" minlength="11" maxlength="14"
+                  placeholder="Phone Number" autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "phoneNumber"){  %>
+                  <strong>Required, must be a phone number!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- password -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="password" class="mb-0" id="password" name="password" placeholder="Password"
+                  autocomplete="on" minlength="6" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "password"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- repeat password -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="password" class="mb-0" id="re_password" name="re_password" placeholder="Re-Password"
+                  autocomplete="on" minlength="6" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "re_password"){  %>
+                  <strong>Passwords don't match, Try again!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- country -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <select class="form-control mb-0" name="country" id="country" required>
+                  <option value="">Select Your Country</option>
+                  <option value="Afghanistan">Afghanistan</option>
+                  <option value="Albania">Albania</option>
+                  <option value="Algeria">Algeria</option>
+                  <option value="Andorra">Andorra</option>
+                  <option value="Angola">Angola</option>
+                  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Armenia">Armenia</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Austria">Austria</option>
+                  <option value="Azerbaijan">Azerbaijan</option>
+                  <option value="Bahamas">Bahamas</option>
+                  <option value="Bahrain">Bahrain</option>
+                  <option value="Bangladesh">Bangladesh</option>
+                  <option value="Barbados">Barbados</option>
+                  <option value="Belarus">Belarus</option>
+                  <option value="Belgium">Belgium</option>
+                  <option value="Belize">Belize</option>
+                  <option value="Benin">Benin</option>
+                  <option value="Bhutan">Bhutan</option>
+                  <option value="Bolivia">Bolivia</option>
+                  <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                  <option value="Botswana">Botswana</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="Brunei">Brunei</option>
+                  <option value="Bulgaria">Bulgaria</option>
+                  <option value="Burkina Faso">Burkina Faso</option>
+                  <option value="Burundi">Burundi</option>
+                  <option value="Cabo Verde">Cabo Verde</option>
+                  <option value="Cambodia">Cambodia</option>
+                  <option value="Cameroon">Cameroon</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Central African Republic">Central African Republic</option>
+                  <option value="Chad">Chad</option>
+                  <option value="Chile">Chile</option>
+                  <option value="China">China</option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Comoros">Comoros</option>
+                  <option value="Congo">Congo</option>
+                  <option value="Croatia">Croatia</option>
+                  <option value="Cuba">Cuba</option>
+                  <option value="Cyprus">Cyprus</option>
+                  <option value="Czech Republic (Czechia)">Czech Republic (Czechia)</option>
+                  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                  <option value="Denmark">Denmark</option>
+                  <option value="Djibouti">Djibouti</option>
+                  <option value="Dominica">Dominica</option>
+                  <option value="Dominican Republic">Dominican Republic</option>
+                  <option value="DR Congo">DR Congo</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="Egypt">Egypt</option>
+                  <option value="El Salvador">El Salvador</option>
+                  <option value="Equatorial Guinea">Equatorial Guinea</option>
+                  <option value="Eritrea">Eritrea</option>
+                  <option value="Estonia">Estonia</option>
+                  <option value="Eswatini">Eswatini</option>
+                  <option value="Ethiopia">Ethiopia</option>
+                  <option value="Fiji">Fiji</option>
+                  <option value="Finland">Finland</option>
+                  <option value="France">France</option>
+                  <option value="Gabon">Gabon</option>
+                  <option value="Gambia">Gambia</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Greece">Greece</option>
+                  <option value="Grenada">Grenada</option>
+                  <option value="Guatemala">Guatemala</option>
+                  <option value="Guinea">Guinea</option>
+                  <option value="Guinea-Bissau">Guinea-Bissau</option>
+                  <option value="Guyana">Guyana</option>
+                  <option value="Haiti">Haiti</option>
+                  <option value="Holy See">Holy See</option>
+                  <option value="Honduras">Honduras</option>
+                  <option value="Hungary">Hungary</option>
+                  <option value="Iceland">Iceland</option>
+                  <option value="India">India</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="Iran">Iran</option>
+                  <option value="Iraq">Iraq</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="Israel">Israel</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Jamaica">Jamaica</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Jordan">Jordan</option>
+                  <option value="Kazakhstan">Kazakhstan</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Kiribati">Kiribati</option>
+                  <option value="Kuwait">Kuwait</option>
+                  <option value="Kyrgyzstan">Kyrgyzstan</option>
+                  <option value="Laos">Laos</option>
+                  <option value="Latvia">Latvia</option>
+                  <option value="Lebanon">Lebanon</option>
+                  <option value="Lesotho">Lesotho</option>
+                  <option value="Liberia">Liberia</option>
+                  <option value="Libya">Libya</option>
+                  <option value="Liechtenstein">Liechtenstein</option>
+                  <option value="Lithuania">Lithuania</option>
+                  <option value="Luxembourg">Luxembourg</option>
+                  <option value="Madagascar">Madagascar</option>
+                  <option value="Malawi">Malawi</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Maldives">Maldives</option>
+                  <option value="Mali">Mali</option>
+                  <option value="Malta">Malta</option>
+                  <option value="Marshall Islands">Marshall Islands</option>
+                  <option value="Mauritania">Mauritania</option>
+                  <option value="Mauritius">Mauritius</option>
+                  <option value="Mexico">Mexico</option>
+                  <option value="Micronesia">Micronesia</option>
+                  <option value="Moldova">Moldova</option>
+                  <option value="Monaco">Monaco</option>
+                  <option value="Mongolia">Mongolia</option>
+                  <option value="Montenegro">Montenegro</option>
+                  <option value="Morocco">Morocco</option>
+                  <option value="Mozambique">Mozambique</option>
+                  <option value="Myanmar">Myanmar</option>
+                  <option value="Namibia">Namibia</option>
+                  <option value="Nauru">Nauru</option>
+                  <option value="Nepal">Nepal</option>
+                  <option value="Netherlands">Netherlands</option>
+                  <option value="New Zealand">New Zealand</option>
+                  <option value="Nicaragua">Nicaragua</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="North Korea">North Korea</option>
+                  <option value="North Macedonia">North Macedonia</option>
+                  <option value="Norway">Norway</option>
+                  <option value="Oman">Oman</option>
+                  <option value="Pakistan">Pakistan</option>
+                  <option value="Palau">Palau</option>
+                  <option value="Panama">Panama</option>
+                  <option value="Papua New Guinea">Papua New Guinea</option>
+                  <option value="Paraguay">Paraguay</option>
+                  <option value="Peru">Peru</option>
+                  <option value="Philippines">Philippines</option>
+                  <option value="Poland">Poland</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Romania">Romania</option>
+                  <option value="Russia">Russia</option>
+                  <option value="Rwanda">Rwanda</option>
+                  <option value="Saint Kitts & Nevis">Saint Kitts & Nevis</option>
+                  <option value="Saint Lucia">Saint Lucia</option>
+                  <option value="Samoa">Samoa</option>
+                  <option value="San Marino">San Marino</option>
+                  <option value="Sao Tome & Principe">Sao Tome & Principe</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="Senegal">Senegal</option>
+                  <option value="Serbia">Serbia</option>
+                  <option value="Seychelles">Seychelles</option>
+                  <option value="Sierra Leone">Sierra Leone</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Slovakia">Slovakia</option>
+                  <option value="Slovenia">Slovenia</option>
+                  <option value="Solomon Islands">Solomon Islands</option>
+                  <option value="Somalia">Somalia</option>
+                  <option value="South Africa">South Africa</option>
+                  <option value="South Korea">South Korea</option>
+                  <option value="South Sudan">South Sudan</option>
+                  <option value="Spain">Spain</option>
+                  <option value="Sri Lanka">Sri Lanka</option>
+                  <option value="St. Vincent & Grenadines">St. Vincent & Grenadines</option>
+                  <option value="State of Palestine">State of Palestine</option>
+                  <option value="Sudan">Sudan</option>
+                  <option value="Suriname">Suriname</option>
+                  <option value="Sweden">Sweden</option>
+                  <option value="Switzerland">Switzerland</option>
+                  <option value="Syria">Syria</option>
+                  <option value="Tajikistan">Tajikistan</option>
+                  <option value="Tanzania">Tanzania</option>
+                  <option value="Thailand">Thailand</option>
+                  <option value="Timor-Leste">Timor-Leste</option>
+                  <option value="Togo">Togo</option>
+                  <option value="Tonga">Tonga</option>
+                  <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                  <option value="Tunisia">Tunisia</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="Turkmenistan">Turkmenistan</option>
+                  <option value="Tuvalu">Tuvalu</option>
+                  <option value="Uganda">Uganda</option>
+                  <option value="Ukraine">Ukraine</option>
+                  <option value="United Arab Emirates">United Arab Emirates</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="Uruguay">Uruguay</option>
+                  <option value="Uzbekistan">Uzbekistan</option>
+                  <option value="Vanuatu">Vanuatu</option>
+                  <option value="Venezuela">Venezuela</option>
+                  <option value="Vietnam">Vietnam</option>
+                  <option value="Yemen">Yemen</option>
+                  <option value="Zambia">Zambia</option>
+                  <option value="Zimbabwe">Zimbabwe</option>
+                </select>
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "country"){  %>
+                  <strong>Required, cannot be empty!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- state -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="text" class="mb-0" id="state" name="state" placeholder="State" autocomplete="on"
+                  required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "state"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- city -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="text" class="mb-0" id="city" name="city" placeholder="City" autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "city"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- zip / postal code -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="number" class="mb-0" id="postalcode" name="postalcode" placeholder="Zip / Postal code"
+                  maxlength="5" autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "postalcode"){  %>
+                  <strong>Required, must be a postal code!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- home address -->
+              <div class="col-xl-12 col-lg-12 m-0">
+
+                <textarea class="mb-0" id="homeAddress" name="homeAddress"
+                  style="background-color: transparent !important;" cols="30" rows="3" placeholder="Home Address"
+                  autocomplete="on" required></textarea>
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "homeAddress"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+            </div>
+
+            <h3 class="mt-4 mb-4 text-center">Next of Kin</h3>
+            <div class="row">
+              <!-- Next firstname -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="text" class="mb-0" id="next_firstname" name="next_firstname" placeholder="First Name"
+                  autofocus autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_firstname"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next lastname -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="text" class="mb-0" id="next_lastname" name="next_lastname" placeholder="Last Name"
+                  autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_lastname"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next Relationship -->
+              <div class="col-xl-4 col-lg-4 m-0">
+
+                <input type="text" class="mb-0" id="next_relationship" name="next_relationship"
+                  placeholder="Relationship" autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_relationship"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next email -->
+              <div class="col-xl-7 col-lg-7 m-0">
+
+                <input type="email" class="mb-0" id="next_email" name="next_email" placeholder="Email" autocomplete="on"
+                  required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_email"){  %>
+                  <strong>Required, must be an email address!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next phone number -->
+              <div class="col-xl-5 col-lg-5 m-0">
+
+                <input type="number" class="mb-0" id="next_phoneNumber" name="next_phoneNumber" minlength="11"
+                  maxlength="14" placeholder="Phone Number" autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_phoneNumber"){  %>
+                  <strong>Required, must be a phone number!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next country -->
+              <div class="col-xl-6 col-lg-6 m-0">
+
+                <select class="form-control mb-0" id="next_country" name="next_country" required>
+                  <option value="">Select Country</option>
+                  <option value="Afghanistan">Afghanistan</option>
+                  <option value="Albania">Albania</option>
+                  <option value="Algeria">Algeria</option>
+                  <option value="Andorra">Andorra</option>
+                  <option value="Angola">Angola</option>
+                  <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Armenia">Armenia</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Austria">Austria</option>
+                  <option value="Azerbaijan">Azerbaijan</option>
+                  <option value="Bahamas">Bahamas</option>
+                  <option value="Bahrain">Bahrain</option>
+                  <option value="Bangladesh">Bangladesh</option>
+                  <option value="Barbados">Barbados</option>
+                  <option value="Belarus">Belarus</option>
+                  <option value="Belgium">Belgium</option>
+                  <option value="Belize">Belize</option>
+                  <option value="Benin">Benin</option>
+                  <option value="Bhutan">Bhutan</option>
+                  <option value="Bolivia">Bolivia</option>
+                  <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                  <option value="Botswana">Botswana</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="Brunei">Brunei</option>
+                  <option value="Bulgaria">Bulgaria</option>
+                  <option value="Burkina Faso">Burkina Faso</option>
+                  <option value="Burundi">Burundi</option>
+                  <option value="Cabo Verde">Cabo Verde</option>
+                  <option value="Cambodia">Cambodia</option>
+                  <option value="Cameroon">Cameroon</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Central African Republic">Central African Republic</option>
+                  <option value="Chad">Chad</option>
+                  <option value="Chile">Chile</option>
+                  <option value="China">China</option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Comoros">Comoros</option>
+                  <option value="Congo">Congo</option>
+                  <option value="Croatia">Croatia</option>
+                  <option value="Cuba">Cuba</option>
+                  <option value="Cyprus">Cyprus</option>
+                  <option value="Czech Republic (Czechia)">Czech Republic (Czechia)</option>
+                  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                  <option value="Denmark">Denmark</option>
+                  <option value="Djibouti">Djibouti</option>
+                  <option value="Dominica">Dominica</option>
+                  <option value="Dominican Republic">Dominican Republic</option>
+                  <option value="DR Congo">DR Congo</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="Egypt">Egypt</option>
+                  <option value="El Salvador">El Salvador</option>
+                  <option value="Equatorial Guinea">Equatorial Guinea</option>
+                  <option value="Eritrea">Eritrea</option>
+                  <option value="Estonia">Estonia</option>
+                  <option value="Eswatini">Eswatini</option>
+                  <option value="Ethiopia">Ethiopia</option>
+                  <option value="Fiji">Fiji</option>
+                  <option value="Finland">Finland</option>
+                  <option value="France">France</option>
+                  <option value="Gabon">Gabon</option>
+                  <option value="Gambia">Gambia</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Greece">Greece</option>
+                  <option value="Grenada">Grenada</option>
+                  <option value="Guatemala">Guatemala</option>
+                  <option value="Guinea">Guinea</option>
+                  <option value="Guinea-Bissau">Guinea-Bissau</option>
+                  <option value="Guyana">Guyana</option>
+                  <option value="Haiti">Haiti</option>
+                  <option value="Holy See">Holy See</option>
+                  <option value="Honduras">Honduras</option>
+                  <option value="Hungary">Hungary</option>
+                  <option value="Iceland">Iceland</option>
+                  <option value="India">India</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="Iran">Iran</option>
+                  <option value="Iraq">Iraq</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="Israel">Israel</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Jamaica">Jamaica</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Jordan">Jordan</option>
+                  <option value="Kazakhstan">Kazakhstan</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Kiribati">Kiribati</option>
+                  <option value="Kuwait">Kuwait</option>
+                  <option value="Kyrgyzstan">Kyrgyzstan</option>
+                  <option value="Laos">Laos</option>
+                  <option value="Latvia">Latvia</option>
+                  <option value="Lebanon">Lebanon</option>
+                  <option value="Lesotho">Lesotho</option>
+                  <option value="Liberia">Liberia</option>
+                  <option value="Libya">Libya</option>
+                  <option value="Liechtenstein">Liechtenstein</option>
+                  <option value="Lithuania">Lithuania</option>
+                  <option value="Luxembourg">Luxembourg</option>
+                  <option value="Madagascar">Madagascar</option>
+                  <option value="Malawi">Malawi</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Maldives">Maldives</option>
+                  <option value="Mali">Mali</option>
+                  <option value="Malta">Malta</option>
+                  <option value="Marshall Islands">Marshall Islands</option>
+                  <option value="Mauritania">Mauritania</option>
+                  <option value="Mauritius">Mauritius</option>
+                  <option value="Mexico">Mexico</option>
+                  <option value="Micronesia">Micronesia</option>
+                  <option value="Moldova">Moldova</option>
+                  <option value="Monaco">Monaco</option>
+                  <option value="Mongolia">Mongolia</option>
+                  <option value="Montenegro">Montenegro</option>
+                  <option value="Morocco">Morocco</option>
+                  <option value="Mozambique">Mozambique</option>
+                  <option value="Myanmar">Myanmar</option>
+                  <option value="Namibia">Namibia</option>
+                  <option value="Nauru">Nauru</option>
+                  <option value="Nepal">Nepal</option>
+                  <option value="Netherlands">Netherlands</option>
+                  <option value="New Zealand">New Zealand</option>
+                  <option value="Nicaragua">Nicaragua</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="North Korea">North Korea</option>
+                  <option value="North Macedonia">North Macedonia</option>
+                  <option value="Norway">Norway</option>
+                  <option value="Oman">Oman</option>
+                  <option value="Pakistan">Pakistan</option>
+                  <option value="Palau">Palau</option>
+                  <option value="Panama">Panama</option>
+                  <option value="Papua New Guinea">Papua New Guinea</option>
+                  <option value="Paraguay">Paraguay</option>
+                  <option value="Peru">Peru</option>
+                  <option value="Philippines">Philippines</option>
+                  <option value="Poland">Poland</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Romania">Romania</option>
+                  <option value="Russia">Russia</option>
+                  <option value="Rwanda">Rwanda</option>
+                  <option value="Saint Kitts & Nevis">Saint Kitts & Nevis</option>
+                  <option value="Saint Lucia">Saint Lucia</option>
+                  <option value="Samoa">Samoa</option>
+                  <option value="San Marino">San Marino</option>
+                  <option value="Sao Tome & Principe">Sao Tome & Principe</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="Senegal">Senegal</option>
+                  <option value="Serbia">Serbia</option>
+                  <option value="Seychelles">Seychelles</option>
+                  <option value="Sierra Leone">Sierra Leone</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Slovakia">Slovakia</option>
+                  <option value="Slovenia">Slovenia</option>
+                  <option value="Solomon Islands">Solomon Islands</option>
+                  <option value="Somalia">Somalia</option>
+                  <option value="South Africa">South Africa</option>
+                  <option value="South Korea">South Korea</option>
+                  <option value="South Sudan">South Sudan</option>
+                  <option value="Spain">Spain</option>
+                  <option value="Sri Lanka">Sri Lanka</option>
+                  <option value="St. Vincent & Grenadines">St. Vincent & Grenadines</option>
+                  <option value="State of Palestine">State of Palestine</option>
+                  <option value="Sudan">Sudan</option>
+                  <option value="Suriname">Suriname</option>
+                  <option value="Sweden">Sweden</option>
+                  <option value="Switzerland">Switzerland</option>
+                  <option value="Syria">Syria</option>
+                  <option value="Tajikistan">Tajikistan</option>
+                  <option value="Tanzania">Tanzania</option>
+                  <option value="Thailand">Thailand</option>
+                  <option value="Timor-Leste">Timor-Leste</option>
+                  <option value="Togo">Togo</option>
+                  <option value="Tonga">Tonga</option>
+                  <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                  <option value="Tunisia">Tunisia</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="Turkmenistan">Turkmenistan</option>
+                  <option value="Tuvalu">Tuvalu</option>
+                  <option value="Uganda">Uganda</option>
+                  <option value="Ukraine">Ukraine</option>
+                  <option value="United Arab Emirates">United Arab Emirates</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="Uruguay">Uruguay</option>
+                  <option value="Uzbekistan">Uzbekistan</option>
+                  <option value="Vanuatu">Vanuatu</option>
+                  <option value="Venezuela">Venezuela</option>
+                  <option value="Vietnam">Vietnam</option>
+                  <option value="Yemen">Yemen</option>
+                  <option value="Zambia">Zambia</option>
+                  <option value="Zimbabwe">Zimbabwe</option>
+                </select>
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_country"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next state -->
+              <div class="col-xl-6 col-lg-6 m-0">
+
+                <input type="text" class="mb-0" id="next_state" name="next_state" placeholder="State" autocomplete="on"
+                  required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_state"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next city -->
+              <div class="col-xl-6 col-lg-6 m-0">
+
+                <input type="text" class="mb-0" id="next_city" name="next_city" placeholder="City" autocomplete="on"
+                  required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_city"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next zip / postal code -->
+              <div class="col-xl-6 col-lg-6 m-0">
+
+                <input type="number" class="mb-0" id="next_postalcode" name="next_postalcode"
+                  placeholder="Zip / Postal code" autocomplete="on" required />
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_postalcode"){  %>
+                  <strong>Required, must be a postal code!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <!-- Next home address -->
+              <div class="col-xl-12 col-lg-12 m-0">
+
+                <textarea class="mb-0" id="next_homeAddress" name="next_homeAddress"
+                  style="background-color: transparent !important;" cols="30" rows="3" placeholder="Home Address"
+                  autocomplete="on" required></textarea>
+
+                <% if(typeof regErrors != undefined) { %>
+                <small class="text-danger d-block pt-1 mb-3" id="alert">
+                  <% regErrors.forEach((regE) => { %>
+                  <% if(regE.param == "next_homeAddress"){  %>
+                  <strong>Required!</strong>
+                  <% } %>
+                  <% }); %>
+                </small>
+                <% } %>
+              </div>
+              <div class="col-xl-12 col-lg-12 text-center">
+                <button type="submit">Register</button>
+              </div>
+            </div>
+          </form>
+          <div class="text-muted text-center pt-3 pb-3">
+            <small>
+              By clicking “Register", you agree to our Terms of Service and Privacy Statement.
+            </small>
+          </div>
+          <br>
+          <div id="mini_footer" class="text-center mini_footer">
+
+            <a href="/dashboard" class="sec-color">Back to Home </a> |
+            Already have an account?
+            <a href="/auth/login" class="sec-color">Login</a>
+            <br><br><br>
+            <small>
+              <p>
+                KiHearts Network -
+                <% var pYear = new Date().getFullYear(), sYear = 2020 %>
+                <%= pYear == sYear ? pYear : `${sYear} - ${pYear}` %>
+                &copy; All Rights Reserved
+              </p>
+              <a href="https://github.com/decusicon" target="blank" class="sec-color">
+                <b>Made With&nbsp;&nbsp;&nbsp;❤️&nbsp;&nbsp;&nbsp;By Decusicon</b>
+              </a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- contact end -->

@@ -1,0 +1,263 @@
+<%- include('../partials/header.html'); %>
+
+<!-- ============================================================== -->
+<!-- Start Page Content here -->
+<!-- ============================================================== -->
+
+<div class="wrapper">
+  <div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+      <div class="col-12">
+        <div class="page-title-box">
+          <div class="page-title-right">
+            <button class="btn btn-outline-primary waves-effect waves-light makePledgeBtn" data-toggle="modal"
+              data-target="#makePledge">
+              Make a pledge
+            </button>
+          </div>
+          <h4 class="page-title"><%= title %></h4>
+        </div>
+      </div>
+    </div>
+    <!-- end page title -->
+
+    <!-- start Modals container -->
+    <div class="all_modals_container">
+
+      <!-- Make Pledge Modal -->
+      <div class="modal fade makePledge" id="makePledge" tabindex="-1" role="dialog" aria-labelledby="makePledge"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title text-dark" id="makePledgeTitle">Make Pledge</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="modalAlert" class="text-center alert alert-warning">
+                You're about to make a pledge and will be rewarded,
+                remember your reward will reflect when your pledge is
+                <span class="text-success">fulfilled</span>.
+              </p>
+              <form action="" id="makePledgeForm">
+                <div class="container">
+                  <div class="form-group row">
+                    <div class="col-lg-8 mb-2">
+                      <label class="text-dark" for="pledgeRange">
+                        Pledge Range
+                        <b class="text-danger">*</b>
+                      </label>
+                      <select name="pledgeRange" id="pledgeRange" oninput="(function() {
+                          var pledgeRange = document.querySelector('#pledgeRange');
+                          var gcReward = document.querySelector('#gcReward');
+
+                          for (const child of pledgeRange.children) {
+                            if(pledgeRange.value === child.value) {
+                              gcReward.value = `${child.dataset.gc}`;
+                            }
+                          }
+                        })();" class="form-control" required>
+                        <option value="">Choose a range</option>
+                        <option value="100 - 1,099" data-gc="100">100 - 1,099</option>
+                        <option value="1,100 - 2,099" data-gc="200">1,100 - 2,099</option>
+                        <option value="2,100 - 3,099" data-gc="300">2,100 - 3,099</option>
+                        <option value="3,100 - 4,099" data-gc="400">3,100 - 4,099</option>
+                        <option value="4,100 - 5,099" data-gc="500">4,100 - 5,099</option>
+                        <option value="5,100 - 6,099" data-gc="600">5,100 - 6,099</option>
+                        <option value="6,100 - 7,099" data-gc="700">6,100 - 7,099</option>
+                        <option value="7,100 - 8,099" data-gc="800">7,100 - 8,099</option>
+                        <option value="8,100 - 9,099" data-gc="900">8,100 - 9,099</option>
+                        <option value="9,100 - 10,099" data-gc="1000">9,100 - 10,099</option>
+                        <option value="10,100 - 11,099" data-gc="1100">10,100 - 11,099</option>
+                        <option value="11,100 - 12,099" data-gc="1200">11,100 - 12,099</option>
+                        <option value="12,100 - 13,099" data-gc="1300">12,100 - 13,099</option>
+                        <option value="13,100 - 14,099" data-gc="1400">13,100 - 14,099</option>
+                        <option value="14,100 - 15,099" data-gc="1500">14,100 - 15,099</option>
+                        <option value="15,100 - 16,099" data-gc="1600">15,100 - 16,099</option>
+                        <option value="16,100 - 17,099" data-gc="1700">16,100 - 17,099</option>
+                        <option value="17,100 - 18,099" data-gc="1800">17,100 - 18,099</option>
+                        <option value="18,100 - 19,099" data-gc="1900">18,100 - 19,099</option>
+                        <option value="19,100 - 20,000" data-gc="2000">19,100 - 20,000</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-4">
+                      <label class="text-dark" for="pledgeRange">
+                        Gold Coin (GC)
+                        <b class="text-danger">*</b>
+                      </label>
+                      <input type="text" name="gcReward" id="gcReward" class="form-control" placeholder="Reward"
+                        readonly required>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <label class="text-dark" for="pledgeRange">
+                        Pledge Amount
+                        <b class="text-danger">*</b>
+                      </label>
+                      <input type="number" name="pledgeAmount" id="pledgeAmount" class="form-control"
+                        placeholder="Pledge Amount" required>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Last info text -->
+              <div class="text-center mt-2 ">
+                <small class="text-muted">
+                  Your Pledge will be at
+                  "<span class="text-info">pending</span>", until requested.
+                </small>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light waves-effect waves-light" data-dismiss="modal">Close</button>
+              <button type="submit" form="makePledgeForm" class="btn btn-primary waves-effect waves-light">
+                Make Pledge
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end Modals container -->
+
+    <!-- start noDonations -->
+    <div class="noDonations hide">
+      <div class="row">
+        <div class="col-lg-12 col-xl-12">
+          <div class="text-center p-2 mt-5">
+            <div style="font-size: 50px; filter: grayscale(1);">🎁</div>
+            <h4 class="text-muted m-0 mb-1" style="font-weight: 300;">No pledge found...</h4>
+            <button class="btn btn-sm btn-link waves-effect waves-light makePledgeBtn" data-toggle="modal"
+              data-target="#makePledge">
+              Make a pledge
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end noDonations -->
+
+    <div class="donations">
+      <div class="row">
+        <!-- start col -->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="text-center donationGiftBox">🎁</div>
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="rewardAndTimer">
+                <span class="rewardCon">
+                  <span>💰</span>
+                  <span class="pledgeReward">500</span>
+                </span>
+                <span class="text-primary float-right pledgeTimer">2days - 3h : 56m . 48s</span>
+              </div>
+              <div class="text-center">
+                <p class="mb-2">
+                  <h2 class="text-dark">₦5,000</h2>
+                  <small class="text-muted p-2">Pledged on: <span class="d-block">Tue, 23rd Jan 2020</span></small>
+                </p>
+                <div class="pledgeFooter">
+                  <button class="btn btn-success btn-block">Fulfil Pledge</button>
+                </div>
+              </div>
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+        <!-- end col-->
+
+        <!-- start col -->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="text-center donationGiftBox">🎁</div>
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="rewardAndTimer">
+                <span class="rewardCon">
+                  <span>💰</span>
+                  <span class="pledgeReward">500</span>
+                </span>
+                <span class="text-primary float-right pledgeTimer hide">2days - 3h : 56m . 48s</span>
+              </div>
+              <div class="text-center">
+                <p class="mb-2">
+                  <h2 class="text-dark">₦5,000</h2>
+                  <small class="text-muted p-2">Pledged on: <span class="d-block">Tue, 23rd Jan 2020</span></small>
+                </p>
+                <div class="pledgeFooter">
+                  <button class="btn btn-info btn-block" disabled>Pending...</button>
+                </div>
+              </div>
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+        <!-- end col-->
+
+        <!-- start col -->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="text-center donationGiftBox">🎁</div>
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="rewardAndTimer">
+                <span class="rewardCon">
+                  <span>💰</span>
+                  <span class="pledgeReward">500</span>
+                </span>
+                <span class="text-primary float-right pledgeTimer hide">2days - 3h : 56m . 48s</span>
+              </div>
+              <div class="text-center">
+                <p class="mb-2">
+                  <h2 class="text-dark">₦5,000</h2>
+                  <small class="text-muted p-2">Pledged on: <span class="d-block">Tue, 23rd Jan 2020</span></small>
+                </p>
+                <div class="pledgeFooter">
+                  <button class="btn btn-warning btn-block" disabled>Fulfilled</button>
+                </div>
+              </div>
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+        <!-- end col-->
+
+        <!-- start col -->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="text-center donationGiftBox">🎁</div>
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="rewardAndTimer">
+                <span class="rewardCon">
+                  <span>💰</span>
+                  <span class="pledgeReward">500</span>
+                </span>
+                <span class="text-primary float-right pledgeTimer hide">2days - 3h : 56m . 48s</span>
+              </div>
+              <div class="text-center">
+                <p class="mb-2">
+                  <h2 class="text-dark">₦5,000</h2>
+                  <small class="text-muted p-2">Pledged on: <span class="d-block">Tue, 23rd Jan 2020</span></small>
+                </p>
+                <div class="pledgeFooter">
+                  <button class="btn btn-info btn-block" disabled>Pending...</button>
+                </div>
+              </div>
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+        <!-- end col-->
+      </div>
+    </div>
+  </div>
+  <!-- end container-fluid -->
+</div>
+<!-- end wrapper -->
+
+<!-- ============================================================== -->
+<!-- End Page content -->
+<!-- ============================================================== -->
+
+<%- include('../partials/footer.html'); %>

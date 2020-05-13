@@ -1,0 +1,1025 @@
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+   /* blog */
+   .blog .single-blog .part-text h3 {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* topbar */
+       .topbar {
+        display: none;
+    }
+
+    /* header */
+    .header {
+        position: initial;
+        background: #087984;
+    }
+    .header .mainmenu:before, .header .mainmenu:after {
+        display: none;
+    }
+    .header .mainmenu {
+        text-align: left;
+    }
+    .header .mainmenu .navbar {
+        display: block;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item .nav-link {
+        padding: 15px 15px;
+        background: rgba(255, 255, 255,0.2);
+        margin-bottom: 1px;
+        position: relative;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item:last-child .nav-link {
+        margin-bottom: 15px;
+    } 
+    .header .mainmenu .navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+        display: none;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .dropdown-toggle:after {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+    }
+    .header .register-button {
+        display: none;
+    }
+    .header .navbar-toggler {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0;
+        color: #fff;
+        font-size: 22px;
+        outline: none;
+        margin: 15px 0;
+        float: right;
+    }
+
+    /* banner */
+    .banner .banner-content h1 {
+        font-size: 28px;
+        margin-top: -8px;
+        margin-bottom: 21px;
+    }
+    .banner .banner-content p br {
+        display: none;
+    }
+    .banner .banner-content {
+        margin-top: 0;
+        padding: 120px 0;
+    }
+
+    /* section title */
+    .section-title h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    .section-title p {
+        font-size: 14px;
+        line-height: 26px;
+    }
+
+    /* statics */
+    .statics {
+        padding: 120px 0 90px;
+    }
+    .statics .single-statics .after-before {
+        margin-bottom: 30px;
+    }
+
+    /* about */
+    .about .part-img {
+        padding: 0;
+        margin-bottom: 40px;
+    }
+    .about .part-text h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        margin-top: -5px;
+    }
+    .about .part-text p {
+        font-size: 15px;
+        line-height: 26px;
+    }
+
+    /* testimonial */
+    .testimonial .single-testimonial {
+        padding: 0 30px 28px;
+    }
+    .testimonial .single-testimonial .part-text p {
+        font-size: 15px;
+        line-height: 28px;
+    }
+
+    /* calculate profit */
+    .calculate-profit:before {
+        display: none;
+    }
+    .calculate-profit .calculate-area form .form-group .form-control {
+        margin-bottom: 20px;
+    }
+    .calculate-profit .calculate-area .result {
+        margin-top: 32px;
+        margin-bottom: -8px;
+    }
+    .calculate-profit .section-title p br {
+        display: none;
+    }
+
+    /* transaction */
+     .transaction .transaction-area .nav-tabs {
+        display: block;
+        text-align: center;
+        left: 0;
+        margin-left: 0;
+    }
+    .transaction .transaction-area .nav-tabs .nav-item {
+        display: inline-block;
+    }
+    .transaction .transaction-area .tab-content .tab-pane {
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    .transaction .transaction-area .tab-content .table {
+        width: 900px;
+    }
+
+    /* referral commision */
+    .referral-commission {
+        padding: 120px 0 90px;
+    }
+    .referral-commission .single-level {
+        margin-bottom: 30px;
+    }
+
+    /* blog */
+    .blog .single-blog .part-text h3 {
+        font-size: 20px;
+    }    
+
+    /* breadcrump */
+    .breadcrump-investo:before {
+        display: none;
+    }
+    .breadcrump-investo .breadcrump-content {
+        margin: 0;
+        padding: 60px 0;
+    }
+    .breadcrump-investo .breadcrump-content h2 {
+        font-size: 28px;
+        margin-top: -7px;
+    }
+
+    /* blog */
+    .blog.blog-page {
+        padding: 120px 0 80px;
+    }
+    .blog .inve-pagination {
+        margin-bottom: 40px;
+        margin-top: 10px;
+    }
+
+    .blog.event-details .part-post .part-comment-box {
+        /* padding: 20px 30px 29px; */
+        margin-bottom: 40px;
+    }
+    .blog.event-details {
+        padding-bottom: 80px;
+    }
+    .header.homepage {
+        background: #087984;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    /* topbar */
+       .topbar {
+        display: none;
+    }
+
+    /* header */
+    .header {
+        position: initial;
+        background: #087984;
+    }
+    .header .mainmenu:before, .header .mainmenu:after {
+        display: none;
+    }
+    .header .mainmenu {
+        text-align: left;
+    }
+    .header .mainmenu .navbar {
+        display: block;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item .nav-link {
+        padding: 15px 15px;
+        background: rgba(255, 255, 255,0.2);
+        margin-bottom: 1px;
+        position: relative;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item:last-child .nav-link {
+        margin-bottom: 15px;
+    } 
+    .header .mainmenu .navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+        display: none;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .dropdown-toggle:after {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+    }
+    .header .register-button {
+        display: none;
+    }
+    .header .navbar-toggler {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0;
+        color: #fff;
+        font-size: 22px;
+        outline: none;
+        margin: 15px 0;
+        float: right;
+    }
+
+    /* banner */
+    .banner .banner-content h1 {
+        font-size: 28px;
+        margin-top: -8px;
+        margin-bottom: 21px;
+    }
+    .banner .banner-content p br {
+        display: none;
+    }
+    .banner .banner-content {
+        margin-top: 0;
+        padding: 120px 0;
+    }
+
+    /* section title */
+    .section-title h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    .section-title p {
+        font-size: 14px;
+        line-height: 26px;
+    }
+
+    /* statics */
+    .statics {
+        padding: 120px 0 90px;
+    }
+    .statics .single-statics .after-before {
+        margin-bottom: 30px;
+    }
+
+    /* about */
+    .about .part-img {
+        padding: 0;
+        margin-bottom: 40px;
+    }
+    .about .part-text h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        margin-top: -5px;
+    }
+    .about .part-text p {
+        font-size: 15px;
+        line-height: 26px;
+    }
+
+    /* testimonial */
+    .testimonial .single-testimonial {
+        padding: 0 30px 28px;
+    }
+    .testimonial .single-testimonial .part-text p {
+        font-size: 15px;
+        line-height: 28px;
+    }
+
+    /* calculate profit */
+    .calculate-profit:before {
+        display: none;
+    }
+    .calculate-profit .calculate-area form .form-group .form-control {
+        margin-bottom: 20px;
+    }
+    .calculate-profit .calculate-area .result span.title {
+        font-size: 16px;
+        top: -5px;
+        margin-right: 13px;
+    }
+    .calculate-profit .calculate-area .result span.number {
+        font-size: 28px;
+        font-weight: 500;
+        margin-right: 0;
+    }
+    .calculate-profit .calculate-area .result {
+        margin-top: 32px;
+        margin-bottom: -8px;
+    }
+    .calculate-profit .section-title p br {
+        display: none;
+    }
+
+    /* transaction */
+     .transaction .transaction-area .nav-tabs {
+        display: block;
+        text-align: center;
+        left: 0;
+        margin-left: 0;
+    }
+    .transaction .transaction-area .nav-tabs .nav-item {
+        display: inline-block;
+    }
+    .transaction .transaction-area .tab-content .tab-pane {
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    .transaction .transaction-area .tab-content .table {
+        width: 900px;
+    }
+
+    /* referral commision */
+    .referral-commission {
+        padding: 120px 0 90px;
+    }
+    .referral-commission .single-level:after,
+    .referral-commission .single-level:before {
+        display: none;
+    }
+    .referral-commission .single-level {
+        margin-bottom: 30px;
+    }
+
+    /* blog */
+    .blog .single-blog .part-text h3 {
+        font-size: 20px;
+    } 
+
+    /* breadcrump */
+    .breadcrump-investo:before {
+        display: none;
+    }
+    .breadcrump-investo .breadcrump-content {
+        margin: 0;
+        padding: 60px 0;
+    }
+    .breadcrump-investo .breadcrump-content h2 {
+        font-size: 28px;
+        margin-top: -7px;
+    }
+
+    /* blog */
+    .blog.blog-page {
+        padding: 120px 0 80px;
+    }
+    .blog .inve-pagination nav .pagination .page-item .page-link {
+        padding: 8px 14px;
+    }
+    .blog .inve-pagination {
+        margin-bottom: 40px;
+        margin-top: 10px;
+    }
+
+    /* blog details */
+    .blog.event-details .single-blog .part-text h3 {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .single-blog .part-text p {
+        font-size: 15px;
+        line-height: 28px;
+    }
+    .blog.event-details .part-post .single-blog .part-text {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 6px;
+        margin-top: 20px;
+    }
+    .blog.event-details .part-author {
+        padding: 30px 30px 25px;
+    }
+    .blog.event-details .part-author .author-text {
+        padding-left: 0;
+        border-left: 0;
+    }
+    .blog.event-details .part-author .author-img {
+        float: none;
+        margin-bottom: 22px;
+    }
+    .blog.event-details .part-author .author-text p.identity {
+        font-size: 15px;
+        line-height: 26px;
+    }
+    .blog.event-details .part-post .part-comments {
+        padding: 22px 30px 29px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment .user-img {
+        float: none;
+        margin-bottom: 24px;
+    }
+    .blog.event-details .part-post .part-comments .title {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment .user-comment p {
+        line-height: 26px;
+        font-size: 15px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment.reply {
+        margin-left: 0;
+        padding-right: 30px;
+    }
+    .blog.event-details .part-post .part-comment-box {
+        padding: 20px 30px 29px;
+        margin-bottom: 40px;
+    }
+    .blog.event-details .part-post .part-comment-box .title {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .part-comment-box form input {
+        height: 50px;
+    }
+    .blog.event-details .part-post .part-comment-box form textarea {
+        height: 200px;
+    }
+    .blog.event-details .part-post .part-comment-box form button {
+        height: 50px;
+    }
+    .blog.event-details {
+        padding-bottom: 80px;
+    }
+    .header.homepage {
+        background: #087984;
+    }
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 575px) {
+      /* topbar */
+      .topbar {
+        display: none;
+    }
+
+    /* header */
+    .header {
+        position: initial;
+        background: #087984;
+    }
+    .header .mainmenu:before, .header .mainmenu:after {
+        display: none;
+    }
+    .header .mainmenu {
+        text-align: left;
+    }
+    .header .mainmenu .navbar {
+        display: block;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item .nav-link {
+        padding: 15px 15px;
+        background: rgba(255, 255, 255,0.2);
+        margin-bottom: 1px;
+        position: relative;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item:last-child .nav-link {
+        margin-bottom: 15px;
+    } 
+    .header .mainmenu .navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+        display: none;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .dropdown-toggle:after {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+    }
+    .header .register-button {
+        display: none;
+    }
+    .header .navbar-toggler {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0;
+        color: #fff;
+        font-size: 22px;
+        outline: none;
+        margin: 15px 0;
+        float: right;
+    }
+
+    /* banner */
+    .banner .banner-content h1 {
+        font-size: 28px;
+        margin-top: -8px;
+        margin-bottom: 21px;
+    }
+    .banner .banner-content p br {
+        display: none;
+    }
+    .banner .banner-content {
+        margin-top: 0;
+        padding: 120px 0;
+    }
+
+    /* section title */
+    .section-title h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    .section-title p {
+        font-size: 14px;
+        line-height: 26px;
+    }
+
+    /* statics */
+    .statics {
+        padding: 120px 0 90px;
+    }
+    .statics .single-statics .after-before {
+        margin-bottom: 30px;
+    }
+
+    /* about */
+    .about .part-img {
+        padding: 0;
+        margin-bottom: 40px;
+    }
+    .about .part-text h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        margin-top: -5px;
+    }
+    .about .part-text p {
+        font-size: 15px;
+        line-height: 26px;
+    }
+
+    /* testimonial */
+    .testimonial .single-testimonial {
+        padding: 0 30px 28px;
+    }
+    .testimonial .single-testimonial .part-text p {
+        font-size: 15px;
+        line-height: 28px;
+    }
+
+    /* calculate profit */
+    .calculate-profit:before {
+        display: none;
+    }
+    .calculate-profit .calculate-area form .form-group .form-control {
+        margin-bottom: 20px;
+    }
+    .calculate-profit .calculate-area .result span.title {
+        font-size: 16px;
+        top: -5px;
+        margin-right: 13px;
+    }
+    .calculate-profit .calculate-area .result span.number {
+        font-size: 28px;
+        font-weight: 500;
+        margin-right: 0;
+    }
+    .calculate-profit .calculate-area .result {
+        margin-top: 32px;
+        margin-bottom: -8px;
+    }
+    .calculate-profit .section-title p br {
+        display: none;
+    }
+
+    /* transaction */
+     .transaction .transaction-area .nav-tabs {
+        display: block;
+        text-align: center;
+        left: 0;
+        margin-left: 0;
+    }
+    .transaction .transaction-area .nav-tabs .nav-item {
+        display: inline-block;
+    }
+    .transaction .transaction-area .tab-content .tab-pane {
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    .transaction .transaction-area .tab-content .table {
+        width: 900px;
+    }
+
+    /* referral commision */
+    .referral-commission {
+        padding: 120px 0 90px;
+    }
+    .referral-commission .single-level:after,
+    .referral-commission .single-level:before {
+        display: none;
+    }
+    .referral-commission .single-level {
+        margin-bottom: 30px;
+    }
+
+    /* blog */
+    .blog .single-blog .part-text h3 {
+        font-size: 20px;
+    }
+
+    /* breadcrump */
+    .breadcrump-investo:before {
+        display: none;
+    }
+    .breadcrump-investo .breadcrump-content {
+        margin: 0;
+        padding: 60px 0;
+    }
+    .breadcrump-investo .breadcrump-content h2 {
+        font-size: 28px;
+        margin-top: -7px;
+    }
+
+    /* blog */
+    .blog.blog-page {
+        padding: 120px 0 80px;
+    }
+    .blog .inve-pagination nav .pagination .page-item .page-link {
+        padding: 8px 14px;
+    }
+    .blog .inve-pagination {
+        margin-bottom: 40px;
+        margin-top: 10px;
+    }
+
+    /* blog details */
+    .blog.event-details .single-blog .part-text h3 {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .single-blog .part-text p {
+        font-size: 15px;
+        line-height: 28px;
+    }
+    .blog.event-details .part-post .single-blog .part-text {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 6px;
+        margin-top: 20px;
+    }
+    .blog.event-details .part-author {
+        padding: 30px 30px 25px;
+    }
+    .blog.event-details .part-author .author-text {
+        padding-left: 0;
+        border-left: 0;
+    }
+    .blog.event-details .part-author .author-img {
+        float: none;
+        margin-bottom: 22px;
+    }
+    .blog.event-details .part-author .author-text p.identity {
+        font-size: 15px;
+        line-height: 26px;
+    }
+    .blog.event-details .part-post .part-comments {
+        padding: 22px 30px 29px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment .user-img {
+        float: none;
+        margin-bottom: 24px;
+    }
+    .blog.event-details .part-post .part-comments .title {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment .user-comment p {
+        line-height: 26px;
+        font-size: 15px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment.reply {
+        margin-left: 0;
+    }
+    .blog.event-details .part-post .part-comment-box {
+        padding: 20px 30px 29px;
+        margin-bottom: 40px;
+    }
+    .blog.event-details .part-post .part-comment-box .title {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .part-comment-box form input {
+        height: 50px;
+    }
+    .blog.event-details .part-post .part-comment-box form textarea {
+        height: 200px;
+    }
+    .blog.event-details .part-post .part-comment-box form button {
+        height: 50px;
+    }
+    .blog.event-details {
+        padding-bottom: 80px;
+    }
+    .header.homepage {
+        background: #087984;
+    }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+    /* topbar */
+    .topbar {
+        display: none;
+    }
+
+    /* header */
+    .header {
+        position: initial;
+        background: #087984;
+    }
+    .header .mainmenu:before, .header .mainmenu:after {
+        display: none;
+    }
+    .header .mainmenu {
+        text-align: left;
+    }
+    .header .mainmenu .navbar {
+        display: block;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item .nav-link {
+        padding: 15px 15px;
+        background: rgba(255, 255, 255,0.2);
+        margin-bottom: 1px;
+        position: relative;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item:last-child .nav-link {
+        margin-bottom: 15px;
+    } 
+    .header .mainmenu .navbar .navbar-nav .nav-item.dropdown .dropdown-menu {
+        display: none;
+    }
+    .header .mainmenu .navbar .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .dropdown-toggle:after {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+    }
+    .header .register-button {
+        display: none;
+    }
+    .header .navbar-toggler {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 0;
+        color: #fff;
+        font-size: 22px;
+        outline: none;
+        margin: 15px 0;
+        float: right;
+    }
+
+    /* banner */
+    .banner .banner-content h1 {
+        font-size: 28px;
+        margin-top: -8px;
+        margin-bottom: 21px;
+    }
+    .banner .banner-content p br {
+        display: none;
+    }
+    .banner .banner-content .banner-buttons a {
+        width: 100%;
+    }
+    .banner .banner-content .banner-buttons a:last-child {
+        margin-left: 0;
+    }
+    .banner .banner-content {
+        margin-top: 0;
+        padding: 120px 0;
+    }
+
+    /* section title */
+    .section-title h2 {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    .section-title p {
+        font-size: 14px;
+        line-height: 26px;
+    }
+
+    /* statics */
+    .statics {
+        padding: 120px 0 90px;
+    }
+    .statics .single-statics .after-before {
+        margin-bottom: 30px;
+    }
+
+    /* about */
+    .about .part-img {
+        padding: 0;
+        margin-bottom: 40px;
+    }
+    .about .part-text h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+        margin-top: -5px;
+    }
+    .about .part-text p {
+        font-size: 15px;
+        line-height: 26px;
+    }
+
+    /* testimonial */
+    .testimonial .single-testimonial {
+        padding: 0 30px 28px;
+    }
+    .testimonial .single-testimonial .part-text p {
+        font-size: 15px;
+        line-height: 28px;
+    }
+
+    /* calculate profit */
+    .calculate-profit:before {
+        display: none;
+    }
+    .calculate-profit .calculate-area form .form-group .form-control {
+        margin-bottom: 20px;
+    }
+    .calculate-profit .calculate-area .result span.title {
+        font-size: 16px;
+        top: -5px;
+        margin-right: 13px;
+    }
+    .calculate-profit .calculate-area .result span.number {
+        font-size: 28px;
+        font-weight: 500;
+        margin-right: 0;
+    }
+    .calculate-profit .calculate-area .result {
+        margin-top: 32px;
+        margin-bottom: -8px;
+    }
+    .calculate-profit .section-title p br {
+        display: none;
+    }
+
+    /* transaction */
+    .transaction .transaction-area .nav-tabs {
+        display: block;
+        left: 0;
+        margin-left: 0;
+    }
+    .transaction .transaction-area .nav-tabs .nav-item .nav-link {
+        width: 100%;
+    }
+    .transaction .transaction-area .nav-tabs .nav-item:last-child .nav-link {
+        margin-top: 15px;
+    }
+    .transaction .transaction-area .tab-content .tab-pane {
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    .transaction .transaction-area .tab-content .table {
+        width: 900px;
+    }
+
+    /* referral commision */
+    .referral-commission {
+        padding: 120px 0 90px;
+    }
+    .referral-commission .single-level:after,
+    .referral-commission .single-level:before {
+        display: none;
+    }
+    .referral-commission .single-level {
+        margin-bottom: 30px;
+    }
+
+    /* blog */
+    .blog .single-blog .part-text h3 {
+        font-size: 20px;
+    }
+
+    /* breadcrump */
+    .breadcrump-investo:before {
+        display: none;
+    }
+    .breadcrump-investo .breadcrump-content {
+        margin: 0;
+        padding: 60px 0;
+    }
+    .breadcrump-investo .breadcrump-content h2 {
+        font-size: 28px;
+        margin-top: -7px;
+    }
+
+    /* blog */
+    .blog.blog-page {
+        padding: 120px 0 80px;
+    }
+    .blog .inve-pagination nav .pagination .page-item .page-link {
+        padding: 8px 14px;
+    }
+    .blog .inve-pagination {
+        margin-bottom: 40px;
+        margin-top: 10px;
+    }
+
+    /* blog details */
+    .blog.event-details .single-blog .part-text h3 {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .single-blog .part-text p {
+        font-size: 15px;
+        line-height: 28px;
+    }
+    .blog.event-details .part-post .single-blog .part-text {
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 6px;
+        margin-top: 20px;
+    }
+    .blog.event-details .part-author {
+        padding: 30px 30px 25px;
+    }
+    .blog.event-details .part-author .author-text {
+        padding-left: 0;
+        border-left: 0;
+    }
+    .blog.event-details .part-author .author-img {
+        float: none;
+        margin-bottom: 22px;
+    }
+    .blog.event-details .part-author .author-text p.identity {
+        font-size: 15px;
+        line-height: 26px;
+    }
+    .blog.event-details .part-post .part-comments {
+        padding: 22px 30px 29px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment .user-img {
+        float: none;
+        margin-bottom: 24px;
+    }
+    .blog.event-details .part-post .part-comments .title {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment .user-comment p {
+        line-height: 26px;
+        font-size: 15px;
+    }
+    .blog.event-details .part-post .part-comments .single-comment.reply {
+        margin-left: 0;
+    }
+    .blog.event-details .part-post .part-comment-box {
+        padding: 20px 30px 29px;
+        margin-bottom: 40px;
+    }
+    .blog.event-details .part-post .part-comment-box .title {
+        font-size: 20px;
+    }
+    .blog.event-details .part-post .part-comment-box form input {
+        height: 50px;
+    }
+    .blog.event-details .part-post .part-comment-box form textarea {
+        height: 200px;
+    }
+    .blog.event-details .part-post .part-comment-box form button {
+        height: 50px;
+    }
+    .blog.event-details {
+        padding-bottom: 80px;
+    }
+
+    /* faq */
+    .faq .accordion .card .card-header h5 button {
+        padding: 0 30px;
+        white-space: normal;
+        line-height: 26px;
+        font-size: 16px;
+    }
+    .faq .accordion .card .card-header h5 button:after {
+        display: none;
+    }
+    .faq .accordion .card .card-body {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .header.homepage {
+        background: #087984;
+    }
+}

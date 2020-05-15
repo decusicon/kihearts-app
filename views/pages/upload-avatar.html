@@ -2,40 +2,44 @@
 <!-- Start Page Content here -->
 <!-- ============================================================== -->
 
-<div class="row">
+<div class="row m-0">
   <!-- start col-->
-  <div class="offset-lg-4 col-lg-4 my-5" id="uploadCon">
-    <div class="card py-3" style="border-radius: 5px; box-shadow: 0px 0px 15px #19798413;">
-      <div class="card-body ribbon-box">
-        <div class="ribbon-content">
-          <p class="text-warning text-center h4 mb-4">Upload a photo to proceed, <%= nameCase(user.firstname) %></p>
-          <form action="/myaccount/edit/<%= user._id %>/avatar" method="POST" enctype="multipart/form-data">
-            <div class="row">
-              <div class="col-12 col-xl-12 col-lg-12 text-center">
-                <div class="avatar_img" id="avatar_img"
-                  style="background-image: url('<%= user.avatar ? user.avatar : `/images/users/user.jpg` %>');"
-                  onclick="$('#avatar').trigger('click')">
+  <div class="container p-0">
+    <div class="d-flex justify-content-center">
+      <div class="col-lg-5 col-md-8 col-sm-9 my-5">
+        <div class="card py-3">
+          <div class="card-body ribbon-box">
+            <div class="ribbon-content">
+              <p class="text-warning text-center h4 mb-4">Upload a photo to proceed, <%= nameCase(user.firstname) %>
+              </p>
+              <form action="/myaccount/edit/<%= user._id %>/avatar" method="POST" enctype="multipart/form-data">
+                <div class="row">
+                  <div class="col-12 col-xl-12 col-lg-12 text-center">
+                    <div class="avatar_img" id="avatar_img"
+                      style="background-image: url('<%= user.avatar ? user.avatar : `/images/users/user.jpg` %>');"
+                      onclick="$('#avatar').trigger('click')">
+                    </div>
+                    <input type="file" name="avatar" id="avatar" accept="image/*" hidden required>
+                  </div>
+                  <div class="col-6 col-xl-6 col-lg-6 my-2 text-center">
+                    <button type="button" class="btn btn-sm btn-link" onclick="$('#avatar').trigger('click')">Upload
+                      Photo</button>
+                  </div>
+                  <div class="col-6 col-xl-6 col-lg-6 my-2 text-center">
+                    <button type="submit" class="btn btn-sm btn-primary">Save Photo</button>
+                  </div>
                 </div>
-                <input type="file" name="avatar" id="avatar" accept="image/*" hidden required>
-              </div>
-              <div class="col-6 col-xl-6 col-lg-6 my-2 text-center">
-                <button type="button" class="btn btn-sm btn-link" onclick="$('#avatar').trigger('click')">Upload
-                  Photo</button>
-              </div>
-              <div class="col-6 col-xl-6 col-lg-6 my-2 text-center">
-                <button type="submit" class="btn btn-sm btn-outline-primary">Save Photo</button>
-              </div>
+              </form>
             </div>
-          </form>
+          </div> <!-- end card-body-->
         </div>
-      </div> <!-- end card-body-->
+      </div>
     </div>
+    <!-- end col-->
   </div>
-  <!-- end col-->
-</div>
 
-<!-- ============================================================== -->
-<!-- End Page content -->
-<!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- End Page content -->
+  <!-- ============================================================== -->
 
-<%- include('../partials/footer.html') %>
+  <%- include('../partials/footer.html') %>

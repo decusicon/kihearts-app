@@ -55,69 +55,63 @@ body {
   z-index: 9999 !important;
   text-align: center;
   background-color: #00000017;
-  cursor: pointer;
 }
 
 #messages ul {
   display: inline-block;
-  padding: 5px 30px;
+  padding: 10px 5px;
+  padding-left: 30px;
   text-align: center;
   background-color: #ffffff;
   color: #000000 !important;
   border-bottom: 3px solid;
   list-style-type: none;
+  /* font-size: 20px; */
 }
 
-#messages ul.error {
+#messages ul.error,
+#messages ul.error *::after {
   color: #f1556c !important;
   border-color: #f1556c;
   box-shadow: 0px 0px 15px 10px #f1556c2b;
 }
 
-#messages ul.warning {
+#messages ul.warning,
+#messages ul.warning *::after {
   color: #f7b84b !important;
   border-color: #f7b84b;
   box-shadow: 0px 0px 15px 10px #f7b84b2b;
 }
 
-#messages ul.success {
+#messages ul.success,
+#messages ul.success *::after {
   color: #25b343 !important;
   border-color: #25b343;
   box-shadow: 0px 0px 15px 10px #25b3432b;
 }
 
-#messages ul.info {
+#messages ul.info,
+#messages ul.info *::after {
   color: #4b88e4 !important;
   border-color: #4b88e4;
   box-shadow: 0px 0px 15px 10px #4b88e42b;
 }
 
-#messages ul li::before {
-  display: inline-block;
-  font: normal normal normal 24px/1 "Material Design Icons";
-  font-size: inherit;
-  text-rendering: auto;
-  line-height: inherit;
+#messages ul li::after {
+  content: "\e8f6";
+  font-family: feather !important;
+  font-style: normal;
+  font-weight: 900;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding: 5px;
+  margin: 10px;
+  padding: 2.5px;
   font-size: 16px;
-}
-
-#messages ul.error > li::before {
-  content: "\F159";
-}
-
-#messages ul.warning > li::before {
-  content: "\F026";
-}
-
-#messages ul.success > li::before {
-  content: "\F12C";
-}
-
-#messages ul.info > li::before {
-  content: "\F2FD";
+  border-radius: 5px;
+  cursor: pointer !important;
+  box-shadow: none !important;
 }
 
 #campaign_reason {

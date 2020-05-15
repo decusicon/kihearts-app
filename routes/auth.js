@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 // GET -- logout.
 router.get("/logout", (req, res) => {
   req.logOut();
-  req.flash("info", "Bye! Thanks for logging in.");
+  req.flash("info", "Bye! Thanks for logging in");
   res.redirect("/auth/login");
 });
 

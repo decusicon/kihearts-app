@@ -13,7 +13,7 @@ router.post("/", (req, res, next) => {
     successRedirect: "/dashboard",
     successFlash: "Welcome to your dashboard!",
     failureRedirect: "/auth/login",
-    failureFlash: "Sorry, Invalid username or password.",
+    failureFlash: "Sorry! Invalid username or password",
   })(req, res, next);
 });
 

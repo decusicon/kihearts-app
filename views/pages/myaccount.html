@@ -99,6 +99,10 @@
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-success float-right">My information </div>
+              <span>
+                <span class="fe-user pr-1"></span>
+                Joined: <%= moment(user.joined).fromNow() %>
+              </span>
               <div class="ribbon-content">
                 <form action="/myaccount/edit/<%= user._id %>/avatar" method="POST" enctype="multipart/form-data">
                   <div class="row mb-3 pb-3" style="border-bottom: 1px solid #eee;">
@@ -114,7 +118,7 @@
                         Photo</button>
                     </div>
                     <div class="col-6 col-xl-6 col-lg-6 my-2 text-center">
-                      <button type="submit" class="btn btn-sm btn-outline-primary">Save Photo</button>
+                      <button type="submit" class="btn btn-sm btn-primary">Save Photo</button>
                     </div>
                   </div>
                 </form>

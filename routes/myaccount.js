@@ -11,38 +11,21 @@ var multer = require("multer");
 var upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      // Creates the directory for the avatar photos
-      const createMultipleDir = (loc) => {
-        var locArr = loc.split("/");
-        console.log("loc: ", loc);
-
-        // Check is loc is a directory
-        // If false create dirs else return loc
-        fs.stat("public/temp/avatar", (err, stats) => {
-          if (err) console.log(err);
-
-          console.log("stats: ", stats);
-
-          fs.readdir(loc, (err, files) => {
+      const createAndSetDestination = (loc) => {
+        if (!fs.existsSync(loc)) {
+          fs.mkdir(loc, { recursive: true }, (err) => {
             if (err) console.log(err);
-            console.log("files: ", files);
+            createAndSetDestination(loc);
           });
-        });
-        return loc;
+        } else cb(null, loc);
       };
-
-      cb(
-        null,
-        "public/temp/"
-        // createMultipleDir(
-        //   `public/temp/${req.user ? req.user._id : ""}/${file.fieldname}`
-        // )
-      );
+      createAndSetDestination(`public/temp/${req.user.email}/avatars`);
     },
+
     filename: (req, file, cb) => {
-      const uniqueFilename = `${req.user ? req.user.nickname : ""}_${
-        file.fieldname
-      }-${Date.now()}${path.extname(file.originalname)}`;
+      const uniqueFilename = `${file.fieldname}_${Date.now()}${path.extname(
+        file.originalname
+      )}`;
       cb(null, uniqueFilename);
     },
   }),

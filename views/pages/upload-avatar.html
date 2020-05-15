@@ -5,13 +5,12 @@
 <div class="row">
   <!-- start col-->
   <div class="offset-lg-4 col-lg-4 my-5" id="uploadCon">
-    <div class="card" style="box-shadow: none !important; background-color: transparent !important;">
+    <div class="card py-3" style="border-radius: 5px; box-shadow: 0px 0px 15px #19798413;">
       <div class="card-body ribbon-box">
         <div class="ribbon-content">
-          <h4 class="text-center"> Hi <%= nameCase(user.firstname) %>, </h4>
-          <p class="text-warning text-center text-uppercase"><i class="mdi mdi-alert"></i> Upload a photo to proceed</p>
+          <p class="text-warning text-center h4 mb-4">Upload a photo to proceed, <%= nameCase(user.firstname) %></p>
           <form action="/myaccount/edit/<%= user._id %>/avatar" method="POST" enctype="multipart/form-data">
-            <div class="row mb-3 pb-3">
+            <div class="row">
               <div class="col-12 col-xl-12 col-lg-12 text-center">
                 <div class="avatar_img" id="avatar_img"
                   style="background-image: url('<%= user.avatar ? user.avatar : `/images/users/user.jpg` %>');"

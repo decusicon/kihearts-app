@@ -25,7 +25,7 @@ function getUserCountry() {
   var options = document.querySelectorAll("#country > option");
   options.forEach((option) => {
     var optionValue = option.value.toLowerCase();
-    var country = document.getElementById("real_country").innerHTML;
+    var country = document.getElementById("real_country").innerText;
     if (optionValue == country) {
       option.setAttribute("selected", "selected");
       select.value = country;
@@ -39,7 +39,7 @@ function getNextCountry() {
   var options = document.querySelectorAll("#next_country > option");
   options.forEach((option) => {
     var optionValue = option.value.toLowerCase();
-    var country = document.getElementById("real_next_country").innerHTML;
+    var country = document.getElementById("real_next_country").innerText;
     if (optionValue == country) {
       option.setAttribute("selected", "selected");
       select.value = country;

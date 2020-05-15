@@ -1,18 +1,31 @@
-PRIMARY
-========
-/ --GET
-/dashboard --GET
-/campaigns --GET
-/donations --GET
-/advertise --GET
-/account --GET
-/wallet --GET
+=== GET ===
+/
+/auth/register
+/auth/login
+/auth/forgot-password
+/auth/logout
+/dashboard
+/campaigns
+/donations
+/advertise
+/advertise/bannerads
+/advertise/textads
+/investment
+/myaccount
+/wallets
 
-SECONDARY
-==========
-/auth/login --GET
-/auth/login --POST
-/auth/register --GET
-/auth/register --POST
-/auth/forgot-password --GET
-/auth/forgot-password --POST
+
+=== POST ===
+/auth/login
+/auth/register
+/auth/forgot-password
+/myaccount/edit/:id/avatar
+/myaccount/edit/:id/info
+/myaccount/edit/:id/details
+/myaccount/edit/:id/change-password
+/campaigns/create
+/campaigns/create/photos
+/campaigns/edit/:id
+/campaigns/edit/:id/photos
+/donations/create
+/donations/edit/:id

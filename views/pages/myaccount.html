@@ -27,8 +27,8 @@
     <div class="all_modals_container">
 
       <!-- Change Password Modal -->
-      <div class="modal fade changePassword" id="changePassword" tabindex="-1" role="dialog"
-        aria-labelledby="changePassword" aria-hidden="true">
+      <div class="modal fade change-password" id="change-password" tabindex="-1" role="dialog"
+        aria-labelledby="change-password" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -42,7 +42,7 @@
                 Make sure all entered passwords are correct and
                 <span class="text-success">remembered!</span>
               </p>
-              <form action="/myaccount/edit/<%= user._id %>/changePassword" method="POST" id="changePasswordForm">
+              <form action="/myaccount/edit/<%= user._id %>/change-password" method="POST" id="changePasswordForm">
                 <div class="container">
                   <div class="form-group row">
                     <!-- password -->
@@ -182,7 +182,7 @@
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-info float-right">My details</div>
-              <button class="btn btn-sm btn-link changePasswordBtn" data-toggle="modal" data-target="#changePassword">
+              <button class="btn btn-sm btn-link changePasswordBtn" data-toggle="modal" data-target="#change-password">
                 <span class="fe-lock pr-1"></span>
                 Change Password
               </button>

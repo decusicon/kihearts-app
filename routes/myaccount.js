@@ -145,7 +145,7 @@ router.post("/edit/:id/details", (req, res) => {
 });
 
 // POST -- edit user's info
-router.post("/edit/:id/changePassword", (req, res) => {
+router.post("/edit/:id/change-password", (req, res) => {
   const { password } = global.gatherBodyVariables(req);
   var current_password = req.body.current_password;
 

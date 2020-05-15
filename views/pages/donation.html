@@ -14,7 +14,7 @@
           <div class="page-title-right">
             <button class="btn btn-outline-primary waves-effect waves-light makePledgeBtn" data-toggle="modal"
               data-target="#makePledge">
-              Make a pledge
+              Make a donation
             </button>
           </div>
           <h4 class="page-title"><%= title %></h4>
@@ -26,21 +26,21 @@
     <!-- start Modals container -->
     <div class="all_modals_container">
 
-      <!-- Make Pledge Modal -->
+      <!-- Make Donation Modal -->
       <div class="modal fade makePledge" id="makePledge" tabindex="-1" role="dialog" aria-labelledby="makePledge"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title text-dark" id="makePledgeTitle">Make Pledge</h4>
+              <h4 class="modal-title text-dark" id="makePledgeTitle">Make Donation</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
             <div class="modal-body">
               <p id="modalAlert" class="text-center alert alert-warning">
-                You're about to make a pledge and will be rewarded,
-                remember your reward will reflect when your pledge is
+                You're about to make a donation and will be rewarded,
+                remember your reward will reflect when your donation is
                 <span class="text-success">fulfilled</span>.
               </p>
               <form action="" id="makePledgeForm">
@@ -48,7 +48,7 @@
                   <div class="form-group row">
                     <div class="col-lg-8 mb-2">
                       <label class="text-dark" for="pledgeRange">
-                        Pledge Range
+                        Donation Range
                         <b class="text-danger">*</b>
                       </label>
                       <select name="pledgeRange" id="pledgeRange" oninput="(function() {
@@ -96,11 +96,11 @@
                   <div class="form-group row">
                     <div class="col-lg-12">
                       <label class="text-dark" for="pledgeRange">
-                        Pledge Amount
+                        Donation Amount
                         <b class="text-danger">*</b>
                       </label>
                       <input type="number" name="pledgeAmount" id="pledgeAmount" class="form-control"
-                        placeholder="Pledge Amount" required>
+                        placeholder="Donation Amount" required>
                     </div>
                   </div>
                 </div>
@@ -109,7 +109,7 @@
               <!-- Last info text -->
               <div class="text-center mt-2 ">
                 <small class="text-muted">
-                  Your Pledge will be at
+                  Your Donation will be at
                   "<span class="text-info">pending</span>", until requested.
                 </small>
               </div>
@@ -118,7 +118,7 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-light waves-effect waves-light" data-dismiss="modal">Close</button>
               <button type="submit" form="makePledgeForm" class="btn btn-primary waves-effect waves-light">
-                Make Pledge
+                Make Donation
               </button>
             </div>
           </div>
@@ -133,10 +133,10 @@
         <div class="col-lg-12 col-xl-12">
           <div class="text-center p-2 mt-5">
             <div style="font-size: 50px; filter: grayscale(1);">🎁</div>
-            <h4 class="text-muted m-0 mb-1" style="font-weight: 300;">No pledge found...</h4>
+            <h4 class="text-muted m-0 mb-1" style="font-weight: 300;">No donation found...</h4>
             <button class="btn btn-sm btn-link waves-effect waves-light makePledgeBtn" data-toggle="modal"
               data-target="#makePledge">
-              Make a pledge
+              Make a donation
             </button>
           </div>
         </div>
@@ -164,7 +164,7 @@
                   <small class="text-muted p-2">Pledged on: <span class="d-block">Tue, 23rd Jan 2020</span></small>
                 </p>
                 <div class="pledgeFooter">
-                  <button class="btn btn-success btn-block">Fulfil Pledge</button>
+                  <button class="btn btn-success btn-block">Fulfil Donation</button>
                 </div>
               </div>
             </div> <!-- end card-body-->

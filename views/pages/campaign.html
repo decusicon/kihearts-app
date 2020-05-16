@@ -240,8 +240,10 @@
     </div>
     <!-- end Modals container -->
 
+    <% if(typeof campaigns != undefined){ %>
+    <% if(campaigns.length <= 0){ %>
     <!-- start noCampaigns -->
-    <div class="noCampaigns hide">
+    <div class="noCampaigns">
       <div class="row">
         <div class="col-lg-12 col-xl-12">
           <div class="text-center p-2 mt-5">
@@ -256,35 +258,30 @@
       </div>
     </div>
     <!-- end noCampaigns -->
-
-    <!-- start Campaign Card -->
+    <% } else { %>
+    <% campaigns.forEach((campaign) => { %>
+    <!-- start Campaigns Card -->
     <div class="campaigns">
       <!-- start row -->
       <div class="row">
-
         <!-- start col-->
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
           <div class="card">
             <div class="card-body ribbon-box">
-              <div class="ribbon ribbon-info float-right">₦20,000 (active) </div>
+              <div class="ribbon ribbon-info float-right">₦<%= campaign.amount %> (<%= campaign.stage %>) </div>
               <button class="btn btn-sm btn-link editCampaignBtn" data-toggle="modal" data-target="#createCampaign">
                 <span class="fe-edit-1 pr-1"></span>
                 Edit
               </button>
               <div class="ribbon-content">
-                <h4 class="text-dark" id="campaign_title">Campaign Title</h4>
+                <h4 class="text-dark" id="campaign_title"><%= sentenceCase(campaign.title) %></h4>
                 <div class="mb-2 text-dark text-right">
                   <small id="campaign_category">
-                    <b>Category</b>: BUSINESS/Business Capital
+                    <b>Category</b>: <%= upperCase(campaign.category) %>/<%= sentenceCase(campaign.subCategory) %>
                   </small>
                 </div>
                 <p class="mb-0" id="campaign_reason">
-                  Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit.Fuga, molestias quia nulla
-                  voluptas illum eveniet facilis, blanditiis
-                  reiciendis vitae consequuntur neque. Provident
-                  magnam quia dolore illo architecto, eius nesciunt
-                  distinctio!
+                  <%= nameCase(campaign.reason) %>
                 </p>
                 <div class="row mt-3 mb-1 text-right">
                   <div class="col-xl-12 col-lg-12">
@@ -308,8 +305,8 @@
                 </div>
                 <div class="row mt-3">
                   <div class="col-xl-6 col-lg-6">
-                    <span class="text-muted">Target: 20,000</span><br>
-                    <small class="text-dark">Total: 400 GC</small>
+                    <span class="text-muted">Target: <%= campaign.coins.target %></span><br>
+                    <small class="text-dark">Total: <%= campaign.coins.total %> GC</small>
                   </div>
                   <div class="col-xl-6 col-lg-6 text-right">
                     <button class="btn btn-sm btn-outline-info waves-effect waves-light">
@@ -324,7 +321,7 @@
         <!-- end col-->
 
         <!-- start col-->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 hide">
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-success float-right">₦20,000 (published) </div>
@@ -386,7 +383,7 @@
         <!-- end col-->
 
         <!-- start col-->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 hide">
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-warning float-right">₦15,000 (selected & paid) </div>
@@ -448,7 +445,7 @@
         <!-- end col-->
 
         <!-- start col-->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 hide">
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-success float-right">₦20,000 (published) </div>
@@ -511,7 +508,10 @@
       </div>
       <!-- end row -->
     </div>
-    <!-- end Campaign Card -->
+    <!-- end Campaigns Card -->
+    <% }); %>
+    <% } %>
+    <% } %>
 
   </div> <!-- end container-fluid -->
 </div>

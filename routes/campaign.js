@@ -6,7 +6,11 @@ var Campaign = require("../models/campaign");
 
 // GET -- fetch page.
 router.get("/", (req, res) => {
-  res.render("pages/campaign", { title: "Campaigns" });
+  Campaign.find((err, campaigns) => {
+    if (err) console.log(err);
+    console.log("campaigns: ", campaigns);
+    res.render("pages/campaign", { title: "Campaigns", campaigns });
+  });
 });
 
 // POST -- create campaign.

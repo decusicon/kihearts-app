@@ -1,5 +1,5 @@
 // JQUERY MAIN METHOD
-$(function() {
+$(() => {
   editCampaignModal();
   createCampaignModal();
 });
@@ -27,13 +27,16 @@ function createCampaignModal() {
     $(".createCampaign #createCampaignSumbitBtn").text("Create");
 
     // Change Modal Form Action
-    $(".createCampaign #createCampaignForm").attr("action", "/createCampaign");
+    $(".createCampaign #createCampaignForm").attr(
+      "action",
+      "/campaigns/create"
+    );
   });
 
   // Selection of Category
-  $(".createCampaign select#campaignCategory").on("input", function() {
-    var campaignCategory = document.querySelector("#campaignCategory");
-    var subCampaignCategory = $("#subCampaignCategory");
+  $(".createCampaign select#category").on("input", () => {
+    var category = document.querySelector("#category");
+    var subCategory = $("#subCategory");
 
     // All Category Array
     const categoriesArr = [
@@ -42,8 +45,8 @@ function createCampaignModal() {
         subCat: [
           "Business Capital",
           "Business Expansion Fund",
-          "Manufacturing Equipment"
-        ]
+          "Manufacturing Equipment",
+        ],
       },
       {
         mainCat: "CHARITY",
@@ -51,12 +54,12 @@ function createCampaignModal() {
           "Motherless Baby Home",
           "Old Peoples Home",
           "Orphanage Home",
-          "Physically Challenged"
-        ]
+          "Physically Challenged",
+        ],
       },
       {
         mainCat: "DISASTER",
-        subCat: ["Earthquake", "Fire", "Flood", "Volcanic Eruptions", "War"]
+        subCat: ["Earthquake", "Fire", "Flood", "Volcanic Eruptions", "War"],
       },
       {
         mainCat: "EDUCATION",
@@ -65,8 +68,8 @@ function createCampaignModal() {
           "Degree Program",
           "Information Technology Program",
           "Scholarship",
-          "Tuition Fee"
-        ]
+          "Tuition Fee",
+        ],
       },
       { mainCat: "EMERGENCY", subCat: ["Emergency"] },
       {
@@ -77,8 +80,8 @@ function createCampaignModal() {
           "Baby Naming",
           "Birthday",
           "Burial",
-          "Wedding"
-        ]
+          "Wedding",
+        ],
       },
       {
         mainCat: "HEALTH",
@@ -88,8 +91,8 @@ function createCampaignModal() {
           "Hospital Bill",
           "Lab Test",
           "Red Cross",
-          "Scan"
-        ]
+          "Scan",
+        ],
       },
       {
         mainCat: "PROJECT",
@@ -98,8 +101,8 @@ function createCampaignModal() {
           "Community Project",
           "Medical Research",
           "School Project",
-          "Technological Research"
-        ]
+          "Technological Research",
+        ],
       },
       {
         mainCat: "PROPERTY",
@@ -110,8 +113,8 @@ function createCampaignModal() {
           "House",
           "Land",
           "Shoes",
-          "Upholstery"
-        ]
+          "Upholstery",
+        ],
       },
       {
         mainCat: "RENT",
@@ -122,8 +125,8 @@ function createCampaignModal() {
           "Rent Home",
           "Rent Hotel",
           "Rent Office",
-          "Rent Shop"
-        ]
+          "Rent Shop",
+        ],
       },
       {
         mainCat: "REPAIR",
@@ -133,8 +136,8 @@ function createCampaignModal() {
           "Repair Generator",
           "Repair Machine",
           "Repair Motorbike",
-          "Repair Vehicle"
-        ]
+          "Repair Vehicle",
+        ],
       },
       {
         mainCat: "SPORTS",
@@ -154,8 +157,8 @@ function createCampaignModal() {
           "Swimming",
           "Table Tennis",
           "Track & Field",
-          "Volleyball"
-        ]
+          "Volleyball",
+        ],
       },
       {
         mainCat: "TRAVEL",
@@ -165,35 +168,35 @@ function createCampaignModal() {
           "International Passport",
           "Rail",
           "Road",
-          "Visa"
-        ]
+          "Visa",
+        ],
       },
-      { mainCat: "OTHERS", subCat: ["Others"] }
+      { mainCat: "OTHERS", subCat: ["Others"] },
     ];
 
-    for (const child of campaignCategory.children) {
-      if (campaignCategory.value === child.value) {
-        categoriesArr.forEach(Cat => {
-          if (Cat.mainCat === campaignCategory.value) {
-            subCampaignCategory.html(""); // Empty subCampaignCategory
+    for (const child of category.children) {
+      if (category.value === child.value) {
+        categoriesArr.forEach((Cat) => {
+          if (Cat.mainCat === category.value) {
+            subCategory.html(""); // Empty subCategory
 
             // Append "Select a Sub Category" option before any other options
-            subCampaignCategory.append(
+            subCategory.append(
               `<option value="">Select a Sub Category</option>`
             );
 
-            // Looping through to append "subCat" strings to subCampaignCategory options
-            Cat.subCat.forEach(subCats => {
-              subCampaignCategory.append(
+            // Looping through to append "subCat" strings to subCategory options
+            Cat.subCat.forEach((subCats) => {
+              subCategory.append(
                 `<option value="${subCats}">${subCats}</option>`
               );
             });
           }
-          if (campaignCategory.value === "") {
-            subCampaignCategory.html(""); // Empty subCampaignCategory
+          if (category.value === "") {
+            subCategory.html(""); // Empty subCategory
 
             // Append "Select a Sub Category" option before any other options
-            subCampaignCategory.append(
+            subCategory.append(
               `<option value="">Select a Sub Category</option>`
             );
           }
@@ -226,6 +229,9 @@ function editCampaignModal() {
     $(".createCampaign #createCampaignSumbitBtn").text("Save Changes");
 
     // Change Modal Form Action
-    $(".createCampaign #createCampaignForm").attr("action", "/editCampaign");
+    $(".createCampaign #createCampaignForm").attr(
+      "action",
+      `/campaigns/edit/${window.user.id}`
+    );
   });
 }

@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 // POST -- Register user
 
 router.post("/", (req, res) => {
-  const avatar = `${process.env.APP_URL}/images/users/user.jpg`;
+  const avatar = global.defaultAvatar;
   const joined = Date.now();
 
   const {
@@ -44,13 +44,11 @@ router.post("/", (req, res) => {
   var regErrors = req.validationErrors();
 
   if (regErrors) {
-    req.session.regErrors = regErrors;
-    res.locals.regErrors = req.session.regErrors;
-    console.log("RegErrors: ", res.locals.regErrors);
-    console.log("Errors: ", regErrors);
+    req.session.customErrors = regErrors;
+    res.locals.customErrors = req.session.customErrors;
     res.render("pages/auth/register", { title: "Register" });
   } else {
-    req.session.regErrors = [];
+    req.session.customErrors = [];
     var newUser = new User({
       avatar,
       joined,

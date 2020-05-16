@@ -4,7 +4,7 @@ var bcrypt = require("bcryptjs");
 // SCHEMA
 var CampaignSchema = mongoose.Schema({
   userId: { type: String, required: true },
-  created: { type: Number, required: true },
+  createdAt: { type: Number, required: true },
   title: { type: String, required: true },
   category: { type: String, required: true },
   subCategory: { type: String, required: true },
@@ -15,7 +15,12 @@ var CampaignSchema = mongoose.Schema({
     accountNumber: { type: Number, required: true },
     bank: { type: String, required: true },
   },
-  photosId: { type: String, required: true },
+  stage: { type: String, required: true },
+  coins: {
+    target: { type: Number, required: false },
+    total: { type: Number, required: false },
+  },
+  photosId: { type: String, required: false },
 });
 
 // MODEL
@@ -23,6 +28,6 @@ var Campaign = (module.exports = mongoose.model("Campaign", CampaignSchema));
 
 // METHODS
 // save a new campaign to db
-module.exports.savePhoto = (newCampaign, callback) => {
+module.exports.saveCampaign = (newCampaign, callback) => {
   newCampaign.save(callback());
 };

@@ -90,6 +90,7 @@ app.use((req, res, next) => {
 
 // Gather all Variables middleware
 app.use((req, res, next) => {
+  // Gather user's variables
   global.gatherUserBodyVariables = (req) => {
     const firstname = req.body.firstname
       ? req.body.firstname.toLowerCase()
@@ -189,13 +190,44 @@ app.use((req, res, next) => {
       next_homeAddress,
     };
   };
-  next();
-});
 
-// Set all global variables
-app.use((req, res, next) => {
-  global.defaultAvatar = `${process.env.APP_URL}/images/users/user.jpg`;
-  global.user = req.user;
+  // Gather campaign's variables
+  global.gatherCampaignBodyVariables = (req) => {
+    const title = req.body.title ? req.body.title.toLowerCase() : "";
+    const category = req.body.category ? req.body.category.toLowerCase() : "";
+    const subCategory = req.body.subCategory
+      ? req.body.subCategory.toLowerCase()
+      : "";
+    const reason = req.body.reason ? req.body.reason.toLowerCase() : "";
+    const amount = req.body.amount ? req.body.amount.toLowerCase() : "";
+    const accountName = req.body.accountName
+      ? req.body.accountName.toLowerCase()
+      : "";
+    const accountNumber = req.body.accountNumber
+      ? req.body.accountNumber.toLowerCase()
+      : "";
+    const bank = req.body.bank ? req.body.bank.toLowerCase() : "";
+
+    // check for user's errors
+    req.checkBody("title", "Required!").notEmpty();
+    req.checkBody("category", "Required!").notEmpty();
+    req.checkBody("subCategory", "Required!").notEmpty();
+    req.checkBody("reason", "Required!").notEmpty();
+    req.checkBody("amount", "Required!").isInt();
+    req.checkBody("accountName", "Required!").notEmpty();
+    req.checkBody("accountNumber", "Required!").isInt();
+    req.checkBody("bank", "Required!").notEmpty();
+    return {
+      title,
+      category,
+      subCategory,
+      reason,
+      amount,
+      accountName,
+      accountNumber,
+      bank,
+    };
+  };
   next();
 });
 
@@ -217,9 +249,10 @@ global.isThereAvatar = (req, res) => {
 
 // GLOBALs
 app.use((req, res, next) => {
+  global.defaultAvatar = `${process.env.APP_URL}/images/users/user.jpg`;
   global.user = req.user; // for global use
   res.locals.user = global.user; // for views use
-  res.locals.regErrors = []; // registration errors
+  res.locals.customErrors = []; // registration errors
 
   // Convert string into name like
   res.locals.nameCase = (word) => {

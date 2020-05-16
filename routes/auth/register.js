@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
     next_city,
     next_postalcode,
     next_homeAddress,
-  } = global.gatherBodyVariables(req);
+  } = global.gatherUserBodyVariables(req);
 
   var regErrors = req.validationErrors();
 

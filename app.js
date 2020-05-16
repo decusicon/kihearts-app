@@ -90,7 +90,7 @@ app.use((req, res, next) => {
 
 // Gather all Variables middleware
 app.use((req, res, next) => {
-  global.gatherBodyVariables = (req) => {
+  global.gatherUserBodyVariables = (req) => {
     const firstname = req.body.firstname
       ? req.body.firstname.toLowerCase()
       : "";
@@ -247,6 +247,16 @@ app.use((req, res, next) => {
       }
       result = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
       return result;
+    };
+
+    // Convert string into uppercase
+    res.locals.upperCase = (word) => {
+      return word.toUpperCase();
+    };
+
+    // Convert string into lowercase
+    res.locals.lowerCase = (word) => {
+      return word.toLowerCase();
     };
 
     // Send moment to client

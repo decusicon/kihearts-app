@@ -217,51 +217,51 @@ global.isThereAvatar = (req, res) => {
 
 // GLOBALs
 app.use((req, res, next) => {
+  global.user = req.user; // for global use
+  res.locals.user = global.user; // for views use
+  res.locals.regErrors = []; // registration errors
+
+  // Convert string into name like
+  res.locals.nameCase = (word) => {
+    word = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
+    return word;
+  };
+
+  // Convert string into sentence like
+  res.locals.sentenceCase = (word) => {
+    word = word.toLowerCase().trim();
+    let result = "";
+    if (word.includes(" ")) {
+      let wordArr = [];
+      let words = word.split(" ");
+      words.forEach((word) => {
+        wordArr.push(
+          word.replace(word.charAt(0), word.charAt(0).toUpperCase())
+        );
+      });
+
+      return (wordArr = wordArr.join(" "));
+    }
+    result = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
+    return result;
+  };
+
+  // Convert string into uppercase
+  res.locals.upperCase = (word) => {
+    return word.toUpperCase();
+  };
+
+  // Convert string into lowercase
+  res.locals.lowerCase = (word) => {
+    return word.toLowerCase();
+  };
+
+  // Send moment to client
+  res.locals.moment = moment;
+
   // Redirect to login page if user is not found on any pages.
   if (!req.user) !req.url.includes("auth") ? res.redirect("/auth/login") : "";
   else {
-    global.user = req.user; // for global use
-    res.locals.user = global.user; // for views use
-    res.locals.regErrors = []; // registration errors
-
-    // Convert string into name like
-    res.locals.nameCase = (word) => {
-      word = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
-      return word;
-    };
-
-    // Convert string into sentence like
-    res.locals.sentenceCase = (word) => {
-      word = word.toLowerCase().trim();
-      let result = "";
-      if (word.includes(" ")) {
-        let wordArr = [];
-        let words = word.split(" ");
-        words.forEach((word) => {
-          wordArr.push(
-            word.replace(word.charAt(0), word.charAt(0).toUpperCase())
-          );
-        });
-
-        return (wordArr = wordArr.join(" "));
-      }
-      result = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
-      return result;
-    };
-
-    // Convert string into uppercase
-    res.locals.upperCase = (word) => {
-      return word.toUpperCase();
-    };
-
-    // Convert string into lowercase
-    res.locals.lowerCase = (word) => {
-      return word.toLowerCase();
-    };
-
-    // Send moment to client
-    res.locals.moment = moment;
-
     // Redirect to dashboard if user is found on auth pages.
     req.url.includes("auth") && !req.url.includes("logout")
       ? res.redirect("/dashboard")
@@ -270,7 +270,6 @@ app.use((req, res, next) => {
     // Check every route, whether user has an avatar, else display upload-avatar view
     if (req.method.toLowerCase() == "get") global.isThereAvatar(req, res);
   }
-
   next();
 });
 
@@ -297,14 +296,14 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+// app.use((err, req, res, next) => {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render("./errors/error", { title: "You're Lost!" });
-});
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render("./errors/error", { title: "You're Lost!" });
+// });
 
 module.exports = app;

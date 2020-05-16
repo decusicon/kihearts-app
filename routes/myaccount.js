@@ -61,7 +61,7 @@ router.post("/edit/:id/info", (req, res) => {
     nickname,
     email,
     phoneNumber,
-  } = global.gatherBodyVariables(req);
+  } = global.gatherUserBodyVariables(req);
 
   var update = {
     firstname,
@@ -97,7 +97,7 @@ router.post("/edit/:id/details", (req, res) => {
     next_city,
     next_postalcode,
     next_homeAddress,
-  } = global.gatherBodyVariables(req);
+  } = global.gatherUserBodyVariables(req);
 
   var update = {
     country,
@@ -129,7 +129,7 @@ router.post("/edit/:id/details", (req, res) => {
 
 // POST -- edit user's info
 router.post("/edit/:id/change-password", (req, res) => {
-  const { password } = global.gatherBodyVariables(req);
+  const { password } = global.gatherUserBodyVariables(req);
   var current_password = req.body.current_password;
 
   var query = { _id: req.params.id };

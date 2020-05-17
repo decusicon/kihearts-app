@@ -6,7 +6,8 @@ var Campaign = require("../models/campaign");
 
 // GET -- fetch page.
 router.get("/", (req, res) => {
-  Campaign.find((err, campaigns) => {
+  var query = { userId: req.user._id };
+  Campaign.find(query, (err, campaigns) => {
     if (err) console.log(err);
     console.log("campaigns: ", campaigns);
     res.render("pages/campaign", { title: "Campaigns", campaigns });
@@ -72,6 +73,12 @@ router.post("/create", (req, res) => {
       }
     });
   }
+});
+
+router.post("/create/photos", (req, res) => {
+  console.log("FILES: ", req.files);
+  req.flash("Working!");
+  res.redirect("/campaigns");
 });
 
 module.exports = router;

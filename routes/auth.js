@@ -6,11 +6,6 @@ var loginRouter = require("./auth/login");
 var registerRouter = require("./auth/register");
 var forgotPasswordRouter = require("./auth/forgot-password");
 
-// GET -- auth.
-router.get("/", (req, res) => {
-  res.redirect("/auth/login");
-});
-
 // GET -- logout.
 router.get("/logout", (req, res) => {
   req.logOut();

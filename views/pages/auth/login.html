@@ -8,7 +8,7 @@
       <div class="col-xl-6 col-lg-6 col-md-8">
         <div class="section-title">
 
-          <a href="/dashboard">
+          <a href="/">
             <img src="/images/logo-dark.png" width="250" style="margin-bottom: 20px;" alt="kihearts">
           </a>
           <h6>Login to your account</h6>
@@ -34,21 +34,9 @@
           </form>
           <br>
           <div id="mini_footer" class="text-center mini_footer">
-            <a href="/dashboard" class="sec-color">Back to Home </a> |
+            <a href="/" class="sec-color">Back to Home </a> |
             <a href="/auth/forgot-password" class="text-dark">Forgot Password </a> |
             <a href="/auth/register" class="sec-color">Create Account</a>
-            <br><br><br>
-            <small>
-              <p>
-                KiHearts Network -
-                <% var pYear = new Date().getFullYear(), sYear = 2020 %>
-                <%= pYear == sYear ? pYear : `${sYear} - ${pYear}` %>
-                &copy; All Rights Reserved
-              </p>
-              <a href="https://github.com/decusicon" target="blank" class="text-dark">
-                Designed and Developed by <span class="sec-color">deCusicon</span>
-              </a>
-            </small>
           </div>
         </div>
       </div>
@@ -56,3 +44,5 @@
   </div>
 </div>
 <!-- contact end -->
+
+<%- include('../../partials/footer.html') %>

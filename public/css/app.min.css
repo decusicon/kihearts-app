@@ -213,6 +213,8 @@ body {
   right: 0;
   z-index: 1001;
   padding: 0 12px;
+  border-bottom: 1px solid #15626bc9;
+  box-shadow: 0px 2.5px 10px 0 #0a353a75;
 }
 #topnav .arrow-down {
   display: inline-block;
@@ -2309,4 +2311,3 @@ body.authentication-bg {
   color: #6c757d;
   border-color: #6c757d;
 }
-/*# sourceMappingURL=app.min.css.map */

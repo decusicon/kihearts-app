@@ -169,7 +169,7 @@ router.post("/edit/:id/change-password", (req, res) => {
 
     // match old password with existing password from db
     bcrypt.compare(current_password, user.password, (err, isMatch) => {
-      if (err) throw err;
+      if (err) console.log(err);
       if (!isMatch)
         done(null, null, {
           type: "error",

@@ -82,7 +82,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// ASSIGN PROCESS.ENV middleware
+// CUSTOM MIDDLEWARES
+// Assign PROCESS.ENV middleware
 app.use((req, res, next) => {
   require("dotenv").config();
   next();
@@ -90,7 +91,7 @@ app.use((req, res, next) => {
 
 // Gather all Variables middleware
 app.use((req, res, next) => {
-  // Gather user's variables
+  // Gather user's body variables
   global.gatherUserBodyVariables = (req) => {
     const firstname = req.body.firstname
       ? req.body.firstname.toLowerCase()
@@ -191,7 +192,7 @@ app.use((req, res, next) => {
     };
   };
 
-  // Gather campaign's variables
+  // Gather campaign's body variables
   global.gatherCampaignBodyVariables = (req) => {
     const title = req.body.title ? req.body.title.toLowerCase() : "";
     const category = req.body.category ? req.body.category.toLowerCase() : "";
@@ -231,23 +232,28 @@ app.use((req, res, next) => {
   next();
 });
 
-// Check every route, whether user has an avatar, else display upload-avatar view
-global.isThereAvatar = (req, res) => {
-  if (!req.originalUrl.includes("auth")) {
-    if (global.user) {
-      if (
-        global.user.avatar == "" ||
-        global.user.avatar == global.defaultAvatar
-      ) {
-        res.render("pages/upload-avatar", {
-          title: "Upload a Photo",
-        });
+// Check is user have an avatar image
+app.use((req, res, next) => {
+  // Check every route, whether user has an avatar, else display upload-avatar view
+  global.isThereAvatar = (req, res) => {
+    if (!req.originalUrl.includes("auth")) {
+      if (global.user) {
+        if (
+          global.user.avatar == "" ||
+          global.user.avatar == global.defaultAvatar
+        ) {
+          res.render("pages/upload-avatar", {
+            title: "Upload a Photo",
+          });
+          res.end();
+        }
       }
     }
-  }
-};
+  };
+  next();
+});
 
-// GLOBALs
+// Global Variables
 app.use((req, res, next) => {
   global.defaultAvatar = `${process.env.APP_URL}/images/users/user.jpg`;
   global.user = req.user; // for global use
@@ -289,19 +295,47 @@ app.use((req, res, next) => {
     return word.toLowerCase();
   };
 
+  // Add 0 to account or phone number that are suppose to be 10 or 11 respectively
+  res.locals.addZero = (number, type) => {
+    var numberStr = String(number);
+    if (type == "phoneNumber") {
+      if (numberStr.length == 10) {
+        return `0${number}`;
+      }
+    }
+
+    if (type == "accountNumber") {
+      if (numberStr.length == 9) {
+        return `0${number}`;
+      }
+    }
+
+    return number;
+  };
+
   // Send moment to client
   res.locals.moment = moment;
+  next();
+});
 
+// Global Redirects
+app.use((req, res, next) => {
   // Redirect to login page if user is not found on any pages.
   if (!req.user) !req.url.includes("auth") ? res.redirect("/auth/login") : "";
   else {
     // Redirect to dashboard if user is found on auth pages.
-    req.url.includes("auth") && !req.url.includes("logout")
-      ? res.redirect("/dashboard")
-      : "";
+    if (
+      req.url.includes("login") ||
+      req.url.includes("register") ||
+      req.url.includes("forgot-password")
+    ) {
+      res.end();
+      res.redirect("/dashboard");
+    }
 
     // Check every route, whether user has an avatar, else display upload-avatar view
-    if (req.method.toLowerCase() == "get") global.isThereAvatar(req, res);
+    if (req.method.toLowerCase() == "get" && req.url != "")
+      global.isThereAvatar(req, res);
   }
   next();
 });
@@ -329,14 +363,19 @@ app.use((req, res, next) => {
 });
 
 // error handler
-// app.use((err, req, res, next) => {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get("env") === "development" ? err : {};
+app.use((err, req, res, next) => {
+  // User is not login, Redirect to login page if user enters a wrong address.
+  if (!req.user) req.url.includes("auth") ? res.redirect("/auth/login") : "";
+  // Else show him an error page.
+  else {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get("env") === "development" ? err : {};
 
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render("./errors/error", { title: "You're Lost!" });
-// });
+    // render the error page
+    res.status(err.status || 500);
+    res.render("./errors/error", { title: "You're Lost!" });
+  }
+});
 
 module.exports = app;

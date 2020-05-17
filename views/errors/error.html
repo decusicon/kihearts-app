@@ -10,21 +10,29 @@
           <div class="card-body p-4">
 
             <div class="text-center w-75 m-auto">
-              <a href="/dashboard">
-                <span><img src="/images/logo-dark.png" alt="" height="22"></span>
+              <a href="/">
+                <span><img src="/images/logo-dark.png" alt="" height="30"></span>
               </a>
             </div>
 
             <div class="text-center mt-4">
               <img src="/images/error.svg" alt="" height="80">
-              <h4 class="text-uppercase text-danger mt-3">Page Not Found</h4>
+              <h4 class="text-uppercase text-danger mt-3"><%= title %></h4>
               <p class="text-muted mt-3">It's looking like you may have taken a wrong turn. Don't
                 worry... it
                 happens to the best of us. Here's a
-                little tip that might help you get back on track.</p>
+                little tip that might help you get back on track.
+              </p>
 
-              <a class="btn btn-info btn-block mt-3" href="/dashboard"><i class="mdi mdi-reply"></i>
-                Return Home</a>
+              <div class="text-center mt-3">
+                <a class="btn btn-primary float-left" href="/dashboard"><i class="mdi mdi-reply"></i>
+                  Back to Dashboard
+                </a>
+
+                <a class="btn btn-link float-right" href="/">
+                  Back to Home
+                </a>
+              </div>
             </div>
           </div> <!-- end card-body -->
         </div>

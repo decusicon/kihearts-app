@@ -20,6 +20,16 @@ function closeFlash(selector) {
 }
 closeFlash("#messages");
 
+function clearAllInput() {
+  // When "Close" button is clicked in any modal, all input should get EMPTY.
+  $(`[data-dismiss="modal"]`).click(() => {
+    $(".modal input").val("");
+    $(".modal textarea").val("");
+    $(".modal select").val("");
+  });
+}
+clearAllInput();
+
 function getUserCountry() {
   var select = document.querySelectorAll("#country");
   var options = document.querySelectorAll("#country > option");
@@ -102,3 +112,41 @@ function countdowntimer(selector) {
   }
 }
 countdowntimer("countdown");
+
+// UPLOAD CLASS
+function initDropzone(selector) {
+  Dropzone.autoDiscover = false;
+
+  var photosDropzone = new Dropzone(selector, {
+    url: "/campaigns/create/photos",
+  });
+
+  Dropzone.options.campaignPhotosDropzone = {
+    paramName: "photos", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    uploadMultiple: true,
+    thumbnailWidth: 10,
+    thumbnailHeight: 10,
+    thumbnailMethod: "contain",
+    acceptedFiles: "image/*,application/pdf,.psd",
+    accept: function (file, done) {
+      console.log("FILE: ", file);
+      if (file.name == "aptech-logo.png") {
+        done("Naha, you don't.");
+      } else {
+        done();
+      }
+    },
+  };
+
+  photosDropzone.on("addedfile", function (file) {
+    file.previewElement.addEventListener("click", function () {
+      // myDropzone.removeFile(file);
+      console.log("FILE: ", file);
+    });
+  });
+}
+
+if (window.location.href.includes("campaigns")) {
+  initDropzone("div#campaignPhotosDropzone");
+}

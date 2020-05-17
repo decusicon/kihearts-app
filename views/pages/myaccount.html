@@ -162,7 +162,7 @@
                           Phone Number
                         </label>
                         <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" minlength="11"
-                          maxlength="14" value="<%= user.phoneNumber %>" required>
+                          maxlength="14" value="<%= addZero(user.phoneNumber, 'phoneNumber') %>" required>
                       </div>
                     </div>
                   </form>

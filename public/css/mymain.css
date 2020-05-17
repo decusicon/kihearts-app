@@ -115,11 +115,10 @@ body {
 }
 
 #campaign_reason {
-  max-height: 150px !important;
-  display: block;
-  word-break: break-all;
-  text-overflow: ellipsis;
+  width: 100% !important;
+  height: 150px !important;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #campaign_images {

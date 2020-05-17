@@ -25,6 +25,7 @@ function createCampaignModal() {
 
     // Change Modal Buttons
     $(".createCampaign #createCampaignSumbitBtn").text("Create");
+    $(".createCampaign #deleteCampaignBtn").addClass("hide");
 
     // Change Modal Form Action
     $(".createCampaign #createCampaignForm").attr(
@@ -227,6 +228,7 @@ function editCampaignModal() {
 
     // Change Modal Buttons
     $(".createCampaign #createCampaignSumbitBtn").text("Save Changes");
+    $(".createCampaign #deleteCampaignBtn").removeClass("hide");
 
     // Change Modal Form Action
     $(".createCampaign #createCampaignForm").attr(

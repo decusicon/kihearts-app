@@ -32,7 +32,7 @@ module.exports = (passport) => {
         var query = { [type]: username };
 
         User.findOne(query, (err, user) => {
-          if (err) throw err;
+          if (err) console.log(err);
           if (!user)
             return done(null, false, {
               message: "No user found!",
@@ -43,7 +43,7 @@ module.exports = (passport) => {
 
           // match password
           bcrypt.compare(password, user.password, (err, isMatch) => {
-            if (err) throw err;
+            if (err) console.log(err);
             if (!isMatch)
               return done(null, false, {
                 message: "Wrong password!",

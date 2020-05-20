@@ -114,6 +114,12 @@ body {
   box-shadow: none !important;
 }
 
+#campaign_title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+
 #campaign_reason {
   width: 100% !important;
   height: 150px !important;
@@ -146,6 +152,10 @@ body {
 #campaign_images ul li div.image {
   width: 200px;
   height: 200px;
+}
+
+.dropzone .dz-preview {
+  margin: 5px !important;
 }
 
 .donationGiftBox {

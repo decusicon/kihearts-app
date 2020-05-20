@@ -84,7 +84,7 @@ function countdowntimer(selector) {
     // var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
 
     // Update the count down every 1 second
-    var x = setInterval(function () {
+    var x = setInterval(() => {
       // Get today's date and time
       var now = new Date().getTime();
 
@@ -114,39 +114,35 @@ function countdowntimer(selector) {
 countdowntimer("countdown");
 
 // UPLOAD CLASS
-function initDropzone(selector) {
-  Dropzone.autoDiscover = false;
-
-  var photosDropzone = new Dropzone(selector, {
-    url: "/campaigns/create/photos",
-  });
-
-  Dropzone.options.campaignPhotosDropzone = {
-    paramName: "photos", // The name that will be used to transfer the file
+function dropzoneCon() {
+  Dropzone.options.campaignPhotosForm = {
+    paramName: "photo", // The name that will be used to transfer the file
+    maxFiles: 3, // Number of photos
     maxFilesize: 2, // MB
-    uploadMultiple: true,
-    thumbnailWidth: 10,
-    thumbnailHeight: 10,
-    thumbnailMethod: "contain",
-    acceptedFiles: "image/*,application/pdf,.psd",
-    accept: function (file, done) {
-      console.log("FILE: ", file);
-      if (file.name == "aptech-logo.png") {
-        done("Naha, you don't.");
-      } else {
-        done();
-      }
+    addRemoveLinks: true,
+    acceptedFiles: "image/*",
+    hiddenInputContainer: "#campaignPhotosForm",
+    parallelUploads: 3,
+    autoProcessQueue: false,
+    init: function () {
+      var count = 3;
+      this.on("error", (file) => {
+        this.removeFile(file);
+      });
+
+      this.on("processing", (file) => {
+        console.log("FILE PROCESSING: ", file);
+      });
+
+      submitPhotos(this);
+      console.log("Working!");
     },
   };
 
-  photosDropzone.on("addedfile", function (file) {
-    file.previewElement.addEventListener("click", function () {
-      // myDropzone.removeFile(file);
-      console.log("FILE: ", file);
+  const submitPhotos = (_this) => {
+    $("#createCampaignForm").submit((e) => {
+      _this.processQueue();
     });
-  });
+  };
 }
-
-if (window.location.href.includes("campaigns")) {
-  initDropzone("div#campaignPhotosDropzone");
-}
+dropzoneCon();

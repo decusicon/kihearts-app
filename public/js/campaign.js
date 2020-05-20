@@ -1,9 +1,3 @@
-// JQUERY MAIN METHOD
-$(() => {
-  editCampaignModal();
-  createCampaignModal();
-});
-
 // CREATE CAMPAIGN MODAL
 function createCampaignModal() {
   let createCampaignBtn = $(".createCampaignBtn");
@@ -24,7 +18,7 @@ function createCampaignModal() {
     );
 
     // Change Modal Buttons
-    $(".createCampaign #createCampaignSumbitBtn").text("Create");
+    $(".createCampaign #createCampaignSumbitBtn").text("Create Campaign");
     $(".createCampaign #deleteCampaignBtn").addClass("hide");
 
     // Change Modal Form Action
@@ -206,6 +200,7 @@ function createCampaignModal() {
     }
   });
 }
+editCampaignModal();
 
 // EDIT CAMPAIGN MODAL
 function editCampaignModal() {
@@ -237,3 +232,4 @@ function editCampaignModal() {
     );
   });
 }
+createCampaignModal();

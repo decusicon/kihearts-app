@@ -475,7 +475,8 @@
                       <div class="col-xl-5 col-lg-5">
                         <label for="next_phoneNumber">Phone Number</label>
                         <input type="number" class="form-control" id="next_phoneNumber" name="next_phoneNumber"
-                          minlength="11" maxlength="14" value="<%= user.nextOfKin.phoneNumber %>" required>
+                          minlength="11" maxlength="14"
+                          value="<%= addZero(user.nextOfKin.phoneNumber, 'phoneNumber') %>" required>
                       </div>
                     </div>
 

@@ -43,7 +43,7 @@
                 remember you are to grow the campaign to 20,000 GC before it can be
                 <span class="text-success">published</span>.
               </p>
-              <form action="/campaigns" method="POST" id="createCampaignForm">
+              <form action="/campaigns/create" method="POST" id="createCampaignForm">
                 <div class="container">
 
                   <!-- Campaign Title -->
@@ -195,12 +195,19 @@
                   <b class="text-danger">*</b>
                 </label>
 
-                <div id="campaignPhotosDropzone" class="dropzone"></div>
-                <div class="text-center mt-2 mb-2">
-                  <button type="button" form="campaignPhotosForm" class="btn btn-warning waves-effect waves-light">
-                    Save Photos
-                  </button>
-                </div>
+                <form action="/campaigns/create/photos" method="POST" enctype="multipart/form-data" class="dropzone"
+                  id="campaignPhotosForm">
+                  <div class="fallback">
+                    <input type="file" name="photos" id="photos" accept="image/*" multiple required>
+                  </div>
+                  <div class="dz-message">
+                    <i class="h1 text-muted dripicons-cloud-upload"></i>
+                    <h5>Drop files here or click to upload.</h5>
+                    <span class="text-muted font-10">
+                      3 photos only. Must upload photos less than 2MB
+                    </span>
+                  </div>
+                </form>
               </div>
               <!-- end Campaign Photos -->
 
@@ -219,7 +226,7 @@
                 id="deleteCampaignBtn">Delete</button>
               <button type="submit" id="createCampaignSumbitBtn" form="createCampaignForm"
                 class="btn btn-primary waves-effect waves-light">
-                Create
+                Create Campaign
               </button>
             </div>
           </div>
@@ -252,7 +259,7 @@
       <div class="row">
         <% campaigns.forEach((campaign) => { %>
         <!-- start col-->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div class="card">
             <div class="card-body ribbon-box">
               <div
@@ -270,8 +277,10 @@
                 <h4 class="text-dark text-left" id="campaign_title"><%= sentenceCase(campaign.title) %></h4>
                 <div class="mb-3 text-dark text-right">
                   <small id="campaign_category">
-                    <!-- <b class="text-muted">Category:</b> -->
-                    <%= upperCase(campaign.category) %>/<%= sentenceCase(campaign.subCategory) %>
+                    <b class="text-dark">Category:</b>
+                    <span class="text-muted">
+                      <%= upperCase(campaign.category) %>/<%= sentenceCase(campaign.subCategory) %>
+                    </span>
                   </small>
                 </div>
                 <p class="mb-0" id="campaign_reason">
@@ -316,7 +325,7 @@
         <% }); %>
 
         <!-- start col-->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 hide">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 hide">
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-success float-right">₦20,000 (published) </div>
@@ -378,7 +387,7 @@
         <!-- end col-->
 
         <!-- start col-->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 hide">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 hide">
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-warning float-right">₦15,000 (selected & paid) </div>
@@ -440,7 +449,7 @@
         <!-- end col-->
 
         <!-- start col-->
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 hide">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 hide">
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-success float-right">₦20,000 (published) </div>

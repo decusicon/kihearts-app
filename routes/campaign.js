@@ -1,5 +1,34 @@
 var express = require("express");
 var router = express.Router();
+var multer = require("multer");
+var path = require("path");
+var fs = require("fs");
+
+// MULTER
+// Upload middleware
+// This creates the storage for saving the file on disk.
+var upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => {
+      const createAndSetDestination = (loc) => {
+        if (!fs.existsSync(loc)) {
+          fs.mkdir(loc, { recursive: true }, (err) => {
+            if (err) console.log(err);
+            createAndSetDestination(loc);
+          });
+        } else cb(null, loc);
+      };
+      createAndSetDestination(`public/temp/${req.user.email}/photos`);
+    },
+
+    filename: (req, file, cb) => {
+      const uniqueFilename = `campaign${
+        file.fieldname
+      }_${Date.now()}${path.extname(file.originalname)}`;
+      cb(null, uniqueFilename);
+    },
+  }),
+});
 
 // MODELS
 var Campaign = require("../models/campaign");
@@ -9,7 +38,6 @@ router.get("/", (req, res) => {
   var query = { userId: req.user._id };
   Campaign.find(query, (err, campaigns) => {
     if (err) console.log(err);
-    console.log("campaigns: ", campaigns);
     res.render("pages/campaign", { title: "Campaigns", campaigns });
   });
 });
@@ -39,9 +67,8 @@ router.post("/create", (req, res) => {
     req.session.customErrors = campaignErrors;
     res.locals.customErrors = req.session.customErrors;
     // res.render("pages/auth/register", { title: "Register" });
-    req.flash("error", "Please! Fill up all fields.");
+    req.flash("error", "Please! Fill up all fields properly.");
     res.redirect("/campaigns");
-    res.end();
   } else {
     req.session.customErrors = [];
     var newCampaign = new Campaign({
@@ -75,9 +102,9 @@ router.post("/create", (req, res) => {
   }
 });
 
-router.post("/create/photos", (req, res) => {
+router.post("/create/photos", upload.array("photo", 3), (req, res) => {
   console.log("FILES: ", req.files);
-  req.flash("Working!");
+  req.flash("success", "Success! Working fine.");
   res.redirect("/campaigns");
 });
 

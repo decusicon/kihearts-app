@@ -363,19 +363,19 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
-  // User is not login, Redirect to login page if user enters a wrong address.
-  if (!req.user) req.url.includes("auth") ? res.redirect("/auth/login") : "";
-  // Else show him an error page.
-  else {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get("env") === "development" ? err : {};
+// app.use((err, req, res, next) => {
+//   // User is not login, Redirect to login page if user enters a wrong address.
+//   if (!req.user) req.url.includes("auth") ? res.redirect("/auth/login") : "";
+//   // Else show him an error page.
+//   else {
+//     // set locals, only providing error in development
+//     res.locals.message = err.message;
+//     res.locals.error = req.app.get("env") === "development" ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render("./errors/error", { title: "You're Lost!" });
-  }
-});
+//     // render the error page
+//     res.status(err.status || 500);
+//     res.render("./errors/error", { title: "You're Lost!" });
+//   }
+// });
 
 module.exports = app;

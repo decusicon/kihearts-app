@@ -94,52 +94,58 @@ app.use((req, res, next) => {
   // Gather user's body variables
   global.gatherUserBodyVariables = (req) => {
     const firstname = req.body.firstname
-      ? req.body.firstname.toLowerCase()
+      ? req.body.firstname.toLowerCase().trim()
       : "";
-    const lastname = req.body.lastname ? req.body.lastname.toLowerCase() : "";
-    const nickname = req.body.nickname ? req.body.nickname.toLowerCase() : "";
-    const email = req.body.email ? req.body.email.toLowerCase() : "";
+    const lastname = req.body.lastname
+      ? req.body.lastname.toLowerCase().trim()
+      : "";
+    const nickname = req.body.nickname
+      ? req.body.nickname.toLowerCase().trim()
+      : "";
+    const email = req.body.email ? req.body.email.toLowerCase().trim() : "";
     const phoneNumber = req.body.phoneNumber ? req.body.phoneNumber : "";
     const password = req.body.password ? req.body.password : "";
     const re_password = req.body.re_password ? req.body.re_password : "";
-    const country = req.body.country ? req.body.country.toLowerCase() : "";
-    const state = req.body.state ? req.body.state.toLowerCase() : "";
-    const city = req.body.city ? req.body.city.toLowerCase() : "";
+    const country = req.body.country
+      ? req.body.country.toLowerCase().trim()
+      : "";
+    const state = req.body.state ? req.body.state.toLowerCase().trim() : "";
+    const city = req.body.city ? req.body.city.toLowerCase().trim() : "";
     const postalcode = req.body.postalcode ? req.body.postalcode : "";
     const homeAddress = req.body.homeAddress
-      ? req.body.homeAddress.toLowerCase()
+      ? req.body.homeAddress.toLowerCase().trim()
       : "";
 
     // next of kin
     const next_firstname = req.body.next_firstname
-      ? req.body.next_firstname.toLowerCase()
+      ? req.body.next_firstname.toLowerCase().trim()
       : "";
     const next_lastname = req.body.next_lastname
-      ? req.body.next_lastname.toLowerCase()
+      ? req.body.next_lastname.toLowerCase().trim()
       : "";
     const next_relationship = req.body.next_relationship
-      ? req.body.next_relationship.toLowerCase()
+      ? req.body.next_relationship.toLowerCase().trim()
       : "";
     const next_email = req.body.next_email
-      ? req.body.next_email.toLowerCase()
+      ? req.body.next_email.toLowerCase().trim()
       : "";
     const next_phoneNumber = req.body.next_phoneNumber
       ? req.body.next_phoneNumber
       : "";
     const next_country = req.body.next_country
-      ? req.body.next_country.toLowerCase()
+      ? req.body.next_country.toLowerCase().trim()
       : "";
     const next_state = req.body.next_state
-      ? req.body.next_state.toLowerCase()
+      ? req.body.next_state.toLowerCase().trim()
       : "";
     const next_city = req.body.next_city
-      ? req.body.next_city.toLowerCase()
+      ? req.body.next_city.toLowerCase().trim()
       : "";
     const next_postalcode = req.body.next_postalcode
       ? req.body.next_postalcode
       : "";
     const next_homeAddress = req.body.next_homeAddress
-      ? req.body.next_homeAddress.toLowerCase()
+      ? req.body.next_homeAddress.toLowerCase().trim()
       : "";
 
     // check for user's errors
@@ -194,20 +200,23 @@ app.use((req, res, next) => {
 
   // Gather campaign's body variables
   global.gatherCampaignBodyVariables = (req) => {
-    const title = req.body.title ? req.body.title.toLowerCase() : "";
-    const category = req.body.category ? req.body.category.toLowerCase() : "";
-    const subCategory = req.body.subCategory
-      ? req.body.subCategory.toLowerCase()
+    console.log("BODY VARIABLES: ", req.body);
+    const title = req.body.title ? req.body.title.toLowerCase().trim() : "";
+    const category = req.body.category
+      ? req.body.category.toLowerCase().trim()
       : "";
-    const reason = req.body.reason ? req.body.reason.toLowerCase() : "";
-    const amount = req.body.amount ? req.body.amount.toLowerCase() : "";
+    const subCategory = req.body.subCategory
+      ? req.body.subCategory.toLowerCase().trim()
+      : "";
+    const reason = req.body.reason ? req.body.reason.toLowerCase().trim() : "";
+    const amount = req.body.amount ? req.body.amount.toLowerCase().trim() : "";
     const accountName = req.body.accountName
-      ? req.body.accountName.toLowerCase()
+      ? req.body.accountName.toLowerCase().trim()
       : "";
     const accountNumber = req.body.accountNumber
-      ? req.body.accountNumber.toLowerCase()
+      ? req.body.accountNumber.toLowerCase().trim()
       : "";
-    const bank = req.body.bank ? req.body.bank.toLowerCase() : "";
+    const bank = req.body.bank ? req.body.bank.toLowerCase().trim() : "";
 
     // check for user's errors
     req.checkBody("title", "Required!").notEmpty();
@@ -228,27 +237,6 @@ app.use((req, res, next) => {
       accountNumber,
       bank,
     };
-  };
-  next();
-});
-
-// Check is user have an avatar image
-app.use((req, res, next) => {
-  // Check every route, whether user has an avatar, else display upload-avatar view
-  global.isThereAvatar = (req, res) => {
-    if (!req.originalUrl.includes("auth")) {
-      if (global.user) {
-        if (
-          global.user.avatar == "" ||
-          global.user.avatar == global.defaultAvatar
-        ) {
-          res.render("pages/upload-avatar", {
-            title: "Upload a Photo",
-          });
-          res.end();
-        }
-      }
-    }
   };
   next();
 });
@@ -292,7 +280,7 @@ app.use((req, res, next) => {
 
   // Convert string into lowercase
   res.locals.lowerCase = (word) => {
-    return word.toLowerCase();
+    return word.toLowerCase().trim();
   };
 
   // Add 0 to account or phone number that are suppose to be 10 or 11 respectively
@@ -318,6 +306,27 @@ app.use((req, res, next) => {
   next();
 });
 
+// Check is user have an avatar image
+app.use((req, res, next) => {
+  // Check every route, whether user has an avatar, else display upload-avatar view
+  global.isThereAvatar = (req, res) => {
+    if (!req.originalUrl.includes("auth")) {
+      if (global.user) {
+        if (
+          global.user.avatar == "" ||
+          global.user.avatar == global.defaultAvatar
+        ) {
+          res.render("pages/upload-avatar", {
+            title: "Upload a Photo",
+          });
+          res.end();
+        }
+      }
+    }
+  };
+  next();
+});
+
 // Global Redirects
 app.use((req, res, next) => {
   // Redirect to login page if user is not found on any pages.
@@ -334,7 +343,7 @@ app.use((req, res, next) => {
     }
 
     // Check every route, whether user has an avatar, else display upload-avatar view
-    if (req.method.toLowerCase() == "get" && req.url != "")
+    if (req.method.toLowerCase().trim() == "get" && req.url != "")
       global.isThereAvatar(req, res);
   }
   next();
@@ -365,17 +374,16 @@ app.use((req, res, next) => {
 // error handler
 // app.use((err, req, res, next) => {
 //   // User is not login, Redirect to login page if user enters a wrong address.
-//   if (!req.user) req.url.includes("auth") ? res.redirect("/auth/login") : "";
-//   // Else show him an error page.
-//   else {
-//     // set locals, only providing error in development
-//     res.locals.message = err.message;
-//     res.locals.error = req.app.get("env") === "development" ? err : {};
-
-//     // render the error page
-//     res.status(err.status || 500);
-//     res.render("./errors/error", { title: "You're Lost!" });
-//   }
+//   // if (!req.user) req.url.includes("auth") ? res.redirect("/auth/login") : "";
+//   // // Else show him an error page.
+//   // else {
+//   //   // set locals, only providing error in development
+//   //   res.locals.message = err.message;
+//   //   res.locals.error = req.app.get("env") === "development" ? err : {};
+//   //   // render the error page
+//   //   res.status(err.status || 500);
+//   //   res.render("./errors/error", { title: "You're Lost!" });
+//   // }
 // });
 
 module.exports = app;

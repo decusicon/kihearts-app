@@ -26,6 +26,7 @@
     <% if(typeof campaigns != undefined){ %>
     <!-- start Modals container -->
     <div class="all_modals_container">
+      <%= campaignErrors %>
       <!-- Create Campaign Modal -->
       <div class="modal fade createCampaign" id="createCampaign" tabindex="-1" role="dialog"
         aria-labelledby="createCampaign" aria-hidden="true">
@@ -43,7 +44,7 @@
                 remember you are to grow the campaign to 20,000 GC before it can be
                 <span class="text-success">published</span>.
               </p>
-              <form action="/campaigns/create" method="POST" id="createCampaignForm">
+              <form action="/campaigns/create" method="POST" enctype="multipart/form-data" id="createCampaignForm">
                 <div class="container">
 
                   <!-- Campaign Title -->
@@ -185,31 +186,27 @@
                       </select>
                     </div>
                   </div>
+
+                  <!-- start Campaign Photos -->
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <label class="text-dark" for="campaignPhotos">
+                        Campaign Photos
+                        <b class="text-danger">*</b>
+                      </label>
+                      <div class="dropzone" id="campaignPhotosForm">
+                        <div class="dz-message">
+                          <i class="h1 text-muted dripicons-cloud-upload"></i>
+                          <h5>Drop files here or click to upload.</h5>
+                          <span class="text-muted font-10">
+                            3 photos only. Must upload photos less than 2MB
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </form>
-
-              <!-- start Campaign Photos -->
-              <div class="container">
-                <label class="text-dark" for="campaignPhotos">
-                  Campaign Photos
-                  <b class="text-danger">*</b>
-                </label>
-
-                <form action="/campaigns/create/photos" method="POST" enctype="multipart/form-data" class="dropzone"
-                  id="campaignPhotosForm">
-                  <div class="fallback">
-                    <input type="file" name="photos" id="photos" accept="image/*" multiple required>
-                  </div>
-                  <div class="dz-message">
-                    <i class="h1 text-muted dripicons-cloud-upload"></i>
-                    <h5>Drop files here or click to upload.</h5>
-                    <span class="text-muted font-10">
-                      3 photos only. Must upload photos less than 2MB
-                    </span>
-                  </div>
-                </form>
-              </div>
-              <!-- end Campaign Photos -->
 
               <!-- Last info text -->
               <div class="text-center mt-2 ">
@@ -225,7 +222,7 @@
               <button type="button" class="btn btn-danger waves-effect waves-light hide"
                 id="deleteCampaignBtn">Delete</button>
               <button type="submit" id="createCampaignSumbitBtn" form="createCampaignForm"
-                class="btn btn-primary waves-effect waves-light">
+                class="btn btn-primary waves-effect waves-light" disabled>
                 Create Campaign
               </button>
             </div>
@@ -265,7 +262,7 @@
               <div
                 class="ribbon ribbon-<%= campaign.stage == 'active' ? 'info' : campaign.stage == 'published' ? 'success' : campaign.stage == 'paid' ? 'warning' : ''%> float-right">
                 ₦<%= campaign.amount.toLocaleString() %>
-                (<%= campaign.stage != 'paid' ? campaign.stage : `selected & ${campaign.stage}`%>) </div>
+                ( <%= campaign.stage != 'paid' ? campaign.stage : `selected & ${campaign.stage}`%> ) </div>
 
               <% if(campaign.stage == 'active'){ %>
               <button class="btn btn-sm btn-link editCampaignBtn" data-toggle="modal" data-target="#createCampaign">
@@ -289,21 +286,17 @@
                 <div class="row mt-3 mb-1 text-right">
                   <div class="col-xl-12 col-lg-12">
                     <small class="text-dark">
-                      3 photos
+                      <%= campaign.photos.length %> photos
                     </small>
                   </div>
                 </div>
                 <div id="campaign_images">
                   <ul>
+                    <% campaign.photos.forEach((photoUrl) => { %>
                     <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
+                      <div class="image" style="background-image: url('<%= photoUrl %>');"></div>
                     </li>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
+                    <% }); %>
                   </ul>
                 </div>
                 <div class="row mt-3">

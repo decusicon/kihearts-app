@@ -4,7 +4,8 @@ var bcrypt = require("bcryptjs");
 // SCHEMA
 var CampaignSchema = mongoose.Schema({
   userId: { type: String, required: true },
-  createdAt: { type: Number, required: true },
+  prettyDate: { type: String, default: new Date() },
+  createdAt: { type: Number, default: Date.now() },
   title: { type: String, required: true },
   category: { type: String, required: true },
   subCategory: { type: String, required: true },
@@ -15,12 +16,12 @@ var CampaignSchema = mongoose.Schema({
     accountNumber: { type: Number, required: true },
     bank: { type: String, required: true },
   },
-  stage: { type: String, required: true },
+  stage: { type: String, default: "active" },
   coins: {
-    target: { type: Number, required: false },
-    total: { type: Number, required: false },
+    target: { type: Number, default: 20000 },
+    total: { type: Number, default: 0 },
   },
-  photosId: { type: String, required: false },
+  photos: [],
 });
 
 // MODEL

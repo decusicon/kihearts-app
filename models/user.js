@@ -4,7 +4,8 @@ var bcrypt = require("bcryptjs");
 // SCHEMA
 var UserSchema = mongoose.Schema({
   avatar: { type: String, required: false },
-  joined: { type: Number, required: true },
+  prettyDate: { type: String, default: new Date() },
+  joined: { type: Number, default: Date.now() },
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   nickname: { type: String, required: true },

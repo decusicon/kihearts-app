@@ -38,17 +38,24 @@ router.get("/", (req, res) => {
   var query = { userId: req.user._id };
   Campaign.find(query, (err, campaigns) => {
     if (err) console.log(err);
-    res.render("pages/campaign", { title: "Campaigns", campaigns });
+    res.render("pages/campaign", {
+      title: "Campaigns",
+      campaigns,
+      campaignErrors: "",
+    });
   });
 });
 
 // POST -- create campaign.
-router.post("/create", (req, res) => {
+router.post("/create", upload.array("photo", 3), (req, res) => {
   const userId = req.user._id;
-  const createdAt = Date.now();
-  const target = 20000;
-  const total = 0;
-  const stage = "active";
+  const photos = [];
+
+  for (var i = 0; i < req.files.length; i++) {
+    const file = req.files[i];
+    const filePath = `${process.env.APP_URL}${file.path.split("public")[1]}`;
+    photos.push(filePath);
+  }
 
   const {
     title,
@@ -66,14 +73,15 @@ router.post("/create", (req, res) => {
   if (campaignErrors) {
     req.session.customErrors = campaignErrors;
     res.locals.customErrors = req.session.customErrors;
-    // res.render("pages/auth/register", { title: "Register" });
-    req.flash("error", "Please! Fill up all fields properly.");
-    res.redirect("/campaigns");
+    res.send({
+      status: "error",
+      msg: "Please! Fill up all fields properly.",
+      url: "/campaigns",
+    });
   } else {
     req.session.customErrors = [];
     var newCampaign = new Campaign({
       userId,
-      createdAt,
       title,
       category,
       subCategory,
@@ -84,28 +92,21 @@ router.post("/create", (req, res) => {
         accountNumber,
         bank,
       },
-      stage,
-      coins: {
-        target,
-        total,
-      },
+      photos,
     });
 
     // Save new campaign
     Campaign.saveCampaign(newCampaign, (err) => {
       if (err) console.log(err);
       else {
-        req.flash("success", `Success! You've just created a campaign.`);
-        res.redirect("/campaigns");
+        res.send({
+          status: "success",
+          msg: "Success! You've just created a campaign.",
+          url: "/campaigns",
+        });
       }
     });
   }
-});
-
-router.post("/create/photos", upload.array("photo", 3), (req, res) => {
-  console.log("FILES: ", req.files);
-  req.flash("success", "Success! Working fine.");
-  res.redirect("/campaigns");
 });
 
 module.exports = router;

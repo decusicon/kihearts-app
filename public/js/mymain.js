@@ -1,24 +1,35 @@
-function closeFlash(selector) {
-  if (!$(selector).children().hasClass("stubborn")) {
+function closeFlash() {
+  var selector = "body #messages";
+  if ($(selector).children().hasClass("stubborn")) {
     if ($(selector).children().hasClass("error"))
-      setTimeout(() => {
+      setInterval(() => {
         $(selector).hide();
         $(selector).html("");
       }, 3000);
 
     if (!$(selector).children().hasClass("error"))
-      setTimeout(() => {
+      setInterval(() => {
         $(selector).hide();
         $(selector).html("");
       }, 1500);
   }
 
-  $("#messages").click((e) => {
+  $("body").click((e) => {
     $(selector).hide();
     $(selector).html("");
   });
 }
-closeFlash("#messages");
+closeFlash();
+
+function genAlertBox(type, msg) {
+  var html = `<div id="messages">
+    <ul class="${type}">
+      <li>${msg}</li>
+    </ul>
+  </div>`;
+
+  $("body").prepend(html);
+}
 
 function clearAllInput() {
   // When "Close" button is clicked in any modal, all input should get EMPTY.
@@ -28,7 +39,7 @@ function clearAllInput() {
     $(".modal select").val("");
   });
 }
-clearAllInput();
+// clearAllInput();
 
 function getUserCountry() {
   var select = document.querySelectorAll("#country");
@@ -113,36 +124,67 @@ function countdowntimer(selector) {
 }
 countdowntimer("countdown");
 
-// UPLOAD CLASS
 function dropzoneCon() {
-  Dropzone.options.campaignPhotosForm = {
-    paramName: "photo", // The name that will be used to transfer the file
-    maxFiles: 3, // Number of photos
-    maxFilesize: 2, // MB
-    addRemoveLinks: true,
-    acceptedFiles: "image/*",
-    hiddenInputContainer: "#campaignPhotosForm",
-    parallelUploads: 3,
-    autoProcessQueue: false,
-    init: function () {
-      var count = 3;
-      this.on("error", (file) => {
-        this.removeFile(file);
-      });
-
-      this.on("processing", (file) => {
-        console.log("FILE PROCESSING: ", file);
-      });
-
-      submitPhotos(this);
-      console.log("Working!");
-    },
+  const setParamName = () => {
+    return "photo";
   };
 
   const submitPhotos = (_this) => {
     $("#createCampaignForm").submit((e) => {
+      e.preventDefault();
+      e.stopPropagation();
       _this.processQueue();
     });
+  };
+
+  Dropzone.options.campaignPhotosForm = {
+    url: "/campaigns/create",
+    uploadMultiple: true,
+    paramName: setParamName, // The name that will be used to transfer the file
+    maxFiles: 3, // Number of photos
+    maxFilesize: 2, // MB
+    parallelUploads: 3, // Number of uploads at once
+    addRemoveLinks: true,
+    autoProcessQueue: false,
+    acceptedFiles: "image/*",
+    init: function () {
+      this.on("error", (file, errorMessage, xhr) => {
+        if (!xhr) this.removeFile(file);
+      });
+
+      this.on("errormultiple", (file, errorMessage, xhr) => {
+        if (xhr) genAlertBox("error", "Please! Fill up all fields properly.");
+      });
+
+      this.on("addedfile", (file) => {
+        if (this.files.length >= 3) {
+          $("#createCampaignSumbitBtn").removeAttr("disabled");
+        } else $("#createCampaignSumbitBtn").attr("disabled", "disabled");
+      });
+
+      this.on("removedfile", (file) => {
+        if (this.files.length >= 3) {
+          $("#createCampaignSumbitBtn").removeAttr("disabled");
+        } else $("#createCampaignSumbitBtn").attr("disabled", "disabled");
+      });
+
+      this.on("sendingmultiple", (file, xhr, formData) => {
+        // Append all form inputs to the formData Dropzone will POST
+        var data = $("#createCampaignForm").serializeArray();
+        $.each(data, (key, el) => {
+          formData.append(el.name, el.value);
+        });
+      });
+
+      submitPhotos(this);
+
+      this.on("successmultiple", (file, response) => {
+        genAlertBox(response.status, `${response.msg}`);
+        setTimeout(() => {
+          location.replace(response.url);
+        }, 2000);
+      });
+    },
   };
 }
 dropzoneCon();

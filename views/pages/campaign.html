@@ -26,7 +26,6 @@
     <% if(typeof campaigns != undefined){ %>
     <!-- start Modals container -->
     <div class="all_modals_container">
-      <%= campaignErrors %>
       <!-- Create Campaign Modal -->
       <div class="modal fade createCampaign" id="createCampaign" tabindex="-1" role="dialog"
         aria-labelledby="createCampaign" aria-hidden="true">
@@ -258,7 +257,13 @@
         <!-- start col-->
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div class="card">
-            <div class="card-body ribbon-box">
+            <div class="card-body ribbon-box" data-id="<%= campaign._id %>"
+              data-accountName="<%= campaign.bankDetails.accountName %>"
+              data-accountNumber="<%= campaign.bankDetails.accountNumber %>"
+              data-bank="<%= campaign.bankDetails.bank %>" data-title="<%= campaign.title %>"
+              data-category="<%= campaign.category %>" data-subCategory="<%= campaign.subCategory %>"
+              data-reason="<%= campaign.reason %>" data-amount="<%= campaign.amount %>"
+              data-stage="<%= campaign.stage %>">
               <div
                 class="ribbon ribbon-<%= campaign.stage == 'active' ? 'info' : campaign.stage == 'published' ? 'success' : campaign.stage == 'paid' ? 'warning' : ''%> float-right">
                 ₦<%= campaign.amount.toLocaleString() %>
@@ -330,192 +335,6 @@
         </div>
         <!-- end col-->
         <% }); %>
-
-        <!-- start col-->
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 hide">
-          <div class="card">
-            <div class="card-body ribbon-box">
-              <div class="ribbon ribbon-success float-right">₦20,000 (published) </div>
-              <button class="btn btn-sm btn-link editCampaignBtn hide" data-toggle="modal" data-target="#createCampaign"
-                disabled>
-                <span class="fe-edit-1 pr-1"></span>
-                Edit
-              </button>
-              <div class="ribbon-content">
-                <h4 class="text-dark text-left" id="campaign_title">Campaign Title</h4>
-                <div class="mb-3 text-dark text-left">
-                  <small id="campaign_category">
-                    <b class="d-block text-muted">Category</b> DISASTER/Earthquake
-                  </small>
-                </div>
-                <p class="mb-0" id="campaign_reason">
-                  Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit.Fuga, molestias quia nulla
-                  voluptas illum eveniet facilis, blanditiis
-                  reiciendis vitae consequuntur neque. Provident
-                  magnam quia dolore illo architecto, eius nesciunt
-                  distinctio!
-                </p>
-                <div class="row mt-3 mb-1 text-right">
-                  <div class="col-xl-12 col-lg-12">
-                    <small class="text-dark">
-                      3 photos
-                    </small>
-                  </div>
-                </div>
-                <div id="campaign_images">
-                  <ul>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-xl-6 col-lg-6">
-                    <span class="text-muted">Target: 20,000</span><br>
-                    <small class="text-dark">Total: 20,000 GC</small>
-                  </div>
-                  <div class="col-xl-6 col-lg-6 text-right">
-                    <button class="btn btn-sm btn-outline-success" disabled>
-                      Published
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- end card-body-->
-          </div>
-        </div>
-        <!-- end col-->
-
-        <!-- start col-->
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 hide">
-          <div class="card">
-            <div class="card-body ribbon-box">
-              <div class="ribbon ribbon-warning float-right">₦15,000 (selected & paid) </div>
-              <button class="btn btn-sm btn-link editCampaignBtn hide" data-toggle="modal" data-target="#createCampaign"
-                disabled>
-                <span class="fe-edit-1 pr-1"></span>
-                Edit
-              </button>
-              <div class="ribbon-content">
-                <h4 class="text-dark text-left" id="campaign_title">Campaign Title</h4>
-                <div class="mb-3 text-dark text-left">
-                  <small id="campaign_category">
-                    <b class="d-block text-muted">Category</b> HEALTH/Hospital Bill
-                  </small>
-                </div>
-                <p class="mb-0" id="campaign_reason">
-                  Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit.Fuga, molestias quia nulla
-                  voluptas illum eveniet facilis, blanditiis
-                  reiciendis vitae consequuntur neque. Provident
-                  magnam quia dolore illo architecto, eius nesciunt
-                  distinctio!
-                </p>
-                <div class="row mt-3 mb-1 text-right">
-                  <div class="col-xl-12 col-lg-12">
-                    <small class="text-dark">
-                      3 photos
-                    </small>
-                  </div>
-                </div>
-                <div id="campaign_images">
-                  <ul>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-xl-6 col-lg-6">
-                    <span class="text-muted">Target: 20,000</span><br>
-                    <small class="text-dark">Total: 20,000 GC</small>
-                  </div>
-                  <div class="col-xl-6 col-lg-6 text-right">
-                    <button class="btn btn-sm btn-outline-warning" disabled>
-                      Paid
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- end card-body-->
-          </div>
-        </div>
-        <!-- end col-->
-
-        <!-- start col-->
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 hide">
-          <div class="card">
-            <div class="card-body ribbon-box">
-              <div class="ribbon ribbon-success float-right">₦20,000 (published) </div>
-              <button class="btn btn-sm btn-link editCampaignBtn hide" data-toggle="modal" data-target="#createCampaign"
-                disabled>
-                <span class="fe-edit-1 pr-1"></span>
-                Edit
-              </button>
-              <div class="ribbon-content">
-                <h4 class="text-dark text-left" id="campaign_title">Campaign Title</h4>
-                <div class="mb-3 text-dark text-left">
-                  <small id="campaign_category">
-                    <b class="d-block text-muted">Category</b> DISASTER/Earthquake
-                  </small>
-                </div>
-                <p class="mb-0" id="campaign_reason">
-                  Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit.Fuga, molestias quia nulla
-                  voluptas illum eveniet facilis, blanditiis
-                  reiciendis vitae consequuntur neque. Provident
-                  magnam quia dolore illo architecto, eius nesciunt
-                  distinctio!
-                </p>
-                <div class="row mt-3 mb-1 text-right">
-                  <div class="col-xl-12 col-lg-12">
-                    <small class="text-dark">
-                      3 photos
-                    </small>
-                  </div>
-                </div>
-                <div id="campaign_images">
-                  <ul>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                    <li>
-                      <div class="image" style="background-image: url('/images/extras/noPhotos.png');"></div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="row mt-3">
-                  <div class="col-xl-6 col-lg-6">
-                    <span class="text-muted">Target: 20,000</span><br>
-                    <small class="text-dark">Total: 20,000 GC</small>
-                  </div>
-                  <div class="col-xl-6 col-lg-6 text-right">
-                    <button class="btn btn-sm btn-outline-success" disabled>
-                      Published
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div> <!-- end card-body-->
-          </div>
-        </div>
-        <!-- end col-->
       </div>
       <!-- end row -->
     </div>

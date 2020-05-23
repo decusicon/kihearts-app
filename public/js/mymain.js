@@ -35,6 +35,10 @@ function genAlertBox(type, msg) {
 
 // CLEAR EVERY MODAL INPUT
 function clearAllInput() {
+  $(".modal input").val("");
+  $(".modal textarea").val("");
+  $(".modal select").val("");
+
   // When "Close" button is clicked in any modal, all input should get EMPTY.
   $(`[data-dismiss="modal"]`).click(() => {
     $(".modal input").val("");
@@ -46,12 +50,12 @@ function clearAllInput() {
 
 // CREATE CAMPAIGN MODAL
 function createCampaignModal() {
-  let createCampaignBtn = $(".createCampaignBtn");
+  var createCampaignBtn = $(".createCampaignBtn");
 
   // At click event, do the following.
   createCampaignBtn.click(() => {
     // Empty all inputs
-    $(".createCampaign input").val("");
+    clearAllInput();
 
     // Change Modal Title
     $(".createCampaign #createCampaignTitle").text("Create Campaign");
@@ -246,16 +250,31 @@ function createCampaignModal() {
     }
   });
 }
-editCampaignModal();
+createCampaignModal();
 
 // EDIT CAMPAIGN MODAL
 function editCampaignModal() {
-  let editCampaignBtn = $(".editCampaignBtn");
+  var editCampaignBtn = $(".editCampaignBtn");
+  var deleteCampaignBtn = $("#deleteCampaignBtn");
+  var campaignid = "";
 
   // At click event, do the following.
-  editCampaignBtn.click(() => {
+  editCampaignBtn.click((e) => {
+    const {
+      id,
+      stage,
+      title,
+      reason,
+      amount,
+      accountname,
+      accountnumber,
+      category,
+      bank,
+    } = e.target.offsetParent.dataset;
+    campaignid = id;
+
     // Empty all inputs
-    $(".createCampaign input").val("");
+    clearAllInput();
 
     // Change Modal Title
     $(".createCampaign #createCampaignTitle").text("Edit Campaign");
@@ -267,6 +286,17 @@ function editCampaignModal() {
       you can't edit it!`
     );
 
+    // Set Modal Values
+    if (stage == "active") {
+      $(".createCampaign input#title").val(title);
+      $(".createCampaign textarea#reason").val(reason);
+      $(".createCampaign input#amount").val(amount);
+      $(".createCampaign input#accountName").val(accountname);
+      $(".createCampaign input#accountNumber").val(accountnumber);
+
+      setSelect("#category", category);
+      setSelect("#bank", bank);
+    }
     // Change Modal Buttons
     $(".createCampaign #createCampaignSumbitBtn").text("Save Changes");
     $(".createCampaign #deleteCampaignBtn").removeClass("hide");
@@ -274,19 +304,44 @@ function editCampaignModal() {
     // Change Modal Form Action
     $(".createCampaign #createCampaignForm").attr(
       "action",
-      `/campaigns/edit/${window.user.id}`
+      `/campaigns/edit/${campaignid}`
     );
   });
-}
-createCampaignModal();
 
-// GET USER'S COUNTRY
-function setSelect(selector) {
+  deleteCampaignBtn.click((e) => {
+    deleteCampaign(campaignid);
+  });
+}
+editCampaignModal();
+
+// DELETE CAMPAIGN
+function deleteCampaign(campaignid) {
+  if (confirm("Are you sure you want to delete this campaign?")) {
+    $.ajax({
+      url: `/campaigns/edit/${campaignid}/delete`,
+      type: "DELETE",
+      success: (result) => {
+        console.log("SUCCESS RESULT: ", result);
+        setTimeout(() => {
+          location.replace("");
+        }, 2000);
+      },
+      error: (result) => {
+        console.log("ERROR RESULT: ", result);
+      },
+    });
+  }
+}
+
+// SET SELECT VALUE
+function setSelect(selector, selectvalue = "") {
   var select = document.querySelectorAll(selector);
   if (select.length) {
     var options = document.querySelectorAll(`${selector} > option`);
-    var selectvalue = select[0].dataset.selectvalue;
     var optionvalue = "";
+    selectvalue = select[0].dataset.selectvalue
+      ? select[0].dataset.selectvalue
+      : selectvalue;
 
     options.forEach((option) => {
       optionvalue = option.value.toLowerCase();
@@ -304,7 +359,7 @@ setSelect("#next_country");
 function clearHistoryOnLogout(url) {
   history.state = {};
   sessionStorage.clear();
-  window.location.replace(url);
+  location.replace(url);
 }
 
 // PREVIEW AVATAR WJILE UPLOADING

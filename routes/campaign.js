@@ -38,11 +38,7 @@ router.get("/", (req, res) => {
   var query = { userId: req.user._id };
   Campaign.find(query, (err, campaigns) => {
     if (err) console.log(err);
-    res.render("pages/campaign", {
-      title: "Campaigns",
-      campaigns,
-      campaignErrors: "",
-    });
+    res.render("pages/campaign", { title: "Campaigns", campaigns });
   });
 });
 
@@ -71,8 +67,6 @@ router.post("/create", upload.array("photo", 3), (req, res) => {
   var campaignErrors = req.validationErrors();
 
   if (campaignErrors) {
-    req.session.customErrors = campaignErrors;
-    res.locals.customErrors = req.session.customErrors;
     res.send({
       status: "error",
       msg: "Please! Fill up all fields properly.",

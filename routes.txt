@@ -24,8 +24,8 @@
 /myaccount/edit/:id/details
 /myaccount/edit/:id/change-password
 /campaigns/create
-/campaigns/create/photos
 /campaigns/edit/:id
-/campaigns/edit/:id/photos
+/campaigns/edit/:id/delete
 /donations/create
 /donations/edit/:id
+/donations/edit/:id/delete

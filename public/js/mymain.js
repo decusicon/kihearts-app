@@ -1,3 +1,60 @@
+// GLOBAL FUNCTIONS
+function globalFunctions() {
+  // Convert string into name like
+  window.nameCase = (word) => {
+    word = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
+    return word;
+  };
+
+  // Convert string into sentence like
+  window.sentenceCase = (word) => {
+    word = word.toLowerCase().trim();
+    let result = "";
+    if (word.includes(" ")) {
+      let wordArr = [];
+      let words = word.split(" ");
+      words.forEach((word) => {
+        wordArr.push(
+          word.replace(word.charAt(0), word.charAt(0).toUpperCase())
+        );
+      });
+
+      return (wordArr = wordArr.join(" "));
+    }
+    result = word.replace(word.charAt(0), word.charAt(0).toUpperCase());
+    return result;
+  };
+
+  // Convert string into uppercase
+  window.upperCase = (word) => {
+    return word.toUpperCase();
+  };
+
+  // Convert string into lowercase
+  window.lowerCase = (word) => {
+    return word.toLowerCase().trim();
+  };
+
+  // Add 0 to account or phone number that are suppose to be 10 or 11 respectively
+  window.addZero = (number, type) => {
+    var numberStr = String(number);
+    if (type == "phoneNumber") {
+      if (numberStr.length == 10) {
+        return `0${number}`;
+      }
+    }
+
+    if (type == "accountNumber") {
+      if (numberStr.length == 9) {
+        return `0${number}`;
+      }
+    }
+
+    return number;
+  };
+}
+globalFunctions();
+
 // CLOSE FLASH MESSAGES
 function closeFlash() {
   var selector = "body #messages";
@@ -288,10 +345,12 @@ function editCampaignModal() {
 
     // Set Modal Values
     if (stage == "active") {
-      $(".createCampaign input#title").val(title);
-      $(".createCampaign textarea#reason").val(reason);
+      $(".createCampaign input#title").val(window.sentenceCase(title));
+      $(".createCampaign textarea#reason").val(window.nameCase(reason));
       $(".createCampaign input#amount").val(amount);
-      $(".createCampaign input#accountName").val(accountname);
+      $(".createCampaign input#accountName").val(
+        window.sentenceCase(accountname)
+      );
       $(".createCampaign input#accountNumber").val(accountnumber);
 
       setSelect("#category", category);

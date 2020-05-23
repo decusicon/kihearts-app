@@ -115,16 +115,27 @@ body {
 }
 
 #campaign_title {
+  display: block;
+  overflow: hidden !important;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden !important;
 }
 
 #campaign_reason {
+  display: block;
   width: 100% !important;
   height: 150px !important;
-  overflow: hidden;
+  overflow: hidden !important;
   text-overflow: ellipsis;
+}
+
+#campaign_category {
+  display: block;
+  float: right;
+  width: 80% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #campaign_images {

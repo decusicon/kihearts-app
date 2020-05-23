@@ -99,10 +99,10 @@
           <div class="card">
             <div class="card-body ribbon-box">
               <div class="ribbon ribbon-success float-right">My information </div>
-              <span>
+              <small class="h6">
                 <span class="fe-user pr-1"></span>
                 Joined: <%= moment(user.joined).fromNow() %>
-              </span>
+              </small>
               <div class="ribbon-content">
                 <form action="/myaccount/edit/<%= user._id %>/avatar" method="POST" enctype="multipart/form-data">
                   <div class="row mb-3 pb-3" style="border-bottom: 1px solid #eee;">
@@ -199,8 +199,8 @@
                         <label for="country" class="text-dark">
                           Country
                         </label>
-                        <span class="sr-only" id="real_country"><%= user.country %></span>
-                        <select class="form-control" id="country" name="country" required>
+                        <select class="form-control" id="country" name="country" data-selectvalue="<%= user.country %>"
+                          required>
                           <option value="">Select your country</option>
                           <option value="Afghanistan">Afghanistan</option>
                           <option value="Albania">Albania</option>
@@ -484,8 +484,8 @@
                       <!-- Next country -->
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_country">Country</label>
-                        <span class="sr-only" id="real_next_country"><%= user.nextOfKin.country %></span>
-                        <select class="form-control" id="next_country" name="next_country" required>
+                        <select class="form-control" id="next_country" name="next_country"
+                          data-selectvalue="<%= user.nextOfKin.country %>" required>
                           <option value="">Select country</option>
                           <option value="Afghanistan">Afghanistan</option>
                           <option value="Albania">Albania</option>

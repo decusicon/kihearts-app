@@ -92,18 +92,17 @@ function genAlertBox(type, msg) {
 
 // CLEAR EVERY MODAL INPUT
 function clearAllInput() {
-  $(".modal input").val("");
-  $(".modal textarea").val("");
-  $(".modal select").val("");
+  $(".modal input").val("").removeAttr("disabled");
+  $(".modal textarea").val("").removeAttr("disabled");
+  $(".modal select").val("").removeAttr("disabled");
 
   // When "Close" button is clicked in any modal, all input should get EMPTY.
   $(`[data-dismiss="modal"]`).click(() => {
-    $(".modal input").val("");
-    $(".modal textarea").val("");
-    $(".modal select").val("");
+    $(".modal input").val("").removeAttr("disabled");
+    $(".modal textarea").val("").removeAttr("disabled");
+    $(".modal select").val("").removeAttr("disabled");
   });
 }
-// clearAllInput();
 
 // CREATE CAMPAIGN MODAL
 function createCampaignModal() {
@@ -133,6 +132,9 @@ function createCampaignModal() {
       "action",
       "/campaigns/create"
     );
+
+    // Add disabled attribute
+    $("#createCampaignSumbitBtn").attr("disabled", "disabled");
   });
 
   // Selection of Category
@@ -173,7 +175,10 @@ function createCampaignModal() {
           "Tuition Fee",
         ],
       },
-      { mainCat: "EMERGENCY", subCat: ["Emergency"] },
+      {
+        mainCat: "EMERGENCY",
+        subCat: ["Emergency"],
+      },
       {
         mainCat: "ENTERTAINMENT",
         subCat: [
@@ -273,7 +278,10 @@ function createCampaignModal() {
           "Visa",
         ],
       },
-      { mainCat: "OTHERS", subCat: ["Others"] },
+      {
+        mainCat: "OTHERS",
+        subCat: ["Others"],
+      },
     ];
 
     for (const child of category.children) {
@@ -348,13 +356,16 @@ function editCampaignModal() {
       $(".createCampaign input#title").val(window.sentenceCase(title));
       $(".createCampaign textarea#reason").val(window.nameCase(reason));
       $(".createCampaign input#amount").val(amount);
-      $(".createCampaign input#accountName").val(
-        window.sentenceCase(accountname)
-      );
-      $(".createCampaign input#accountNumber").val(accountnumber);
+      $(".createCampaign input#accountName")
+        .val(window.sentenceCase(accountname))
+        .attr("disabled", "disabled");
+      $(".createCampaign input#accountNumber")
+        .val(accountnumber)
+        .attr("disabled", "disabled");
 
       setSelect("#category", category);
       setSelect("#bank", bank);
+      $(".createCampaign select#bank").attr("disabled", "disabled");
     }
     // Change Modal Buttons
     $(".createCampaign #createCampaignSumbitBtn").text("Save Changes");
@@ -365,19 +376,43 @@ function editCampaignModal() {
       "action",
       `/campaigns/edit/${campaignid}`
     );
+
+    // Remove disabled attribute
+    $("#createCampaignSumbitBtn").removeAttr("disabled");
   });
 
+  // Submit campaign via ajax
+  $("#createCampaignForm").submit((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    $.ajax({
+      url: e.target.action,
+      type: "POST",
+      success: (result) => {
+        console.log("SUCCESS RESULT: ", result);
+        setTimeout(() => {
+          location.replace("");
+        }, 2000);
+      },
+      error: (result) => {
+        console.log("ERROR RESULT: ", result);
+      },
+    });
+  });
+
+  // Delete a campaign
   deleteCampaignBtn.click((e) => {
-    deleteCampaign(campaignid);
+    deleteCampaign(`/campaigns/edit/${campaignid}/delete`);
   });
 }
 editCampaignModal();
 
 // DELETE CAMPAIGN
-function deleteCampaign(campaignid) {
+function deleteCampaign(url) {
   if (confirm("Are you sure you want to delete this campaign?")) {
     $.ajax({
-      url: `/campaigns/edit/${campaignid}/delete`,
+      url: url,
       type: "DELETE",
       success: (result) => {
         console.log("SUCCESS RESULT: ", result);
@@ -497,27 +532,56 @@ function dropzoneCon() {
     autoProcessQueue: false,
     acceptedFiles: "image/*",
     init: function () {
-      this.on("error", (file, errorMessage, xhr) => {
-        if (!xhr) this.removeFile(file);
+      var dropzoneInstance = this;
+      var editCampaignBtn = $(".editCampaignBtn");
+      editCampaignBtn.click((e) => {
+        const { photos } = e.target.offsetParent.dataset;
+        var photoUrls = photos.split(",");
+
+        const photoName = (url) => url.split("/").pop();
+
+        // Populate any existing thumbnails
+        if (photoUrls) {
+          dropzoneInstance.removeAllFiles(true);
+          for (var i = 0; i < photoUrls.length; i++) {
+            const photoUrl = photoUrls[i];
+            var mockFile = {
+              name: photoName(photoUrl),
+              size: 13,
+              type: "image/jpeg",
+              status: Dropzone.ADDED,
+              accepted: true,
+              url: photoUrl,
+            };
+
+            dropzoneInstance.emit("addedfile", mockFile);
+            dropzoneInstance.emit("thumbnail", mockFile, photoUrl);
+            dropzoneInstance.files.push(mockFile);
+          }
+        }
       });
 
-      this.on("errormultiple", (file, errorMessage, xhr) => {
+      dropzoneInstance.on("error", (file, errorMessage, xhr) => {
+        if (!xhr) dropzoneInstance.removeFile(file);
+      });
+
+      dropzoneInstance.on("errormultiple", (file, errorMessage, xhr) => {
         if (xhr) genAlertBox("error", "Please! Fill up all fields properly.");
       });
 
-      this.on("addedfile", (file) => {
-        if (this.files.length >= 3) {
+      dropzoneInstance.on("addedfile", (file) => {
+        if (dropzoneInstance.files.length >= 3) {
           $("#createCampaignSumbitBtn").removeAttr("disabled");
         } else $("#createCampaignSumbitBtn").attr("disabled", "disabled");
       });
 
-      this.on("removedfile", (file) => {
-        if (this.files.length >= 3) {
+      dropzoneInstance.on("removedfile", (file) => {
+        if (dropzoneInstance.files.length >= 3) {
           $("#createCampaignSumbitBtn").removeAttr("disabled");
         } else $("#createCampaignSumbitBtn").attr("disabled", "disabled");
       });
 
-      this.on("sendingmultiple", (file, xhr, formData) => {
+      dropzoneInstance.on("sendingmultiple", (file, xhr, formData) => {
         // Append all form inputs to the formData Dropzone will POST
         var data = $("#createCampaignForm").serializeArray();
         $.each(data, (key, el) => {
@@ -527,7 +591,7 @@ function dropzoneCon() {
 
       submitPhotos(this);
 
-      this.on("successmultiple", (file, response) => {
+      dropzoneInstance.on("successmultiple", (file, response) => {
         genAlertBox(response.status, `${response.msg}`);
         setTimeout(() => {
           location.replace(response.url);

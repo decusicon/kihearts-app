@@ -103,4 +103,65 @@ router.post("/create", upload.array("photo", 3), (req, res) => {
   }
 });
 
+// POST -- edit campaign.
+router.post("/edit", upload.array("photo", 3), (req, res) => {
+  const userId = req.user._id;
+  const photos = [];
+
+  for (var i = 0; i < req.files.length; i++) {
+    const file = req.files[i];
+    const filePath = `${process.env.APP_URL}${file.path.split("public")[1]}`;
+    photos.push(filePath);
+  }
+
+  const {
+    title,
+    category,
+    subCategory,
+    reason,
+    amount,
+    accountName,
+    accountNumber,
+    bank,
+  } = global.gatherCampaignBodyVariables(req);
+
+  var campaignErrors = req.validationErrors();
+
+  if (campaignErrors) {
+    res.send({
+      status: "error",
+      msg: "Please! Fill up all fields properly.",
+      url: "/campaigns",
+    });
+  } else {
+    req.session.customErrors = [];
+    var newCampaign = new Campaign({
+      userId,
+      title,
+      category,
+      subCategory,
+      reason,
+      amount,
+      bankDetails: {
+        accountName,
+        accountNumber,
+        bank,
+      },
+      photos,
+    });
+
+    // Save new campaign
+    Campaign.saveCampaign(newCampaign, (err) => {
+      if (err) console.log(err);
+      else {
+        res.send({
+          status: "success",
+          msg: "Success! You've just created a campaign.",
+          url: "/campaigns",
+        });
+      }
+    });
+  }
+});
+
 module.exports = router;

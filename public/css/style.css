@@ -2195,7 +2195,7 @@ ul {
     forms
 =====================================*/
 .investo-forms {
-  padding: 120px 0;
+  padding: 120px 20px;
 }
 .investo-forms .form-area form input,
 .investo-forms .form-area form select {

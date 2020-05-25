@@ -263,7 +263,7 @@
               data-bank="<%= campaign.bankDetails.bank %>" data-title="<%= campaign.title %>"
               data-category="<%= campaign.category %>" data-subCategory="<%= campaign.subCategory %>"
               data-reason="<%= campaign.reason %>" data-amount="<%= campaign.amount %>"
-              data-stage="<%= campaign.stage %>">
+              data-stage="<%= campaign.stage %>" data-photos="<%= campaign.photos %>">
               <div
                 class="ribbon ribbon-<%= campaign.stage == 'active' ? 'info' : campaign.stage == 'published' ? 'success' : campaign.stage == 'paid' ? 'warning' : ''%> float-right">
                 ₦<%= campaign.amount.toLocaleString() %>
@@ -277,7 +277,7 @@
               <% } %>
               <div class="ribbon-content">
                 <h4 class="text-dark text-left" id="campaign_title"><%= sentenceCase(campaign.title) %></h4>
-                <div class="mb-3 text-dark text-right">
+                <div class="text-dark text-right">
                   <small id="campaign_category">
                     <b class="text-dark">Category:</b>
                     <span class="text-muted">

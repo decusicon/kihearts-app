@@ -127,6 +127,7 @@ body {
   height: 150px !important;
   overflow: hidden !important;
   text-overflow: ellipsis;
+  border: 1px solid transparent;
 }
 
 #campaign_category {
@@ -136,6 +137,7 @@ body {
   overflow: hidden !important;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: 25px;
 }
 
 #campaign_images {
@@ -163,6 +165,7 @@ body {
 #campaign_images ul li div.image {
   width: 200px;
   height: 200px;
+  background-color: #ffffff;
 }
 
 .dropzone .dz-preview {

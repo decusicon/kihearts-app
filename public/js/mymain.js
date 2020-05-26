@@ -534,7 +534,11 @@ function dropzoneCon() {
     init: function () {
       var dropzoneInstance = this;
       var editCampaignBtn = $(".editCampaignBtn");
+      var createCampaignBtn = $(".createCampaignBtn");
+
       editCampaignBtn.click((e) => {
+        dropzoneInstance.removeAllFiles(true);
+
         const { photos } = e.target.offsetParent.dataset;
         var photoUrls = photos.split(",");
 
@@ -542,23 +546,40 @@ function dropzoneCon() {
 
         // Populate any existing thumbnails
         if (photoUrls) {
-          dropzoneInstance.removeAllFiles(true);
+          const createThumbnail = (tempFile) => {
+            dropzoneInstance.createThumbnailFromUrl(
+              tempFile,
+              dropzoneInstance.options.thumbnailWidth,
+              dropzoneInstance.options.thumbnailHeight,
+              dropzoneInstance.options.thumbnailMethod,
+              true,
+              (thumbnail) => {
+                dropzoneInstance.emit("thumbnail", tempFile, thumbnail);
+                dropzoneInstance.emit("complete", tempFile);
+              }
+            );
+          };
+
           for (var i = 0; i < photoUrls.length; i++) {
             const photoUrl = photoUrls[i];
-            var mockFile = {
+            var tempFile = {
               name: photoName(photoUrl),
-              size: 13,
+              size: 2000000,
               type: "image/jpeg",
               status: Dropzone.ADDED,
               accepted: true,
-              url: photoUrl,
+              dataURL: photoUrl,
             };
 
-            dropzoneInstance.emit("addedfile", mockFile);
-            dropzoneInstance.emit("thumbnail", mockFile, photoUrl);
-            dropzoneInstance.files.push(mockFile);
+            dropzoneInstance.files.push(tempFile);
+            dropzoneInstance.emit("addedfile", tempFile);
+            createThumbnail(tempFile);
           }
         }
+      });
+
+      createCampaignBtn.click((e) => {
+        dropzoneInstance.removeAllFiles(true);
       });
 
       dropzoneInstance.on("error", (file, errorMessage, xhr) => {

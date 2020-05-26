@@ -124,7 +124,7 @@ function createCampaignModal() {
     );
 
     // Change Modal Buttons
-    $(".createCampaign #createCampaignSumbitBtn").text("Create Campaign");
+    $(".createCampaign #createCampaignSubmitBtn").text("Create Campaign");
     $(".createCampaign #deleteCampaignBtn").addClass("hide");
 
     // Change Modal Form Action
@@ -134,11 +134,10 @@ function createCampaignModal() {
     );
 
     // Add disabled attribute
-    $("#createCampaignSumbitBtn").attr("disabled", "disabled");
+    $("[form=createCampaignForm]").attr("disabled", "disabled");
   });
 
-  // Selection of Category
-  $(".createCampaign select#category").on("input", () => {
+  const setSelectCategory = () => {
     var category = document.querySelector("#category");
     var subCategory = $("#subCategory");
 
@@ -313,7 +312,19 @@ function createCampaignModal() {
         });
       }
     }
-  });
+  };
+
+  // Selection of Category
+  $(".createCampaign select#category")
+    .on("input", () => {
+      setSelectCategory();
+    })
+    .on("click", () => {
+      setSelectCategory();
+    })
+    .on("load", () => {
+      setSelectCategory();
+    });
 }
 createCampaignModal();
 
@@ -334,6 +345,7 @@ function editCampaignModal() {
       accountname,
       accountnumber,
       category,
+      subcategory,
       bank,
     } = e.target.offsetParent.dataset;
     campaignid = id;
@@ -364,11 +376,15 @@ function editCampaignModal() {
         .attr("disabled", "disabled");
 
       setSelect("#category", category);
+      $("#subCategory").append(
+        `<option value="${subcategory}">${subcategory}</option>`
+      );
+      setSelect("#subCategory", subcategory);
       setSelect("#bank", bank);
       $(".createCampaign select#bank").attr("disabled", "disabled");
     }
     // Change Modal Buttons
-    $(".createCampaign #createCampaignSumbitBtn").text("Save Changes");
+    $(".createCampaign #createCampaignSubmitBtn").text("Save Changes");
     $(".createCampaign #deleteCampaignBtn").removeClass("hide");
 
     // Change Modal Form Action
@@ -378,7 +394,7 @@ function editCampaignModal() {
     );
 
     // Remove disabled attribute
-    $("#createCampaignSumbitBtn").removeAttr("disabled");
+    $("[form=createCampaignForm]").removeAttr("disabled");
   });
 
   // Submit campaign via ajax
@@ -592,14 +608,14 @@ function dropzoneCon() {
 
       dropzoneInstance.on("addedfile", (file) => {
         if (dropzoneInstance.files.length >= 3) {
-          $("#createCampaignSumbitBtn").removeAttr("disabled");
-        } else $("#createCampaignSumbitBtn").attr("disabled", "disabled");
+          $("[form=createCampaignForm]").removeAttr("disabled");
+        } else $("[form=createCampaignForm]").attr("disabled", "disabled");
       });
 
       dropzoneInstance.on("removedfile", (file) => {
         if (dropzoneInstance.files.length >= 3) {
-          $("#createCampaignSumbitBtn").removeAttr("disabled");
-        } else $("#createCampaignSumbitBtn").attr("disabled", "disabled");
+          $("[form=createCampaignForm]").removeAttr("disabled");
+        } else $("[form=createCampaignForm]").attr("disabled", "disabled");
       });
 
       dropzoneInstance.on("sendingmultiple", (file, xhr, formData) => {

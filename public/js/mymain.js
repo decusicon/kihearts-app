@@ -383,7 +383,7 @@ function editCampaignModal() {
     $("[form=createCampaignForm]").removeAttr("disabled");
   });
 
-  // Submit campaign via ajax
+  // Submit campaign via fetch
   $("#createCampaignForm").submit((e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -417,19 +417,17 @@ editCampaignModal();
 // DELETE CAMPAIGN
 function deleteCampaign(url) {
   if (confirm("Are you sure you want to delete this campaign?")) {
-    $.ajax({
-      url: url,
-      type: "DELETE",
-      success: (result) => {
-        console.log("SUCCESS RESULT: ", result);
+    fetch(url, { method: "DELETE" })
+      .then((response) => response.json())
+      .then((response) => {
+        genAlertBox(response.type, `${response.msg}`);
         setTimeout(() => {
-          location.replace("");
+          location.replace(response.url);
         }, 1000);
-      },
-      error: (result) => {
-        console.log("ERROR RESULT: ", result);
-      },
-    });
+      })
+      .catch((response) => {
+        console.log("ERROR RESPONSE: ", response);
+      });
   }
 }
 

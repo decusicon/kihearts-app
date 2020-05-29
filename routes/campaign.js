@@ -32,6 +32,7 @@ var upload = multer({
 
 // MODELS
 var Campaign = require("../models/campaign");
+var Bin = require("../models/bin");
 
 // GET -- fetch page.
 router.get("/", (req, res) => {
@@ -115,13 +116,44 @@ router.post("/edit/:_id", upload.array("photo", 3), (req, res) => {
     amount,
   };
 
-  Campaign.updateOne(query, update, (err, updated) => {
+  Campaign.updateOne(query, update, (err) => {
     if (err) console.log(err);
     else {
       res.send({
         type: "success",
         msg: "Success! You've just updated a campaign.",
         url: "/campaigns",
+      });
+    }
+  });
+});
+
+// DELETE -- delete campaign.
+router.delete("/edit/:id/delete", (req, res) => {
+  var query = { _id: req.params.id };
+
+  Campaign.findOne(query, (err, doc) => {
+    if (err) console.log(err);
+    else {
+      var newBin = new Bin({
+        from: "campaign",
+        binBag: { doc },
+      });
+
+      Bin.sendToBin(newBin, (err) => {
+        if (err) console.log(err);
+        else {
+          Campaign.deleteOne(query, (err) => {
+            if (err) console.log(err);
+            else {
+              res.send({
+                type: "success",
+                msg: "Success! You've just updated a campaign.",
+                url: "/campaigns",
+              });
+            }
+          });
+        }
       });
     }
   });

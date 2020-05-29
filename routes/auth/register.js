@@ -14,9 +14,6 @@ router.get("/", (req, res) => {
 // POST -- Register user
 
 router.post("/", (req, res) => {
-  const avatar = global.defaultAvatar;
-  const joined = Date.now();
-
   const {
     firstname,
     lastname,
@@ -50,8 +47,6 @@ router.post("/", (req, res) => {
   } else {
     req.session.customErrors = [];
     var newUser = new User({
-      avatar,
-      joined,
       firstname,
       lastname,
       nickname,

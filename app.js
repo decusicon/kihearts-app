@@ -184,9 +184,9 @@ app.use((req, res, next) => {
     req.checkBody("next_homeAddress", "Required!").notEmpty();
 
     // check for bank details error
-    req.checkBody("accountName", "Required!").notEmpty();
-    req.checkBody("accountNumber", "Required!").isInt();
-    req.checkBody("bank", "Required!").notEmpty();
+    req.checkBody("accountName", "Required!").notEmpty().optional();
+    req.checkBody("accountNumber", "Required!").isInt().optional();
+    req.checkBody("bank", "Required!").notEmpty().optional();
     return {
       firstname,
       lastname,

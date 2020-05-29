@@ -3,7 +3,10 @@ var bcrypt = require("bcryptjs");
 
 // SCHEMA
 var UserSchema = mongoose.Schema({
-  avatar: { type: String, required: false },
+  avatar: {
+    type: String,
+    default: `${process.env.APP_URL}/images/users/user.jpg`,
+  },
   prettyDate: { type: String, default: new Date() },
   joined: { type: Number, default: Date.now() },
   firstname: { type: String, required: true },
@@ -30,9 +33,9 @@ var UserSchema = mongoose.Schema({
     homeAddress: { type: String, required: true },
   },
   bankDetails: {
-    accountName: { type: String, required: true, default: "" },
-    accountNumber: { type: Number, required: true, default: 0 },
-    bank: { type: String, required: true, default: "" },
+    accountName: { type: String, default: "" },
+    accountNumber: { type: Number, default: null },
+    bank: { type: String, default: "" },
   },
 });
 

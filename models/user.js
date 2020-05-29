@@ -29,6 +29,11 @@ var UserSchema = mongoose.Schema({
     postalcode: { type: Number, required: true },
     homeAddress: { type: String, required: true },
   },
+  bankDetails: {
+    accountName: { type: String, required: true, default: "" },
+    accountNumber: { type: Number, required: true, default: 0 },
+    bank: { type: String, required: true, default: "" },
+  },
 });
 
 // MODEL

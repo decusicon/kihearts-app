@@ -92,10 +92,11 @@ function genAlertBox(type, msg) {
 
 // CLEAR EVERY MODAL INPUT
 function clearAllInput() {
-  $(".modal input").val("").removeAttr("disabled");
-  $(".modal textarea").val("").removeAttr("disabled");
-  $(".modal select").val("").removeAttr("disabled");
-
+  $(`[data-toggle="modal"]`).click(() => {
+    $(".modal input").val("").removeAttr("disabled");
+    $(".modal textarea").val("").removeAttr("disabled");
+    $(".modal select").val("").removeAttr("disabled");
+  });
   // When "Close" button is clicked in any modal, all input should get EMPTY.
   $(`[data-dismiss="modal"]`).click(() => {
     $(".modal input").val("").removeAttr("disabled");
@@ -103,6 +104,7 @@ function clearAllInput() {
     $(".modal select").val("").removeAttr("disabled");
   });
 }
+clearAllInput();
 
 // CREATE CAMPAIGN MODAL
 function createCampaignModal() {
@@ -110,9 +112,6 @@ function createCampaignModal() {
 
   // At click event, do the following.
   createCampaignBtn.click(() => {
-    // Empty all inputs
-    clearAllInput();
-
     // Change Modal Title
     $(".createCampaign #createCampaignTitle").text("Create Campaign");
 
@@ -350,9 +349,6 @@ function editCampaignModal() {
     } = e.target.offsetParent.dataset;
     campaignid = id;
 
-    // Empty all inputs
-    clearAllInput();
-
     // Change Modal Title
     $(".createCampaign #createCampaignTitle").text("Edit Campaign");
 
@@ -564,10 +560,14 @@ function dropzoneCon() {
         const { photos } = e.target.offsetParent.dataset;
         var photoUrls = photos.split(",");
 
-        const photoName = (url) => url.split("/").pop();
+        const photoName = (url) => url.split("/").pop().split("_")[0];
 
         // Populate any existing thumbnails
         if (photoUrls) {
+          // Remove the "Remove file" link and disable the dropzone from adding more
+          dropzoneInstance.options.addRemoveLinks = false;
+          dropzoneInstance.options.clickable = false;
+
           const createThumbnail = (tempFile) => {
             dropzoneInstance.createThumbnailFromUrl(
               tempFile,

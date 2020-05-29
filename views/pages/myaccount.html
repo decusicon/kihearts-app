@@ -45,7 +45,7 @@
               <form action="/myaccount/edit/<%= user._id %>/change-password" method="POST" id="changePasswordForm">
                 <div class="container">
                   <div class="form-group row">
-                    <!-- password -->
+                    <!-- old password -->
                     <div class="col-xl-12 col-lg-12">
                       <label for="current_password" class="text-dark">
                         Old Password
@@ -56,7 +56,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <!-- password -->
+                    <!-- new password -->
                     <div class="col-xl-6 col-lg-6">
                       <label for="password" class="text-dark">
                         New Password
@@ -80,12 +80,109 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-light waves-effect waves-light" data-dismiss="modal">Close</button>
               <button type="submit" form="changePasswordForm" class="btn btn-primary waves-effect waves-light">
-                Change Password
+                Save Changes
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Bank Details Modal -->
+      <div class="modal fade bank-details" id="bank-details" tabindex="-1" role="dialog" aria-labelledby="bank-details"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title text-dark" id="bankDetailsTitle">Bank Details</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="modalAlert" class="text-center alert alert-warning">
+                Make sure all entered details are
+                <span class="text-success">correct!</span>
+              </p>
+              <form action="/myaccount/edit/<%= user._id %>/bank-details" method="POST" id="bankDetailsForm">
+                <div class="container">
+                  <!-- Bank details header -->
+                  <div class="text-center mt-4">
+                    <h5 class="text-dark">Your Bank Details</h5>
+                    <p>
+                      <small>
+                        Entering you bank details here is 99.9% secured,
+                        beside it must be a valid bank details.
+                      </small>
+                    </p>
+                  </div>
+
+                  <!-- Account Name -->
+                  <div class="form-group row">
+                    <div class="col-lg-12">
+                      <label class="text-dark" for="accountName">
+                        Account Name
+                        <b class="text-danger">*</b>
+                      </label>
+                      <input type="text" class="form-control" name="accountName" id="accountName"
+                        placeholder="A valid account name" required>
+                    </div>
+                  </div>
+
+                  <!-- Account Number -->
+                  <div class="form-group row">
+                    <div class="col-lg-6">
+                      <label class="text-dark" for="accountNumber">
+                        Account Number
+                        <b class="text-danger">*</b>
+                      </label>
+                      <input type="number" class="form-control" name="accountNumber" id="accountNumber"
+                        placeholder="A valid account number" required>
+                    </div>
+
+                    <!-- Bank -->
+                    <div class="col-lg-6">
+                      <label class="text-dark" for="bank">
+                        Bank
+                        <b class="text-danger">*</b>
+                      </label>
+                      <select class="form-control" name="bank" id="bank" required>
+                        <option value="">Select your Bank</option>
+                        <option value="Access Bank">Access Bank Plc</option>
+                        <option value="Fidelity Bank">Fidelity Bank Plc</option>
+                        <option value="First City Monument Bank">First City Monument Bank Limited</option>
+                        <option value="First Bank of Nigeria">First Bank of Nigeria Limited</option>
+                        <option value="Guaranty Trust Bank">Guaranty Trust Bank Plc</option>
+                        <option value="Union Bank of Nigeria">Union Bank of Nigeria Plc</option>
+                        <option value="United Bank for Africa">United Bank for Africa Plc</option>
+                        <option value="Zenith Bank">Zenith Bank Plc</option>
+                        <option value="Citibank Nigeria">Citibank Nigeria Limited</option>
+                        <option value="Ecobank Nigeria">Ecobank Nigeria Plc</option>
+                        <option value="Heritage Banking Company">Heritage Banking Company Limited</option>
+                        <option value="Keystone Bank">Keystone Bank Limited</option>
+                        <option value="Polaris Bank">Polaris Bank Limited</option>
+                        <option value="Stanbic IBTC Bank">Stanbic IBTC Bank Plc</option>
+                        <option value="Standard">Standard Chartered</option>
+                        <option value="Sterling Bank">Sterling Bank Plc</option>
+                        <option value="Titan Trust Bank">Titan Trust Bank Limited</option>
+                        <option value="Unity Bank">Unity Bank Plc</option>
+                        <option value="Wema Bank">Wema Bank Plc</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light waves-effect waves-light" data-dismiss="modal">Close</button>
+              <button type="submit" form="bankDetailsForm" class="btn btn-primary waves-effect waves-light">
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <!-- end Modals container -->
 
@@ -189,6 +286,10 @@
               <button class="btn btn-sm btn-link changePasswordBtn" data-toggle="modal" data-target="#change-password">
                 <span class="fe-lock pr-1"></span>
                 Change Password
+              </button>
+              <button class="btn btn-sm btn-link accountDetailsBtn" data-toggle="modal" data-target="#bank-details">
+                <span class="fe-credit-card pr-1"></span>
+                Bank Details
               </button>
               <div class="ribbon-content">
                 <div class="col-xl-12 col-lg-12">

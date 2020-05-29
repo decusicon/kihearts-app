@@ -148,6 +148,15 @@ app.use((req, res, next) => {
       ? req.body.next_homeAddress.toLowerCase().trim()
       : "";
 
+    // bank details
+    const accountName = req.body.accountName
+      ? req.body.accountName.toLowerCase().trim()
+      : "";
+    const accountNumber = req.body.accountNumber
+      ? req.body.accountNumber.toLowerCase().trim()
+      : "";
+    const bank = req.body.bank ? req.body.bank.toLowerCase().trim() : "";
+
     // check for user's errors
     req.checkBody("firstname", "Required!").notEmpty();
     req.checkBody("lastname", "Required!").notEmpty();
@@ -173,6 +182,11 @@ app.use((req, res, next) => {
     req.checkBody("next_city", "Required!").notEmpty();
     req.checkBody("next_postalcode", "Required!").isPostalCode("any");
     req.checkBody("next_homeAddress", "Required!").notEmpty();
+
+    // check for bank details error
+    req.checkBody("accountName", "Required!").notEmpty();
+    req.checkBody("accountNumber", "Required!").isInt();
+    req.checkBody("bank", "Required!").notEmpty();
     return {
       firstname,
       lastname,
@@ -195,6 +209,9 @@ app.use((req, res, next) => {
       next_city,
       next_postalcode,
       next_homeAddress,
+      accountName,
+      accountNumber,
+      bank,
     };
   };
 
@@ -210,13 +227,6 @@ app.use((req, res, next) => {
       : "";
     const reason = req.body.reason ? req.body.reason.toLowerCase().trim() : "";
     const amount = req.body.amount ? req.body.amount.toLowerCase().trim() : "";
-    const accountName = req.body.accountName
-      ? req.body.accountName.toLowerCase().trim()
-      : "";
-    const accountNumber = req.body.accountNumber
-      ? req.body.accountNumber.toLowerCase().trim()
-      : "";
-    const bank = req.body.bank ? req.body.bank.toLowerCase().trim() : "";
 
     // check for user's errors
     req.checkBody("title", "Required!").notEmpty();
@@ -224,18 +234,12 @@ app.use((req, res, next) => {
     req.checkBody("subCategory", "Required!").notEmpty();
     req.checkBody("reason", "Required!").notEmpty();
     req.checkBody("amount", "Required!").isInt();
-    req.checkBody("accountName", "Required!").notEmpty();
-    req.checkBody("accountNumber", "Required!").isInt();
-    req.checkBody("bank", "Required!").notEmpty();
     return {
       title,
       category,
       subCategory,
       reason,
       amount,
-      accountName,
-      accountNumber,
-      bank,
     };
   };
   next();

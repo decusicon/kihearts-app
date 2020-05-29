@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-var bcrypt = require("bcryptjs");
 
 // SCHEMA
 var CampaignSchema = mongoose.Schema({
@@ -11,11 +10,6 @@ var CampaignSchema = mongoose.Schema({
   subCategory: { type: String, required: true },
   reason: { type: String, required: true },
   amount: { type: Number, required: true },
-  bankDetails: {
-    accountName: { type: String, required: true },
-    accountNumber: { type: Number, required: true },
-    bank: { type: String, required: true },
-  },
   stage: { type: String, default: "active" },
   coins: {
     target: { type: Number, default: 20000 },

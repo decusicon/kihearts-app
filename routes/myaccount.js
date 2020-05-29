@@ -180,4 +180,26 @@ router.post("/edit/:id/change-password", (req, res) => {
   });
 });
 
+// POST -- edit user's bank details
+router.post("/edit/:id/bank-details", (req, res) => {
+  const { accountName, accountNumber, bank } = global.gatherUserBodyVariables(
+    req
+  );
+
+  var update = {
+    bankDetails: {
+      accountName,
+      accountNumber,
+      bank,
+    },
+  };
+
+  var query = { _id: req.params.id };
+  User.updateOne(query, update, (err) => {
+    if (err) console.log(err);
+    req.flash("success", "Success! You've just updated your account.");
+    res.redirect("/myaccount");
+  });
+});
+
 module.exports = router;

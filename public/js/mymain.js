@@ -63,13 +63,13 @@ function closeFlash() {
       setTimeout(() => {
         $(selector).hide();
         $(selector).html("");
-      }, 3000);
+      }, 2000);
 
     if (!$(selector).children().hasClass("error"))
       setTimeout(() => {
         $(selector).hide();
         $(selector).html("");
-      }, 2000);
+      }, 1000);
   }
 
   $("body").click((e) => {
@@ -92,26 +92,23 @@ function genAlertBox(type, msg) {
 
 // CLEAR EVERY MODAL INPUT
 function clearAllInput() {
-  $(`[data-toggle="modal"]`).click(() => {
-    $(".modal input").val("").removeAttr("disabled");
-    $(".modal textarea").val("").removeAttr("disabled");
-    $(".modal select").val("").removeAttr("disabled");
-  });
   // When "Close" button is clicked in any modal, all input should get EMPTY.
-  $(`[data-dismiss="modal"]`).click(() => {
-    $(".modal input").val("").removeAttr("disabled");
-    $(".modal textarea").val("").removeAttr("disabled");
-    $(".modal select").val("").removeAttr("disabled");
-  });
+  // $(`[data-dismiss="modal"]`).click(() => {
+  $(".modal input").val("").removeAttr("disabled");
+  $(".modal textarea").val("").removeAttr("disabled");
+  $(".modal select").val("").removeAttr("disabled");
+  // });
 }
-clearAllInput();
 
 // CREATE CAMPAIGN MODAL
 function createCampaignModal() {
   var createCampaignBtn = $(".createCampaignBtn");
 
   // At click event, do the following.
-  createCampaignBtn.click(() => {
+  createCampaignBtn.click((e) => {
+    // Clear every input
+    clearAllInput();
+
     // Change Modal Title
     $(".createCampaign #createCampaignTitle").text("Create Campaign");
 
@@ -341,13 +338,13 @@ function editCampaignModal() {
       title,
       reason,
       amount,
-      accountname,
-      accountnumber,
       category,
       subcategory,
-      bank,
     } = e.target.offsetParent.dataset;
     campaignid = id;
+
+    // Clear every input
+    clearAllInput();
 
     // Change Modal Title
     $(".createCampaign #createCampaignTitle").text("Edit Campaign");
@@ -364,13 +361,6 @@ function editCampaignModal() {
       $(".createCampaign input#title").val(window.sentenceCase(title));
       $(".createCampaign textarea#reason").val(window.nameCase(reason));
       $(".createCampaign input#amount").val(amount);
-      $(".createCampaign input#accountName")
-        .val(window.sentenceCase(accountname))
-        .attr("disabled", "disabled");
-      $(".createCampaign input#accountNumber")
-        .val(accountnumber)
-        .attr("disabled", "disabled");
-
       setSelect("#category", category);
       $("#subCategory").append(
         `<option value="${window.sentenceCase(
@@ -378,8 +368,6 @@ function editCampaignModal() {
         )}">${window.sentenceCase(subcategory)}</option>`
       );
       setSelect("#subCategory", subcategory);
-      setSelect("#bank", bank);
-      $(".createCampaign select#bank").attr("disabled", "disabled");
     }
     // Change Modal Buttons
     $(".createCampaign #createCampaignSubmitBtn").text("Save Changes");
@@ -466,6 +454,7 @@ function setSelect(selector, selectvalue = "") {
 }
 setSelect("#country");
 setSelect("#next_country");
+setSelect("#bank");
 
 // CLEAR HISTORY WHEN LOGGED OUT
 function clearHistoryOnLogout(url) {

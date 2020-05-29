@@ -60,9 +60,6 @@ router.post("/create", upload.array("photo", 3), (req, res) => {
       subCategory,
       reason,
       amount,
-      accountName,
-      accountNumber,
-      bank,
     } = global.gatherCampaignBodyVariables(req);
 
     var campaignErrors = req.validationErrors();
@@ -81,11 +78,6 @@ router.post("/create", upload.array("photo", 3), (req, res) => {
         subCategory,
         reason,
         amount,
-        bankDetails: {
-          accountName,
-          accountNumber,
-          bank,
-        },
         photos,
       });
 

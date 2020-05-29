@@ -121,72 +121,7 @@
                     </div>
                   </div>
 
-                  <!-- Bank details header -->
-                  <div class="text-center mt-4">
-                    <h5 class="text-dark">Your Bank Details</h5>
-                    <p>
-                      <small>
-                        Entering you bank details here is 99.9% secured,
-                        beside it must be a valid account details.
-                      </small>
-                    </p>
-                  </div>
-
-                  <!-- Account Name -->
-                  <div class="form-group row">
-                    <div class="col-lg-12">
-                      <label class="text-dark" for="accountName">
-                        Account Name
-                        <b class="text-danger">*</b>
-                      </label>
-                      <input type="text" class="form-control" name="accountName" id="accountName"
-                        placeholder="A valid account name" required>
-                    </div>
-                  </div>
-
-                  <!-- Account Number -->
-                  <div class="form-group row">
-                    <div class="col-lg-6">
-                      <label class="text-dark" for="accountNumber">
-                        Account number
-                        <b class="text-danger">*</b>
-                      </label>
-                      <input type="number" class="form-control" name="accountNumber" id="accountNumber"
-                        placeholder="A valid account number" required>
-                    </div>
-
-                    <!-- Bank -->
-                    <div class="col-lg-6">
-                      <label class="text-dark" for="bank">
-                        Bank
-                        <b class="text-danger">*</b>
-                      </label>
-                      <select class="form-control" name="bank" id="bank" required>
-                        <option value="">Select your Bank</option>
-                        <option value="Access Bank">Access Bank Plc</option>
-                        <option value="Fidelity Bank">Fidelity Bank Plc</option>
-                        <option value="First City Monument Bank">First City Monument Bank Limited</option>
-                        <option value="First Bank of Nigeria">First Bank of Nigeria Limited</option>
-                        <option value="Guaranty Trust Bank">Guaranty Trust Bank Plc</option>
-                        <option value="Union Bank of Nigeria">Union Bank of Nigeria Plc</option>
-                        <option value="United Bank for Africa">United Bank for Africa Plc</option>
-                        <option value="Zenith Bank">Zenith Bank Plc</option>
-                        <option value="Citibank Nigeria">Citibank Nigeria Limited</option>
-                        <option value="Ecobank Nigeria">Ecobank Nigeria Plc</option>
-                        <option value="Heritage Banking Company">Heritage Banking Company Limited</option>
-                        <option value="Keystone Bank">Keystone Bank Limited</option>
-                        <option value="Polaris Bank">Polaris Bank Limited</option>
-                        <option value="Stanbic IBTC Bank">Stanbic IBTC Bank Plc</option>
-                        <option value="Standard">Standard Chartered</option>
-                        <option value="Sterling Bank">Sterling Bank Plc</option>
-                        <option value="Titan Trust Bank">Titan Trust Bank Limited</option>
-                        <option value="Unity Bank">Unity Bank Plc</option>
-                        <option value="Wema Bank">Wema Bank Plc</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <!-- start Campaign Photos -->
+                  <!-- Campaign Photos -->
                   <div class="form-group row">
                     <div class="col-lg-12">
                       <label class="text-dark" for="campaignPhotos">
@@ -257,10 +192,7 @@
         <!-- start col-->
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div class="card">
-            <div class="card-body ribbon-box" data-id="<%= campaign._id %>"
-              data-accountname="<%= campaign.bankDetails.accountName %>"
-              data-accountnumber="<%= campaign.bankDetails.accountNumber %>"
-              data-bank="<%= campaign.bankDetails.bank %>" data-title="<%= campaign.title %>"
+            <div class="card-body ribbon-box" data-id="<%= campaign._id %>" data-title="<%= campaign.title %>"
               data-category="<%= campaign.category %>" data-subCategory="<%= campaign.subCategory %>"
               data-reason="<%= campaign.reason %>" data-amount="<%= campaign.amount %>"
               data-stage="<%= campaign.stage %>" data-photos="<%= campaign.photos %>">

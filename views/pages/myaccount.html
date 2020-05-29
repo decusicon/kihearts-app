@@ -103,7 +103,8 @@
                 Make sure all entered details are
                 <span class="text-success">correct!</span>
               </p>
-              <form action="/myaccount/edit/<%= user._id %>/bank-details" method="POST" id="bankDetailsForm">
+              <form action="/myaccount/edit/<%= user._id %>/bank-details" method="POST" class="bankDetailsForm"
+                id="bankDetailsForm">
                 <div class="container">
                   <!-- Bank details header -->
                   <div class="text-center mt-4">
@@ -124,7 +125,8 @@
                         <b class="text-danger">*</b>
                       </label>
                       <input type="text" class="form-control" name="accountName" id="accountName"
-                        placeholder="A valid account name" required>
+                        placeholder="A valid account name" value="<%= sentenceCase(user.bankDetails.accountName) %>"
+                        required>
                     </div>
                   </div>
 
@@ -136,7 +138,8 @@
                         <b class="text-danger">*</b>
                       </label>
                       <input type="number" class="form-control" name="accountNumber" id="accountNumber"
-                        placeholder="A valid account number" required>
+                        placeholder="A valid account number"
+                        value="<%= addZero(user.bankDetails.accountNumber, 'accountNumber') %>" required>
                     </div>
 
                     <!-- Bank -->
@@ -145,7 +148,8 @@
                         Bank
                         <b class="text-danger">*</b>
                       </label>
-                      <select class="form-control" name="bank" id="bank" required>
+                      <select class="form-control" name="bank" id="bank" data-selectvalue="<%= user.bankDetails.bank %>"
+                        required>
                         <option value="">Select your Bank</option>
                         <option value="Access Bank">Access Bank Plc</option>
                         <option value="Fidelity Bank">Fidelity Bank Plc</option>

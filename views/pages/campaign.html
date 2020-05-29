@@ -337,6 +337,15 @@
         <% }); %>
       </div>
       <!-- end row -->
+      <% if (campaigns.length > 6) { %>
+      <center class="p-3">
+        <h6>Keep creating more campaigns!</h6>
+        <button class="btn btn-outline-primary waves-effect waves-light createCampaignBtn" data-toggle="modal"
+          data-target="#createCampaign">
+          Create a campaign
+        </button>
+      </center>
+      <% } %>
     </div>
     <!-- end Campaigns Card -->
     <% } %>

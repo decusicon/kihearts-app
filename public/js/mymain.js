@@ -60,16 +60,16 @@ function closeFlash() {
   var selector = "body #messages";
   if (!$(selector).children().hasClass("stubborn")) {
     if ($(selector).children().hasClass("error"))
-      setInterval(() => {
+      setTimeout(() => {
         $(selector).hide();
         $(selector).html("");
       }, 3000);
 
     if (!$(selector).children().hasClass("error"))
-      setInterval(() => {
+      setTimeout(() => {
         $(selector).hide();
         $(selector).html("");
-      }, 1500);
+      }, 2000);
   }
 
   $("body").click((e) => {
@@ -377,7 +377,9 @@ function editCampaignModal() {
 
       setSelect("#category", category);
       $("#subCategory").append(
-        `<option value="${subcategory}">${subcategory}</option>`
+        `<option value="${window.sentenceCase(
+          subcategory
+        )}">${window.sentenceCase(subcategory)}</option>`
       );
       setSelect("#subCategory", subcategory);
       setSelect("#bank", bank);
@@ -402,19 +404,23 @@ function editCampaignModal() {
     e.preventDefault();
     e.stopPropagation();
 
-    $.ajax({
-      url: e.target.action,
-      type: "POST",
-      success: (result) => {
-        console.log("SUCCESS RESULT: ", result);
-        setTimeout(() => {
-          location.replace("");
-        }, 2000);
-      },
-      error: (result) => {
-        console.log("ERROR RESULT: ", result);
-      },
+    var formData = new FormData();
+    var data = $("#createCampaignForm").serializeArray();
+    $.each(data, (key, el) => {
+      formData.append(el.name, el.value);
     });
+
+    fetch(e.target.action, { method: "POST", body: formData })
+      .then((response) => response.json())
+      .then((response) => {
+        genAlertBox(response.type, `${response.msg}`);
+        setTimeout(() => {
+          location.replace(response.url);
+        }, 1000);
+      })
+      .catch((response) => {
+        console.log("ERROR RESPONSE: ", response);
+      });
   });
 
   // Delete a campaign
@@ -434,7 +440,7 @@ function deleteCampaign(url) {
         console.log("SUCCESS RESULT: ", result);
         setTimeout(() => {
           location.replace("");
-        }, 2000);
+        }, 1000);
       },
       error: (result) => {
         console.log("ERROR RESULT: ", result);
@@ -629,10 +635,10 @@ function dropzoneCon() {
       submitPhotos(this);
 
       dropzoneInstance.on("successmultiple", (file, response) => {
-        genAlertBox(response.status, `${response.msg}`);
+        genAlertBox(response.type, `${response.msg}`);
         setTimeout(() => {
           location.replace(response.url);
-        }, 2000);
+        }, 1000);
       });
     },
   };

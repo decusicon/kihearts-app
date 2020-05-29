@@ -69,7 +69,7 @@ router.post("/create", upload.array("photo", 3), (req, res) => {
 
     if (campaignErrors) {
       res.send({
-        status: "error",
+        type: "error",
         msg: "Please! Fill up all fields properly.",
         url: "/campaigns",
       });
@@ -94,7 +94,7 @@ router.post("/create", upload.array("photo", 3), (req, res) => {
         if (err) console.log(err);
         else {
           res.send({
-            status: "success",
+            type: "success",
             msg: "Success! You've just created a campaign.",
             url: "/campaigns",
           });
@@ -105,53 +105,34 @@ router.post("/create", upload.array("photo", 3), (req, res) => {
 });
 
 // POST -- edit campaign.
-router.post("/edit/:id", upload.array("photo", 3), (req, res) => {
-  const userId = req.user._id;
-  const photos = [];
+router.post("/edit/:_id", upload.array("photo", 3), (req, res) => {
+  const {
+    title,
+    category,
+    subCategory,
+    reason,
+    amount,
+  } = global.gatherCampaignBodyVariables(req);
 
-  console.log("FILES: ", req.files);
+  var query = { _id: req.params._id, userId: req.user._id };
+  var update = {
+    title,
+    category,
+    subCategory,
+    reason,
+    amount,
+  };
 
-  if (req.files) {
-    for (var i = 0; i < req.files.length; i++) {
-      const file = req.files[i];
-      const filePath = `${process.env.APP_URL}${file.path.split("public")[1]}`;
-      photos.push(filePath);
+  Campaign.updateOne(query, update, (err, updated) => {
+    if (err) console.log(err);
+    else {
+      res.send({
+        type: "success",
+        msg: "Success! You've just updated a campaign.",
+        url: "/campaigns",
+      });
     }
-
-    const {
-      title,
-      category,
-      subCategory,
-      reason,
-      amount,
-      accountName,
-      accountNumber,
-      bank,
-    } = global.gatherCampaignBodyVariables(req);
-
-    var update = {
-      userId,
-      title,
-      category,
-      subCategory,
-      reason,
-      amount,
-      bankDetails: {
-        accountName,
-        accountNumber,
-        bank,
-      },
-      photos,
-    };
-
-    var query = { userId: req.user._id };
-    Campaign.updateOne(query, update, (err, asdf) => {
-      if (err) console.log(err);
-      console.log("ASDF: ", asdf);
-      req.flash("success", "Success! You've just updated a campaign.");
-      res.redirect("/campaigns");
-    });
-  }
+  });
 });
 
 module.exports = router;

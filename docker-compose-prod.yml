@@ -57,7 +57,7 @@ services:
       - 8011:443
     volumes:
       - ./docker-compose/nginx/prod/:/etc/nginx/conf.d/
-      - "/etc/letsencrypt/live/kihearts.net:/etc/nginx/certs"
+      - /etc/letsencrypt:/etc/nginx/certs
     networks:
       - app-network
 

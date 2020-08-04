@@ -54,21 +54,9 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./docker-compose/nginx/prod:/etc/nginx/conf.d/
-      - ./docker-compose/certbot/conf:/etc/letsencrypt
-      - ./docker-compose/certbot/www:/var/www/certbot
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+      - ./docker-compose/nginx/prod:/etc/nginx/conf.d/ 
     networks:
-      - app-network
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./docker-compose/certbot/conf:/etc/letsencrypt
-      - ./docker-compose/certbot/www:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-    networks:
-      - app-network
+      - app-network 
 
 networks:
   app-network:

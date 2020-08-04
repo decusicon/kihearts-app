@@ -6,11 +6,11 @@ WORKDIR /home/node/app
 
 COPY package*.json ./
 
+RUN npm install pm2 -g
+
 USER node
 
-RUN npm install
-
-RUN npm install pm2 -g
+RUN npm install 
 
 COPY --chown=node:node . .
 

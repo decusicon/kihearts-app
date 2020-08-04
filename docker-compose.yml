@@ -1,6 +1,16 @@
 version: "3"
 
 services:
+  landing:
+    build:
+      context: ./landing-page
+      dockerfile: Dockerfile
+    image: kihearts-app-landing
+    container_name: kihearts-app-landing
+    restart: unless-stopped
+    networks:
+      - app-network
+
   dashboard:
     build:
       context: .
@@ -14,7 +24,7 @@ services:
       - MONGO_PASSWORD=$MONGO_PASSWORD
       - MONGO_HOSTNAME=db
       - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB 
+      - MONGO_DB=$MONGO_DB
     volumes:
       - .:/home/node/app
       - appdata:/home/node/app/public
@@ -41,9 +51,22 @@ services:
     container_name: kihearts-app-webserver
     restart: unless-stopped
     ports:
-      - 8000:80
+      - 8011:80
+      - 8012:433
     volumes:
       - ./docker-compose/nginx:/etc/nginx/conf.d/
+      - ./docker-compose/certbot/conf:/etc/letsencrypt
+      - ./docker-compose/certbot/www:/var/www/certbot
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    networks:
+      - app-network
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./docker-compose/certbot/conf:/etc/letsencrypt
+      - ./docker-compose/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     networks:
       - app-network
 

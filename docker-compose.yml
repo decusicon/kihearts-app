@@ -51,8 +51,8 @@ services:
     container_name: kihearts-app-webserver
     restart: unless-stopped
     ports:
-      - 8011:80
-      - 8012:433
+      - 80:80
+      - 443:443
     volumes:
       - ./docker-compose/nginx:/etc/nginx/conf.d/
       - ./docker-compose/certbot/conf:/etc/letsencrypt

@@ -1,0 +1,71 @@
+version: "3"
+
+services:
+  landing:
+    build:
+      context: ./landing-page
+      dockerfile: Dockerfile
+    image: kihearts-app-landing
+    container_name: kihearts-app-landing
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kihearts-app-dashboard
+    container_name: kihearts-app-dashboard
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=db
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB
+    volumes:
+      - .:/home/node/app
+      - appdata:/home/node/app/public
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+    command: ./wait-for.sh db:27017 -- npm run pm2-start
+
+  db:
+    image: mongo:4.1.8-xenial
+    container_name: kihearts-app-db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+    volumes:
+      - dbdata:/data/db
+    ports:
+      - 8012:27017
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: kihearts-app-webserver
+    restart: unless-stopped
+    ports:
+      - 8010:80
+      - 8011:443
+    volumes:
+      - ./docker-compose/nginx/prod/:/etc/nginx/conf.d/
+      - /etc/letsencrypt/live/kihearts.net/:/etc/nginx/certs/
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  appdata:
+  node_modules:

@@ -168,7 +168,7 @@ app.use((req, res, next) => {
     req.checkBody("country", "Required!").notEmpty();
     req.checkBody("state", "Required!").notEmpty();
     req.checkBody("city", "Required!").notEmpty();
-    req.checkBody("postalcode", "Required!").isPostalCode("any");
+    req.checkBody("postalcode", "Required!").isPostalCode("any").optional();
     req.checkBody("homeAddress", "Required!").notEmpty();
 
     // check for next of kin's error
@@ -180,7 +180,10 @@ app.use((req, res, next) => {
     req.checkBody("next_country", "Required!").notEmpty();
     req.checkBody("next_state", "Required!").notEmpty();
     req.checkBody("next_city", "Required!").notEmpty();
-    req.checkBody("next_postalcode", "Required!").isPostalCode("any");
+    req
+      .checkBody("next_postalcode", "Required!")
+      .isPostalCode("any")
+      .optional();
     req.checkBody("next_homeAddress", "Required!").notEmpty();
 
     // check for bank details error

@@ -18,8 +18,9 @@ var UserSchema = mongoose.Schema({
   country: { type: String, required: true },
   state: { type: String, required: true },
   city: { type: String, required: true },
-  postalcode: { type: Number, required: true },
+  postalcode: { type: Number, required: false },
   homeAddress: { type: String, required: true },
+  paid: { type: Number, default: false },
   nextOfKin: {
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
@@ -29,7 +30,7 @@ var UserSchema = mongoose.Schema({
     country: { type: String, required: true },
     state: { type: String, required: true },
     city: { type: String, required: true },
-    postalcode: { type: Number, required: true },
+    postalcode: { type: Number, required: false },
     homeAddress: { type: String, required: true },
   },
   bankDetails: {

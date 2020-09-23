@@ -32,7 +32,7 @@ var upload = multer({
 });
 
 // MODELS
-var User = require("../models/user");
+var User = require("@models/user");
 
 // GET -- fetch page.
 router.get("/", (req, res) => {

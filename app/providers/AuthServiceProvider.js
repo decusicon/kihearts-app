@@ -18,7 +18,7 @@ class AuthServiceProvider {
     return { type: "nickname", username };
   };
 
-  static handle() {
+  static handle(app) {
     passport.use(
       new LocalStrategy(
         {

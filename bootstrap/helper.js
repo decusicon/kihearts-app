@@ -1,18 +1,10 @@
 const path = require("path");
 const fs = require("fs");
 
-global["storage_path"] = (path_join = "") => {
-  return path.join(base_path, "storage", path_join);
-};
-global["public_path"] = (path_join = "") => {
-  return path.join(base_path, "public", path_join);
-};
-global["view_path"] = (path_join = "") => {
-  return path.join(base_path, "views", path_join);
-};
-global["config_path"] = (path_join = "") => {
-  return path.join(base_path, "config", path_join);
-};
+global["storage_path"] = (path_join = "") => path.join(base_path, "storage", path_join);
+global["public_path"] = (path_join = "") => path.join(base_path, "public", path_join);
+global["view_path"] = (path_join = "") => path.join(base_path, "views", path_join);
+global["config_path"] = (path_join = "") => path.join(base_path, "config", path_join);
 
 //-- Log User's activities to "userActivity.log" Log file
 global["userLog"] = (log) => {
@@ -41,7 +33,7 @@ global["arrayLast"] = (array) => {
 };
 
 global["applyMiddleware"] = (middleware) => {
-  let nameMiddleware = require("@app/registries/MiddlewareRegistry")
+  let nameMiddleware = require("@app/registries/middlewareRegistry")
     .nameMiddleware;
 
   let resolveMiddleware = [];
@@ -59,14 +51,15 @@ global["applyMiddleware"] = (middleware) => {
 
 global["getEnv"] = (env_name, default_value = null) => {
   if (process.env[env_name] === "false") {
-    return false || default_value;
-  } else {
-    if (process.env[env_name] === "true") {
-      return true || default_value;
-    } else {
-      return process.env[env_name] || default_value;
-    }
+    return false;
+  } 
+
+  if (process.env[env_name] === "true") {
+    return true;
   }
+
+  return process.env[env_name] || default_value;
+  
 };
 
 global["config"] = (fileName, configVar, defaultVar) => {

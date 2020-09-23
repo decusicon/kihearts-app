@@ -11,13 +11,14 @@ module.exports = {
 
   port: getEnv("APP_PORT", 8080),
 
-  url: getEnv("APP_URL", "http://tosettledown.herokuapp.com"),
+  url: getEnv("APP_URL", "http://localhost:8080"),
 
   timezone: getEnv("APP_TIMEZONE", "Nigeria/Lagos"),
 
   providers: [
-    require("./app/provider/DatabaseServiceProvider"),
-    require("./app/provider/AuthServiceProvider"),
+    require("@app/providers/SessionServiceProvider"),
+    require("@app/providers/DatabaseServiceProvider"),
+    require("@app/providers/AuthServiceProvider"),
   ],
 
   alias: {},

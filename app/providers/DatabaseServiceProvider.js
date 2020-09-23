@@ -1,8 +1,14 @@
 var mongoose = require("mongoose");
 
 class DatabaseServiceProvider {
-  static handle() {
-    const { username, password, host, port, database } = config('database');
+  static handle(app) {
+
+    const username = config("database", "username");
+    const password = config("database", "password");
+    const host = config("database", "host");
+    const port = config("database", "port");
+    const database = config("database", "database");
+    const secret = config("database", "secret");
 
     const url = `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`;
 

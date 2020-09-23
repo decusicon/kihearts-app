@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 
-module["exports"] = class Bootstrap {
+class Bootstrap {
   constructor(base_path) {
     this.setBasePath(base_path);
     return this;
@@ -36,22 +36,17 @@ module["exports"] = class Bootstrap {
   }
 
   registerExceptionHandler() {
-    this.app.use(require("@app/exceptions/Handler"));
+    const Handler = require("@app/exceptions/Handler");
 
-    // ERROR HANDLERS
-    // catch 404 and forward to error handler
-    app.use((req, res, next) => {
-      next(createError(404));
+    this.app.use((err, req, res, next) => {
+	  const handler = new Handler(this.app);
+      handler.setError(err);
+      handler.setReq(req);
+      handler.setRes(res);
+      handler.handle();
     });
 
-    //-- Catch 404 and forward to error handler
-    // app.use((req, res, next) => {
-    //   res.render("./error/404", {
-    //     title: "Error",
-    //   });
-    //   next();
-    //   // next(createError(404))
-    // });
+    // ERROR HANDLERS
 
     // error handler
     // app.use((err, req, res, next) => {
@@ -71,7 +66,7 @@ module["exports"] = class Bootstrap {
 
   registerProviders() {
     require("@src/config/app").providers.forEach((value) => {
-      value.handle();
+      value.handle(this.app);
     });
   }
 
@@ -83,7 +78,7 @@ module["exports"] = class Bootstrap {
   }
 
   register() {
-    this.app.set("port", normalizePort(config('app', 'port')));
+	this.app.set("port", normalizePort(config("app", "port")));
 
     this.app.set("views", view_path());
     this.app.engine(".html", require("ejs").renderFile);
@@ -93,7 +88,7 @@ module["exports"] = class Bootstrap {
   initHttp() {
     this.app = express();
     this.server = require("http").createServer(this.app);
-    // this.io = require("socket.io")(this.server);
+    this.io = require("socket.io")(this.server);
 
     this.requireAllImportantModules();
 
@@ -105,8 +100,8 @@ module["exports"] = class Bootstrap {
     this.registerRoutes();
 
     this.registerExceptionHandler();
-    // this.initSocket();
-
+	// this.initSocket();
+	
     return this.server;
   }
 
@@ -144,4 +139,6 @@ module["exports"] = class Bootstrap {
   //     require("@bootstrap/Database");
   //     this.registerFacade();
   //   }
-};
+}
+
+module.exports = Bootstrap;

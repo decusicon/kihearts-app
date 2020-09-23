@@ -31,8 +31,8 @@ var upload = multer({
 });
 
 // MODELS
-var Campaign = require("../models/campaign");
-var Bin = require("../models/bin");
+var Campaign = require("@models/campaign");
+var Bin = require("@models/bin");
 
 // GET -- fetch page.
 router.get("/", (req, res) => {

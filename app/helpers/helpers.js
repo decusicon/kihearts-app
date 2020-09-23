@@ -1,0 +1,7 @@
+global.env() {
+	
+}
+
+global.config() {
+
+}

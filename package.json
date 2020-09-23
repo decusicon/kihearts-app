@@ -18,10 +18,14 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-ejs-layouts": "^2.5.0",
+    "express-fileupload": "^1.2.0",
     "express-messages": "^1.0.1",
     "express-session": "^1.17.1",
     "express-validator": "^5.3.0",
     "http-errors": "~1.6.3",
+    "install": "^0.13.0",
+    "lodash": "^4.17.20",
+    "module-alias": "^2.2.2",
     "moment": "^2.25.3",
     "mongoose": "^5.9.10",
     "morgan": "~1.9.1",
@@ -29,5 +33,14 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "xss": "^1.0.6"
+  },
+  "_moduleAliases": {
+    "@src": "./",
+    "@app": "./app",
+    "@controllers": "./app/http/controllers",
+    "@models": "./app/models",
+    "@config": "./config",
+    "@routes": "./routes",
+    "@bootstrap": "./bootstrap"
   }
 }

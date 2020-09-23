@@ -2,12 +2,11 @@ version: "3"
 
 services:
   landing:
-    build:
-      context: ./landing-page
-      dockerfile: Dockerfile
-    image: kihearts-app-landing
-    container_name: kihearts-app-landing
+    image: nginx:alpine
+    container_name: kihearts-landing
     restart: unless-stopped
+    volumes: 
+      - ./landing-page:/usr/share/nginx/html
     networks:
       - app-network
 
@@ -15,32 +14,26 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: kihearts-app-dashboard
-    container_name: kihearts-app-dashboard
+    image: kihearts-dashboard
+    container_name: kihearts-dashboard
     restart: unless-stopped
     env_file: .env
-    environment:
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=db
-      - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB
     volumes:
       - .:/home/node/app
-      - appdata:/home/node/app/public
+      - appdata:/home/node/app/storage
       - node_modules:/home/node/app/node_modules
     networks:
       - app-network
-    command: ./wait-for.sh db:27017 -- npm run pm2-start
+    command: ./wait-for.sh db:27017 -- npm run start
 
   db:
     image: mongo:4.1.8-xenial
-    container_name: kihearts-app-db
+    container_name: kihearts-db
     restart: unless-stopped
     env_file: .env
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
-      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+      - MONGO_INITDB_ROOT_USERNAME=$DB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$DB_PASSWORD
     volumes:
       - dbdata:/data/db
     ports:
@@ -50,7 +43,7 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: kihearts-app-webserver
+    container_name: kihearts-webserver
     restart: unless-stopped
     ports:
       - 8010:80

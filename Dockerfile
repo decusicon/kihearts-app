@@ -14,6 +14,6 @@ RUN npm install
 
 COPY --chown=node:node . .
 
-EXPOSE 3500 
+EXPOSE 8080
 
 CMD ["pm2-runtime", "pm2-process.config.js"]

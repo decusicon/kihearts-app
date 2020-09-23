@@ -1,21 +1,12 @@
-var express = require("express");
-var router = express.Router();
+let Route = require("express").Router();
 
-// ROUTERS
-var loginRouter = require("./auth/login");
-var registerRouter = require("./auth/register");
-var forgotPasswordRouter = require("./auth/forgot-password");
+Route.get('/login', require('@controllers/auth/LoginController').show);
+Route.post('/login', require('@controllers/auth/LoginController').login);
+Route.get('/logout', require('@controllers/auth/LoginController').logout);
 
-// GET -- logout.
-router.get("/logout", (req, res) => {
-  req.logOut();
-  req.flash("info", "Bye! Thanks for logging in");
-  res.redirect("/auth/login");
-});
+Route.get('/register', require('@controllers/auth/RegisterController').show);
+Route.post('/register', require('@controllers/auth/RegisterController').register);
 
-// ROUTES
-router.use("/login", loginRouter);
-router.use("/register", registerRouter);
-router.use("/forgot-password", forgotPasswordRouter);
+Route.get("/forgot-password",require("@controllers/auth/ForgotPasswordController").show);
 
-module.exports = router;
+module.exports = Route;

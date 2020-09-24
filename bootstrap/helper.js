@@ -114,7 +114,7 @@ const validationError = require('@app/exceptions/ValidationError')
 global["validator"] = async (req, schema) => {
 
   try {
-    return await schema.validateAsync(req);
+    return await schema.options({ abortEarly: false }).validateAsync(req);
   }
   catch (err) {
     const errorObj = new validationError('The given data is invalid');

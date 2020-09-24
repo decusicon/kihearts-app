@@ -11,15 +11,27 @@ class ValidationError extends BaseError {
     }
 
     handle(req, res) {
-        console.log(this.errors);
-        const errors = this.errors;
-        
+		const errors = this.errors;
+
+		const errorBag = {};
+		
+		errors.details.forEach(error => {
+			errorBag[error.context.key] = {
+				message: error.message.split('"').join(''),
+				value: error.context.value,
+			};
+		});
+		
 
         return res.format({
 		
 			"text/html": function () {
-				req.flash("__errors__", errors);
-				req.flash("error", errors.details[0].message);
+				req.flash("__errors__", errorBag);
+				req.flash("__value__", errors._original);
+				req.flash(
+					"error",
+					errors.details[0].message.split('"').join("")
+				);
 				res.redirect(req.header("Referer") || "/");
 			},
 

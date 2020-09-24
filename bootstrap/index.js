@@ -74,6 +74,9 @@ class Bootstrap {
   }
 
   register() {
+    this.app.use(require("express").static(public_path()));
+    this.app.use('/storage', require("express").static(storage_path('app/public'))); 
+
     this.app.set("port", normalizePort(config("app", "port")));
 
     this.app.set("views", view_path());
@@ -91,7 +94,7 @@ class Bootstrap {
     this.requireAllImportantModules();
 
     this.registerFacades();
-    
+
     this.registerGlobalMiddleware();
     this.registerProviders();
     this.registerHelpers();

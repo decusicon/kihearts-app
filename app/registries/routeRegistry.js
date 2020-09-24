@@ -6,9 +6,9 @@ app.use(
   "/",
   ...applyMiddleware([
     "auth",
+    "must_have_picture",
     // "verify",
     // "update_last_activity",
-    // "must_have_picture",
   ]),
   require("@routes/app")
 );

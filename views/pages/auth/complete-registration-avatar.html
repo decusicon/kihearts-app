@@ -12,7 +12,7 @@
             <div class="ribbon-content">
               <p class="text-warning text-center h4 mb-4">Upload a photo to proceed, <%= nameCase(authUser.firstname) %>
               </p>
-              <form action="/myaccount/edit/<%= authUser._id %>/avatar" method="POST" enctype="multipart/form-data">
+              <form action="/auth/register/complete/avatar" method="POST" enctype="multipart/form-data">
                 <div class="row">
                   <div class="col-12 col-xl-12 col-lg-12 text-center">
                     <div class="avatar_img" id="avatar_img"
@@ -42,4 +42,4 @@
   <!-- End Page content -->
   <!-- ============================================================== -->
 
-  <%- include('../partials/footer.html') %>
+  <%- include('../../partials/footer.html') %>

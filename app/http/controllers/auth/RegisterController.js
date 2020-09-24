@@ -1,13 +1,15 @@
 let User = require("@models/user");
 const Joi = require('joi');
+const path = require('path')
+const cryptoRandomString = require('crypto-random-string');
 
 class RegisterController {
-	static async show(req, res) {
+	async show(req, res) {
 
 		return res.render("pages/auth/register", { title: "Register" });
 	}
 
-	static async register(req, res, next) {
+	async register(req, res, next) {
 		try {
 			const validationSchema = Joi.object({
 				firstname: Joi.string().trim().required(),
@@ -73,6 +75,37 @@ class RegisterController {
 			next(error);
 		}
 	}
+
+	async showAvatar(req, res, next) {
+		return res.render("pages/auth/complete-registration-avatar", {
+            title: "Upload a Photo",
+        });
+	}
+
+	async uploadAvatar(req, res, next) {
+
+		try {
+			const user = req.user;
+
+			if (!req.files.avatar) {
+				return res.redirect('/auth/register/complete/avatar');
+			}
+
+			let avatar = req.files.avatar;
+
+			const fileName = cryptoRandomString({ length: 64, type: 'url-safe' }) + path.extname(avatar.name);
+
+			avatar.mv(`${storage_path('app/public/profile-photos')}/${fileName}`);
+
+			user.avatar = fileName;
+
+			await user.save();
+
+			return res.redirect('/dashboard');
+		} catch (error) {
+			next(error);
+		}
+	}
 }
 
-module.exports = RegisterController;
+module.exports = new RegisterController();

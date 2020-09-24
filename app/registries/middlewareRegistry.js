@@ -2,9 +2,6 @@ module.exports = {
   globalMiddleware: [
     require("cors")(),
 
-    
-    require("express").static(public_path()), //-- set public static directory
-
     require("express")("dev"), //-- use logger
     require("method-override")(),
 

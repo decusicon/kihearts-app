@@ -11,6 +11,14 @@ Route.post(
   require("@controllers/auth/RegisterController").register
 );
 
+Route.get("/register/complete/avatar", ...applyMiddleware([
+  "auth",
+]), require("@controllers/auth/RegisterController").showAvatar);
+
+Route.post("/register/complete/avatar", ...applyMiddleware([
+  "auth",
+]), require("@controllers/auth/RegisterController").uploadAvatar);
+
 Route.get("/forgot-password",require("@controllers/auth/ForgotPasswordController").show);
 
 module.exports = Route;

@@ -39,29 +39,12 @@ class Bootstrap {
     const Handler = require("@app/exceptions/Handler");
 
     this.app.use((err, req, res, next) => {
-	  const handler = new Handler(this.app);
+      const handler = new Handler(this.app);
       handler.setError(err);
       handler.setReq(req);
       handler.setRes(res);
       handler.handle();
     });
-
-    // ERROR HANDLERS
-
-    // error handler
-    // app.use((err, req, res, next) => {
-    //   // User is not login, Redirect to login page if user enters a wrong address.
-    //   // if (!req.user) req.url.includes("auth") ? res.redirect("/auth/login") : "";
-    //   // // Else show him an error page.
-    //   // else {
-    //   //   // set locals, only providing error in development
-    //   //   res.locals.message = err.message;
-    //   //   res.locals.error = req.app.get("env") === "development" ? err : {};
-    //   //   // render the error page
-    //   //   res.status(err.status || 500);
-    //   //   res.render("./errors/error", { title: "You're Lost!" });
-    //   // }
-    // });
   }
 
   registerProviders() {
@@ -72,17 +55,22 @@ class Bootstrap {
 
   registerFacades() {
     let facade = require("@src/config/app").alias;
-    Object.keys(facade).forEach((key) => {
-      global[key] = facade[key];
+    this.app.use((req, res, next) => {
+      Object.keys(facade).forEach((key) => {
+        res.locals[key] = global[key] = facade[key];
+      });
+      next();
     });
   }
 
   register() {
-	this.app.set("port", normalizePort(config("app", "port")));
+    this.app.set("port", normalizePort(config("app", "port")));
 
     this.app.set("views", view_path());
     this.app.engine(".html", require("ejs").renderFile);
     this.app.set("view engine", "html");
+
+    this.app.use(require("./ErrorBag"));
   }
 
   initHttp() {
@@ -100,8 +88,8 @@ class Bootstrap {
     this.registerRoutes();
 
     this.registerExceptionHandler();
-	// this.initSocket();
-	
+    // this.initSocket();
+
     return this.server;
   }
 

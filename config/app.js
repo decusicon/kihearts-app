@@ -21,5 +21,8 @@ module.exports = {
     require("@app/providers/AuthServiceProvider"),
   ],
 
-  alias: {},
+  alias: {
+    _ : require('lodash'),
+    moment : require('moment')
+  },
 };

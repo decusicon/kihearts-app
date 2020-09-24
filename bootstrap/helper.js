@@ -1,10 +1,14 @@
 const path = require("path");
 const fs = require("fs");
 
-global["storage_path"] = (path_join = "") => path.join(base_path, "storage", path_join);
-global["public_path"] = (path_join = "") => path.join(base_path, "public", path_join);
-global["view_path"] = (path_join = "") => path.join(base_path, "views", path_join);
-global["config_path"] = (path_join = "") => path.join(base_path, "config", path_join);
+global["storage_path"] = (path_join = "") =>
+  path.join(base_path, "storage", path_join);
+global["public_path"] = (path_join = "") =>
+  path.join(base_path, "public", path_join);
+global["view_path"] = (path_join = "") =>
+  path.join(base_path, "views", path_join);
+global["config_path"] = (path_join = "") =>
+  path.join(base_path, "config", path_join);
 
 //-- Log User's activities to "userActivity.log" Log file
 global["userLog"] = (log) => {
@@ -39,12 +43,14 @@ global["applyMiddleware"] = (middleware) => {
   let resolveMiddleware = [];
 
   if (middleware instanceof Array) {
-    middleware.forEach((value) => resolveMiddleware.push(nameMiddleware[value]));
-  } 
-  
+    middleware.forEach((value) =>
+      resolveMiddleware.push(nameMiddleware[value])
+    );
+  }
+
   if (middleware instanceof String) {
     resolveMiddleware.push(nameMiddleware[middleware]);
-  } 
+  }
 
   return resolveMiddleware;
 };
@@ -52,14 +58,13 @@ global["applyMiddleware"] = (middleware) => {
 global["getEnv"] = (env_name, default_value = null) => {
   if (process.env[env_name] === "false") {
     return false;
-  } 
+  }
 
   if (process.env[env_name] === "true") {
     return true;
   }
 
   return process.env[env_name] || default_value;
-  
 };
 
 global["config"] = (fileName, configVar, defaultVar) => {
@@ -72,7 +77,7 @@ global["config"] = (fileName, configVar, defaultVar) => {
   }
 };
 
-global['normalizePort'] = (val) => {
+global["normalizePort"] = (val) => {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -86,4 +91,19 @@ global['normalizePort'] = (val) => {
   }
 
   return false;
-}
+};
+
+const { validationResult } = require("express-validator");
+
+global["validator"] = async (req, res, validations) => {
+  await Promise.all(validations.map((validation) => validation.run(req)));
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    backURL = req.header("Referer") || "/";
+    req.flash("__errors__", errors.array());
+    return res.redirect(backURL);
+  }
+
+  return errors;
+};

@@ -23,7 +23,7 @@
     "express-fileupload": "^1.2.0",
     "express-messages": "^1.0.1",
     "express-session": "^1.17.1",
-    "express-validator": "^5.3.0",
+    "express-validator": "^6.6.1",
     "http-errors": "~1.6.3",
     "install": "^0.13.0",
     "lodash": "^4.17.20",
@@ -43,9 +43,11 @@
     "@src": "./",
     "@app": "./app",
     "@controllers": "./app/http/controllers",
+    "@requests": "./app/http/requests",
     "@models": "./app/models",
     "@config": "./config",
     "@routes": "./routes",
-    "@bootstrap": "./bootstrap"
+    "@bootstrap": "./bootstrap",
+    "@schemas": "./database/schemas"
   }
 }

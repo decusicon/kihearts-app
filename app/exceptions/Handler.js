@@ -14,9 +14,9 @@ class Handler {
   }
 
   handle() {
-    this.res.send({
-      error: "an error occur",
-    });
+    const error = new Error(this.err);
+
+    this.res.send(error.stack);
   }
 }
 

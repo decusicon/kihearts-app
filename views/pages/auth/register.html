@@ -40,7 +40,7 @@
                 <input type="text" class="mb-0" id="firstname" name="firstname" placeholder="First Name" autofocus
                   autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "firstname"){  %>
@@ -56,7 +56,7 @@
                 <input type="text" class="mb-0" id="lastname" name="lastname" placeholder="Last Name" autocomplete="on"
                   required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "lastname"){  %>
@@ -72,7 +72,7 @@
                 <input type="text" class="mb-0" id="nickname" name="nickname" placeholder="Nickname" autocomplete="on"
                   required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "nickname"){  %>
@@ -88,7 +88,7 @@
                 <input type="email" class="mb-0" id="email" name="email" placeholder="Email" autocomplete="on"
                   required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "email"){  %>
@@ -104,7 +104,7 @@
                 <input type="number" class="mb-0" id="phoneNumber" name="phoneNumber" minlength="11" maxlength="14"
                   placeholder="Phone Number" autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "phoneNumber"){  %>
@@ -120,7 +120,7 @@
                 <input type="password" class="mb-0" id="password" name="password" placeholder="Password"
                   autocomplete="on" minlength="6" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "password"){  %>
@@ -136,7 +136,7 @@
                 <input type="password" class="mb-0" id="re_password" name="re_password" placeholder="Re-Password"
                   autocomplete="on" minlength="6" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "re_password"){  %>
@@ -347,7 +347,7 @@
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "country"){  %>
@@ -363,7 +363,7 @@
                 <input type="text" class="mb-0" id="state" name="state" placeholder="State" autocomplete="on"
                   required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "state"){  %>
@@ -378,7 +378,7 @@
 
                 <input type="text" class="mb-0" id="city" name="city" placeholder="City" autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "city"){  %>
@@ -394,7 +394,7 @@
                 <input type="number" class="mb-0" id="postalcode" name="postalcode"
                   placeholder="Zip / Postal code (optional)" maxlength="5" autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "postalcode"){  %>
@@ -411,7 +411,7 @@
                   style="background-color: transparent !important;" cols="30" rows="3" placeholder="Home Address"
                   autocomplete="on" required></textarea>
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "homeAddress"){  %>
@@ -431,7 +431,7 @@
                 <input type="text" class="mb-0" id="next_firstname" name="next_firstname" placeholder="First Name"
                   autofocus autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_firstname"){  %>
@@ -447,7 +447,7 @@
                 <input type="text" class="mb-0" id="next_lastname" name="next_lastname" placeholder="Last Name"
                   autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_lastname"){  %>
@@ -463,7 +463,7 @@
                 <input type="text" class="mb-0" id="next_relationship" name="next_relationship"
                   placeholder="Relationship" autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_relationship"){  %>
@@ -479,7 +479,7 @@
                 <input type="email" class="mb-0" id="next_email" name="next_email" placeholder="Email" autocomplete="on"
                   required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_email"){  %>
@@ -495,7 +495,7 @@
                 <input type="number" class="mb-0" id="next_phoneNumber" name="next_phoneNumber" minlength="11"
                   maxlength="14" placeholder="Phone Number" autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_phoneNumber"){  %>
@@ -706,7 +706,7 @@
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_country"){  %>
@@ -722,7 +722,7 @@
                 <input type="text" class="mb-0" id="next_state" name="next_state" placeholder="State" autocomplete="on"
                   required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_state"){  %>
@@ -738,7 +738,7 @@
                 <input type="text" class="mb-0" id="next_city" name="next_city" placeholder="City" autocomplete="on"
                   required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_city"){  %>
@@ -754,7 +754,7 @@
                 <input type="number" class="mb-0" id="next_postalcode" name="next_postalcode"
                   placeholder="Zip / Postal code (optional)" autocomplete="on" required />
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_postalcode"){  %>
@@ -771,7 +771,7 @@
                   style="background-color: transparent !important;" cols="30" rows="3" placeholder="Home Address"
                   autocomplete="on" required></textarea>
 
-                <% if(typeof customErrors != undefined) { %>
+                <% if(!_.isEmpty(customErrors)) { %>
                 <small class="text-danger d-block pt-1 mb-3" id="alert">
                   <% customErrors.forEach((regE) => { %>
                   <% if(regE.param == "next_homeAddress"){  %>

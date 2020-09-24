@@ -10,18 +10,20 @@ app.use(
     // "update_last_activity",
     // "must_have_picture",
   ]),
-  require("@routes/auth")
+  require("@routes/app")
 );
 
 // ROUTES
 app.use("/campaigns", require("@src/routes/campaign"));
 app.use("/myaccount", require("@src/routes/myaccount"));
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  res.render("./error/404", {
+app.use('/404', (req, res, next) => {
+  res.render("./errors/error", {
     title: "Error",
   });
-});
+})
+
+// catch 404 and forward to error handler
+app.use((req, res, next) => res.redirect('/404'));
 
 module.exports = app;

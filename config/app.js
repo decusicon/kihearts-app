@@ -16,8 +16,8 @@ module.exports = {
   timezone: getEnv("APP_TIMEZONE", "Nigeria/Lagos"),
 
   providers: [
-    require("@app/providers/SessionServiceProvider"),
     require("@app/providers/DatabaseServiceProvider"),
+    require("@app/providers/SessionServiceProvider"),
     require("@app/providers/AuthServiceProvider"),
   ],
 

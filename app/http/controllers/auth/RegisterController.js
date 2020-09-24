@@ -1,86 +1,78 @@
 let User = require("@models/user");
-const { body } = require("express-validator/check");
-
-// var _ = require("lodash");
+const Joi = require('joi');
 
 class RegisterController {
-  static async show(req, res) {
-    req.session.customErrors = null;
-    res.locals.customErrors = null;
+	static async show(req, res) {
 
-    // errors.has()
+		return res.render("pages/auth/register", { title: "Register" });
+	}
 
-    return res.render("pages/auth/register", { title: "Register" });
-  }
+	static async register(req, res, next) {
+		try {
+			const validationSchema = Joi.object({
+				firstname: Joi.string().trim().required(),
+				lastname: Joi.string().trim().required(),
+				nickname: Joi.string().trim().required(),
+				email: Joi.string().trim().email().required(),
+				phoneNumber: Joi.number().integer().required(),
+				password: Joi.string().trim().required().min(6),
+				re_password: Joi.ref('password'),
+				country: Joi.string().trim().required(),
+				state: Joi.string().trim().required(),
+				city: Joi.string().trim().required(),
+				postalcode: Joi.string().trim().optional(),
+				homeAddress: Joi.string().trim().required(),
+				// check for next of kin's error
+				next_firstname: Joi.string().trim().required(),
+				next_lastname: Joi.string().trim().required(),
+				next_relationship: Joi.string().trim().required(),
+				next_email: Joi.string().trim().email().required(),
+				next_phoneNumber: Joi.number().integer().required(),
+				next_country: Joi.string().trim().required(),
+				next_state: Joi.string().trim().required(),
+				next_city: Joi.string().trim().required(),
+				next_postalcode: Joi.string().trim().optional(),
+				next_homeAddress: Joi.string().trim().required(),
+			});
 
-  static async register(req, res, next) {
-    try {
+			const valid = await validator(req.body, validationSchema);
 
-      await validator(req, res, [
-        body("username").trim().isString(),
-        // check for user's errors
-        body("firstname").trim(),
-        body("lastname").trim(),
-        body("nickname").trim(),
-        body("email").trim().isEmail(),
-        body("phoneNumber").trim().isInt(),
-        body("password").trim().isLength({ min: 6 }),
-        body("re_password").trim().equals(password),
-        body("country").trim(),
-        body("state").trim(),
-        body("city").trim(),
-        body("postalcode").trim().isPostalCode("any").optional(),
-        body("homeAddress").trim(),
-        // check for next of kin's error
-        body("next_firstname").trim(),
-        body("next_lastname").trim(),
-        body("next_relationship").trim(),
-        body("next_email").trim().isEmail(),
-        body("next_phoneNumber").trim().isInt(),
-        body("next_country").trim(),
-        body("next_state").trim(),
-        body("next_city").trim(),
-        body("next_postalcode").isPostalCode("any").optional(),
-        body("next_homeAddress").trim(),
-      ]);
+			const userObj = {
+				firstname: valid.firstname,
+				lastname: valid.lastname,
+				nickname: valid.nickname,
+				email: valid.email,
+				phoneNumber: valid.phoneNumber,
+				password: valid.password,
+				country: valid.country,
+				state: valid.state,
+				city: valid.city,
+				postalcode: valid.postalcode,
+				homeAddress: valid.homeAddress,
+				nextOfKin: {
+					firstname: valid.next_firstname,
+					lastname: valid.next_lastname,
+					relationship: valid.next_relationship,
+					email: valid.next_email,
+					phoneNumber: valid.next_phoneNumber,
+					country: valid.next_country,
+					state: valid.next_state,
+					city: valid.next_city,
+					postalcode: valid.next_postalcode,
+					homeAddress: valid.next_homeAddress,
+				},
+			};
 
-      const userObj = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        nickname: req.body.nickname,
-        email: req.body.email,
-        phoneNumber: req.body.phoneNumber,
-        password: req.body.password,
-        country: req.body.country,
-        state: req.body.state,
-        city: req.body.city,
-        postalcode: req.body.postalcode,
-        homeAddress: req.body.homeAddress,
-        nextOfKin: {
-          firstname: req.body.next_firstname,
-          lastname: req.body.next_lastname,
-          relationship: req.body.next_relationship,
-          email: req.body.next_email,
-          phoneNumber: req.body.next_phoneNumber,
-          country: req.body.next_country,
-          state: req.body.next_state,
-          city: req.body.next_city,
-          postalcode: req.body.next_postalcode,
-          homeAddress: req.body.next_homeAddress,
-        },
-	  };
-	  
+			var user = new User(userObj);
 
-      var user = new User(userObj);
+			await user.save();
 
-      await user.save();
-
-      req.flash("success", `Success! You're now registered.`);
-      res.redirect("/auth/login");
-    } catch (error) {
-      next(error);
-    }
-  }
+			req.flash("success", `Success! You're now registered.`);
+			res.redirect("/auth/login");
+		} catch (error) {
+			next(error);
+		}
+	}
 }
 
 module.exports = RegisterController;

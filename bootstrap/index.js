@@ -63,6 +63,16 @@ class Bootstrap {
     });
   }
 
+  registerHelpers() {
+    let helpers = require("@app/helpers/helpers");
+    this.app.use((req, res, next) => {
+      Object.keys(helpers).forEach((key) => {
+        res.locals[key] = global[key] = helpers[key];
+      });
+      next();
+    });
+  }
+
   register() {
     this.app.set("port", normalizePort(config("app", "port")));
 
@@ -81,9 +91,11 @@ class Bootstrap {
     this.requireAllImportantModules();
 
     this.registerFacades();
-    this.registerProviders();
-
+    
     this.registerGlobalMiddleware();
+    this.registerProviders();
+    this.registerHelpers();
+
     this.register();
     this.registerRoutes();
 

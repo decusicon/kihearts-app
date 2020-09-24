@@ -1,5 +1,5 @@
 var passport = require("passport");
-const { body } = require("express-validator/check");
+const Joi = require('joi');
 
 class LoginController {
   async show(req, res) {
@@ -7,17 +7,24 @@ class LoginController {
   }
 
   async login(req, res, next) {
-    await validator(req, res, [
-      body("username").trim().isString(),
-      body("password").trim().isLength({ min: 6, max: 25 })
-    ]);
+    try {
+      const validationSchema = Joi.object({
+        username: Joi.string().min(3).max(30).required(),
+        password: Joi.string().min(3).max(30).required()
+      });
 
-    passport.authenticate("local", {
-      successRedirect: "/dashboard",
-      successFlash: "Welcome to your dashboard!",
-      failureRedirect: "/auth/login",
-      failureFlash: "Sorry! Invalid username or password",
-    })(req, res, next);
+      await validator(req.body, validationSchema);
+
+      passport.authenticate("local", {
+        successRedirect: "/dashboard",
+        successFlash: "Welcome to your dashboard!",
+        failureRedirect: "/auth/login",
+        failureFlash: "Sorry! Invalid username or password",
+      })(req, res, next);
+
+    } catch (error) {
+      next(error);
+    } 
   }
 
   async logout(req, res) {

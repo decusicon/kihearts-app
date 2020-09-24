@@ -94,16 +94,37 @@ global["normalizePort"] = (val) => {
 };
 
 const { validationResult } = require("express-validator");
+const validationError = require('@app/exceptions/ValidationError')
 
-global["validator"] = async (req, res, validations) => {
-  await Promise.all(validations.map((validation) => validation.run(req)));
-  const errors = validationResult(req);
+// global["validator"] = async (req, validations) => {
+//   await Promise.all(validations.map((validation) => validation.run(req)));
+//   const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {
-    backURL = req.header("Referer") || "/";
-    req.flash("__errors__", errors.array());
-    return res.redirect(backURL);
+//   if (!errors.isEmpty()) {
+
+//     const errorObj = new validationError(errors);
+//     errorObj.setErrors(errors);
+
+//     throw errorObj;
+//   }
+
+//   return errors;
+// };
+
+global["validator"] = async (req, schema) => {
+
+  try {
+    return await schema.validateAsync(req);
   }
+  catch (err) {
+    const errorObj = new validationError('The given data is invalid');
+    errorObj.setErrors(err);
 
-  return errors;
+    throw errorObj;
+  }
 };
+
+
+
+
+

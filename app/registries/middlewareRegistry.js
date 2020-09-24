@@ -26,8 +26,6 @@ module.exports = {
 
     require("connect-flash")(),
     require("@app/middlewares/flashMessage"),
-    require("passport").initialize(),
-    require("passport").session(),
   ],
 
   nameMiddleware: {

@@ -1,3 +1,5 @@
+const BaseError = require('./BaseError');
+
 class Handler {
   constructor(app) {
     this.app = app;
@@ -14,9 +16,11 @@ class Handler {
   }
 
   handle() {
-    const error = new Error(this.err);
 
-    this.res.send(error.stack);
+    if (this.err instanceof BaseError) {
+      return this.err.handle(this.req, this.res);
+    }
+    return this.res.send(this.err.stack);
   }
 }
 

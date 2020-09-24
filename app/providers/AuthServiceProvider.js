@@ -1,7 +1,7 @@
-let LocalStrategy = require("passport-local").Strategy;
-let bcrypt = require("bcryptjs");
-let User = require("@models/user");
-var passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcryptjs");
+const User = require("@models/user");
+const passport = require("passport");
 
 class AuthServiceProvider {
   static getUsername = (username) => {
@@ -30,6 +30,7 @@ class AuthServiceProvider {
           var query = { [type]: username };
 
             User.findOne(query, (err, user) => {
+              
                 if (err) console.log(err);
 
                 if (!user) {
@@ -63,6 +64,10 @@ class AuthServiceProvider {
     passport.deserializeUser((id, done) =>
       User.findById(id, (err, user) => done(err, user))
     );
+
+    app.use(require("passport").initialize());
+    app.use(require("passport").session());
+    
   }
 }
 

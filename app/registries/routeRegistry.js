@@ -13,9 +13,6 @@ app.use(
   require("@routes/app")
 );
 
-// ROUTES
-app.use("/campaigns", require("@src/routes/campaign"));
-
 app.use('/404', (req, res, next) => {
   res.render("./errors/error", {
     title: "Error",

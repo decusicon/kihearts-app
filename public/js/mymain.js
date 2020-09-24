@@ -91,13 +91,10 @@ function genAlertBox(type, msg) {
 }
 
 // CLEAR EVERY MODAL INPUT
-function clearAllInput() {
-	// When "Close" button is clicked in any modal, all input should get EMPTY.
-	// $(`[data-dismiss="modal"]`).click(() => {
+function clearAllInput() {	
 	$(".modal input").val("").removeAttr("disabled");
 	$(".modal textarea").val("").removeAttr("disabled");
 	$(".modal select").val("").removeAttr("disabled");
-	// });
 }
 
 

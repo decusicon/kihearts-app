@@ -1,4 +1,3 @@
-const User = require("@models/user");
 const Joi = require('joi');
 const path = require('path')
 const cryptoRandomString = require('crypto-random-string');

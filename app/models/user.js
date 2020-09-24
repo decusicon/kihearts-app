@@ -1,8 +1,7 @@
 var bcrypt = require("bcryptjs");
-const Model = require('@schemas/UserSchema').model;
+const Model = require("@schemas/UserSchema").model;
 
 class User extends Model {
-
 	// //-- GetUserById
 	// static getUserById(id, callback) {
 	// 	this.findById(id, callback);
@@ -46,6 +45,6 @@ class User extends Model {
 	get hasAvatar() {
 		return !_.isEmpty(super.avatar);
 	}
-};
+}
 
 module.exports = User;

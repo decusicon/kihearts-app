@@ -16,5 +16,7 @@ Route.post('/myaccount/password', require("@controllers/UserController").updateP
 Route.post('/myaccount/bank', require("@controllers/UserController").updateBank);
 Route.post('/myaccount/avatar', require("@controllers/UserController").updateAvatar);
 
+Route.get("/campaigns", require("@controllers/CampaignController").index);
+
 
 module.exports = Route;

@@ -3,6 +3,10 @@ class ErrorBag {
     constructor(errors) {
         this.errorsBag = errors
     }
+
+    has(name) {
+        return false;
+    }
     
 }
 

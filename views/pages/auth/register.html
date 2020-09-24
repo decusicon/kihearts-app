@@ -35,119 +35,92 @@
           <form method="POST" action="/auth/register">
             <div class="row">
               <!-- firstname -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="text" class="mb-0" id="firstname" name="firstname" placeholder="First Name" autofocus
                   autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "firstname"){  %>
-                  <strong>Required!</strong>
+                  <% if(errors.has('firstname')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('firstname') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- lastname -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="text" class="mb-0" id="lastname" name="lastname" placeholder="Last Name" autocomplete="on"
                   required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "lastname"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('lastname')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('lastname') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- nickname -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="text" class="mb-0" id="nickname" name="nickname" placeholder="Nickname" autocomplete="on"
                   required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "nickname"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('nickname')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('nickname') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- email -->
-              <div class="col-xl-7 col-lg-7 m-0">
+              <div class="col-xl-7 col-lg-7 mb-3">
 
                 <input type="email" class="mb-0" id="email" name="email" placeholder="Email" autocomplete="on"
                   required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "email"){  %>
-                  <strong>Required, must be an email address!</strong>
+                <% if(errors.has('email')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('email') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- phone number -->
-              <div class="col-xl-5 col-lg-5 m-0">
+              <div class="col-xl-5 col-lg-5 mb-3">
 
                 <input type="number" class="mb-0" id="phoneNumber" name="phoneNumber" minlength="11" maxlength="14"
                   placeholder="Phone Number" autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "phoneNumber"){  %>
-                  <strong>Required, must be a phone number!</strong>
+                <% if(errors.has('phoneNumber')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('phoneNumber') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- password -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="password" class="mb-0" id="password" name="password" placeholder="Password"
                   autocomplete="on" minlength="6" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "password"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('password')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('password') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- repeat password -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="password" class="mb-0" id="re_password" name="re_password" placeholder="Re-Password"
                   autocomplete="on" minlength="6" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "re_password"){  %>
-                  <strong>Passwords don't match, Try again!</strong>
+				  <% if(errors.has('re_password')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('re_password') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
+
               </div>
               <!-- country -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <select class="form-control mb-0" name="country" id="country" required>
                   <option value="">Select Your Country</option>
@@ -347,166 +320,126 @@
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "country"){  %>
-                  <strong>Required, cannot be empty!</strong>
+				<% if(errors.has('country')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('country') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- state -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="text" class="mb-0" id="state" name="state" placeholder="State" autocomplete="on"
                   required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "state"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('state')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('state') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- city -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="text" class="mb-0" id="city" name="city" placeholder="City" autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "city"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('city')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('city') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- zip / postal code -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="number" class="mb-0" id="postalcode" name="postalcode"
                   placeholder="Zip / Postal code (optional)" maxlength="5" autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "postalcode"){  %>
-                  <strong>Required, must be a postal code!</strong>
+				<% if(errors.has('postalcode')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('postalcode') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- home address -->
-              <div class="col-xl-12 col-lg-12 m-0">
+              <div class="col-xl-12 col-lg-12 mb-3">
 
                 <textarea class="mb-0" id="homeAddress" name="homeAddress"
                   style="background-color: transparent !important;" cols="30" rows="3" placeholder="Home Address"
                   autocomplete="on" required></textarea>
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "homeAddress"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('homeAddress')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('homeAddress') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
             </div>
 
             <h3 class="mt-4 mb-4 text-center">Next of Kin</h3>
             <div class="row">
               <!-- Next firstname -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="text" class="mb-0" id="next_firstname" name="next_firstname" placeholder="First Name"
                   autofocus autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_firstname"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('next_firstname')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_firstname') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next lastname -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="text" class="mb-0" id="next_lastname" name="next_lastname" placeholder="Last Name"
                   autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_lastname"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('next_lastname')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_lastname') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next Relationship -->
-              <div class="col-xl-4 col-lg-4 m-0">
+              <div class="col-xl-4 col-lg-4 mb-3">
 
                 <input type="text" class="mb-0" id="next_relationship" name="next_relationship"
                   placeholder="Relationship" autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_relationship"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('next_relationship')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_relationship') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next email -->
-              <div class="col-xl-7 col-lg-7 m-0">
+              <div class="col-xl-7 col-lg-7 mb-3">
 
                 <input type="email" class="mb-0" id="next_email" name="next_email" placeholder="Email" autocomplete="on"
                   required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_email"){  %>
-                  <strong>Required, must be an email address!</strong>
+				  <% if(errors.has('next_email')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_email') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next phone number -->
-              <div class="col-xl-5 col-lg-5 m-0">
+              <div class="col-xl-5 col-lg-5 mb-3">
 
                 <input type="number" class="mb-0" id="next_phoneNumber" name="next_phoneNumber" minlength="11"
                   maxlength="14" placeholder="Phone Number" autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_phoneNumber"){  %>
-                  <strong>Required, must be a phone number!</strong>
+                <% if(errors.has('next_phoneNumber')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_phoneNumber') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next country -->
-              <div class="col-xl-6 col-lg-6 m-0">
+              <div class="col-xl-6 col-lg-6 mb-3">
 
                 <select class="form-control mb-0" id="next_country" name="next_country" required>
                   <option value="">Select Country</option>
@@ -706,80 +639,60 @@
                   <option value="Zimbabwe">Zimbabwe</option>
                 </select>
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_country"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('next_country')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_country') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next state -->
-              <div class="col-xl-6 col-lg-6 m-0">
+              <div class="col-xl-6 col-lg-6 mb-3">
 
                 <input type="text" class="mb-0" id="next_state" name="next_state" placeholder="State" autocomplete="on"
                   required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_state"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('next_state')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_state') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next city -->
-              <div class="col-xl-6 col-lg-6 m-0">
+              <div class="col-xl-6 col-lg-6 mb-3">
 
                 <input type="text" class="mb-0" id="next_city" name="next_city" placeholder="City" autocomplete="on"
                   required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_city"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('next_city')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_city') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next zip / postal code -->
-              <div class="col-xl-6 col-lg-6 m-0">
+              <div class="col-xl-6 col-lg-6 mb-3">
 
                 <input type="number" class="mb-0" id="next_postalcode" name="next_postalcode"
                   placeholder="Zip / Postal code (optional)" autocomplete="on" required />
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_postalcode"){  %>
-                  <strong>Required, must be a postal code!</strong>
+				  <% if(errors.has('next_postalcode')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_postalcode') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <!-- Next home address -->
-              <div class="col-xl-12 col-lg-12 m-0">
+              <div class="col-xl-12 col-lg-12 mb-3">
 
                 <textarea class="mb-0" id="next_homeAddress" name="next_homeAddress"
                   style="background-color: transparent !important;" cols="30" rows="3" placeholder="Home Address"
                   autocomplete="on" required></textarea>
 
-                <% if(!_.isEmpty(customErrors)) { %>
-                <small class="text-danger d-block pt-1 mb-3" id="alert">
-                  <% customErrors.forEach((regE) => { %>
-                  <% if(regE.param == "next_homeAddress"){  %>
-                  <strong>Required!</strong>
+                <% if(errors.has('next_homeAddress')) { %>
+                    <small class="text-danger d-block pt-1 mb-3" id="alert">
+                      <strong><%= errors.get('next_homeAddress') %></strong>
+                    </small>
                   <% } %>
-                  <% }); %>
-                </small>
-                <% } %>
               </div>
               <div class="col-xl-12 col-lg-12 text-center">
                 <button type="submit">Register</button>

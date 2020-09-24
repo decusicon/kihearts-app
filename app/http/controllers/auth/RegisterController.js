@@ -39,6 +39,19 @@ class RegisterController {
 
 			const valid = await validator(req.body, validationSchema);
 
+			const userExist = User.find({
+				$or: [
+					{ email: valid.email },
+					{ nickname: valid.nickname },
+					{ phoneNumber: valid.phoneNumber },
+				],
+			});
+
+			if(userExist) {
+				req.flash("error", `User already registered`);
+				return res.redirect("/auth/register");
+			}
+
 			const userObj = {
 				firstname: valid.firstname,
 				lastname: valid.lastname,

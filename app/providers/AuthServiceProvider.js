@@ -31,11 +31,6 @@ class AuthServiceProvider {
 							username
 						);
 
-						// const {
-						// 	type,
-						// 	username,
-						// } = AuthServiceProvider.getUsername(username);
-
 						const query = { [accessor.type]: accessor.username };
 
 						const user = await User.findOne(query);

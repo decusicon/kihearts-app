@@ -43,7 +43,7 @@
                 Make sure all entered passwords are correct and
                 <span class="text-success">remembered!</span>
               </p>
-              <form action="/myaccount/edit/<%= user._id %>/change-password" method="POST" id="changePasswordForm">
+              <form action="/myaccount/password" method="POST" id="changePasswordForm">
                 <div class="container">
                   <div class="form-group row">
                     <!-- old password -->
@@ -104,7 +104,7 @@
                 Make sure all entered details are
                 <span class="text-success">correct!</span>
               </p>
-              <form action="/myaccount/edit/<%= user._id %>/bank-details" method="POST" class="bankDetailsForm"
+              <form action="/myaccount/bank" method="POST" class="bankDetailsForm"
                 id="bankDetailsForm">
                 <div class="container">
                   <!-- Bank details header -->
@@ -126,7 +126,7 @@
                         <b class="text-danger">*</b>
                       </label>
                       <input type="text" class="form-control" name="accountName" id="accountName"
-                        placeholder="A valid account name" value="<%= sentenceCase(user.bankDetails.accountName) %>"
+                        placeholder="A valid account name" value="<%= sentenceCase(authUser.bankDetails.accountName) %>"
                         required>
                     </div>
                   </div>
@@ -140,7 +140,7 @@
                       </label>
                       <input type="number" class="form-control" name="accountNumber" id="accountNumber"
                         placeholder="A valid account number"
-                        value="<%= addZero(user.bankDetails.accountNumber, 'accountNumber') %>" required>
+                        value="<%= addZero(authUser.bankDetails.accountNumber, 'accountNumber') %>" required>
                     </div>
 
                     <!-- Bank -->
@@ -149,7 +149,7 @@
                         Bank
                         <b class="text-danger">*</b>
                       </label>
-                      <select class="form-control" name="bank" id="bank" data-selectvalue="<%= user.bankDetails.bank %>"
+                      <select class="form-control" name="bank" id="bank" data-selectvalue="<%= authUser.bankDetails.bank %>"
                         required>
                         <option value="">Select your Bank</option>
                         <option value="Access Bank">Access Bank Plc</option>
@@ -203,14 +203,14 @@
               <div class="ribbon ribbon-success float-right">My information </div>
               <small class="h6">
                 <span class="fe-user pr-1"></span>
-                Joined: <%= moment(user.joined).fromNow() %>
+                Joined: <%= moment(authUser.joined).fromNow() %>
               </small>
               <div class="ribbon-content">
-                <form action="/myaccount/edit/<%= user._id %>/avatar" method="POST" enctype="multipart/form-data">
+                <form action="/myaccount/avatar" method="POST" enctype="multipart/form-data">
                   <div class="row mb-3 pb-3" style="border-bottom: 1px solid #eee;">
                     <div class="col-12 col-xl-12 col-lg-12 text-center">
                       <div class="avatar_img" id="avatar_img"
-                        style="background-image: url('<%= user.avatar ? user.avatar : `/images/users/user.jpg` %>');"
+                        style="background-image: url('<%= authUser.avatar ? authUser.avatar : `/images/users/authUser.jpg` %>');"
                         onclick="$('#avatar').trigger('click')">
                       </div>
                       <input type="file" name="avatar" id="avatar" accept="image/*" hidden required>
@@ -225,21 +225,21 @@
                   </div>
                 </form>
                 <div class="col-xl-12 col-lg-12">
-                  <form action="/myaccount/edit/<%= user._id %>/info" method="POST" id="myInfoForm">
+                  <form action="/myaccount" method="POST" id="myInfoForm">
                     <div class="form-group row">
                       <div class="col-lg-6">
                         <label for="firstname" class="text-dark">
                           Firstname
                         </label>
                         <input type="text" class="form-control" name="firstname" id="firstname"
-                          value="<%= nameCase(user.firstname) %>" required>
+                          value="<%= nameCase(authUser.firstname) %>" required>
                       </div>
                       <div class="col-lg-6">
                         <label for="lastname" class="text-dark">
                           Lastname
                         </label>
                         <input type="text" class="form-control" name="lastname" id="lastname"
-                          value="<%= nameCase(user.lastname) %>" required>
+                          value="<%= nameCase(authUser.lastname) %>" required>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -247,7 +247,7 @@
                         <label for="email" class="text-dark">
                           Email
                         </label>
-                        <input type="email" class="form-control" name="email" id="email" value="<%= user.email %>"
+                        <input type="email" class="form-control" name="email" id="email" value="<%= authUser.email %>"
                           required>
                       </div>
                     </div>
@@ -257,14 +257,14 @@
                           Nickname
                         </label>
                         <input type="text" class="form-control" id="nickname" name="nickname"
-                          value="<%= user.nickname %>" required>
+                          value="<%= authUser.nickname %>" required>
                       </div>
                       <div class="col-lg-6">
                         <label for="phoneNumber" class="text-dark">
                           Phone Number
                         </label>
                         <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" minlength="11"
-                          maxlength="14" value="<%= addZero(user.phoneNumber, 'phoneNumber') %>" required>
+                          maxlength="14" value="<%= addZero(authUser.phoneNumber, 'phoneNumber') %>" required>
                       </div>
                     </div>
                   </form>
@@ -298,14 +298,14 @@
               </button>
               <div class="ribbon-content">
                 <div class="col-xl-12 col-lg-12">
-                  <form action="/myaccount/edit/<%= user._id %>/details" method="POST" id="myDetailsForm">
+                  <form action="/myaccount/details" method="POST" id="myDetailsForm">
                     <div class="form-group row">
                       <!-- country -->
                       <div class="col-xl-6 col-lg-6">
                         <label for="country" class="text-dark">
                           Country
                         </label>
-                        <select class="form-control" id="country" name="country" data-selectvalue="<%= user.country %>"
+                        <select class="form-control" id="country" name="country" data-selectvalue="<%= authUser.country %>"
                           required>
                           <option value="">Select your country</option>
                           <option value="Afghanistan">Afghanistan</option>
@@ -511,7 +511,7 @@
                           State
                         </label>
                         <input type="text" class="form-control" id="state" name="state"
-                          value="<%= sentenceCase(user.state) %>" required>
+                          value="<%= sentenceCase(authUser.state) %>" required>
                       </div>
                     </div>
 
@@ -522,7 +522,7 @@
                           City
                         </label>
                         <input type="text" class="form-control" id="city" name="city"
-                          value="<%= sentenceCase(user.city) %>" required>
+                          value="<%= sentenceCase(authUser.city) %>" required>
                       </div>
 
                       <!-- zip / postal code -->
@@ -530,7 +530,7 @@
                         <label for="postalcode" class="text-dark">
                           Zip / Postal code
                         </label> <input type="text" class="form-control" id="postalcode" name="postalcode"
-                          value="<%= user.postalcode %>" required>
+                          value="<%= authUser.postalcode %>" required>
                       </div>
                     </div>
                     <!-- home address -->
@@ -540,7 +540,7 @@
                           Home Address
                         </label>
                         <textarea class="form-control mb-0" id="homeAddress" name="homeAddress" cols="30" rows="3"
-                          required><%= sentenceCase(user.homeAddress) %></textarea>
+                          required><%= sentenceCase(authUser.homeAddress) %></textarea>
                       </div>
                     </div>
 
@@ -551,21 +551,21 @@
                       <div class="col-xl-4 col-lg-4">
                         <label for="next_firstname">First Name</label>
                         <input type="text" class="form-control" id="next_firstname" name="next_firstname"
-                          value="<%= nameCase(user.nextOfKin.firstname) %>" required>
+                          value="<%= nameCase(authUser.nextOfKin.firstname) %>" required>
                       </div>
 
                       <!-- Next lastname -->
                       <div class="col-xl-4 col-lg-4">
                         <label for="next_lastname">Last Name</label>
                         <input type="text" class="form-control" id="next_lastname" name="next_lastname"
-                          value="<%= nameCase(user.nextOfKin.lastname) %>" required>
+                          value="<%= nameCase(authUser.nextOfKin.lastname) %>" required>
                       </div>
 
                       <!-- Next Relationship -->
                       <div class="col-xl-4 col-lg-4">
                         <label for="next_relationship">Relationship</label>
                         <input type="text" class="form-control" id="next_relationship" name="next_relationship"
-                          value="<%= sentenceCase(user.nextOfKin.relationship) %>" required>
+                          value="<%= sentenceCase(authUser.nextOfKin.relationship) %>" required>
                       </div>
                     </div>
 
@@ -574,7 +574,7 @@
                       <div class="col-xl-7 col-lg-7">
                         <label for="next_email">Email</label>
                         <input type="email" class="form-control" id="next_email" name="next_email"
-                          value="<%= user.nextOfKin.email %>" required>
+                          value="<%= authUser.nextOfKin.email %>" required>
                       </div>
 
                       <!-- Next phone number -->
@@ -582,7 +582,7 @@
                         <label for="next_phoneNumber">Phone Number</label>
                         <input type="number" class="form-control" id="next_phoneNumber" name="next_phoneNumber"
                           minlength="11" maxlength="14"
-                          value="<%= addZero(user.nextOfKin.phoneNumber, 'phoneNumber') %>" required>
+                          value="<%= addZero(authUser.nextOfKin.phoneNumber, 'phoneNumber') %>" required>
                       </div>
                     </div>
 
@@ -591,7 +591,7 @@
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_country">Country</label>
                         <select class="form-control" id="next_country" name="next_country"
-                          data-selectvalue="<%= user.nextOfKin.country %>" required>
+                          data-selectvalue="<%= authUser.nextOfKin.country %>" required>
                           <option value="">Select country</option>
                           <option value="Afghanistan">Afghanistan</option>
                           <option value="Albania">Albania</option>
@@ -793,7 +793,7 @@
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_state">State</label>
                         <input type="text" class="form-control" id="next_state" name="next_state"
-                          value="<%= sentenceCase(user.nextOfKin.state) %>" required>
+                          value="<%= sentenceCase(authUser.nextOfKin.state) %>" required>
                       </div>
                     </div>
 
@@ -802,14 +802,14 @@
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_city">City</label>
                         <input type="text" class="form-control" id="next_city" name="next_city"
-                          value="<%= sentenceCase(user.nextOfKin.city) %>" required>
+                          value="<%= sentenceCase(authUser.nextOfKin.city) %>" required>
                       </div>
 
                       <!-- Next zip / postal code -->
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_postalcode">Zip / Postal code</label>
                         <input type="text" class="form-control" id="next_postalcode" name="next_postalcode"
-                          value="<%= user.nextOfKin.postalcode %>" required>
+                          value="<%= authUser.nextOfKin.postalcode %>" required>
                       </div>
                     </div>
 
@@ -818,7 +818,7 @@
                       <div class="col-xl-12 col-lg-12">
                         <label for="next_homeAddress">Home Address</label>
                         <textarea class="form-control mb-0" id="next_homeAddress" name="next_homeAddress" cols="30"
-                          rows="3" required><%= sentenceCase(user.nextOfKin.homeAddress) %></textarea>
+                          rows="3" required><%= sentenceCase(authUser.nextOfKin.homeAddress) %></textarea>
                       </div>
                     </div>
                   </form>

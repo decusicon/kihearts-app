@@ -25,7 +25,11 @@ class User extends Model {
 
 	//-- ComparePassword
 	async comparePassword(password, hash) {
-		return await bcrypt.compare(userPassword, hash);
+		return await bcrypt.compare(password, hash);
+	}
+
+	async passwordCheck(password) {
+		return await bcrypt.compare(password, this.password);
 	}
 
 	set avatar(value) {

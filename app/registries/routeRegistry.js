@@ -15,7 +15,6 @@ app.use(
 
 // ROUTES
 app.use("/campaigns", require("@src/routes/campaign"));
-app.use("/myaccount", require("@src/routes/myaccount"));
 
 app.use('/404', (req, res, next) => {
   res.render("./errors/error", {

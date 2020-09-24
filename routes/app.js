@@ -17,6 +17,10 @@ Route.post('/myaccount/bank', require("@controllers/UserController").updateBank)
 Route.post('/myaccount/avatar', require("@controllers/UserController").updateAvatar);
 
 Route.get("/campaigns", require("@controllers/CampaignController").index);
+Route.post(
+	"/campaigns/create",
+	require("@controllers/CampaignController").store
+);
 
 
 module.exports = Route;

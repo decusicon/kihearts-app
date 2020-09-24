@@ -31,7 +31,6 @@
 
       <div class="col-xl-8 col-lg-8 col-md-8">
         <div class="contentCon">
-          <% if(typeof campaigns != undefined){ %>
           <!-- start Modals container -->
           <div class="all_modals_container">
             <!-- Create Campaign Modal -->
@@ -137,6 +136,7 @@
                               Campaign Photos
                               <b class="text-danger">*</b>
                             </label>
+
                             <div class="dropzone" id="campaignPhotosForm">
                               <div class="dz-message">
                                 <i class="h1 text-muted dripicons-cloud-upload"></i>
@@ -146,6 +146,7 @@
                                 </span>
                               </div>
                             </div>
+                            
                           </div>
                         </div>
                       </div>
@@ -176,7 +177,8 @@
           </div>
           <!-- end Modals container -->
 
-          <% if(campaigns.length <= 0){ %>
+
+          <% if(_.isEmpty(campaigns)){ %>
           <!-- start noCampaigns -->
           <div class="noCampaigns">
             <div class="row">
@@ -292,7 +294,6 @@
             <% } %>
           </div>
           <!-- end Campaigns Card -->
-          <% } %>
           <% } %>
         </div>
       </div>

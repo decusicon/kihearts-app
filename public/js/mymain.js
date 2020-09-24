@@ -100,6 +100,8 @@ function clearAllInput() {
 	// });
 }
 
+
+//================ CAMPAIGN MODAL ====================//
 // CREATE CAMPAIGN MODAL
 function createCampaignModal() {
 	var createCampaignBtn = $(".createCampaignBtn");
@@ -436,6 +438,8 @@ function deleteCampaign(url) {
 			});
 	}
 }
+//================ CAMPAIGN MODAL ====================//
+
 
 // SET SELECT VALUE
 function setSelect(selector, selectvalue = "") {
@@ -603,25 +607,6 @@ function dropzoneCon() {
 				dropzoneInstance.removeAllFiles(true);
 			});
 
-			// dropzoneInstance.on("sending", function (file, xhr, formData) {
-			// 	var data = $("#createCampaignForm").serializeArray();
-			// 	$.each(data, (key, el) => {
-			// 		formData.append(el.name, el.value);
-			// 	});
-			// });
-
-			dropzoneInstance.on("error", (file, errorMessage, xhr) => {
-				if (!xhr) dropzoneInstance.removeFile(file);
-			});
-
-			dropzoneInstance.on("errormultiple", (file, errorMessage, xhr) => {
-				if (xhr)
-					genAlertBox(
-						"error",
-						"Please! Fill up all fields properly."
-					);
-			});
-
 			dropzoneInstance.on("addedfile", (file) => {
 				if (dropzoneInstance.files.length >= 3) {
 					$("[form=createCampaignForm]").removeAttr("disabled");
@@ -636,15 +621,24 @@ function dropzoneCon() {
 					$("[form=createCampaignForm]").attr("disabled", "disabled");
 			});
 
+			dropzoneInstance.on("error", (file, errorMessage, xhr) => {
+				if (!xhr) dropzoneInstance.removeFile(file);
+			});
+
+			dropzoneInstance.on("errormultiple", (file, errorMessage, xhr) => {
+				if (xhr)
+					genAlertBox(
+						"error",
+						"Please! Fill up all fields properly."
+					);
+			});
+
 			dropzoneInstance.on("sendingmultiple", (file, xhr, formData) => {
-				// Append all form inputs to the formData Dropzone will POST
 				var data = $("#createCampaignForm").serializeArray();
 				$.each(data, (key, el) => {
 					formData.append(el.name, el.value);
 				});
 			});
-
-			submitPhotos(this);
 
 			dropzoneInstance.on("successmultiple", (file, response) => {
 				genAlertBox(response.type, `${response.msg}`);
@@ -652,6 +646,8 @@ function dropzoneCon() {
 					location.replace(response.url);
 				}, 1000);
 			});
+
+			submitPhotos(this);
 		},
 	};
 }

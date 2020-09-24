@@ -34,70 +34,7 @@ var upload = multer({
 var Campaign = require("@models/campaign");
 var Bin = require("@models/bin");
 
-// GET -- fetch page.
-// router.get("/", (req, res) => {
-// 	var query = { userId: req.user._id };
-// 	Campaign.find(query, (err, campaigns) => {
-// 		if (err) console.log(err);
-// 		res.render("pages/campaign", { title: "Campaigns", campaigns });
-// 	});
-// });
 
-// POST -- create campaign.
-// router.post("/create", upload.array("photo", 3), (req, res) => {
-// 	const userId = req.user._id;
-// 	const photos = [];
-
-// 	if (req.files) {
-// 		for (var i = 0; i < req.files.length; i++) {
-// 			const file = req.files[i];
-// 			const filePath = `${process.env.APP_URL}${
-// 				file.path.split("public")[1]
-// 			}`;
-// 			photos.push(filePath);
-// 		}
-
-// 		const {
-// 			title,
-// 			category,
-// 			subCategory,
-// 			reason,
-// 			amount,
-// 		} = global.gatherCampaignBodyVariables(req);
-
-// 		var campaignErrors = req.validationErrors();
-
-// 		if (campaignErrors) {
-// 			res.send({
-// 				type: "error",
-// 				msg: "Please! Fill up all fields properly.",
-// 				url: "/campaigns",
-// 			});
-// 		} else {
-// 			var newCampaign = new Campaign({
-// 				userId,
-// 				title,
-// 				category,
-// 				subCategory,
-// 				reason,
-// 				amount,
-// 				photos,
-// 			});
-
-// 			// Save new campaign
-// 			Campaign.saveCampaign(newCampaign, (err) => {
-// 				if (err) console.log(err);
-// 				else {
-// 					res.send({
-// 						type: "success",
-// 						msg: "Success! You've just created a campaign.",
-// 						url: "/campaigns",
-// 					});
-// 				}
-// 			});
-// 		}
-// 	}
-// });
 
 // POST -- edit campaign.
 router.post("/edit/:_id", upload.array("photo", 3), (req, res) => {

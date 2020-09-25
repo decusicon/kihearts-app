@@ -547,22 +547,21 @@
                     <div class="form-group row">
                       <div class="col-xl-4 col-lg-4">
                         <label for="next_firstname">First Name</label>
-                        <input type="text" class="form-control" id="next_firstname" name="next_firstname" value="<%= old('next_firstname') %>"
-                          value="<%= nameCase(authUser.nextOfKin.firstname) %>" required>
+                        <input type="text" class="form-control" id="next_firstname" name="next_firstname" value="<%= old('next_firstname', nameCase(authUser.nextOfKin.firstname)) %>"required>
                       </div>
 
                       <!-- Next lastname -->
                       <div class="col-xl-4 col-lg-4">
                         <label for="next_lastname">Last Name</label>
-                        <input type="text" class="form-control" id="next_lastname" name="next_lastname" value="<%= old('next_lastname') %>"
-                          value="<%= nameCase(authUser.nextOfKin.lastname) %>" required>
+                        <input type="text" class="form-control" id="next_lastname" name="next_lastname" value="<%= old('next_lastname', nameCase(authUser.nextOfKin.lastname)) %>"
+                           required>
                       </div>
 
                       <!-- Next Relationship -->
                       <div class="col-xl-4 col-lg-4">
                         <label for="next_relationship">Relationship</label>
-                        <input type="text" class="form-control" id="next_relationship" name="next_relationship" value="<%= old('next_relationship') %>"
-                          value="<%= sentenceCase(authUser.nextOfKin.relationship) %>" required>
+                        <input type="text" class="form-control" id="next_relationship" name="next_relationship" value="<%= old('next_relationship', sentenceCase(authUser.nextOfKin.relationship)) %>"
+                           required>
                       </div>
                     </div>
 
@@ -570,16 +569,16 @@
                       <!-- Next email -->
                       <div class="col-xl-7 col-lg-7">
                         <label for="next_email">Email</label>
-                        <input type="email" class="form-control" id="next_email" name="next_email" value="<%= old('next_email') %>"
-                          value="<%= authUser.nextOfKin.email %>" required>
+                        <input type="email" class="form-control" id="next_email" name="next_email" value="<%= old('next_email', authUser.nextOfKin.email) %>"
+                           required>
                       </div>
 
                       <!-- Next phone number -->
                       <div class="col-xl-5 col-lg-5">
                         <label for="next_phoneNumber">Phone Number</label>
-                        <input type="number" class="form-control" id="next_phoneNumber" name="next_phoneNumber" value="<%= old('next_phoneNumber') %>"
+                        <input type="number" class="form-control" id="next_phoneNumber" name="next_phoneNumber" value="<%= old('next_phoneNumber', addZero(authUser.nextOfKin.phoneNumber, 'phoneNumber')) %>"
                           minlength="11" maxlength="14"
-                          value="<%= addZero(authUser.nextOfKin.phoneNumber, 'phoneNumber') %>" required>
+                           required>
                       </div>
                     </div>
 
@@ -588,7 +587,7 @@
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_country">Country</label>
                         <select class="form-control" id="next_country" name="next_country"
-                          data-selectvalue="<%= authUser.nextOfKin.country %>" required>
+                          data-selectvalue="<%= old('next_country', authUser.nextOfKin.country) %>" required>
                           <option value="">Select country</option>
                           <option value="Afghanistan">Afghanistan</option>
                           <option value="Albania">Albania</option>
@@ -789,8 +788,8 @@
                       <!-- Next state -->
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_state">State</label>
-                        <input type="text" class="form-control" id="next_state" name="next_state" value="<%= old('next_state') %>"
-                          value="<%= sentenceCase(authUser.nextOfKin.state) %>" required>
+                        <input type="text" class="form-control" id="next_state" name="next_state" value="<%= old('next_state', sentenceCase(authUser.nextOfKin.state)) %>"
+                           required>
                       </div>
                     </div>
 
@@ -798,15 +797,15 @@
                       <!-- Next city -->
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_city">City</label>
-                        <input type="text" class="form-control" id="next_city" name="next_city" value="<%= old('next_city') %>"
-                          value="<%= sentenceCase(authUser.nextOfKin.city) %>" required>
+                        <input type="text" class="form-control" id="next_city" name="next_city" value="<%= old('next_city', sentenceCase(authUser.nextOfKin.city)) %>"
+                           required>
                       </div>
 
                       <!-- Next zip / postal code -->
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_postalcode">Zip / Postal code</label>
-                        <input type="text" class="form-control" id="next_postalcode" name="next_postalcode" value="<%= old('next_postalcode') %>"
-                          value="<%= authUser.nextOfKin.postalcode %>" required>
+                        <input type="text" class="form-control" id="next_postalcode" name="next_postalcode" value="<%= old('next_postalcode', authUser.nextOfKin.postalcode) %>"
+                           required>
                       </div>
                     </div>
 
@@ -815,7 +814,7 @@
                       <div class="col-xl-12 col-lg-12">
                         <label for="next_homeAddress">Home Address</label>
                         <textarea class="form-control mb-0" id="next_homeAddress" name="next_homeAddress" cols="30"
-                          rows="3" required><%= sentenceCase(authUser.nextOfKin.homeAddress) %><%= old('next_homeAddress') %></textarea>
+                          rows="3" required><%= old('next_homeAddress', sentenceCase(authUser.nextOfKin.homeAddress)) %></textarea>
                       </div>
                     </div>
                   </form>

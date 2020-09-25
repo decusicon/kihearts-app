@@ -148,28 +148,27 @@
                         Bank
                         <b class="text-danger">*</b>
                       </label>
-                      <select class="form-control" name="bank" id="bank" data-selectvalue="<%= old('bank', authUser.bankDetails.bank) %>"
-                        required>
+                      <select class="form-control" name="bank" id="bank" required>
                         <option value="">Select your Bank</option>
-                        <option value="Access Bank">Access Bank Plc</option>
-                        <option value="Fidelity Bank">Fidelity Bank Plc</option>
-                        <option value="First City Monument Bank">First City Monument Bank Limited</option>
-                        <option value="First Bank of Nigeria">First Bank of Nigeria Limited</option>
-                        <option value="Guaranty Trust Bank">Guaranty Trust Bank Plc</option>
-                        <option value="Union Bank of Nigeria">Union Bank of Nigeria Plc</option>
-                        <option value="United Bank for Africa">United Bank for Africa Plc</option>
-                        <option value="Zenith Bank">Zenith Bank Plc</option>
-                        <option value="Citibank Nigeria">Citibank Nigeria Limited</option>
-                        <option value="Ecobank Nigeria">Ecobank Nigeria Plc</option>
-                        <option value="Heritage Banking Company">Heritage Banking Company Limited</option>
-                        <option value="Keystone Bank">Keystone Bank Limited</option>
-                        <option value="Polaris Bank">Polaris Bank Limited</option>
-                        <option value="Stanbic IBTC Bank">Stanbic IBTC Bank Plc</option>
-                        <option value="Standard">Standard Chartered</option>
-                        <option value="Sterling Bank">Sterling Bank Plc</option>
-                        <option value="Titan Trust Bank">Titan Trust Bank Limited</option>
-                        <option value="Unity Bank">Unity Bank Plc</option>
-                        <option value="Wema Bank">Wema Bank Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Access Bank") ? 'selected' : '' %> value="Access Bank">Access Bank Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Fidelity Bank") ? 'selected' : '' %> value="Fidelity Bank">Fidelity Bank Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "First City Monument Bank") ? 'selected' : '' %> value="First City Monument Bank">First City Monument Bank Limited</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "First Bank of Nigeria") ? 'selected' : '' %> value="First Bank of Nigeria">First Bank of Nigeria Limited</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Guaranty Trust Bank") ? 'selected' : '' %> value="Guaranty Trust Bank">Guaranty Trust Bank Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Union Bank of Nigeria") ? 'selected' : '' %> value="Union Bank of Nigeria">Union Bank of Nigeria Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "United Bank for Africa") ? 'selected' : '' %> value="United Bank for Africa">United Bank for Africa Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Zenith Bank") ? 'selected' : '' %> value="Zenith Bank">Zenith Bank Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Citibank Nigeria") ? 'selected' : '' %> value="Citibank Nigeria">Citibank Nigeria Limited</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Ecobank Nigeria") ? 'selected' : '' %> value="Ecobank Nigeria">Ecobank Nigeria Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Heritage Banking Company") ? 'selected' : '' %> value="Heritage Banking Company">Heritage Banking Company Limited</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Keystone Bank") ? 'selected' : '' %> value="Keystone Bank">Keystone Bank Limited</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Polaris Bank") ? 'selected' : '' %> value="Polaris Bank">Polaris Bank Limited</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Stanbic IBTC Bank") ? 'selected' : '' %> value="Stanbic IBTC Bank">Stanbic IBTC Bank Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Standard") ? 'selected' : '' %> value="Standard">Standard Chartered</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Sterling Bank") ? 'selected' : '' %> value="Sterling Bank">Sterling Bank Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Titan Trust Bank") ? 'selected' : '' %> value="Titan Trust Bank">Titan Trust Bank Limited</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Unity Bank") ? 'selected' : '' %> value="Unity Bank">Unity Bank Plc</option>
+                        <option <%= (old('bank', authUser.bankDetails.bank) == "Wema Bank") ? 'selected' : '' %> value="Wema Bank">Wema Bank Plc</option>
                       </select>
                     </div>
                   </div>
@@ -302,203 +301,202 @@
                         <label for="country" class="text-dark">
                           Country
                         </label>
-                        <select class="form-control" id="country" name="country" data-selectvalue="<%= old('country', authUser.country) %>"
-                          required>
+                        <select class="form-control" id="country" name="country" required>
                           <option value="">Select your country</option>
-                          <option value="Afghanistan">Afghanistan</option>
-                          <option value="Albania">Albania</option>
-                          <option value="Algeria">Algeria</option>
-                          <option value="Andorra">Andorra</option>
-                          <option value="Angola">Angola</option>
-                          <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                          <option value="Argentina">Argentina</option>
-                          <option value="Armenia">Armenia</option>
-                          <option value="Australia">Australia</option>
-                          <option value="Austria">Austria</option>
-                          <option value="Azerbaijan">Azerbaijan</option>
-                          <option value="Bahamas">Bahamas</option>
-                          <option value="Bahrain">Bahrain</option>
-                          <option value="Bangladesh">Bangladesh</option>
-                          <option value="Barbados">Barbados</option>
-                          <option value="Belarus">Belarus</option>
-                          <option value="Belgium">Belgium</option>
-                          <option value="Belize">Belize</option>
-                          <option value="Benin">Benin</option>
-                          <option value="Bhutan">Bhutan</option>
-                          <option value="Bolivia">Bolivia</option>
-                          <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                          <option value="Botswana">Botswana</option>
-                          <option value="Brazil">Brazil</option>
-                          <option value="Brunei">Brunei</option>
-                          <option value="Bulgaria">Bulgaria</option>
-                          <option value="Burkina Faso">Burkina Faso</option>
-                          <option value="Burundi">Burundi</option>
-                          <option value="Cabo Verde">Cabo Verde</option>
-                          <option value="Cambodia">Cambodia</option>
-                          <option value="Cameroon">Cameroon</option>
-                          <option value="Canada">Canada</option>
-                          <option value="Central African Republic">Central African Republic</option>
-                          <option value="Chad">Chad</option>
-                          <option value="Chile">Chile</option>
-                          <option value="China">China</option>
-                          <option value="Colombia">Colombia</option>
-                          <option value="Comoros">Comoros</option>
-                          <option value="Congo">Congo</option>
-                          <option value="Croatia">Croatia</option>
-                          <option value="Cuba">Cuba</option>
-                          <option value="Cyprus">Cyprus</option>
-                          <option value="Czech Republic (Czechia)">Czech Republic (Czechia)</option>
-                          <option value="Côte d'Ivoire">Côte d'Ivoire</option>
-                          <option value="Denmark">Denmark</option>
-                          <option value="Djibouti">Djibouti</option>
-                          <option value="Dominica">Dominica</option>
-                          <option value="Dominican Republic">Dominican Republic</option>
-                          <option value="DR Congo">DR Congo</option>
-                          <option value="Ecuador">Ecuador</option>
-                          <option value="Egypt">Egypt</option>
-                          <option value="El Salvador">El Salvador</option>
-                          <option value="Equatorial Guinea">Equatorial Guinea</option>
-                          <option value="Eritrea">Eritrea</option>
-                          <option value="Estonia">Estonia</option>
-                          <option value="Eswatini">Eswatini</option>
-                          <option value="Ethiopia">Ethiopia</option>
-                          <option value="Fiji">Fiji</option>
-                          <option value="Finland">Finland</option>
-                          <option value="France">France</option>
-                          <option value="Gabon">Gabon</option>
-                          <option value="Gambia">Gambia</option>
-                          <option value="Georgia">Georgia</option>
-                          <option value="Germany">Germany</option>
-                          <option value="Ghana">Ghana</option>
-                          <option value="Greece">Greece</option>
-                          <option value="Grenada">Grenada</option>
-                          <option value="Guatemala">Guatemala</option>
-                          <option value="Guinea">Guinea</option>
-                          <option value="Guinea-Bissau">Guinea-Bissau</option>
-                          <option value="Guyana">Guyana</option>
-                          <option value="Haiti">Haiti</option>
-                          <option value="Holy See">Holy See</option>
-                          <option value="Honduras">Honduras</option>
-                          <option value="Hungary">Hungary</option>
-                          <option value="Iceland">Iceland</option>
-                          <option value="India">India</option>
-                          <option value="Indonesia">Indonesia</option>
-                          <option value="Iran">Iran</option>
-                          <option value="Iraq">Iraq</option>
-                          <option value="Ireland">Ireland</option>
-                          <option value="Israel">Israel</option>
-                          <option value="Italy">Italy</option>
-                          <option value="Jamaica">Jamaica</option>
-                          <option value="Japan">Japan</option>
-                          <option value="Jordan">Jordan</option>
-                          <option value="Kazakhstan">Kazakhstan</option>
-                          <option value="Kenya">Kenya</option>
-                          <option value="Kiribati">Kiribati</option>
-                          <option value="Kuwait">Kuwait</option>
-                          <option value="Kyrgyzstan">Kyrgyzstan</option>
-                          <option value="Laos">Laos</option>
-                          <option value="Latvia">Latvia</option>
-                          <option value="Lebanon">Lebanon</option>
-                          <option value="Lesotho">Lesotho</option>
-                          <option value="Liberia">Liberia</option>
-                          <option value="Libya">Libya</option>
-                          <option value="Liechtenstein">Liechtenstein</option>
-                          <option value="Lithuania">Lithuania</option>
-                          <option value="Luxembourg">Luxembourg</option>
-                          <option value="Madagascar">Madagascar</option>
-                          <option value="Malawi">Malawi</option>
-                          <option value="Malaysia">Malaysia</option>
-                          <option value="Maldives">Maldives</option>
-                          <option value="Mali">Mali</option>
-                          <option value="Malta">Malta</option>
-                          <option value="Marshall Islands">Marshall Islands</option>
-                          <option value="Mauritania">Mauritania</option>
-                          <option value="Mauritius">Mauritius</option>
-                          <option value="Mexico">Mexico</option>
-                          <option value="Micronesia">Micronesia</option>
-                          <option value="Moldova">Moldova</option>
-                          <option value="Monaco">Monaco</option>
-                          <option value="Mongolia">Mongolia</option>
-                          <option value="Montenegro">Montenegro</option>
-                          <option value="Morocco">Morocco</option>
-                          <option value="Mozambique">Mozambique</option>
-                          <option value="Myanmar">Myanmar</option>
-                          <option value="Namibia">Namibia</option>
-                          <option value="Nauru">Nauru</option>
-                          <option value="Nepal">Nepal</option>
-                          <option value="Netherlands">Netherlands</option>
-                          <option value="New Zealand">New Zealand</option>
-                          <option value="Nicaragua">Nicaragua</option>
-                          <option value="Niger">Niger</option>
-                          <option value="Nigeria">Nigeria</option>
-                          <option value="North Korea">North Korea</option>
-                          <option value="North Macedonia">North Macedonia</option>
-                          <option value="Norway">Norway</option>
-                          <option value="Oman">Oman</option>
-                          <option value="Pakistan">Pakistan</option>
-                          <option value="Palau">Palau</option>
-                          <option value="Panama">Panama</option>
-                          <option value="Papua New Guinea">Papua New Guinea</option>
-                          <option value="Paraguay">Paraguay</option>
-                          <option value="Peru">Peru</option>
-                          <option value="Philippines">Philippines</option>
-                          <option value="Poland">Poland</option>
-                          <option value="Portugal">Portugal</option>
-                          <option value="Qatar">Qatar</option>
-                          <option value="Romania">Romania</option>
-                          <option value="Russia">Russia</option>
-                          <option value="Rwanda">Rwanda</option>
-                          <option value="Saint Kitts & Nevis">Saint Kitts & Nevis</option>
-                          <option value="Saint Lucia">Saint Lucia</option>
-                          <option value="Samoa">Samoa</option>
-                          <option value="San Marino">San Marino</option>
-                          <option value="Sao Tome & Principe">Sao Tome & Principe</option>
-                          <option value="Saudi Arabia">Saudi Arabia</option>
-                          <option value="Senegal">Senegal</option>
-                          <option value="Serbia">Serbia</option>
-                          <option value="Seychelles">Seychelles</option>
-                          <option value="Sierra Leone">Sierra Leone</option>
-                          <option value="Singapore">Singapore</option>
-                          <option value="Slovakia">Slovakia</option>
-                          <option value="Slovenia">Slovenia</option>
-                          <option value="Solomon Islands">Solomon Islands</option>
-                          <option value="Somalia">Somalia</option>
-                          <option value="South Africa">South Africa</option>
-                          <option value="South Korea">South Korea</option>
-                          <option value="South Sudan">South Sudan</option>
-                          <option value="Spain">Spain</option>
-                          <option value="Sri Lanka">Sri Lanka</option>
-                          <option value="St. Vincent & Grenadines">St. Vincent & Grenadines</option>
-                          <option value="State of Palestine">State of Palestine</option>
-                          <option value="Sudan">Sudan</option>
-                          <option value="Suriname">Suriname</option>
-                          <option value="Sweden">Sweden</option>
-                          <option value="Switzerland">Switzerland</option>
-                          <option value="Syria">Syria</option>
-                          <option value="Tajikistan">Tajikistan</option>
-                          <option value="Tanzania">Tanzania</option>
-                          <option value="Thailand">Thailand</option>
-                          <option value="Timor-Leste">Timor-Leste</option>
-                          <option value="Togo">Togo</option>
-                          <option value="Tonga">Tonga</option>
-                          <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                          <option value="Tunisia">Tunisia</option>
-                          <option value="Turkey">Turkey</option>
-                          <option value="Turkmenistan">Turkmenistan</option>
-                          <option value="Tuvalu">Tuvalu</option>
-                          <option value="Uganda">Uganda</option>
-                          <option value="Ukraine">Ukraine</option>
-                          <option value="United Arab Emirates">United Arab Emirates</option>
-                          <option value="United Kingdom">United Kingdom</option>
-                          <option value="United States">United States</option>
-                          <option value="Uruguay">Uruguay</option>
-                          <option value="Uzbekistan">Uzbekistan</option>
-                          <option value="Vanuatu">Vanuatu</option>
-                          <option value="Venezuela">Venezuela</option>
-                          <option value="Vietnam">Vietnam</option>
-                          <option value="Yemen">Yemen</option>
-                          <option value="Zambia">Zambia</option>
-                          <option value="Zimbabwe">Zimbabwe</option>
+                          <option <%= (old('country', authUser.country) == "Afghanistan") ? 'selected' : '' %> value="Afghanistan">Afghanistan</option>
+                          <option <%= (old('country', authUser.country) == "Albania") ? 'selected' : '' %> value="Albania">Albania</option>
+                          <option <%= (old('country', authUser.country) == "Algeria") ? 'selected' : '' %> value="Algeria">Algeria</option>
+                          <option <%= (old('country', authUser.country) == "Andorra") ? 'selected' : '' %> value="Andorra">Andorra</option>
+                          <option <%= (old('country', authUser.country) == "Angola") ? 'selected' : '' %> value="Angola">Angola</option>
+                          <option <%= (old('country', authUser.country) == "Antigua and Barbuda") ? 'selected' : '' %> value="Antigua and Barbuda">Antigua and Barbuda</option>
+                          <option <%= (old('country', authUser.country) == "Argentina") ? 'selected' : '' %> value="Argentina">Argentina</option>
+                          <option <%= (old('country', authUser.country) == "Armenia") ? 'selected' : '' %> value="Armenia">Armenia</option>
+                          <option <%= (old('country', authUser.country) == "Australia") ? 'selected' : '' %> value="Australia">Australia</option>
+                          <option <%= (old('country', authUser.country) == "Austria") ? 'selected' : '' %> value="Austria">Austria</option>
+                          <option <%= (old('country', authUser.country) == "Azerbaijan") ? 'selected' : '' %> value="Azerbaijan">Azerbaijan</option>
+                          <option <%= (old('country', authUser.country) == "Bahamas") ? 'selected' : '' %> value="Bahamas">Bahamas</option>
+                          <option <%= (old('country', authUser.country) == "Bahrain") ? 'selected' : '' %> value="Bahrain">Bahrain</option>
+                          <option <%= (old('country', authUser.country) == "Bangladesh") ? 'selected' : '' %> value="Bangladesh">Bangladesh</option>
+                          <option <%= (old('country', authUser.country) == "Barbados") ? 'selected' : '' %> value="Barbados">Barbados</option>
+                          <option <%= (old('country', authUser.country) == "Belarus") ? 'selected' : '' %> value="Belarus">Belarus</option>
+                          <option <%= (old('country', authUser.country) == "Belgium") ? 'selected' : '' %> value="Belgium">Belgium</option>
+                          <option <%= (old('country', authUser.country) == "Belize") ? 'selected' : '' %> value="Belize">Belize</option>
+                          <option <%= (old('country', authUser.country) == "Benin") ? 'selected' : '' %> value="Benin">Benin</option>
+                          <option <%= (old('country', authUser.country) == "Bhutan") ? 'selected' : '' %> value="Bhutan">Bhutan</option>
+                          <option <%= (old('country', authUser.country) == "Bolivia") ? 'selected' : '' %> value="Bolivia">Bolivia</option>
+                          <option <%= (old('country', authUser.country) == "Bosnia and Herzegovina") ? 'selected' : '' %> value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                          <option <%= (old('country', authUser.country) == "Botswana") ? 'selected' : '' %> value="Botswana">Botswana</option>
+                          <option <%= (old('country', authUser.country) == "Brazil") ? 'selected' : '' %> value="Brazil">Brazil</option>
+                          <option <%= (old('country', authUser.country) == "Brunei") ? 'selected' : '' %> value="Brunei">Brunei</option>
+                          <option <%= (old('country', authUser.country) == "Bulgaria") ? 'selected' : '' %> value="Bulgaria">Bulgaria</option>
+                          <option <%= (old('country', authUser.country) == "Burkina Faso") ? 'selected' : '' %> value="Burkina Faso">Burkina Faso</option>
+                          <option <%= (old('country', authUser.country) == "Burundi") ? 'selected' : '' %> value="Burundi">Burundi</option>
+                          <option <%= (old('country', authUser.country) == "Cabo Verde") ? 'selected' : '' %> value="Cabo Verde">Cabo Verde</option>
+                          <option <%= (old('country', authUser.country) == "Cambodia") ? 'selected' : '' %> value="Cambodia">Cambodia</option>
+                          <option <%= (old('country', authUser.country) == "Cameroon") ? 'selected' : '' %> value="Cameroon">Cameroon</option>
+                          <option <%= (old('country', authUser.country) == "Canada") ? 'selected' : '' %> value="Canada">Canada</option>
+                          <option <%= (old('country', authUser.country) == "Central African Republic") ? 'selected' : '' %> value="Central African Republic">Central African Republic</option>
+                          <option <%= (old('country', authUser.country) == "Chad") ? 'selected' : '' %> value="Chad">Chad</option>
+                          <option <%= (old('country', authUser.country) == "Chile") ? 'selected' : '' %> value="Chile">Chile</option>
+                          <option <%= (old('country', authUser.country) == "China") ? 'selected' : '' %> value="China">China</option>
+                          <option <%= (old('country', authUser.country) == "Colombia") ? 'selected' : '' %> value="Colombia">Colombia</option>
+                          <option <%= (old('country', authUser.country) == "Comoros") ? 'selected' : '' %> value="Comoros">Comoros</option>
+                          <option <%= (old('country', authUser.country) == "Congo") ? 'selected' : '' %> value="Congo">Congo</option>
+                          <option <%= (old('country', authUser.country) == "Croatia") ? 'selected' : '' %> value="Croatia">Croatia</option>
+                          <option <%= (old('country', authUser.country) == "Cuba") ? 'selected' : '' %> value="Cuba">Cuba</option>
+                          <option <%= (old('country', authUser.country) == "Cyprus") ? 'selected' : '' %> value="Cyprus">Cyprus</option>
+                          <option <%= (old('country', authUser.country) == "Czech Republic (Czechia)") ? 'selected' : '' %> value="Czech Republic (Czechia)">Czech Republic (Czechia)</option>
+                          <option <%= (old('country', authUser.country) == "Côte d'Ivoire") ? 'selected' : '' %> value="Côte d'Ivoire">Côte d'Ivoire</option>
+                          <option <%= (old('country', authUser.country) == "Denmark") ? 'selected' : '' %> value="Denmark">Denmark</option>
+                          <option <%= (old('country', authUser.country) == "Djibouti") ? 'selected' : '' %> value="Djibouti">Djibouti</option>
+                          <option <%= (old('country', authUser.country) == "Dominica") ? 'selected' : '' %> value="Dominica">Dominica</option>
+                          <option <%= (old('country', authUser.country) == "Dominican Republic") ? 'selected' : '' %> value="Dominican Republic">Dominican Republic</option>
+                          <option <%= (old('country', authUser.country) == "DR Congo") ? 'selected' : '' %> value="DR Congo">DR Congo</option>
+                          <option <%= (old('country', authUser.country) == "Ecuador") ? 'selected' : '' %> value="Ecuador">Ecuador</option>
+                          <option <%= (old('country', authUser.country) == "Egypt") ? 'selected' : '' %> value="Egypt">Egypt</option>
+                          <option <%= (old('country', authUser.country) == "El Salvador") ? 'selected' : '' %> value="El Salvador">El Salvador</option>
+                          <option <%= (old('country', authUser.country) == "Equatorial Guinea") ? 'selected' : '' %> value="Equatorial Guinea">Equatorial Guinea</option>
+                          <option <%= (old('country', authUser.country) == "Eritrea") ? 'selected' : '' %> value="Eritrea">Eritrea</option>
+                          <option <%= (old('country', authUser.country) == "Estonia") ? 'selected' : '' %> value="Estonia">Estonia</option>
+                          <option <%= (old('country', authUser.country) == "Eswatini") ? 'selected' : '' %> value="Eswatini">Eswatini</option>
+                          <option <%= (old('country', authUser.country) == "Ethiopia") ? 'selected' : '' %> value="Ethiopia">Ethiopia</option>
+                          <option <%= (old('country', authUser.country) == "Fiji") ? 'selected' : '' %> value="Fiji">Fiji</option>
+                          <option <%= (old('country', authUser.country) == "Finland") ? 'selected' : '' %> value="Finland">Finland</option>
+                          <option <%= (old('country', authUser.country) == "France") ? 'selected' : '' %> value="France">France</option>
+                          <option <%= (old('country', authUser.country) == "Gabon") ? 'selected' : '' %> value="Gabon">Gabon</option>
+                          <option <%= (old('country', authUser.country) == "Gambia") ? 'selected' : '' %> value="Gambia">Gambia</option>
+                          <option <%= (old('country', authUser.country) == "Georgia") ? 'selected' : '' %> value="Georgia">Georgia</option>
+                          <option <%= (old('country', authUser.country) == "Germany") ? 'selected' : '' %> value="Germany">Germany</option>
+                          <option <%= (old('country', authUser.country) == "Ghana") ? 'selected' : '' %> value="Ghana">Ghana</option>
+                          <option <%= (old('country', authUser.country) == "Greece") ? 'selected' : '' %> value="Greece">Greece</option>
+                          <option <%= (old('country', authUser.country) == "Grenada") ? 'selected' : '' %> value="Grenada">Grenada</option>
+                          <option <%= (old('country', authUser.country) == "Guatemala") ? 'selected' : '' %> value="Guatemala">Guatemala</option>
+                          <option <%= (old('country', authUser.country) == "Guinea") ? 'selected' : '' %> value="Guinea">Guinea</option>
+                          <option <%= (old('country', authUser.country) == "Guinea-Bissau") ? 'selected' : '' %> value="Guinea-Bissau">Guinea-Bissau</option>
+                          <option <%= (old('country', authUser.country) == "Guyana") ? 'selected' : '' %> value="Guyana">Guyana</option>
+                          <option <%= (old('country', authUser.country) == "Haiti") ? 'selected' : '' %> value="Haiti">Haiti</option>
+                          <option <%= (old('country', authUser.country) == "Holy See") ? 'selected' : '' %> value="Holy See">Holy See</option>
+                          <option <%= (old('country', authUser.country) == "Honduras") ? 'selected' : '' %> value="Honduras">Honduras</option>
+                          <option <%= (old('country', authUser.country) == "Hungary") ? 'selected' : '' %> value="Hungary">Hungary</option>
+                          <option <%= (old('country', authUser.country) == "Iceland") ? 'selected' : '' %> value="Iceland">Iceland</option>
+                          <option <%= (old('country', authUser.country) == "India") ? 'selected' : '' %> value="India">India</option>
+                          <option <%= (old('country', authUser.country) == "Indonesia") ? 'selected' : '' %> value="Indonesia">Indonesia</option>
+                          <option <%= (old('country', authUser.country) == "Iran") ? 'selected' : '' %> value="Iran">Iran</option>
+                          <option <%= (old('country', authUser.country) == "Iraq") ? 'selected' : '' %> value="Iraq">Iraq</option>
+                          <option <%= (old('country', authUser.country) == "Ireland") ? 'selected' : '' %> value="Ireland">Ireland</option>
+                          <option <%= (old('country', authUser.country) == "Israel") ? 'selected' : '' %> value="Israel">Israel</option>
+                          <option <%= (old('country', authUser.country) == "Italy") ? 'selected' : '' %> value="Italy">Italy</option>
+                          <option <%= (old('country', authUser.country) == "Jamaica") ? 'selected' : '' %> value="Jamaica">Jamaica</option>
+                          <option <%= (old('country', authUser.country) == "Japan") ? 'selected' : '' %> value="Japan">Japan</option>
+                          <option <%= (old('country', authUser.country) == "Jordan") ? 'selected' : '' %> value="Jordan">Jordan</option>
+                          <option <%= (old('country', authUser.country) == "Kazakhstan") ? 'selected' : '' %> value="Kazakhstan">Kazakhstan</option>
+                          <option <%= (old('country', authUser.country) == "Kenya") ? 'selected' : '' %> value="Kenya">Kenya</option>
+                          <option <%= (old('country', authUser.country) == "Kiribati") ? 'selected' : '' %> value="Kiribati">Kiribati</option>
+                          <option <%= (old('country', authUser.country) == "Kuwait") ? 'selected' : '' %> value="Kuwait">Kuwait</option>
+                          <option <%= (old('country', authUser.country) == "Kyrgyzstan") ? 'selected' : '' %> value="Kyrgyzstan">Kyrgyzstan</option>
+                          <option <%= (old('country', authUser.country) == "Laos") ? 'selected' : '' %> value="Laos">Laos</option>
+                          <option <%= (old('country', authUser.country) == "Latvia") ? 'selected' : '' %> value="Latvia">Latvia</option>
+                          <option <%= (old('country', authUser.country) == "Lebanon") ? 'selected' : '' %> value="Lebanon">Lebanon</option>
+                          <option <%= (old('country', authUser.country) == "Lesotho") ? 'selected' : '' %> value="Lesotho">Lesotho</option>
+                          <option <%= (old('country', authUser.country) == "Liberia") ? 'selected' : '' %> value="Liberia">Liberia</option>
+                          <option <%= (old('country', authUser.country) == "Libya") ? 'selected' : '' %> value="Libya">Libya</option>
+                          <option <%= (old('country', authUser.country) == "Liechtenstein") ? 'selected' : '' %> value="Liechtenstein">Liechtenstein</option>
+                          <option <%= (old('country', authUser.country) == "Lithuania") ? 'selected' : '' %> value="Lithuania">Lithuania</option>
+                          <option <%= (old('country', authUser.country) == "Luxembourg") ? 'selected' : '' %> value="Luxembourg">Luxembourg</option>
+                          <option <%= (old('country', authUser.country) == "Madagascar") ? 'selected' : '' %> value="Madagascar">Madagascar</option>
+                          <option <%= (old('country', authUser.country) == "Malawi") ? 'selected' : '' %> value="Malawi">Malawi</option>
+                          <option <%= (old('country', authUser.country) == "Malaysia") ? 'selected' : '' %> value="Malaysia">Malaysia</option>
+                          <option <%= (old('country', authUser.country) == "Maldives") ? 'selected' : '' %> value="Maldives">Maldives</option>
+                          <option <%= (old('country', authUser.country) == "Mali") ? 'selected' : '' %> value="Mali">Mali</option>
+                          <option <%= (old('country', authUser.country) == "Malta") ? 'selected' : '' %> value="Malta">Malta</option>
+                          <option <%= (old('country', authUser.country) == "Marshall Islands") ? 'selected' : '' %> value="Marshall Islands">Marshall Islands</option>
+                          <option <%= (old('country', authUser.country) == "Mauritania") ? 'selected' : '' %> value="Mauritania">Mauritania</option>
+                          <option <%= (old('country', authUser.country) == "Mauritius") ? 'selected' : '' %> value="Mauritius">Mauritius</option>
+                          <option <%= (old('country', authUser.country) == "Mexico") ? 'selected' : '' %> value="Mexico">Mexico</option>
+                          <option <%= (old('country', authUser.country) == "Micronesia") ? 'selected' : '' %> value="Micronesia">Micronesia</option>
+                          <option <%= (old('country', authUser.country) == "Moldova") ? 'selected' : '' %> value="Moldova">Moldova</option>
+                          <option <%= (old('country', authUser.country) == "Monaco") ? 'selected' : '' %> value="Monaco">Monaco</option>
+                          <option <%= (old('country', authUser.country) == "Mongolia") ? 'selected' : '' %> value="Mongolia">Mongolia</option>
+                          <option <%= (old('country', authUser.country) == "Montenegro") ? 'selected' : '' %> value="Montenegro">Montenegro</option>
+                          <option <%= (old('country', authUser.country) == "Morocco") ? 'selected' : '' %> value="Morocco">Morocco</option>
+                          <option <%= (old('country', authUser.country) == "Mozambique") ? 'selected' : '' %> value="Mozambique">Mozambique</option>
+                          <option <%= (old('country', authUser.country) == "Myanmar") ? 'selected' : '' %> value="Myanmar">Myanmar</option>
+                          <option <%= (old('country', authUser.country) == "Namibia") ? 'selected' : '' %> value="Namibia">Namibia</option>
+                          <option <%= (old('country', authUser.country) == "Nauru") ? 'selected' : '' %> value="Nauru">Nauru</option>
+                          <option <%= (old('country', authUser.country) == "Nepal") ? 'selected' : '' %> value="Nepal">Nepal</option>
+                          <option <%= (old('country', authUser.country) == "Netherlands") ? 'selected' : '' %> value="Netherlands">Netherlands</option>
+                          <option <%= (old('country', authUser.country) == "New Zealand") ? 'selected' : '' %> value="New Zealand">New Zealand</option>
+                          <option <%= (old('country', authUser.country) == "Nicaragua") ? 'selected' : '' %> value="Nicaragua">Nicaragua</option>
+                          <option <%= (old('country', authUser.country) == "Niger") ? 'selected' : '' %> value="Niger">Niger</option>
+                          <option <%= (old('country', authUser.country) == "Nigeria") ? 'selected' : '' %> value="Nigeria">Nigeria</option>
+                          <option <%= (old('country', authUser.country) == "North Korea") ? 'selected' : '' %> value="North Korea">North Korea</option>
+                          <option <%= (old('country', authUser.country) == "North Macedonia") ? 'selected' : '' %> value="North Macedonia">North Macedonia</option>
+                          <option <%= (old('country', authUser.country) == "Norway") ? 'selected' : '' %> value="Norway">Norway</option>
+                          <option <%= (old('country', authUser.country) == "Oman") ? 'selected' : '' %> value="Oman">Oman</option>
+                          <option <%= (old('country', authUser.country) == "Pakistan") ? 'selected' : '' %> value="Pakistan">Pakistan</option>
+                          <option <%= (old('country', authUser.country) == "Palau") ? 'selected' : '' %> value="Palau">Palau</option>
+                          <option <%= (old('country', authUser.country) == "Panama") ? 'selected' : '' %> value="Panama">Panama</option>
+                          <option <%= (old('country', authUser.country) == "Papua New Guinea") ? 'selected' : '' %> value="Papua New Guinea">Papua New Guinea</option>
+                          <option <%= (old('country', authUser.country) == "Paraguay") ? 'selected' : '' %> value="Paraguay">Paraguay</option>
+                          <option <%= (old('country', authUser.country) == "Peru") ? 'selected' : '' %> value="Peru">Peru</option>
+                          <option <%= (old('country', authUser.country) == "Philippines") ? 'selected' : '' %> value="Philippines">Philippines</option>
+                          <option <%= (old('country', authUser.country) == "Poland") ? 'selected' : '' %> value="Poland">Poland</option>
+                          <option <%= (old('country', authUser.country) == "Portugal") ? 'selected' : '' %> value="Portugal">Portugal</option>
+                          <option <%= (old('country', authUser.country) == "Qatar") ? 'selected' : '' %> value="Qatar">Qatar</option>
+                          <option <%= (old('country', authUser.country) == "Romania") ? 'selected' : '' %> value="Romania">Romania</option>
+                          <option <%= (old('country', authUser.country) == "Russia") ? 'selected' : '' %> value="Russia">Russia</option>
+                          <option <%= (old('country', authUser.country) == "Rwanda") ? 'selected' : '' %> value="Rwanda">Rwanda</option>
+                          <option <%= (old('country', authUser.country) == "Saint Kitts & Nevis") ? 'selected' : '' %> value="Saint Kitts & Nevis">Saint Kitts & Nevis</option>
+                          <option <%= (old('country', authUser.country) == "Saint Lucia") ? 'selected' : '' %> value="Saint Lucia">Saint Lucia</option>
+                          <option <%= (old('country', authUser.country) == "Samoa") ? 'selected' : '' %> value="Samoa">Samoa</option>
+                          <option <%= (old('country', authUser.country) == "San Marino") ? 'selected' : '' %> value="San Marino">San Marino</option>
+                          <option <%= (old('country', authUser.country) == "Sao Tome & Principe") ? 'selected' : '' %> value="Sao Tome & Principe">Sao Tome & Principe</option>
+                          <option <%= (old('country', authUser.country) == "Saudi Arabia") ? 'selected' : '' %> value="Saudi Arabia">Saudi Arabia</option>
+                          <option <%= (old('country', authUser.country) == "Senegal") ? 'selected' : '' %> value="Senegal">Senegal</option>
+                          <option <%= (old('country', authUser.country) == "Serbia") ? 'selected' : '' %> value="Serbia">Serbia</option>
+                          <option <%= (old('country', authUser.country) == "Seychelles") ? 'selected' : '' %> value="Seychelles">Seychelles</option>
+                          <option <%= (old('country', authUser.country) == "Sierra Leone") ? 'selected' : '' %> value="Sierra Leone">Sierra Leone</option>
+                          <option <%= (old('country', authUser.country) == "Singapore") ? 'selected' : '' %> value="Singapore">Singapore</option>
+                          <option <%= (old('country', authUser.country) == "Slovakia") ? 'selected' : '' %> value="Slovakia">Slovakia</option>
+                          <option <%= (old('country', authUser.country) == "Slovenia") ? 'selected' : '' %> value="Slovenia">Slovenia</option>
+                          <option <%= (old('country', authUser.country) == "Solomon Islands") ? 'selected' : '' %> value="Solomon Islands">Solomon Islands</option>
+                          <option <%= (old('country', authUser.country) == "Somalia") ? 'selected' : '' %> value="Somalia">Somalia</option>
+                          <option <%= (old('country', authUser.country) == "South Africa") ? 'selected' : '' %> value="South Africa">South Africa</option>
+                          <option <%= (old('country', authUser.country) == "South Korea") ? 'selected' : '' %> value="South Korea">South Korea</option>
+                          <option <%= (old('country', authUser.country) == "South Sudan") ? 'selected' : '' %> value="South Sudan">South Sudan</option>
+                          <option <%= (old('country', authUser.country) == "Spain") ? 'selected' : '' %> value="Spain">Spain</option>
+                          <option <%= (old('country', authUser.country) == "Sri Lanka") ? 'selected' : '' %> value="Sri Lanka">Sri Lanka</option>
+                          <option <%= (old('country', authUser.country) == "St. Vincent & Grenadines") ? 'selected' : '' %> value="St. Vincent & Grenadines">St. Vincent & Grenadines</option>
+                          <option <%= (old('country', authUser.country) == "State of Palestine") ? 'selected' : '' %> value="State of Palestine">State of Palestine</option>
+                          <option <%= (old('country', authUser.country) == "Sudan") ? 'selected' : '' %> value="Sudan">Sudan</option>
+                          <option <%= (old('country', authUser.country) == "Suriname") ? 'selected' : '' %> value="Suriname">Suriname</option>
+                          <option <%= (old('country', authUser.country) == "Sweden") ? 'selected' : '' %> value="Sweden">Sweden</option>
+                          <option <%= (old('country', authUser.country) == "Switzerland") ? 'selected' : '' %> value="Switzerland">Switzerland</option>
+                          <option <%= (old('country', authUser.country) == "Syria") ? 'selected' : '' %> value="Syria">Syria</option>
+                          <option <%= (old('country', authUser.country) == "Tajikistan") ? 'selected' : '' %> value="Tajikistan">Tajikistan</option>
+                          <option <%= (old('country', authUser.country) == "Tanzania") ? 'selected' : '' %> value="Tanzania">Tanzania</option>
+                          <option <%= (old('country', authUser.country) == "Thailand") ? 'selected' : '' %> value="Thailand">Thailand</option>
+                          <option <%= (old('country', authUser.country) == "Timor-Leste") ? 'selected' : '' %> value="Timor-Leste">Timor-Leste</option>
+                          <option <%= (old('country', authUser.country) == "Togo") ? 'selected' : '' %> value="Togo">Togo</option>
+                          <option <%= (old('country', authUser.country) == "Tonga") ? 'selected' : '' %> value="Tonga">Tonga</option>
+                          <option <%= (old('country', authUser.country) == "Trinidad and Tobago") ? 'selected' : '' %> value="Trinidad and Tobago">Trinidad and Tobago</option>
+                          <option <%= (old('country', authUser.country) == "Tunisia") ? 'selected' : '' %> value="Tunisia">Tunisia</option>
+                          <option <%= (old('country', authUser.country) == "Turkey") ? 'selected' : '' %> value="Turkey">Turkey</option>
+                          <option <%= (old('country', authUser.country) == "Turkmenistan") ? 'selected' : '' %> value="Turkmenistan">Turkmenistan</option>
+                          <option <%= (old('country', authUser.country) == "Tuvalu") ? 'selected' : '' %> value="Tuvalu">Tuvalu</option>
+                          <option <%= (old('country', authUser.country) == "Uganda") ? 'selected' : '' %> value="Uganda">Uganda</option>
+                          <option <%= (old('country', authUser.country) == "Ukraine") ? 'selected' : '' %> value="Ukraine">Ukraine</option>
+                          <option <%= (old('country', authUser.country) == "United Arab Emirates") ? 'selected' : '' %> value="United Arab Emirates">United Arab Emirates</option>
+                          <option <%= (old('country', authUser.country) == "United Kingdom") ? 'selected' : '' %> value="United Kingdom">United Kingdom</option>
+                          <option <%= (old('country', authUser.country) == "United States") ? 'selected' : '' %> value="United States">United States</option>
+                          <option <%= (old('country', authUser.country) == "Uruguay") ? 'selected' : '' %> value="Uruguay">Uruguay</option>
+                          <option <%= (old('country', authUser.country) == "Uzbekistan") ? 'selected' : '' %> value="Uzbekistan">Uzbekistan</option>
+                          <option <%= (old('country', authUser.country) == "Vanuatu") ? 'selected' : '' %> value="Vanuatu">Vanuatu</option>
+                          <option <%= (old('country', authUser.country) == "Venezuela") ? 'selected' : '' %> value="Venezuela">Venezuela</option>
+                          <option <%= (old('country', authUser.country) == "Vietnam") ? 'selected' : '' %> value="Vietnam">Vietnam</option>
+                          <option <%= (old('country', authUser.country) == "Yemen") ? 'selected' : '' %> value="Yemen">Yemen</option>
+                          <option <%= (old('country', authUser.country) == "Zambia") ? 'selected' : '' %> value="Zambia">Zambia</option>
+                          <option <%= (old('country', authUser.country) == "Zimbabwe") ? 'selected' : '' %> value="Zimbabwe">Zimbabwe</option>
                         </select>
                       </div>
 
@@ -586,203 +584,202 @@
                       <!-- Next country -->
                       <div class="col-xl-6 col-lg-6">
                         <label for="next_country">Country</label>
-                        <select class="form-control" id="next_country" name="next_country"
-                          data-selectvalue="<%= old('next_country', authUser.nextOfKin.country) %>" required>
+                        <select class="form-control" id="next_country" name="next_country" required>
                           <option value="">Select country</option>
-                          <option value="Afghanistan">Afghanistan</option>
-                          <option value="Albania">Albania</option>
-                          <option value="Algeria">Algeria</option>
-                          <option value="Andorra">Andorra</option>
-                          <option value="Angola">Angola</option>
-                          <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                          <option value="Argentina">Argentina</option>
-                          <option value="Armenia">Armenia</option>
-                          <option value="Australia">Australia</option>
-                          <option value="Austria">Austria</option>
-                          <option value="Azerbaijan">Azerbaijan</option>
-                          <option value="Bahamas">Bahamas</option>
-                          <option value="Bahrain">Bahrain</option>
-                          <option value="Bangladesh">Bangladesh</option>
-                          <option value="Barbados">Barbados</option>
-                          <option value="Belarus">Belarus</option>
-                          <option value="Belgium">Belgium</option>
-                          <option value="Belize">Belize</option>
-                          <option value="Benin">Benin</option>
-                          <option value="Bhutan">Bhutan</option>
-                          <option value="Bolivia">Bolivia</option>
-                          <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                          <option value="Botswana">Botswana</option>
-                          <option value="Brazil">Brazil</option>
-                          <option value="Brunei">Brunei</option>
-                          <option value="Bulgaria">Bulgaria</option>
-                          <option value="Burkina Faso">Burkina Faso</option>
-                          <option value="Burundi">Burundi</option>
-                          <option value="Cabo Verde">Cabo Verde</option>
-                          <option value="Cambodia">Cambodia</option>
-                          <option value="Cameroon">Cameroon</option>
-                          <option value="Canada">Canada</option>
-                          <option value="Central African Republic">Central African Republic</option>
-                          <option value="Chad">Chad</option>
-                          <option value="Chile">Chile</option>
-                          <option value="China">China</option>
-                          <option value="Colombia">Colombia</option>
-                          <option value="Comoros">Comoros</option>
-                          <option value="Congo">Congo</option>
-                          <option value="Croatia">Croatia</option>
-                          <option value="Cuba">Cuba</option>
-                          <option value="Cyprus">Cyprus</option>
-                          <option value="Czech Republic (Czechia)">Czech Republic (Czechia)</option>
-                          <option value="Côte d'Ivoire">Côte d'Ivoire</option>
-                          <option value="Denmark">Denmark</option>
-                          <option value="Djibouti">Djibouti</option>
-                          <option value="Dominica">Dominica</option>
-                          <option value="Dominican Republic">Dominican Republic</option>
-                          <option value="DR Congo">DR Congo</option>
-                          <option value="Ecuador">Ecuador</option>
-                          <option value="Egypt">Egypt</option>
-                          <option value="El Salvador">El Salvador</option>
-                          <option value="Equatorial Guinea">Equatorial Guinea</option>
-                          <option value="Eritrea">Eritrea</option>
-                          <option value="Estonia">Estonia</option>
-                          <option value="Eswatini">Eswatini</option>
-                          <option value="Ethiopia">Ethiopia</option>
-                          <option value="Fiji">Fiji</option>
-                          <option value="Finland">Finland</option>
-                          <option value="France">France</option>
-                          <option value="Gabon">Gabon</option>
-                          <option value="Gambia">Gambia</option>
-                          <option value="Georgia">Georgia</option>
-                          <option value="Germany">Germany</option>
-                          <option value="Ghana">Ghana</option>
-                          <option value="Greece">Greece</option>
-                          <option value="Grenada">Grenada</option>
-                          <option value="Guatemala">Guatemala</option>
-                          <option value="Guinea">Guinea</option>
-                          <option value="Guinea-Bissau">Guinea-Bissau</option>
-                          <option value="Guyana">Guyana</option>
-                          <option value="Haiti">Haiti</option>
-                          <option value="Holy See">Holy See</option>
-                          <option value="Honduras">Honduras</option>
-                          <option value="Hungary">Hungary</option>
-                          <option value="Iceland">Iceland</option>
-                          <option value="India">India</option>
-                          <option value="Indonesia">Indonesia</option>
-                          <option value="Iran">Iran</option>
-                          <option value="Iraq">Iraq</option>
-                          <option value="Ireland">Ireland</option>
-                          <option value="Israel">Israel</option>
-                          <option value="Italy">Italy</option>
-                          <option value="Jamaica">Jamaica</option>
-                          <option value="Japan">Japan</option>
-                          <option value="Jordan">Jordan</option>
-                          <option value="Kazakhstan">Kazakhstan</option>
-                          <option value="Kenya">Kenya</option>
-                          <option value="Kiribati">Kiribati</option>
-                          <option value="Kuwait">Kuwait</option>
-                          <option value="Kyrgyzstan">Kyrgyzstan</option>
-                          <option value="Laos">Laos</option>
-                          <option value="Latvia">Latvia</option>
-                          <option value="Lebanon">Lebanon</option>
-                          <option value="Lesotho">Lesotho</option>
-                          <option value="Liberia">Liberia</option>
-                          <option value="Libya">Libya</option>
-                          <option value="Liechtenstein">Liechtenstein</option>
-                          <option value="Lithuania">Lithuania</option>
-                          <option value="Luxembourg">Luxembourg</option>
-                          <option value="Madagascar">Madagascar</option>
-                          <option value="Malawi">Malawi</option>
-                          <option value="Malaysia">Malaysia</option>
-                          <option value="Maldives">Maldives</option>
-                          <option value="Mali">Mali</option>
-                          <option value="Malta">Malta</option>
-                          <option value="Marshall Islands">Marshall Islands</option>
-                          <option value="Mauritania">Mauritania</option>
-                          <option value="Mauritius">Mauritius</option>
-                          <option value="Mexico">Mexico</option>
-                          <option value="Micronesia">Micronesia</option>
-                          <option value="Moldova">Moldova</option>
-                          <option value="Monaco">Monaco</option>
-                          <option value="Mongolia">Mongolia</option>
-                          <option value="Montenegro">Montenegro</option>
-                          <option value="Morocco">Morocco</option>
-                          <option value="Mozambique">Mozambique</option>
-                          <option value="Myanmar">Myanmar</option>
-                          <option value="Namibia">Namibia</option>
-                          <option value="Nauru">Nauru</option>
-                          <option value="Nepal">Nepal</option>
-                          <option value="Netherlands">Netherlands</option>
-                          <option value="New Zealand">New Zealand</option>
-                          <option value="Nicaragua">Nicaragua</option>
-                          <option value="Niger">Niger</option>
-                          <option value="Nigeria">Nigeria</option>
-                          <option value="North Korea">North Korea</option>
-                          <option value="North Macedonia">North Macedonia</option>
-                          <option value="Norway">Norway</option>
-                          <option value="Oman">Oman</option>
-                          <option value="Pakistan">Pakistan</option>
-                          <option value="Palau">Palau</option>
-                          <option value="Panama">Panama</option>
-                          <option value="Papua New Guinea">Papua New Guinea</option>
-                          <option value="Paraguay">Paraguay</option>
-                          <option value="Peru">Peru</option>
-                          <option value="Philippines">Philippines</option>
-                          <option value="Poland">Poland</option>
-                          <option value="Portugal">Portugal</option>
-                          <option value="Qatar">Qatar</option>
-                          <option value="Romania">Romania</option>
-                          <option value="Russia">Russia</option>
-                          <option value="Rwanda">Rwanda</option>
-                          <option value="Saint Kitts & Nevis">Saint Kitts & Nevis</option>
-                          <option value="Saint Lucia">Saint Lucia</option>
-                          <option value="Samoa">Samoa</option>
-                          <option value="San Marino">San Marino</option>
-                          <option value="Sao Tome & Principe">Sao Tome & Principe</option>
-                          <option value="Saudi Arabia">Saudi Arabia</option>
-                          <option value="Senegal">Senegal</option>
-                          <option value="Serbia">Serbia</option>
-                          <option value="Seychelles">Seychelles</option>
-                          <option value="Sierra Leone">Sierra Leone</option>
-                          <option value="Singapore">Singapore</option>
-                          <option value="Slovakia">Slovakia</option>
-                          <option value="Slovenia">Slovenia</option>
-                          <option value="Solomon Islands">Solomon Islands</option>
-                          <option value="Somalia">Somalia</option>
-                          <option value="South Africa">South Africa</option>
-                          <option value="South Korea">South Korea</option>
-                          <option value="South Sudan">South Sudan</option>
-                          <option value="Spain">Spain</option>
-                          <option value="Sri Lanka">Sri Lanka</option>
-                          <option value="St. Vincent & Grenadines">St. Vincent & Grenadines</option>
-                          <option value="State of Palestine">State of Palestine</option>
-                          <option value="Sudan">Sudan</option>
-                          <option value="Suriname">Suriname</option>
-                          <option value="Sweden">Sweden</option>
-                          <option value="Switzerland">Switzerland</option>
-                          <option value="Syria">Syria</option>
-                          <option value="Tajikistan">Tajikistan</option>
-                          <option value="Tanzania">Tanzania</option>
-                          <option value="Thailand">Thailand</option>
-                          <option value="Timor-Leste">Timor-Leste</option>
-                          <option value="Togo">Togo</option>
-                          <option value="Tonga">Tonga</option>
-                          <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                          <option value="Tunisia">Tunisia</option>
-                          <option value="Turkey">Turkey</option>
-                          <option value="Turkmenistan">Turkmenistan</option>
-                          <option value="Tuvalu">Tuvalu</option>
-                          <option value="Uganda">Uganda</option>
-                          <option value="Ukraine">Ukraine</option>
-                          <option value="United Arab Emirates">United Arab Emirates</option>
-                          <option value="United Kingdom">United Kingdom</option>
-                          <option value="United States">United States</option>
-                          <option value="Uruguay">Uruguay</option>
-                          <option value="Uzbekistan">Uzbekistan</option>
-                          <option value="Vanuatu">Vanuatu</option>
-                          <option value="Venezuela">Venezuela</option>
-                          <option value="Vietnam">Vietnam</option>
-                          <option value="Yemen">Yemen</option>
-                          <option value="Zambia">Zambia</option>
-                          <option value="Zimbabwe">Zimbabwe</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Afghanistan") ? 'selected' : '' %> value="Afghanistan">Afghanistan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Albania") ? 'selected' : '' %> value="Albania">Albania</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Algeria") ? 'selected' : '' %> value="Algeria">Algeria</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Andorra") ? 'selected' : '' %> value="Andorra">Andorra</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Angola") ? 'selected' : '' %> value="Angola">Angola</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Antigua and Barbuda") ? 'selected' : '' %> value="Antigua and Barbuda">Antigua and Barbuda</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Argentina") ? 'selected' : '' %> value="Argentina">Argentina</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Armenia") ? 'selected' : '' %> value="Armenia">Armenia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Australia") ? 'selected' : '' %> value="Australia">Australia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Austria") ? 'selected' : '' %> value="Austria">Austria</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Azerbaijan") ? 'selected' : '' %> value="Azerbaijan">Azerbaijan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Bahamas") ? 'selected' : '' %> value="Bahamas">Bahamas</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Bahrain") ? 'selected' : '' %> value="Bahrain">Bahrain</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Bangladesh") ? 'selected' : '' %> value="Bangladesh">Bangladesh</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Barbados") ? 'selected' : '' %> value="Barbados">Barbados</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Belarus") ? 'selected' : '' %> value="Belarus">Belarus</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Belgium") ? 'selected' : '' %> value="Belgium">Belgium</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Belize") ? 'selected' : '' %> value="Belize">Belize</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Benin") ? 'selected' : '' %> value="Benin">Benin</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Bhutan") ? 'selected' : '' %> value="Bhutan">Bhutan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Bolivia") ? 'selected' : '' %> value="Bolivia">Bolivia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Bosnia and Herzegovina") ? 'selected' : '' %> value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Botswana") ? 'selected' : '' %> value="Botswana">Botswana</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Brazil") ? 'selected' : '' %> value="Brazil">Brazil</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Brunei") ? 'selected' : '' %> value="Brunei">Brunei</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Bulgaria") ? 'selected' : '' %> value="Bulgaria">Bulgaria</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Burkina Faso") ? 'selected' : '' %> value="Burkina Faso">Burkina Faso</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Burundi") ? 'selected' : '' %> value="Burundi">Burundi</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Cabo Verde") ? 'selected' : '' %> value="Cabo Verde">Cabo Verde</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Cambodia") ? 'selected' : '' %> value="Cambodia">Cambodia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Cameroon") ? 'selected' : '' %> value="Cameroon">Cameroon</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Canada") ? 'selected' : '' %> value="Canada">Canada</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Central African Republic") ? 'selected' : '' %> value="Central African Republic">Central African Republic</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Chad") ? 'selected' : '' %> value="Chad">Chad</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Chile") ? 'selected' : '' %> value="Chile">Chile</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "China") ? 'selected' : '' %> value="China">China</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Colombia") ? 'selected' : '' %> value="Colombia">Colombia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Comoros") ? 'selected' : '' %> value="Comoros">Comoros</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Congo") ? 'selected' : '' %> value="Congo">Congo</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Croatia") ? 'selected' : '' %> value="Croatia">Croatia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Cuba") ? 'selected' : '' %> value="Cuba">Cuba</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Cyprus") ? 'selected' : '' %> value="Cyprus">Cyprus</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Czech Republic (Czechia)") ? 'selected' : '' %> value="Czech Republic (Czechia)">Czech Republic (Czechia)</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Côte d'Ivoire") ? 'selected' : '' %> value="Côte d'Ivoire">Côte d'Ivoire</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Denmark") ? 'selected' : '' %> value="Denmark">Denmark</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Djibouti") ? 'selected' : '' %> value="Djibouti">Djibouti</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Dominica") ? 'selected' : '' %> value="Dominica">Dominica</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Dominican Republic") ? 'selected' : '' %> value="Dominican Republic">Dominican Republic</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "DR Congo") ? 'selected' : '' %> value="DR Congo">DR Congo</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Ecuador") ? 'selected' : '' %> value="Ecuador">Ecuador</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Egypt") ? 'selected' : '' %> value="Egypt">Egypt</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "El Salvador") ? 'selected' : '' %> value="El Salvador">El Salvador</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Equatorial Guinea") ? 'selected' : '' %> value="Equatorial Guinea">Equatorial Guinea</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Eritrea") ? 'selected' : '' %> value="Eritrea">Eritrea</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Estonia") ? 'selected' : '' %> value="Estonia">Estonia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Eswatini") ? 'selected' : '' %> value="Eswatini">Eswatini</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Ethiopia") ? 'selected' : '' %> value="Ethiopia">Ethiopia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Fiji") ? 'selected' : '' %> value="Fiji">Fiji</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Finland") ? 'selected' : '' %> value="Finland">Finland</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "France") ? 'selected' : '' %> value="France">France</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Gabon") ? 'selected' : '' %> value="Gabon">Gabon</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Gambia") ? 'selected' : '' %> value="Gambia">Gambia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Georgia") ? 'selected' : '' %> value="Georgia">Georgia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Germany") ? 'selected' : '' %> value="Germany">Germany</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Ghana") ? 'selected' : '' %> value="Ghana">Ghana</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Greece") ? 'selected' : '' %> value="Greece">Greece</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Grenada") ? 'selected' : '' %> value="Grenada">Grenada</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Guatemala") ? 'selected' : '' %> value="Guatemala">Guatemala</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Guinea") ? 'selected' : '' %> value="Guinea">Guinea</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Guinea-Bissau") ? 'selected' : '' %> value="Guinea-Bissau">Guinea-Bissau</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Guyana") ? 'selected' : '' %> value="Guyana">Guyana</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Haiti") ? 'selected' : '' %> value="Haiti">Haiti</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Holy See") ? 'selected' : '' %> value="Holy See">Holy See</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Honduras") ? 'selected' : '' %> value="Honduras">Honduras</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Hungary") ? 'selected' : '' %> value="Hungary">Hungary</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Iceland") ? 'selected' : '' %> value="Iceland">Iceland</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "India") ? 'selected' : '' %> value="India">India</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Indonesia") ? 'selected' : '' %> value="Indonesia">Indonesia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Iran") ? 'selected' : '' %> value="Iran">Iran</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Iraq") ? 'selected' : '' %> value="Iraq">Iraq</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Ireland") ? 'selected' : '' %> value="Ireland">Ireland</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Israel") ? 'selected' : '' %> value="Israel">Israel</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Italy") ? 'selected' : '' %> value="Italy">Italy</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Jamaica") ? 'selected' : '' %> value="Jamaica">Jamaica</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Japan") ? 'selected' : '' %> value="Japan">Japan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Jordan") ? 'selected' : '' %> value="Jordan">Jordan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Kazakhstan") ? 'selected' : '' %> value="Kazakhstan">Kazakhstan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Kenya") ? 'selected' : '' %> value="Kenya">Kenya</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Kiribati") ? 'selected' : '' %> value="Kiribati">Kiribati</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Kuwait") ? 'selected' : '' %> value="Kuwait">Kuwait</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Kyrgyzstan") ? 'selected' : '' %> value="Kyrgyzstan">Kyrgyzstan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Laos") ? 'selected' : '' %> value="Laos">Laos</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Latvia") ? 'selected' : '' %> value="Latvia">Latvia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Lebanon") ? 'selected' : '' %> value="Lebanon">Lebanon</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Lesotho") ? 'selected' : '' %> value="Lesotho">Lesotho</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Liberia") ? 'selected' : '' %> value="Liberia">Liberia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Libya") ? 'selected' : '' %> value="Libya">Libya</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Liechtenstein") ? 'selected' : '' %> value="Liechtenstein">Liechtenstein</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Lithuania") ? 'selected' : '' %> value="Lithuania">Lithuania</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Luxembourg") ? 'selected' : '' %> value="Luxembourg">Luxembourg</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Madagascar") ? 'selected' : '' %> value="Madagascar">Madagascar</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Malawi") ? 'selected' : '' %> value="Malawi">Malawi</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Malaysia") ? 'selected' : '' %> value="Malaysia">Malaysia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Maldives") ? 'selected' : '' %> value="Maldives">Maldives</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Mali") ? 'selected' : '' %> value="Mali">Mali</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Malta") ? 'selected' : '' %> value="Malta">Malta</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Marshall Islands") ? 'selected' : '' %> value="Marshall Islands">Marshall Islands</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Mauritania") ? 'selected' : '' %> value="Mauritania">Mauritania</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Mauritius") ? 'selected' : '' %> value="Mauritius">Mauritius</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Mexico") ? 'selected' : '' %> value="Mexico">Mexico</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Micronesia") ? 'selected' : '' %> value="Micronesia">Micronesia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Moldova") ? 'selected' : '' %> value="Moldova">Moldova</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Monaco") ? 'selected' : '' %> value="Monaco">Monaco</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Mongolia") ? 'selected' : '' %> value="Mongolia">Mongolia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Montenegro") ? 'selected' : '' %> value="Montenegro">Montenegro</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Morocco") ? 'selected' : '' %> value="Morocco">Morocco</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Mozambique") ? 'selected' : '' %> value="Mozambique">Mozambique</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Myanmar") ? 'selected' : '' %> value="Myanmar">Myanmar</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Namibia") ? 'selected' : '' %> value="Namibia">Namibia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Nauru") ? 'selected' : '' %> value="Nauru">Nauru</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Nepal") ? 'selected' : '' %> value="Nepal">Nepal</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Netherlands") ? 'selected' : '' %> value="Netherlands">Netherlands</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "New Zealand") ? 'selected' : '' %> value="New Zealand">New Zealand</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Nicaragua") ? 'selected' : '' %> value="Nicaragua">Nicaragua</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Niger") ? 'selected' : '' %> value="Niger">Niger</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Nigeria") ? 'selected' : '' %> value="Nigeria">Nigeria</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "North Korea") ? 'selected' : '' %> value="North Korea">North Korea</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "North Macedonia") ? 'selected' : '' %> value="North Macedonia">North Macedonia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Norway") ? 'selected' : '' %> value="Norway">Norway</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Oman") ? 'selected' : '' %> value="Oman">Oman</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Pakistan") ? 'selected' : '' %> value="Pakistan">Pakistan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Palau") ? 'selected' : '' %> value="Palau">Palau</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Panama") ? 'selected' : '' %> value="Panama">Panama</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Papua New Guinea") ? 'selected' : '' %> value="Papua New Guinea">Papua New Guinea</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Paraguay") ? 'selected' : '' %> value="Paraguay">Paraguay</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Peru") ? 'selected' : '' %> value="Peru">Peru</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Philippines") ? 'selected' : '' %> value="Philippines">Philippines</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Poland") ? 'selected' : '' %> value="Poland">Poland</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Portugal") ? 'selected' : '' %> value="Portugal">Portugal</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Qatar") ? 'selected' : '' %> value="Qatar">Qatar</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Romania") ? 'selected' : '' %> value="Romania">Romania</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Russia") ? 'selected' : '' %> value="Russia">Russia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Rwanda") ? 'selected' : '' %> value="Rwanda">Rwanda</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Saint Kitts & Nevis") ? 'selected' : '' %> value="Saint Kitts & Nevis">Saint Kitts & Nevis</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Saint Lucia") ? 'selected' : '' %> value="Saint Lucia">Saint Lucia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Samoa") ? 'selected' : '' %> value="Samoa">Samoa</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "San Marino") ? 'selected' : '' %> value="San Marino">San Marino</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Sao Tome & Principe") ? 'selected' : '' %> value="Sao Tome & Principe">Sao Tome & Principe</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Saudi Arabia") ? 'selected' : '' %> value="Saudi Arabia">Saudi Arabia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Senegal") ? 'selected' : '' %> value="Senegal">Senegal</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Serbia") ? 'selected' : '' %> value="Serbia">Serbia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Seychelles") ? 'selected' : '' %> value="Seychelles">Seychelles</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Sierra Leone") ? 'selected' : '' %> value="Sierra Leone">Sierra Leone</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Singapore") ? 'selected' : '' %> value="Singapore">Singapore</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Slovakia") ? 'selected' : '' %> value="Slovakia">Slovakia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Slovenia") ? 'selected' : '' %> value="Slovenia">Slovenia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Solomon Islands") ? 'selected' : '' %> value="Solomon Islands">Solomon Islands</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Somalia") ? 'selected' : '' %> value="Somalia">Somalia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "South Africa") ? 'selected' : '' %> value="South Africa">South Africa</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "South Korea") ? 'selected' : '' %> value="South Korea">South Korea</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "South Sudan") ? 'selected' : '' %> value="South Sudan">South Sudan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Spain") ? 'selected' : '' %> value="Spain">Spain</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Sri Lanka") ? 'selected' : '' %> value="Sri Lanka">Sri Lanka</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "St. Vincent & Grenadines") ? 'selected' : '' %> value="St. Vincent & Grenadines">St. Vincent & Grenadines</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "State of Palestine") ? 'selected' : '' %> value="State of Palestine">State of Palestine</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Sudan") ? 'selected' : '' %> value="Sudan">Sudan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Suriname") ? 'selected' : '' %> value="Suriname">Suriname</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Sweden") ? 'selected' : '' %> value="Sweden">Sweden</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Switzerland") ? 'selected' : '' %> value="Switzerland">Switzerland</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Syria") ? 'selected' : '' %> value="Syria">Syria</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Tajikistan") ? 'selected' : '' %> value="Tajikistan">Tajikistan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Tanzania") ? 'selected' : '' %> value="Tanzania">Tanzania</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Thailand") ? 'selected' : '' %> value="Thailand">Thailand</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Timor-Leste") ? 'selected' : '' %> value="Timor-Leste">Timor-Leste</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Togo") ? 'selected' : '' %> value="Togo">Togo</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Tonga") ? 'selected' : '' %> value="Tonga">Tonga</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Trinidad and Tobago") ? 'selected' : '' %> value="Trinidad and Tobago">Trinidad and Tobago</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Tunisia") ? 'selected' : '' %> value="Tunisia">Tunisia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Turkey") ? 'selected' : '' %> value="Turkey">Turkey</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Turkmenistan") ? 'selected' : '' %> value="Turkmenistan">Turkmenistan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Tuvalu") ? 'selected' : '' %> value="Tuvalu">Tuvalu</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Uganda") ? 'selected' : '' %> value="Uganda">Uganda</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Ukraine") ? 'selected' : '' %> value="Ukraine">Ukraine</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "United Arab Emirates") ? 'selected' : '' %> value="United Arab Emirates">United Arab Emirates</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "United Kingdom") ? 'selected' : '' %> value="United Kingdom">United Kingdom</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "United States") ? 'selected' : '' %> value="United States">United States</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Uruguay") ? 'selected' : '' %> value="Uruguay">Uruguay</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Uzbekistan") ? 'selected' : '' %> value="Uzbekistan">Uzbekistan</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Vanuatu") ? 'selected' : '' %> value="Vanuatu">Vanuatu</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Venezuela") ? 'selected' : '' %> value="Venezuela">Venezuela</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Vietnam") ? 'selected' : '' %> value="Vietnam">Vietnam</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Yemen") ? 'selected' : '' %> value="Yemen">Yemen</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Zambia") ? 'selected' : '' %> value="Zambia">Zambia</option>
+                          <option <%= (old('next_country', authUser.nextOfKin.country) == "Zimbabwe") ? 'selected' : '' %> value="Zimbabwe">Zimbabwe</option>
                         </select>
                       </div>
                       <!-- Next state -->

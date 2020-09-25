@@ -438,7 +438,7 @@ function deleteCampaign(url) {
 //================ CAMPAIGN MODAL ====================//
 
 
-// SET SELECT VALUE
+// // SET SELECT VALUE
 function setSelect(selector, selectvalue = "") {
 	var select = document.querySelectorAll(selector);
 	if (select.length) {
@@ -457,9 +457,9 @@ function setSelect(selector, selectvalue = "") {
 		});
 	}
 }
-setSelect("#country");
-setSelect("#next_country");
-setSelect("#bank");
+// setSelect("#country");
+// setSelect("#next_country");
+// setSelect("#bank");
 
 // CLEAR HISTORY WHEN LOGGED OUT
 function clearHistoryOnLogout(url) {

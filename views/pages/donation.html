@@ -97,7 +97,7 @@
                               Gold Coin (GC)
                               <b class="text-danger">*</b>
                             </label>
-                            <input type="text" name="gcReward" id="gcReward" class="form-control" placeholder="Reward"
+                            <input type="text" name="gcReward" value="<%= old('gcReward') %>" id="gcReward" class="form-control" placeholder="Reward"
                               readonly required>
                           </div>
                         </div>
@@ -107,7 +107,7 @@
                               Donation Amount
                               <b class="text-danger">*</b>
                             </label>
-                            <input type="number" name="pledgeAmount" id="pledgeAmount" step="500" min="500"
+                            <input type="number" name="pledgeAmount" value="<%= old('pledgeAmount') %>" id="pledgeAmount" step="500" min="500"
                               max="20000" placeholder="Min: 500 --- Max: 20000" class="form-control" required>
                           </div>
                         </div>

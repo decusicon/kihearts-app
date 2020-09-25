@@ -21,11 +21,11 @@
           <form method="POST" action="/auth/login">
             <div class="row">
               <div class="col-xl-12 col-lg-12">
-                <input type="text" id="username" name="username" placeholder="Phone No / Email / Nickname" autofocus
+                <input type="text" id="username" name="username" value="<%= old('username') %>" placeholder="Phone No / Email / Nickname" autofocus
                   required />
               </div>
               <div class="col-xl-12 col-lg-12">
-                <input type="password" id="password" name="password" class="mb-0" placeholder="Password" required />
+                <input type="password" id="password" name="password" value="<%= old('password') %>" class="mb-0" placeholder="Password" required />
               </div>
               <div class="col-xl-12 col-lg-12 text-center">
                 <button type="submit">Login</button>

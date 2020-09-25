@@ -1,4 +1,4 @@
-let Route = require("express").Router();
+const Route = require("express").Router();
 
 Route.get("/", (req, res) => res.redirect("/dashboard"));
 

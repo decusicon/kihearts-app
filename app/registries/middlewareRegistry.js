@@ -10,7 +10,6 @@ module.exports = {
     require("express").json({ limit: "50mb", extended: true }), //-- use express.json
     require("express").urlencoded({ limit: "50mb", extended: true }), //-- use express.urlencoded
 
-
     require("cookie-parser")(), //-- use cookieParser
 
     require("express-ejs-layouts"), //-- use expressLayouts
@@ -18,7 +17,7 @@ module.exports = {
       createParentPath: true,
       debug: config("app", "debug"),
       useTempFiles: true,
-      tempFileDir: "/tmp/",
+      tempFileDir: require('os').tmpdir() || "/tmp/",
     }),
 
     require("connect-flash")(),

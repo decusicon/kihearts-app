@@ -15,7 +15,7 @@ var port = normalizePort(config('app', 'port'));
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(normalizePort(config('app', 'port')), '0.0.0.0');
+server.listen(normalizePort(config('app', 'port')));
 server.on("error", onError);
 server.on("listening", onListening);
 

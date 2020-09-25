@@ -19,7 +19,7 @@
                       style="background-image: url('<%= authUser.avatar ? authUser.avatar : `/images/users/authUser.jpg` %>');"
                       onclick="$('#avatar').trigger('click')">
                     </div>
-                    <input type="file" name="avatar" id="avatar" accept="image/*" hidden required>
+                    <input type="file" name="avatar" value="<%= old('avatar') %>" id="avatar" accept="image/*" hidden required>
                   </div>
                   <div class="col-6 col-xl-6 col-lg-6 my-2 text-center">
                     <button type="button" class="btn btn-sm btn-link" onclick="$('#avatar').trigger('click')">Upload

@@ -1,28 +1,26 @@
-var mongoose = require("mongoose");
+const Model = require("@schemas/CampaignSchema").model;
 
-// SCHEMA
-var CampaignSchema = mongoose.Schema({
-  userId: { type: String, required: true },
-  prettyDate: { type: String, default: new Date() },
-  createdAt: { type: Number, default: Date.now() },
-  title: { type: String, required: true },
-  category: { type: String, required: true },
-  subCategory: { type: String, required: true },
-  reason: { type: String, required: true },
-  amount: { type: Number, required: true },
-  stage: { type: String, default: "active" },
-  coins: {
-    target: { type: Number, default: 20000 },
-    total: { type: Number, default: 0 },
-  },
-  photos: [],
-});
 
-// MODEL
-var Campaign = (module.exports = mongoose.model("Campaign", CampaignSchema));
+class Campaign extends Model {
+  
+  get photos() {
+    const photos = super.photos;
 
-// METHODS
-// save a new campaign to db
-module.exports.saveCampaign = (newCampaign, callback) => {
-  newCampaign.save(callback());
-};
+    if(_.isEmpty(photos)) {
+      return [];
+    }
+
+    return _.map(photos, (photo) => `storage/campaign-photos/${photo}`);
+  }
+
+  set photos(value) {
+    super.photos = value;
+  }
+
+	get hasPhotos() {
+		return !_.isEmpty(super.photos);
+	}
+}
+
+module.exports = Campaign;
+

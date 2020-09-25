@@ -37,7 +37,7 @@
               <!-- firstname -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="text" class="mb-0" id="firstname" name="firstname" placeholder="First Name" autofocus
+                <input type="text" class="mb-0" id="firstname" name="firstname" value="<%= old('firstname') %>" placeholder="First Name" autofocus
                   autocomplete="on" />
 
                   <% if(errors.has('firstname')) { %>
@@ -49,7 +49,7 @@
               <!-- lastname -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="text" class="mb-0" id="lastname" name="lastname" placeholder="Last Name" autocomplete="on"
+                <input type="text" class="mb-0" id="lastname" name="lastname" value="<%= old('lastname') %>" placeholder="Last Name" autocomplete="on"
                   />
 
                 <% if(errors.has('lastname')) { %>
@@ -61,7 +61,7 @@
               <!-- nickname -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="text" class="mb-0" id="nickname" name="nickname" placeholder="Nickname" autocomplete="on"
+                <input type="text" class="mb-0" id="nickname" name="nickname" value="<%= old('nickname') %>" placeholder="Nickname" autocomplete="on"
                   />
 
                 <% if(errors.has('nickname')) { %>
@@ -73,7 +73,7 @@
               <!-- email -->
               <div class="col-xl-7 col-lg-7 mb-3">
 
-                <input type="email" class="mb-0" id="email" name="email" placeholder="Email" autocomplete="on"
+                <input type="email" class="mb-0" id="email" name="email" value="<%= old('email') %>" placeholder="Email" autocomplete="on"
                   />
 
                 <% if(errors.has('email')) { %>
@@ -85,7 +85,7 @@
               <!-- phone number -->
               <div class="col-xl-5 col-lg-5 mb-3">
 
-                <input type="number" class="mb-0" id="phoneNumber" name="phoneNumber" minlength="11" maxlength="14"
+                <input type="number" class="mb-0" id="phoneNumber" name="phoneNumber" value="<%= old('phoneNumber') %>" minlength="11" maxlength="14"
                   placeholder="Phone Number" autocomplete="on" />
 
                 <% if(errors.has('phoneNumber')) { %>
@@ -97,7 +97,7 @@
               <!-- password -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="password" class="mb-0" id="password" name="password" placeholder="Password"
+                <input type="password" class="mb-0" id="password" name="password" value="<%= old('password') %>" placeholder="Password"
                   autocomplete="on" minlength="6" />
 
                 <% if(errors.has('password')) { %>
@@ -109,7 +109,7 @@
               <!-- repeat password -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="password" class="mb-0" id="re_password" name="re_password" placeholder="Re-Password"
+                <input type="password" class="mb-0" id="re_password" name="re_password" value="<%= old('re_password') %>" placeholder="Re-Password"
                   autocomplete="on" minlength="6" />
 
 				  <% if(errors.has('re_password')) { %>
@@ -329,7 +329,7 @@
               <!-- state -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="text" class="mb-0" id="state" name="state" placeholder="State" autocomplete="on"
+                <input type="text" class="mb-0" id="state" name="state" value="<%= old('state') %>" placeholder="State" autocomplete="on"
                   />
 
                 <% if(errors.has('state')) { %>
@@ -341,7 +341,7 @@
               <!-- city -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="text" class="mb-0" id="city" name="city" placeholder="City" autocomplete="on" />
+                <input type="text" class="mb-0" id="city" name="city" value="<%= old('city') %>" placeholder="City" autocomplete="on" />
 
                 <% if(errors.has('city')) { %>
                     <small class="text-danger d-block pt-1 mb-3" id="alert">
@@ -352,7 +352,7 @@
               <!-- zip / postal code -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="number" class="mb-0" id="postalcode" name="postalcode"
+                <input type="number" class="mb-0" id="postalcode" name="postalcode" value="<%= old('postalcode') %>"
                   placeholder="Zip / Postal code (optional)" maxlength="5" autocomplete="on" />
 
 				<% if(errors.has('postalcode')) { %>
@@ -366,7 +366,7 @@
 
                 <textarea class="mb-0" id="homeAddress" name="homeAddress"
                   style="background-color: transparent !important;" cols="30" rows="3" placeholder="Home Address"
-                  autocomplete="on" ></textarea>
+                  autocomplete="on" ><%= old('homeAddress') %></textarea>
 
                 <% if(errors.has('homeAddress')) { %>
                     <small class="text-danger d-block pt-1 mb-3" id="alert">
@@ -381,7 +381,7 @@
               <!-- Next firstname -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="text" class="mb-0" id="next_firstname" name="next_firstname" placeholder="First Name"
+                <input type="text" class="mb-0" id="next_firstname" name="next_firstname" value="<%= old('next_firstname') %>" placeholder="First Name"
                   autofocus autocomplete="on" />
 
                 <% if(errors.has('next_firstname')) { %>
@@ -393,7 +393,7 @@
               <!-- Next lastname -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="text" class="mb-0" id="next_lastname" name="next_lastname" placeholder="Last Name"
+                <input type="text" class="mb-0" id="next_lastname" name="next_lastname" value="<%= old('next_lastname') %>" placeholder="Last Name"
                   autocomplete="on" />
 
                 <% if(errors.has('next_lastname')) { %>
@@ -405,7 +405,7 @@
               <!-- Next Relationship -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="text" class="mb-0" id="next_relationship" name="next_relationship"
+                <input type="text" class="mb-0" id="next_relationship" name="next_relationship" value="<%= old('next_relationship') %>"
                   placeholder="Relationship" autocomplete="on" />
 
                 <% if(errors.has('next_relationship')) { %>
@@ -417,7 +417,7 @@
               <!-- Next email -->
               <div class="col-xl-7 col-lg-7 mb-3">
 
-                <input type="email" class="mb-0" id="next_email" name="next_email" placeholder="Email" autocomplete="on"
+                <input type="email" class="mb-0" id="next_email" name="next_email" value="<%= old('next_email') %>" placeholder="Email" autocomplete="on"
                   />
 
 				  <% if(errors.has('next_email')) { %>
@@ -429,7 +429,7 @@
               <!-- Next phone number -->
               <div class="col-xl-5 col-lg-5 mb-3">
 
-                <input type="number" class="mb-0" id="next_phoneNumber" name="next_phoneNumber" minlength="11"
+                <input type="number" class="mb-0" id="next_phoneNumber" name="next_phoneNumber" value="<%= old('next_phoneNumber') %>" minlength="11"
                   maxlength="14" placeholder="Phone Number" autocomplete="on" />
 
                 <% if(errors.has('next_phoneNumber')) { %>
@@ -648,7 +648,7 @@
               <!-- Next state -->
               <div class="col-xl-6 col-lg-6 mb-3">
 
-                <input type="text" class="mb-0" id="next_state" name="next_state" placeholder="State" autocomplete="on"
+                <input type="text" class="mb-0" id="next_state" name="next_state" value="<%= old('next_state') %>" placeholder="State" autocomplete="on"
                   />
 
                 <% if(errors.has('next_state')) { %>
@@ -660,7 +660,7 @@
               <!-- Next city -->
               <div class="col-xl-6 col-lg-6 mb-3">
 
-                <input type="text" class="mb-0" id="next_city" name="next_city" placeholder="City" autocomplete="on"
+                <input type="text" class="mb-0" id="next_city" name="next_city" value="<%= old('next_city') %>" placeholder="City" autocomplete="on"
                   />
 
                 <% if(errors.has('next_city')) { %>
@@ -672,7 +672,7 @@
               <!-- Next zip / postal code -->
               <div class="col-xl-6 col-lg-6 mb-3">
 
-                <input type="number" class="mb-0" id="next_postalcode" name="next_postalcode"
+                <input type="number" class="mb-0" id="next_postalcode" name="next_postalcode" value="<%= old('next_postalcode') %>"
                   placeholder="Zip / Postal code (optional)" autocomplete="on" />
 
 				  <% if(errors.has('next_postalcode')) { %>
@@ -686,7 +686,7 @@
 
                 <textarea class="mb-0" id="next_homeAddress" name="next_homeAddress"
                   style="background-color: transparent !important;" cols="30" rows="3" placeholder="Home Address"
-                  autocomplete="on" ></textarea>
+                  autocomplete="on" ><%= old('next_homeAddress') %></textarea>
 
                 <% if(errors.has('next_homeAddress')) { %>
                     <small class="text-danger d-block pt-1 mb-3" id="alert">

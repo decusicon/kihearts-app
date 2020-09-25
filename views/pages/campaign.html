@@ -61,7 +61,7 @@
                               Campaign Title
                               <b class="text-danger">*</b>
                             </label>
-                            <input type="text" class="form-control" name="title" id="title" maxlength="42" required>
+                            <input type="text" class="form-control" name="title" value="<%= old('title') %>" id="title" maxlength="42" required>
                           </div>
                         </div>
 
@@ -113,7 +113,7 @@
                               <b class="text-danger">*</b>
                             </label>
                             <textarea class="form-control" name="reason" id="reason" maxlength="200" rows="6"
-                              placeholder="Tell us why you need this fund." required></textarea>
+                              placeholder="Tell us why you need this fund." required><%= old('reason') %></textarea>
                           </div>
                         </div>
 
@@ -124,7 +124,7 @@
                               Amount Needed
                               <b class="text-danger">*</b>
                             </label>
-                            <input type="number" class="form-control" name="amount" id="amount"
+                            <input type="number" class="form-control" name="amount" value="<%= old('amount') %>" id="amount"
                               placeholder="How much do you need?" required>
                           </div>
                         </div>

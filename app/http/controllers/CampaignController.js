@@ -59,7 +59,7 @@ class CampaignController {
 					)}/${folderName}/${fileName}`
 				);
 
-				photos.push(`storage/campaign-photos/${folderName}/${fileName}`);
+				photos.push(`${folderName}/${fileName}`);
 			});
 
 			const campaign = new Campaign();
@@ -128,7 +128,7 @@ class CampaignController {
 				userId: req.user.id,
 			});
 
-			campaign.remove();
+			campaign.delete();
 
 			return res.send({
 				type: "success",

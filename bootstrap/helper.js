@@ -93,23 +93,7 @@ global["normalizePort"] = (val) => {
   return false;
 };
 
-const { validationResult } = require("express-validator");
 const validationError = require('@app/exceptions/ValidationError')
-
-// global["validator"] = async (req, validations) => {
-//   await Promise.all(validations.map((validation) => validation.run(req)));
-//   const errors = validationResult(req);
-
-//   if (!errors.isEmpty()) {
-
-//     const errorObj = new validationError(errors);
-//     errorObj.setErrors(errors);
-
-//     throw errorObj;
-//   }
-
-//   return errors;
-// };
 
 global["validator"] = async (req, schema) => {
 

@@ -39,7 +39,7 @@ class RegisterController {
 
 			const valid = await validator(req.body, validationSchema);
 
-			const userExist = User.findOne({
+			const userExist = await User.findOne({
 				$or: [
 					{ email: valid.email },
 					{ nickname: valid.nickname },

@@ -10,6 +10,7 @@ class RegisterController {
 	}
 
 	async register(req, res, next) {
+		req.flash("error", `User already registered`);
 		try {
 			const validationSchema = Joi.object({
 				firstname: Joi.string().trim().required(),

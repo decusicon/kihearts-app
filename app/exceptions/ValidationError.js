@@ -20,10 +20,7 @@ class ValidationError extends BaseError {
 				message: error.message.split('"').join(''),
 				value: error.context.value,
 			};
-		});
-
-		console.log(errors);
-		
+		});		
 
         return res.format({
 		

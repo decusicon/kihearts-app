@@ -6,12 +6,12 @@ class SessionServiceProvider {
   static handle(app) {
 
     let sess = {
-      // store: new MongoStore({ mongooseConnection: mongoose.connection }),
-      secret: config("app", "key"),
-      resave: true,
-      saveUninitialized: true,
-      cookie: { secure: true },
-    };
+		// store: new MongoStore({ mongooseConnection: mongoose.connection }),
+		secret: config("app", "key"),
+		resave: false,
+		saveUninitialized: true,
+		cookie: { secure: false },
+	};
 
     if (config("app", "env") === "production") {
       app.set("trust proxy", 1); // trust first proxy

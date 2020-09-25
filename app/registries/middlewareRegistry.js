@@ -10,8 +10,6 @@ module.exports = {
     require("express").json({ limit: "50mb", extended: true }), //-- use express.json
     require("express").urlencoded({ limit: "50mb", extended: true }), //-- use express.urlencoded
 
-    require("cookie-parser")(), //-- use cookieParser
-
     require("express-ejs-layouts"), //-- use expressLayouts
     require("express-fileupload")({
       createParentPath: true,

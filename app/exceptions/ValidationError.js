@@ -21,6 +21,8 @@ class ValidationError extends BaseError {
 				value: error.context.value,
 			};
 		});
+
+		console.log(errors);
 		
 
         return res.format({

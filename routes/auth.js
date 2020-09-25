@@ -1,11 +1,21 @@
-let Route = require("express").Router();
+const Route = require("express").Router();
 
-Route.get('/login', require('@controllers/auth/LoginController').show);
+Route.get(
+	"/login",
+	...applyMiddleware(["guest"]),
+	require("@controllers/auth/LoginController").show
+);
 
-Route.post('/login', require('@controllers/auth/LoginController').login);
+Route.post(
+	"/login",
+	...applyMiddleware(["guest"]),
+	require("@controllers/auth/LoginController").login
+);
+
 Route.get('/logout', require('@controllers/auth/LoginController').logout);
 
 Route.get("/register", require("@controllers/auth/RegisterController").show);
+
 Route.post(
   "/register",
   require("@controllers/auth/RegisterController").register

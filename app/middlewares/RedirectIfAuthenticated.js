@@ -1,8 +1,6 @@
-module["exports"] = function(req, res, next){
-    let redirectTo = "/app/encounters";
-
+module.exports = (req, res, next) => {
     if (req.user) {
-        res.redirect(`${redirectTo}`);
+        res.redirect(`/dashboard`);
     }
     next()
 };

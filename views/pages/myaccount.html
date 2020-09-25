@@ -125,8 +125,8 @@
                         Account Name
                         <b class="text-danger">*</b>
                       </label>
-                      <input type="text" class="form-control" name="accountName" value="<%= old('accountName') %>" id="accountName"
-                        placeholder="A valid account name" value="<%= sentenceCase(authUser.bankDetails.accountName) %>"
+                      <input type="text" class="form-control" name="accountName" value="<%= old('accountName', sentenceCase(authUser.bankDetails.accountName)) %>" id="accountName"
+                        placeholder="A valid account name"
                         required>
                     </div>
                   </div>
@@ -138,9 +138,8 @@
                         Account Number
                         <b class="text-danger">*</b>
                       </label>
-                      <input type="number" class="form-control" name="accountNumber" value="<%= old('accountNumber') %>" id="accountNumber"
-                        placeholder="A valid account number"
-                        value="<%= addZero(authUser.bankDetails.accountNumber, 'accountNumber') %>" required>
+                      <input type="number" class="form-control" name="accountNumber" value="<%= old('accountNumber', addZero(authUser.bankDetails.accountNumber, 'accountNumber')) %>" id="accountNumber"
+                        placeholder="A valid account number" required>
                     </div>
 
                     <!-- Bank -->
@@ -149,7 +148,7 @@
                         Bank
                         <b class="text-danger">*</b>
                       </label>
-                      <select class="form-control" name="bank" id="bank" data-selectvalue="<%= authUser.bankDetails.bank %>"
+                      <select class="form-control" name="bank" id="bank" data-selectvalue="<%= old('bank', authUser.bankDetails.bank) %>"
                         required>
                         <option value="">Select your Bank</option>
                         <option value="Access Bank">Access Bank Plc</option>
@@ -210,10 +209,10 @@
                   <div class="row mb-3 pb-3" style="border-bottom: 1px solid #eee;">
                     <div class="col-12 col-xl-12 col-lg-12 text-center">
                       <div class="avatar_img" id="avatar_img"
-                        style="background-image: url('<%= authUser.avatar ? authUser.avatar : `/images/users/authUser.jpg` %>');"
+                        style="background-image: url('<%= authUser.avatar %>');"
                         onclick="$('#avatar').trigger('click')">
                       </div>
-                      <input type="file" name="avatar" value="<%= old('avatar') %>" id="avatar" accept="image/*" hidden required>
+                      <input type="file" name="avatar" id="avatar" accept="image/*" hidden required>
                     </div>
                     <div class="col-6 col-xl-6 col-lg-6 my-2 text-center">
                       <button type="button" class="btn btn-sm btn-link" onclick="$('#avatar').trigger('click')">Change
@@ -231,15 +230,14 @@
                         <label for="firstname" class="text-dark">
                           Firstname
                         </label>
-                        <input type="text" class="form-control" name="firstname" value="<%= old('firstname') %>" id="firstname"
-                          value="<%= nameCase(authUser.firstname) %>" required>
+                        <input type="text" class="form-control" name="firstname" value="<%= old('firstname', nameCase(authUser.firstname)) %>" id="firstname"required>
                       </div>
                       <div class="col-lg-6">
                         <label for="lastname" class="text-dark">
                           Lastname
                         </label>
-                        <input type="text" class="form-control" name="lastname" value="<%= old('lastname') %>" id="lastname"
-                          value="<%= nameCase(authUser.lastname) %>" required>
+                        <input type="text" class="form-control" name="lastname" value="<%= old('lastname', nameCase(authUser.lastname)) %>" id="lastname"
+                           required>
                       </div>
                     </div>
                     <div class="form-group row">
@@ -247,7 +245,7 @@
                         <label for="email" class="text-dark">
                           Email
                         </label>
-                        <input type="email" class="form-control" name="email" value="<%= old('email') %>" id="email" value="<%= authUser.email %>"
+                        <input type="email" class="form-control" name="email" value="<%= old('email', authUser.email) %>" id="email"
                           required>
                       </div>
                     </div>
@@ -256,15 +254,14 @@
                         <label for="nickname" class="text-dark">
                           Nickname
                         </label>
-                        <input type="text" class="form-control" id="nickname" name="nickname" value="<%= old('nickname') %>"
-                          value="<%= authUser.nickname %>" required>
+                        <input type="text" class="form-control" id="nickname" name="nickname" value="<%= old('nickname', authUser.nickname) %>" required>
                       </div>
                       <div class="col-lg-6">
                         <label for="phoneNumber" class="text-dark">
                           Phone Number
                         </label>
-                        <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" value="<%= old('phoneNumber') %>" minlength="11"
-                          maxlength="14" value="<%= addZero(authUser.phoneNumber, 'phoneNumber') %>" required>
+                        <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" value="<%= old('phoneNumber', addZero(authUser.phoneNumber, 'phoneNumber')) %>" minlength="11"
+                          maxlength="14" required>
                       </div>
                     </div>
                   </form>
@@ -305,7 +302,7 @@
                         <label for="country" class="text-dark">
                           Country
                         </label>
-                        <select class="form-control" id="country" name="country" data-selectvalue="<%= authUser.country %>"
+                        <select class="form-control" id="country" name="country" data-selectvalue="<%= old('country', authUser.country) %>"
                           required>
                           <option value="">Select your country</option>
                           <option value="Afghanistan">Afghanistan</option>
@@ -510,8 +507,8 @@
                         <label for="state" class="text-dark">
                           State
                         </label>
-                        <input type="text" class="form-control" id="state" name="state" value="<%= old('state') %>"
-                          value="<%= sentenceCase(authUser.state) %>" required>
+                        <input type="text" class="form-control" id="state" name="state" value="<%= old('state', sentenceCase(authUser.state)) %>"
+                          required>
                       </div>
                     </div>
 
@@ -521,16 +518,16 @@
                         <label for="city" class="text-dark">
                           City
                         </label>
-                        <input type="text" class="form-control" id="city" name="city" value="<%= old('city') %>"
-                          value="<%= sentenceCase(authUser.city) %>" required>
+                        <input type="text" class="form-control" id="city" name="city" value="<%= old('city', sentenceCase(authUser.city)) %>"
+                          required>
                       </div>
 
                       <!-- zip / postal code -->
                       <div class="col-xl-6 col-lg-6">
                         <label for="postalcode" class="text-dark">
                           Zip / Postal code
-                        </label> <input type="text" class="form-control" id="postalcode" name="postalcode" value="<%= old('postalcode') %>"
-                          value="<%= authUser.postalcode %>" required>
+                        </label> <input type="text" class="form-control" id="postalcode" name="postalcode" value="<%= old('postalcode', authUser.postalcode) %>"
+                           required>
                       </div>
                     </div>
                     <!-- home address -->
@@ -540,7 +537,7 @@
                           Home Address
                         </label>
                         <textarea class="form-control mb-0" id="homeAddress" name="homeAddress" cols="30" rows="3"
-                          required><%= sentenceCase(authUser.homeAddress) %><%= old('homeAddress') %></textarea>
+                          required><%= old('homeAddress', sentenceCase(authUser.homeAddress)) %></textarea>
                       </div>
                     </div>
 

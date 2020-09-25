@@ -11,6 +11,7 @@ module.exports = {
     require("express").urlencoded({ limit: "50mb", extended: true }), //-- use express.urlencoded
 
     require("express-ejs-layouts"), //-- use expressLayouts
+    
     require("express-fileupload")({
       createParentPath: true,
       debug: config("app", "debug"),

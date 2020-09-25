@@ -6,7 +6,7 @@ class SessionServiceProvider {
   static handle(app) {
 
     let sess = {
-		// store: new MongoStore({ mongooseConnection: mongoose.connection }),
+		store: new MongoStore({ mongooseConnection: mongoose.connection }),
 		secret: config("app", "key"),
 		resave: false,
 		saveUninitialized: true,

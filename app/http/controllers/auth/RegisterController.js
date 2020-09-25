@@ -39,7 +39,7 @@ class RegisterController {
 
 			const valid = await validator(req.body, validationSchema);
 
-			const userExist = User.find({
+			const userExist = User.findOne({
 				$or: [
 					{ email: valid.email },
 					{ nickname: valid.nickname },
@@ -47,7 +47,9 @@ class RegisterController {
 				],
 			});
 
-			if(userExist) {
+			console.log(userExist)
+
+			if(!_.isEmpty(userExist)) {
 				req.flash("error", `User already registered`);
 				return res.redirect("/auth/register");
 			}

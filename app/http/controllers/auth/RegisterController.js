@@ -47,8 +47,6 @@ class RegisterController {
 				],
 			});
 
-			console.log(userExist)
-
 			if(!_.isEmpty(userExist)) {
 				req.flash("error", `User already registered`);
 				return res.redirect("/auth/register");

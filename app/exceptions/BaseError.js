@@ -1,5 +1,3 @@
-class BaseError extends Error {
- 
-}
+class BaseError extends Error {}
 
 module.exports = BaseError;

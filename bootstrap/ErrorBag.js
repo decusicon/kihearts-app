@@ -11,13 +11,11 @@ class ErrorBag {
     }
 
     get(name) {
-        const obj = _.get(this.errorsBag, name);
-        return _.isEmpty(obj) ? null : obj["message"];
+        return _.get(this.errorsBag, name);
     }
 
     old(name, defaultVal) {
         return _.get(this.valueBag, name, defaultVal);
-		// return _.isEmpty(obj) ? null : (obj["value"] || null);
     }
     
 }

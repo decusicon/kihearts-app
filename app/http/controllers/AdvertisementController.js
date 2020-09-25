@@ -1,7 +1,7 @@
 class AdvertisementController {
-    static async index(req, res) {
+    async index(req, res) {
         res.render("pages/advertise", { title: "Advertise" });
     }
 }
 
-module.exports = AdvertisementController;
+module.exports = new AdvertisementController();

@@ -13,17 +13,14 @@ class ValidationError extends BaseError {
     handle(req, res) {
 		const errors = this.errors;
 
-		const errorBag = {};
+		if(errors instanceof Error) {
+			res.redirect(req.header("Referer") || "/");
+		}
 		
-		errors.details.forEach(error => {
-			errorBag[error.context.key] = {
-				message: error.message.split('"').join(''),
-				value: error.context.value,
-			};
-		});		
+		const errorBag = {};
+		errors.details.forEach(error => errorBag[error.context.key] = error.message.split('"').join(''));				
 
         return res.format({
-		
 			"text/html": function () {
 				req.flash("__errors__", errorBag);
 				req.flash("__value__", errors._original);
@@ -33,14 +30,12 @@ class ValidationError extends BaseError {
 				);
 				res.redirect(req.header("Referer") || "/");
 			},
-
 			"application/json": function () {
                 res.status(400).send({
 					message: "Bad Request",
 					errors: errors.details,
 				});
 			},
-
 			default: function () {
 				// log the request and respond with 406
 				res.status(406).send("Not Acceptable");
@@ -48,5 +43,4 @@ class ValidationError extends BaseError {
 		});
     }
 }
-
 module.exports = ValidationError;

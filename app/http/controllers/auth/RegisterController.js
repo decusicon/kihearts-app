@@ -15,10 +15,24 @@ class RegisterController {
 				firstname: Joi.string().trim().required(),
 				lastname: Joi.string().trim().required(),
 				nickname: Joi.string().trim().required(),
-				email: Joi.string().trim().email().required(),
+				email: Joi.string()
+					.trim()
+					.email()
+					.required()
+					.external(async (value, helper) => {
+						if (!_.isEmpty(await User.findOne({ email: value }))) {
+							req.flash("__errors__", {
+								email: "Email already exist",
+							});
+							req.flash("__value__", {email : value});
+							throw new Error("Email already exist");
+						}
+						return value;
+					}),
+
 				phoneNumber: Joi.number().integer().required(),
 				password: Joi.string().trim().required().min(6),
-				re_password: Joi.ref('password'),
+				re_password: Joi.ref("password"),
 				country: Joi.string().trim().required(),
 				state: Joi.string().trim().required(),
 				city: Joi.string().trim().required(),

@@ -1,7 +1,7 @@
 class DonationController {
-  static async index(req, res) {
+  async index(req, res) {
     res.render("pages/donation", { title: "Donations" });
   }
 }
 
-module.exports = DonationController;
+module.exports = new DonationController();

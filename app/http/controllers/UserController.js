@@ -17,15 +17,13 @@ class UserController {
             const valid = await req.validate({
 				firstname: "required|string",
 				lastname: "required|string",
-				nickname: "required|string|unique:users,nickname",
-				email: "required|string|min:3|email|unique:users,email",
-				phoneNumber: "required|string|unique:users,phoneNumber",
+				nickname: `required|string|unique:users,nickname,id,${user.id}`,
+				phoneNumber: `required|string|unique:users,phoneNumber,id,${user.id}`,
 			});
 
             user.firstname = valid.firstname;
             user.lastname = valid.lastname;
             user.nickname = valid.nickname;
-            user.email = valid.email;
             user.phoneNumber = valid.phoneNumber;
 
             await user.save();

@@ -43,12 +43,27 @@ class ValidatorServiceProvider {
 			passes
 		) {
 			const attributes = attribute.split(",");
-
 			const collection = attributes[0];
-			const row = attributes[1] || req;
+			const field = attributes[1] || req;
 
 			const query = {};
-			query[row] = value;
+			query[field] = { $eq: value };
+
+			if(attributes.length == 4) {
+				attributes[2] = attributes[2] == "id" ? "_id" : attributes[2];
+
+				attributes[3] =
+					attributes[2] == "_id"
+						? require("mongoose").Types.ObjectId(attributes[3])
+						: attributes[3];
+
+				query[attributes[2]] = { $ne: attributes[3] };
+			}
+
+			if (attributes.length == 3) {
+				query[field]["$ne"] = attributes[2];
+			}
+
 
 			const user = await mongoose.connection
 				.collection(collection)

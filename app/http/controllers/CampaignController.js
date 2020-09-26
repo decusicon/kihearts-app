@@ -22,15 +22,13 @@ class CampaignController {
 			const user = req.user;
 			const photos = [];
 
-			const validationSchema = Joi.object({
-				title: Joi.string().trim().required(),
-				category: Joi.string().trim().required(),
-				subCategory: Joi.string().trim().required(),
-				reason: Joi.string().trim().required(),
-				amount: Joi.number().integer().required(),
+			const valid = await req.validate({
+				title: "required|string",
+				category: "required|string",
+				subCategory: "required|string",
+				reason: "required|string",
+				amount: "required|integer",
 			});
-
-			const valid = await validator(req.body, validationSchema);
 
 			if (_.isEmpty(req.files.photo) && !_.isArray(req.files.photo)) {
 				return res.send({
@@ -86,21 +84,18 @@ class CampaignController {
 
 	async update(req, res, next) {
 		try {
-
 			const campaign = await Campaign.findOne({
 				_id: req.params.id,
 				userId: req.user.id,
 			});
 
-			const validationSchema = Joi.object({
-				title: Joi.string().trim().required(),
-				category: Joi.string().trim().required(),
-				subCategory: Joi.string().trim().required(),
-				reason: Joi.string().trim().required(),
-				amount: Joi.number().integer().required(),
+			const valid = await req.validate({
+				title: "required|string",
+				category: "required|string",
+				subCategory: "required|string",
+				reason: "required|string",
+				amount: "required|integer",
 			});
-
-			const valid = await validator(req.body, validationSchema);
 
 			campaign.title = valid.title;
 			campaign.category = valid.category;
@@ -115,7 +110,6 @@ class CampaignController {
 				msg: "Success! You've just updated a campaign.",
 				url: "/campaigns",
 			});
-
 		} catch (error) {
 			next(error);
 		}

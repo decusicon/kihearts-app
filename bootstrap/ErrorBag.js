@@ -11,20 +11,18 @@ class ErrorBag {
     }
 
     get(name) {
-        return _.get(this.errorsBag, name);
+        return Str.humanize(_.get(this.errorsBag, [name, "0"]));
     }
 
     old(name, defaultVal) {
         return _.get(this.valueBag, name, defaultVal);
     }
-    
 }
 
 module.exports = (req,res,next) => {
 
     const flashErrors = req.flash('__errors__');
     const oldValue = req.flash('__value__');
-
 
     const errorBag = new ErrorBag(flashErrors, oldValue);
 

@@ -1,4 +1,3 @@
-const Joi = require('joi');
 const path = require('path')
 const cryptoRandomString = require('crypto-random-string');
 
@@ -15,15 +14,13 @@ class UserController {
         try {
             const user = req.user;
 
-            const validationSchema = Joi.object({
-                firstname: Joi.string().trim().required(),
-                lastname: Joi.string().trim().required(),
-                nickname: Joi.string().trim().required(),
-                email: Joi.string().trim().email().required(),
-                phoneNumber: Joi.number().integer().required(),
-            });
-
-            const valid = await validator(req.body, validationSchema);
+            const valid = await req.validate({
+				firstname: "required|string",
+				lastname: "required|string",
+				nickname: "required|string|unique:users,nickname",
+				email: "required|string|min:3|email|unique:users,email",
+				phoneNumber: "required|string|unique:users,phoneNumber",
+			});
 
             user.firstname = valid.firstname;
             user.lastname = valid.lastname;
@@ -42,32 +39,28 @@ class UserController {
         }
     }
 
-
     async updateDetail(req, res, next) {
         try {
             const user = req.user;
 
-            const validationSchema = Joi.object({
-                country: Joi.string().trim().required(),
-                state: Joi.string().trim().required(),
-                city: Joi.string().trim().required(),
-                postalcode: Joi.string().trim().optional(),
-                homeAddress: Joi.string().trim().required(),
-                // check for next of kin's error
-                next_firstname: Joi.string().trim().required(),
-                next_lastname: Joi.string().trim().required(),
-                next_relationship: Joi.string().trim().required(),
-                next_email: Joi.string().trim().email().required(),
-                next_phoneNumber: Joi.number().integer().required(),
-                next_country: Joi.string().trim().required(),
-                next_state: Joi.string().trim().required(),
-                next_city: Joi.string().trim().required(),
-                next_postalcode: Joi.string().trim().optional(),
-                next_homeAddress: Joi.string().trim().required(),
-            });
-
-            const valid = await validator(req.body, validationSchema);
-
+            const valid = await req.validate({
+				country: "required|string",
+				state: "required|string",
+				city: "required|string",
+				postalcode: "present|string",
+				homeAddress: "required|string",
+				// check for next of kin's error
+				next_firstname: "required|string",
+				next_lastname: "required|string",
+				next_relationship: "required|string",
+				next_email: "required|string|min:3|email",
+				next_phoneNumber: "required|string",
+				next_country: "required|string",
+				next_state: "required|string",
+				next_city: "required|string",
+				next_postalcode: "present|string",
+				next_homeAddress: "required|string",
+			});
 
             user.country = valid.country;
             user.state = valid.state;
@@ -102,13 +95,10 @@ class UserController {
         try {
             const user = req.user;
 
-            const validationSchema = Joi.object({
-                current_password: Joi.string().trim().required().min(6),
-                password: Joi.string().trim().required().min(6),
-                re_password: Joi.ref('password'),
-            });
-
-            const valid = await validator(req.body, validationSchema);
+            const valid = await req.validate({
+				current_password: "required|string|min:6",
+				password: "required|string|min:6|confirmed",
+			});
 
             if (! await user.passwordCheck(valid.current_password)) {
                 req.flash('error', 'Wrong password');
@@ -158,13 +148,11 @@ class UserController {
         try {
             const user = req.user;
 
-            const validationSchema = Joi.object({
-                bank: Joi.string().trim().required(),
-                accountName: Joi.string().trim().required(),
-                accountNumber: Joi.number().integer().required(),
-            });
-
-            const valid = await validator(req.body, validationSchema);
+            const valid = await req.validate({
+				bank: "required|string",
+				accountName: "required|string",
+				accountNumber: "required|string",
+			});
 
             user.bankDetails = {
                 bank : valid.bank,

@@ -109,12 +109,12 @@
               <!-- repeat password -->
               <div class="col-xl-4 col-lg-4 mb-3">
 
-                <input type="password" class="mb-0" id="re_password" name="re_password" value="<%= old('re_password') %>" placeholder="Re-Password"
+                <input type="password" class="mb-0" id="password_confirmation" name="password_confirmation" value="<%= old('password_confirmation') %>" placeholder="Password Confirmation"
                   autocomplete="on" minlength="6" />
 
-				  <% if(errors.has('re_password')) { %>
+				  <% if(errors.has('password_confirmation')) { %>
                     <small class="text-danger d-block pt-1 mb-3" id="alert">
-                      <strong><%= errors.get('re_password') %></strong>
+                      <strong><%= errors.get('password_confirmation') %></strong>
                     </small>
                   <% } %>
 

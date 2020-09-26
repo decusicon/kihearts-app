@@ -1,39 +1,39 @@
 const BaseError = require('./BaseError');
 
 class ValidationError extends BaseError {
-  
-    setErrors (errors) {
-        this.errors = errors;
-    }
+	setErrors(errors) {
+		this.errors = errors;
+	}
 
-    getErrors () {
-        return this.errors;
-    }
+	setValues(values) {
+		this.values = values;
+	}
 
-    handle(req, res) {
-		const errors = this.errors;
+	getErrors() {
+		return this.errors;
+	}
 
-		if(errors instanceof Error) {
-			res.redirect(req.header("Referer") || "/");
-		}
-		
-		const errorBag = {};
-		errors.details.forEach(error => errorBag[error.context.key] = error.message.split('"').join(''));				
+	getValues() {
+		return this.values;
+	}
 
-        return res.format({
+	handle(req, res) {
+		const message = this.message || 'Invalid';
+		const errors = this.getErrors().errors;
+		const values = this.getValues();
+
+		return res.format({
 			"text/html": function () {
-				req.flash("__errors__", errorBag);
-				req.flash("__value__", errors._original);
-				req.flash(
-					"error",
-					errors.details[0].message.split('"').join("")
-				);
+				req.flash("__errors__", errors);
+				req.flash("__value__", values);
+				req.flash("error", message);
 				res.redirect(req.header("Referer") || "/");
 			},
 			"application/json": function () {
-                res.status(400).send({
+				res.status(400).send({
 					message: "Bad Request",
-					errors: errors.details,
+					errors: errors,
+					values : values 
 				});
 			},
 			default: function () {
@@ -41,6 +41,6 @@ class ValidationError extends BaseError {
 				res.status(406).send("Not Acceptable");
 			},
 		});
-    }
+	}
 }
 module.exports = ValidationError;

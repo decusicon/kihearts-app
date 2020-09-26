@@ -1,5 +1,4 @@
 var passport = require("passport");
-const Joi = require('joi');
 
 class LoginController {
   async show(req, res) {
@@ -8,21 +7,18 @@ class LoginController {
 
   async login(req, res, next) {
     try {
-      const validationSchema = Joi.object({
-        username: Joi.string().min(3).max(30).required(),
-        password: Joi.string().min(3).max(30).required()
+      const valid = await req.validate({
+        username: "required|string|min:3|email",
+        password: "required|string|min:6",
       });
 
-      await validator(req.body, validationSchema);
-
-      passport.authenticate("local", {
-        successRedirect: "/dashboard",
-        successFlash: "Welcome to your dashboard!",
-        failureRedirect: "/auth/login",
-        failureFlash: "Sorry! Invalid username or password",
-      })(req, res, next);
-
-    } catch (error) {
+		passport.authenticate("local", {
+			successRedirect: "/dashboard",
+			successFlash: "Welcome to your dashboard!",
+			failureRedirect: "/auth/login",
+			failureFlash: "Sorry! Invalid username or password",
+		})(req, res, next);
+	} catch (error) {
       next(error);
     } 
   }

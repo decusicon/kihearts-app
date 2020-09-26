@@ -35,7 +35,7 @@ app.use((req, res, next) => {
     const email = req.body.email ? req.body.email.toLowerCase().trim() : "";
     const phoneNumber = req.body.phoneNumber ? req.body.phoneNumber : "";
     const password = req.body.password ? req.body.password : "";
-    const re_password = req.body.re_password ? req.body.re_password : "";
+    const password_confirmation = req.body.password_confirmation ? req.body.password_confirmation : "";
     const country = req.body.country
       ? req.body.country.toLowerCase().trim()
       : "";
@@ -94,7 +94,7 @@ app.use((req, res, next) => {
     req.checkBody("email", "Required!").isEmail();
     req.checkBody("phoneNumber", "Required!").isInt();
     req.checkBody("password", "Required!").notEmpty();
-    req.checkBody("re_password", "Required!").equals(password);
+    req.checkBody("password_confirmation", "Required!").equals(password);
     req.checkBody("country", "Required!").notEmpty();
     req.checkBody("state", "Required!").notEmpty();
     req.checkBody("city", "Required!").notEmpty();

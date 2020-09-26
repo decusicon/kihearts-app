@@ -1,5 +1,4 @@
 const User = require("@models/user");
-const Joi = require('joi');
 const path = require('path')
 const cryptoRandomString = require('crypto-random-string');
 
@@ -11,60 +10,30 @@ class RegisterController {
 
 	async register(req, res, next) {
 		try {
-			const validationSchema = Joi.object({
-				firstname: Joi.string().trim().required(),
-				lastname: Joi.string().trim().required(),
-				nickname: Joi.string().trim().required(),
-				email: Joi.string()
-					.trim()
-					.email()
-					.required()
-					.external(async (value, helper) => {
-						if (!_.isEmpty(await User.findOne({ email: value }))) {
-							req.flash("__errors__", {
-								email: "Email already exist",
-							});
-							req.flash("__value__", {email : value});
-							throw new Error("Email already exist");
-						}
-						return value;
-					}),
-
-				phoneNumber: Joi.number().integer().required(),
-				password: Joi.string().trim().required().min(6),
-				re_password: Joi.ref("password"),
-				country: Joi.string().trim().required(),
-				state: Joi.string().trim().required(),
-				city: Joi.string().trim().required(),
-				postalcode: Joi.string().trim().optional(),
-				homeAddress: Joi.string().trim().required(),
+			const valid = await req.validate({
+				firstname: "required|string",
+				lastname: "required|string",
+				nickname: "required|string|unique:users,nickname",
+				email: "required|string|min:3|email|unique:users,email",
+				phoneNumber: "required|string|unique:users,phoneNumber",
+				password: "required|string|min:6|confirmed",
+				country: "required|string",
+				state: "required|string",
+				city: "required|string",
+				postalcode: "present|string",
+				homeAddress: "required|string",
 				// check for next of kin's error
-				next_firstname: Joi.string().trim().required(),
-				next_lastname: Joi.string().trim().required(),
-				next_relationship: Joi.string().trim().required(),
-				next_email: Joi.string().trim().email().required(),
-				next_phoneNumber: Joi.number().integer().required(),
-				next_country: Joi.string().trim().required(),
-				next_state: Joi.string().trim().required(),
-				next_city: Joi.string().trim().required(),
-				next_postalcode: Joi.string().trim().optional(),
-				next_homeAddress: Joi.string().trim().required(),
+				next_firstname: "required|string",
+				next_lastname: "required|string",
+				next_relationship: "required|string",
+				next_email: "required|string|min:3|email",
+				next_phoneNumber: "required|string",
+				next_country: "required|string",
+				next_state: "required|string",
+				next_city: "required|string",
+				next_postalcode: "present|string",
+				next_homeAddress: "required|string",
 			});
-
-			const valid = await validator(req.body, validationSchema);
-
-			const userExist = await User.findOne({
-				$or: [
-					{ email: valid.email },
-					{ nickname: valid.nickname },
-					{ phoneNumber: valid.phoneNumber },
-				],
-			});
-
-			if(!_.isEmpty(userExist)) {
-				req.flash("error", `User already registered`);
-				return res.redirect("/auth/register");
-			}
 
 			const userObj = {
 				firstname: valid.firstname,

@@ -41,14 +41,15 @@
                   <%= walletBalance %>
                 </h2>
                 <div class="row">
-                  <form action="/wallets" method="POST" id="walletForm" class="col-12 col-md-12 py-3" >
+                  <form action="/wallets" method="POST" id="walletForm" class="col-12 col-md-12 py-3">
                     <input type="number" name="amount" class="form-control" id="wallet-amount" min="500"
                       placeholder="Enter Amount...">
                   </form>
                 </div>
                 <div class="pledgeFooter row">
                   <div class="col-6">
-                    <button type="button" value="deposit" id="deposit-btn" class="btn btn-info form-control">Deposit</button>
+                    <button type="button" value="deposit" id="deposit-btn"
+                      class="btn btn-info form-control">Deposit</button>
                   </div>
                   <div class="col-6">
                     <button type="submit" value="cashout" class="btn btn-success form-control">Cash Out</button>
@@ -76,15 +77,37 @@
                       <th scope="col">Date</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style="font-size: 18px;">
+                    <% transactions.forEach((transaction, i) => { %>
                     <tr>
-                      <td>Beads</td>
-                      <td>Beads</td>
-                      <td>Beads</td>
-                      <td>Beads</td>
-                      <td>$90,000.00</td>
-                      <td>Oct 24, 2020</td>
+                      <td><%= ++i %></td>
+                      <td>
+                        <% if (transaction.credit != null) { %>
+                        <span class="badge text-success">CREDIT</span>
+                        <% } else { %>
+                        <span class="badge text-success">DEBIT</span>
+                        <% } %>
+                      </td>
+                      <td><%= transaction.credit != null ? transaction.credit : transaction.debit %></td>
+                      <td><%= transaction.description %></td>
+                      <td>
+                        <% if (transaction.status == "approved") { %>
+                        <span class="badge badge-success">
+                          <%= transaction.status %>
+                        </span>
+                        <% } else if (transaction.status == "pending") { %>
+                        <span class="badge badge-warning">
+                          <%= transaction.status %>
+                        </span>
+                        <% } else if (transaction.status == "rejected") { %>
+                        <span class="badge badge-danger">
+                          <%= transaction.status %>
+                        </span>
+                        <% } %>
+                      </td>
+                      <td><%= moment(transaction.createdAt).fromNow() %></td>
                     </tr>
+                    <% }) %>
                   </tbody>
                 </table>
 

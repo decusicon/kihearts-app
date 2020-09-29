@@ -30,7 +30,7 @@ class WalletController {
       return res.render("pages/wallet", {
         title: "Wallets",
         walletBalance: balance,
-        transactions,
+        transactions: transactions.reverse(),
       })
     } catch (error) {
       next(error)

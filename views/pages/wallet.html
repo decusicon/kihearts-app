@@ -8,7 +8,7 @@
   <div class="container-fluid">
 
     <!-- start page title -->
-<div class="col-xl-12 col-lg-12 col-md-12 adsCon bg-primary" style="height: 100px;">a</div>
+    <div class="col-xl-12 col-lg-12 col-md-12 adsCon bg-primary" style="height: 100px;">a</div>
     <div class="row">
       <div class="col-12">
         <div class="page-title-box">
@@ -25,52 +25,87 @@
     <!-- end page title -->
 
     <div class="row">
-      <div class="col-lg-6">
-        <div class="text-center donationGiftBox">💰</div>
-        <div class="card">
-          <div class="card-body p-4">
-            <div class="text-center">
 
-              <small class="text-muted">You have about</small>
-              <h2 class="text-dark mt-0 m-3">
-                500
-                <br>
-                <small><b>Gold coins (GC)</b></small>
-              </h2>
-              <div class="pledgeFooter">
-                <button class="btn btn-info">Buy Gold Coin</button>
-                <button class="btn btn-danger">Sell Gold Coin</button>
+      <div class="col-xl-2 col-lg-2 col-md-2 adsCon bg-primary">b</div>
+
+      <div class="col-xl-8 col-lg-8 col-md-8">
+        <div class="col-12">
+          <div class="text-center donationGiftBox">💰</div>
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="text-center">
+
+                <small class="text-muted">You have about</small>
+                <h2 class="text-dark mt-0 mb-1 mx-3">
+                  <span style="font-size: 26px;">₦</span>
+                  <%= walletBalance %>
+                </h2>
+                <div class="row">
+                  <form action="/wallets" method="POST" id="walletForm" class="col-12 col-md-12 py-3" >
+                    <input type="number" name="amount" class="form-control" id="wallet-amount" min="500"
+                      placeholder="Enter Amount...">
+                  </form>
+                </div>
+                <div class="pledgeFooter row">
+                  <div class="col-6">
+                    <button type="button" value="deposit" id="deposit-btn" class="btn btn-info form-control">Deposit</button>
+                  </div>
+                  <div class="col-6">
+                    <button type="submit" value="cashout" class="btn btn-success form-control">Cash Out</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div> <!-- end card-body-->
+            </div> <!-- end card-body-->
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body text-center p-4">
+              <h4 class="mb-4">Transactions</h4>
+              <div class="table-responsive">
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">S/N</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Beads</td>
+                      <td>Beads</td>
+                      <td>Beads</td>
+                      <td>Beads</td>
+                      <td>$90,000.00</td>
+                      <td>Oct 24, 2020</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div> <!-- end card-body-->
+          </div>
         </div>
       </div>
 
-      <div class="col-lg-6">
-        <div class="text-center donationGiftBox">💵</div>
-        <div class="card">
-          <div class="card-body p-4">
-            <div class="text-center">
+      <div class="col-xl-2 col-lg-2 col-md-2 adsCon bg-primary">c</div>
 
-              <small class="text-muted">You have about</small>
-              <h2 class="text-dark mt-0 m-3">
-                500
-                <br>
-                <small><b>Cash available</b></small>
-              </h2>
-              <div class="pledgeFooter">
-                <button class="btn btn-success pl-4 pr-4">Cash Out</button>
-              </div>
-            </div>
-          </div> <!-- end card-body-->
-        </div>
-      </div>
     </div>
 
 
   </div> <!-- end container-fluid -->
 </div>
 <!-- end wrapper -->
+
+<!-- Payment -->
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script src="/js/flutterwavePayment.js"></script>
 
 <!-- ============================================================== -->
 <!-- End Page content -->

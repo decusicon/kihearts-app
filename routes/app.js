@@ -7,7 +7,6 @@ Route.get("/dashboard", require("@controllers/DashboardController").index);
 Route.get("/advertise", require("@controllers/AdvertisementController").index);
 Route.get("/investment", require("@controllers/InvestmentController").index);
 Route.get("/donations", require("@controllers/DonationController").index);
-Route.get("/wallets", require("@controllers/WalletController").index);
 
 Route.get("/myaccount", require("@controllers/UserController").index);
 Route.post("/myaccount", require("@controllers/UserController").update);
@@ -41,5 +40,13 @@ Route.delete(
 	"/campaigns/edit/:id/delete",
 	require("@controllers/CampaignController").destroy
 );
+
+Route.get("/wallets", require("@controllers/WalletController").index)
+Route.post("/wallets/deposit", require("@controllers/WalletController").deposit)
+Route.get("/wallets/deposit", require("@controllers/WalletController").verifyDeposit)
+
+//Deposit
+// Route::post()
+// Route::get()
 
 module.exports = Route;

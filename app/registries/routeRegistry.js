@@ -20,6 +20,6 @@ app.use('/404', (req, res, next) => {
 })
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => res.redirect('/404'));
+// app.use((req, res, next) => res.redirect('/404'));
 
 module.exports = app;

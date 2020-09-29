@@ -17,6 +17,10 @@ class User extends Model {
 		super.avatar = value;
 	}
 
+	get name() {
+		return `${super.firstname} ${super.lastname}`;
+	}
+
 	get avatar() {
 		if (this.hasAvatar) {
 			return `/storage/profile-photos/${super.avatar}`;

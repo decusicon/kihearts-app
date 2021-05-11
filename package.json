@@ -31,7 +31,7 @@
     "http-errors": "~1.6.3",
     "install": "^0.13.0",
     "joi": "^17.2.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "method-override": "^3.0.0",
     "module-alias": "^2.2.2",
     "moment": "^2.25.3",
